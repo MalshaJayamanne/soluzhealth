@@ -1,0 +1,1613 @@
+/* ─────────────────────────────────────────────
+   SOLUZ HEALTH 
+   ───────────────────────────────────────────── */
+
+:root {
+  --brand-blue: #36A9FF;
+  --brand-purple: #808EED;
+  --brand-light-blue: #C0DFFF;
+  --brand-white: #FFFFFF;
+  --brand-navy: #0A1F3D;
+  --brand-navy-soft: #1B3358;
+  --brand-mid: #4A7FB8;
+
+  --sage-light: #E8F4FF;
+  --text: #1A2332;
+  --text-muted: #5A6B82;
+  --white: #fff;
+  --off-white: #F4F9FF;
+  --border: #D8E4F0;
+  --radius: 8px;
+
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Montserrat', 'Helvetica', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   DESKTOP — CONSISTENT HEADER & SECTION CONTAINER
+========================================================= */
+
+@media (min-width: 1200px) {
+    .container,
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container {
+        width: 100%;
+        max-width: 1264px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 32px;
+        padding-right: 32px;
+        box-sizing: border-box;
+    }
+}
+
+/* Keep the hero container consistent with other sections */
+@media (min-width: 1025px) {
+    .hero-section > .container {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 1264px;
+        min-width: 0;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+/* ==========================================================
+   ANNOUNCEMENT BAR (header_message)
+   ========================================================== */
+.header-message {
+  background: var(--brand-light-blue);
+  color: var(--brand-navy);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  padding: 11px 16px;
+}
+.header-message strong {
+  font-weight: 600;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.admin-bar .main-header {
+  top: 32px;
+}
+.main-header > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+/* ----- Logo ----- */
+.main-header .logo-wrapper {
+  flex-shrink: 0;
+}
+.main-header .logo-wrapper > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.main-header .logo-mark {
+  display: block;
+  width: 48px;
+}
+.main-header .logo-wordmark {
+  display: block;
+  height: 44px;
+}
+.main-header .logo-mark img.logo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
+.main-header .logo-wordmark img.logo {
+  width: auto;
+  height: 100%;
+  max-width: none;
+  display: block;
+}
+
+/* ----- Menu ----- */
+.main-header .menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.main-header .navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+}
+.main-header .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main-header .navbar-nav > li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 76px;
+}
+.main-header .navbar-nav a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0;
+  transition: color 0.2s;
+}
+.main-header .navbar-nav a:hover,
+.main-header .navbar-nav .current-menu-item > a,
+.main-header .navbar-nav .current-menu-parent > a {
+  color: var(--brand-blue);
+}
+
+/* ----- Dropdown ----- */
+.main-header .navbar-nav > .menu-item-has-children > a::after {
+  content: ' ▾';
+  font-size: 10px;
+}
+.main-header .navbar-nav .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -8px;
+  min-width: 230px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(10, 31, 61, 0.1);
+}
+.main-header .navbar-nav > li:hover > .sub-menu,
+.main-header .navbar-nav > li:focus-within > .sub-menu {
+  display: block;
+}
+.main-header .navbar-nav .sub-menu li {
+  display: block;
+  height: auto;
+  padding: 0;
+}
+.main-header .navbar-nav .sub-menu a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: var(--text);
+  transition: background 0.15s, color 0.15s;
+}
+.main-header .navbar-nav .sub-menu a:hover {
+  background: var(--sage-light);
+  color: var(--brand-blue);
+}
+
+/* ----- Phone pill ----- */
+.main-header .telephone {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  text-decoration: none;
+  border: 1.5px solid var(--brand-blue);
+  border-radius: 24px;
+  padding: 7px 16px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.main-header .telephone:hover {
+  background: var(--brand-blue);
+  color: #fff;
+}
+.main-header .menu-wrapper .header-btn {
+  margin-left: 1rem;
+}
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+.theme-blue,
+.theme-outline {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.theme-blue {
+  background: var(--brand-blue);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(54, 169, 255, 0.25);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.theme-blue:hover {
+  background: var(--brand-navy);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(10, 31, 61, 0.25);
+}
+.theme-outline {
+  background: transparent;
+  color: var(--brand-navy);
+  border: 2px solid var(--brand-navy);
+  transition: all 0.2s;
+}
+.theme-outline:hover {
+  background: var(--brand-navy);
+  color: #fff;
+}
+
+/* ==========================================================
+   MOBILE ICON + MENU (hidden on desktop)
+   ========================================================== */
+.main-header .menu-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--brand-navy);
+  text-decoration: none;
+  padding: 8px;
+}
+.main-header .mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 12px 24px rgba(10, 31, 61, 0.1);
+  padding: 1.5rem 2.5rem 2rem;
+  text-align: center;
+  max-height: calc(100vh - 76px);
+  overflow-y: auto;
+}
+.main-header .mobile-menu.open,
+.main-header .mobile-menu.active,
+.main-header .mobile-menu.show {
+  display: block;
+}
+.main-header .mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-header .mobile-menu ul a {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.main-header .mobile-menu .sub-menu a {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.main-header .mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.main-header .mobile-actions .telephone,
+.main-header .mobile-actions .theme-blue {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 12px 16px;
+}
+
+/* ==========================================================
+   HOME 
+   ========================================================== */
+
+.main-header > .container,
+.welcome-section > .container,
+.work-section > .container,
+.treatment-section > .container,
+.conditions-section > .container,
+.process-section > .container,
+.doctor-section > .container,
+.patient-section > .container,
+.contact-section > .container {
+  width: 100%;
+  max-width: 1264px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.hero-section,
+.welcome-section,
+.work-section,
+.treatment-section,
+.conditions-section,
+.process-section,
+.doctor-section,
+.patient-section,
+.contact-section {
+  position: relative;
+  padding: 6rem 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+}
+.hero-section {
+  padding: 0;
+}
+
+/* Reset Bootstrap defaults inside the home sections */
+:is(.hero-section, .welcome-section, .work-section, .treatment-section, .conditions-section, .process-section, .doctor-section, .patient-section, .contact-section) :is(h1, h2, h3, h4, h5, h6, p, ul, ol, figure) {
+  margin: 0;
+  padding: 0;
+}
+:is(.hero-section, .welcome-section, .work-section, .treatment-section, .conditions-section, .process-section, .doctor-section, .patient-section, .contact-section) ul {
+  list-style: none;
+}
+:is(.hero-section, .welcome-section, .work-section, .treatment-section, .conditions-section, .process-section, .doctor-section, .patient-section, .contact-section) img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+:is(.hero-section, .welcome-section, .work-section, .treatment-section, .conditions-section, .process-section, .doctor-section, .patient-section, .contact-section) a {
+  text-decoration: none;
+}
+
+/* Eyebrow (h5) */
+:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content) h5 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--brand-blue);
+  margin: 0 0 0.75rem;
+}
+
+/* Title (h2) */
+:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content, .contact-section .content) h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content) h2 span {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+
+/* Subtitle / paragraphs (p) */
+:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content) p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0;
+}
+:is(.welcome-section .content, .doctor-section .content) p + p {
+  margin-top: 1rem;
+}
+
+/* Dark sections: white eyebrow + title, light subtitle */
+:is(.conditions-section .heading, .contact-section .content) :is(h5, h2) {
+  color: #fff;
+}
+:is(.conditions-section .heading, .contact-section .content) h2 span {
+  color: var(--brand-blue);
+}
+:is(.conditions-section .heading, .contact-section .content) p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Card link: arrow link stretched over the whole card */
+:is(.treatment-section, .conditions-section) .item {
+  position: relative;
+}
+:is(.treatment-section, .conditions-section) .more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+.treatment-section .more-link {
+  letter-spacing: 0.06em;
+}
+:is(.treatment-section, .conditions-section) .more-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+:is(.treatment-section, .conditions-section) .more-link::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+:is(.treatment-section, .conditions-section) .item:hover .more-link::after {
+  transform: translateX(4px);
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero-section {
+  display: flex;
+  align-items: center;
+  min-height: 92vh;
+  background: var(--brand-navy);
+  overflow: hidden;
+}
+.hero-section .hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-section .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.3;
+}
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 31, 61, 0.7) 0%, rgba(10, 31, 61, 0.4) 50%, rgba(10, 31, 61, 0.7) 100%);
+  pointer-events: none;
+}
+/* Same as the original: a flex item that shrinks to its content
+   (about 760px) and is centered, with left-aligned text inside */
+.hero-section > .container {
+  position: relative;
+  z-index: 2;
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 9rem 2rem;
+}
+.hero-section .inner {
+  padding: 0;
+}
+.hero-section .hero-logo {
+  margin-bottom: 1.75rem;
+}
+.hero-section .hero-logo img {
+  display: block;
+  height: 140px;
+  width: auto;
+  max-width: 100%;
+}
+.hero-section .content :is(h1, h2) {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #fff;
+  max-width: 760px;
+  margin: 0 0 1.5rem;
+}
+.hero-section .content :is(h1, h2) span {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+.hero-section .content h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 760px;
+  margin: -0.25rem 0 1.75rem;
+}
+.hero-section .content p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 540px;
+  margin: 0 0 2.5rem;
+}
+.hero-section .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================
+   WELCOME (intro)
+   ========================================================== */
+.welcome-section {
+  background: var(--off-white);
+}
+.welcome-section .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.welcome-section .image {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.welcome-section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-section .content h4{
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+
+.welcome-section .content h5 {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+  background: var(--brand-light-blue);
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin: 0 0 1rem;
+}
+
+.welcome-section .content h3{
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+
+.welcome-section .features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+}
+.welcome-section .features li {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  background: var(--brand-light-blue);
+  border-radius: 24px;
+  padding: 6px 16px;
+}
+.welcome-section .buttons {
+  margin-top: 2rem;
+}
+
+/* ==========================================================
+   HOW WE WORK
+   ========================================================== */
+.work-section {
+  background: #fff;
+}
+.work-section .heading {
+  max-width: 640px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+.work-section .heading h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--brand-navy);
+  margin-bottom: 0.75rem;
+}
+
+.work-section .heading h4 {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy-soft);
+  margin-bottom: 1rem;
+}
+
+.work-section .inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 3rem;
+  gap: 1.5rem;
+}
+.work-section .item {
+  background: var(--brand-light-blue);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.work-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+.work-section .item p {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--brand-navy-soft);
+  margin: 0;
+}
+
+/* ==========================================================
+   TREATMENTS
+   ========================================================== */
+.treatment-section {
+  background: var(--off-white);
+}
+.treatment-section .heading {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.treatment-section .heading .section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--brand-blue);
+  margin-bottom: 0.75rem;
+}
+
+.treatment-section .heading p {
+  margin: 0 auto;
+}
+.treatment-section .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.treatment-section .item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.treatment-section .item:hover {
+  border-color: var(--brand-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
+}
+.treatment-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 0.75rem;
+}
+.treatment-section .item p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+.treatment-section .item p em {
+  display: block;
+  font-size: 13px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ==========================================================
+   CONDITIONS
+   ========================================================== */
+.conditions-section {
+  background: var(--brand-navy);
+}
+.conditions-section .heading {
+  margin: 0 0 3.5rem;
+}
+
+.conditions-section .heading .section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.conditions-section .inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.conditions-section .item {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.conditions-section .item:hover {
+  background: rgba(54, 169, 255, 0.1);
+  border-color: var(--brand-blue);
+}
+.conditions-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+.conditions-section .item p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 1.5rem;
+}
+/* "Not sure where to start?" highlighted card (last card) */
+.conditions-section .item:last-child {
+  background: rgba(54, 169, 255, 0.12);
+  border-color: var(--brand-blue);
+}
+.conditions-section .item:last-child h3 {
+  color: var(--brand-blue);
+}
+
+/* ==========================================================
+   PROCESS
+   ========================================================== */
+.process-section {
+  background: var(--brand-light-blue);
+}
+
+.process-section .heading .section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--brand-blue);
+  margin-bottom: 0.75rem;
+}
+
+.process-section .heading p {
+  color: var(--brand-navy-soft);
+}
+.process-section .inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 3.5rem;
+}
+.process-section .inner::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--brand-navy);
+  opacity: 0.25;
+}
+.process-section .step {
+  position: relative;
+}
+.process-section .number {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--brand-navy);
+  color: var(--brand-blue);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.process-section .step h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 0.6rem;
+}
+.process-section .step p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--brand-navy-soft);
+  margin: 0;
+}
+
+/* ==========================================================
+   DOCTOR
+   ========================================================== */
+.doctor-section {
+  background: #fff;
+}
+.doctor-section .inner {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.doctor-section .image {
+  aspect-ratio: 3 / 4;
+  border: 8px solid var(--brand-light-blue);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.doctor-section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.doctor-section .content h5 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin: 0 0 0.5rem;
+}
+.doctor-section .content h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 0.4rem;
+}
+.doctor-section .content h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem;
+}
+.doctor-section .content p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.doctor-credentials {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.doctor-section .review {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.75rem;
+  background: var(--sage-light);
+  border-left: 4px solid var(--brand-blue);
+  border-radius: var(--radius);
+}
+.doctor-section .review .score strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--brand-navy);
+}
+.doctor-section .review .stars {
+  display: block;
+  margin-top: 4px;
+  font-size: 16px;
+  color: var(--brand-blue);
+}
+.doctor-section .review .label {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.doctor-section .review .quote {
+  flex: 1;
+  min-width: 220px;
+}
+.doctor-section .review .quote p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.doctor-section .review .reviewer {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+.doctor-section .buttons {
+  margin-top: 2rem;
+}
+
+/* ==========================================================
+   PATIENT REVIEWS
+   ========================================================== */
+.patient-section {
+  background: var(--off-white);
+}
+.patient-section .heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.patient-section .stat {
+  text-align: right;
+}
+.patient-section .stat .rating {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--brand-navy);
+}
+.patient-section .stat .rating span {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.patient-section .stat .stars {
+  margin-top: 6px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--brand-blue);
+}
+.patient-section .stat .label {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.patient-section .inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.patient-section .item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.patient-section .item .stars {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--brand-blue);
+}
+.patient-section .item p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0 0 1.2rem;
+}
+.patient-section .item .patient {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+
+/* ==========================================================
+   CONTACT (content + button only)
+   ========================================================== */
+.contact-section {
+  background: var(--brand-navy);
+}
+.contact-section .inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-section .content p {
+  margin: 0 auto;
+}
+.contact-section .buttons {
+  margin-top: 2rem;
+}
+
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.main-footer {
+  background: var(--brand-navy);
+  padding: 4rem 0 2rem;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.main-footer > .container {
+  width: 100%;
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+/* Reset Bootstrap defaults inside the footer */
+.main-footer :is(h4, p, ul) {
+  margin: 0;
+  padding: 0;
+}
+.main-footer a {
+  text-decoration: none;
+}
+.main-footer img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ----- footer-top ----- */
+.main-footer .footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* logo row */
+.main-footer .footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.main-footer .footer-logo-mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.main-footer .footer-logo-img {
+  height: 32px;
+  width: auto;
+  max-width: none;
+}
+
+/* tagline (footer_menu WYSIWYG: 1st p = tagline, 2nd p = small italic note) */
+.main-footer .footer-tagline p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 290px;
+}
+.main-footer .footer-tagline p + p {
+  margin-top: 0.75rem;
+  max-width: none;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* BBB badge */
+.main-footer .footer-badges {
+  padding: 1.75rem 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.main-footer .footer-badge-img {
+  height: 60px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.main-footer .footer-badge-img:hover {
+  opacity: 1;
+}
+
+/* columns */
+.main-footer .footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 1rem;
+}
+.main-footer .footer-col a {
+  display: block;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+.main-footer .footer-col a:hover {
+  color: var(--brand-blue);
+}
+
+/* ----- footer-bottom ----- */
+.main-footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+}
+.main-footer .footer-bottom p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+/* Laptop 1025 - 1199 */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .main-header .menu-wrapper,
+  .main-header .navbar-nav {
+    gap: 1.25rem;
+  }
+  .main-header .navbar-nav a {
+    font-size: 13px;
+  }
+  .main-header .menu-wrapper .header-btn {
+    margin-left: 0;
+    padding: 11px 20px;
+  }
+  .main-header .logo-mark {
+    width: 64px;
+    height: 64px;
+  }
+  .main-header .logo-wordmark {
+    height: 38px;
+  }
+  .welcome-section .inner {
+    gap: 3.5rem;
+  }
+  .doctor-section .inner {
+    grid-template-columns: 360px 1fr;
+    gap: 3.5rem;
+  }
+  .hero-section {
+    min-height: 80vh;
+  }
+  .hero-section .hero-logo img {
+    height: 120px;
+  }
+}
+
+/* Tablet 768 - 1024 (iPad mini portrait + landscape) */
+@media (max-width: 1024px) {
+  /* header */
+  .main-header .menu-wrapper {
+    display: none;
+  }
+  .main-header .menu-icon {
+    display: flex;
+  }
+  .main-header .logo-mark {
+    width: 64px;
+    height: 64px;
+  }
+  .main-header .logo-wordmark {
+    height: 38px;
+  }
+
+  /* sections */
+  .welcome-section,
+  .work-section,
+  .treatment-section,
+  .conditions-section,
+  .process-section,
+  .doctor-section,
+  .patient-section,
+  .contact-section {
+    padding: 4.5rem 0;
+  }
+  .hero-section {
+    min-height: 70vh;
+    padding: 0;
+  }
+  .hero-section > .container {
+    padding: 4.5rem 2rem;
+  }
+  .hero-section .hero-logo img {
+    height: 110px;
+  }
+
+  .welcome-section .inner,
+  .doctor-section .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .welcome-section .image {
+    aspect-ratio: 16 / 9;
+  }
+  .doctor-section .image {
+    aspect-ratio: 4 / 5;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .doctor-section .image img {
+    object-position: center;
+  }
+
+  .treatment-section .inner {
+    grid-template-columns: 1fr;
+  }
+  .conditions-section .inner,
+  .patient-section .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .conditions-section .item:last-child:nth-child(odd),
+  .patient-section .item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .process-section .inner {
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile 767 and below (Samsung A55) */
+@media (max-width: 767px) {
+  /* header */
+  .main-header > .container {
+    min-height: 68px;
+    gap: 1rem;
+  }
+  .main-header .logo-wrapper > a {
+    gap: 8px;
+  }
+  .main-header .logo-mark {
+    width: 52px;
+    height: 52px;
+  }
+  .main-header .logo-wordmark {
+    height: 30px;
+  }
+  .main-header .mobile-menu {
+    padding: 1.25rem 1.25rem 1.75rem;
+    max-height: calc(100vh - 68px);
+  }
+  .main-header .mobile-menu ul a {
+    font-size: 17px;
+  }
+  .admin-bar .main-header {
+    top: 46px;
+  }
+
+  /* sections: centered content */
+  .welcome-section,
+  .work-section,
+  .treatment-section,
+  .conditions-section,
+  .process-section,
+  .doctor-section,
+  .patient-section,
+  .contact-section {
+    padding: 4rem 0;
+    text-align: center;
+  }
+  .hero-section {
+    min-height: auto;
+    padding: 0;
+  }
+  .hero-section > .container {
+    padding: 4rem 1.25rem;
+    text-align: center;
+  }
+  .hero-section .hero-logo img {
+    height: 90px;
+    margin: 0 auto;
+  }
+  .hero-section .content :is(h1, h2),
+  .hero-section .content h4,
+  .hero-section .content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-section .content p {
+    font-size: 15px;
+    margin-bottom: 2rem;
+  }
+
+  :is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content) p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .work-section .inner,
+  .treatment-section .inner,
+  .conditions-section .inner,
+  .process-section .inner,
+  .patient-section .inner {
+    grid-template-columns: 1fr;
+  }
+  .process-section .inner {
+    gap: 2rem;
+  }
+  .process-section .inner::before {
+    display: none;
+  }
+  .process-section .number {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .treatment-section .item {
+    padding: 2rem 1.5rem;
+  }
+
+  .welcome-section .features {
+    justify-content: center;
+  }
+  .doctor-section .review {
+    justify-content: center;
+    text-align: center;
+    border-left: 0;
+    border-top: 4px solid var(--brand-blue);
+  }
+  .patient-section .heading {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .patient-section .stat {
+    text-align: center;
+  }
+
+  /* 100% width buttons */
+  .hero-section .buttons,
+  .welcome-section .buttons,
+  .doctor-section .buttons,
+  .contact-section .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-section .buttons a,
+  .welcome-section .buttons a,
+  .doctor-section .buttons a,
+  .contact-section .buttons a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Same as the original at 600px */
+@media (max-width: 600px) {
+  .header-message {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .main-header > .container,
+  .welcome-section > .container,
+  .work-section > .container,
+  .treatment-section > .container,
+  .conditions-section > .container,
+  .process-section > .container,
+  .doctor-section > .container,
+  .patient-section > .container,
+  .contact-section > .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* 374 and below */
+@media (max-width: 374px) {
+  .header-message {
+    font-size: 13px;
+  }
+  .main-header .logo-mark {
+    width: 44px;
+    height: 44px;
+  }
+  .main-header .logo-wordmark {
+    height: 24px;
+  }
+  .hero-section .hero-logo img {
+    height: 72px;
+  }
+  .hero-section .content :is(h1, h2) {
+    font-size: 2.3rem;
+  }
+  .welcome-section .image {
+    aspect-ratio: 4 / 3;
+  }
+  .work-section .item {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* ==========================================================
+   FOOTER RESPONSIVE
+   ========================================================== */
+
+/* Tablet 768 - 1024 (iPad mini) */
+@media (max-width: 1024px) {
+  .main-footer .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+  .main-footer .footer-about {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile 767 and below (Samsung A55): centered content */
+@media (max-width: 767px) {
+  .main-footer {
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  .main-footer .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .main-footer .footer-logo-row {
+    justify-content: center;
+  }
+  .main-footer .footer-tagline p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .main-footer .footer-badges {
+    justify-content: center;
+  }
+  .main-footer .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-footer > .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* 374 and below */
+@media (max-width: 374px) {
+  .main-footer .footer-logo-mark {
+    width: 56px;
+    height: 56px;
+  }
+  .main-footer .footer-logo-img {
+    height: 26px;
+  }
+}
