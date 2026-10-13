@@ -880,8 +880,8 @@ html {
   content: '';
   position: absolute;
   top: 32px;
-  left: 12%;
-  right: 12%;
+  left: 3%;
+  right: 3%;
   height: 2px;
   background: var(--brand-navy);
   opacity: 0.25;
@@ -1271,343 +1271,877 @@ html {
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* =========================================================
+   RESPONSIVE CSS
+========================================================= */
 
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
 
-/* Laptop 1025 - 1199 */
-@media (min-width: 1025px) and (max-width: 1199px) {
-  .main-header .menu-wrapper,
-  .main-header .navbar-nav {
-    gap: 1.25rem;
-  }
-  .main-header .navbar-nav a {
-    font-size: 13px;
-  }
-  .main-header .menu-wrapper .header-btn {
-    margin-left: 0;
-    padding: 11px 20px;
-  }
-  .main-header .logo-mark {
-    width: 64px;
-    height: 64px;
-  }
-  .main-header .logo-wordmark {
-    height: 38px;
-  }
-  .welcome-section .inner {
-    gap: 3.5rem;
-  }
-  .doctor-section .inner {
-    grid-template-columns: 360px 1fr;
-    gap: 3.5rem;
-  }
-  .hero-section {
-    min-height: 80vh;
-  }
-  .hero-section .hero-logo img {
-    height: 120px;
-  }
+/* =========================================================
+   1. GLOBAL RESPONSIVE FIXES
+========================================================= */
+
+:root {
+    --responsive-gutter: 40px;
+    --responsive-section-space: 70px;
+    --responsive-card-gap: 24px;
 }
 
-/* Tablet 768 - 1024 (iPad mini portrait + landscape) */
-@media (max-width: 1024px) {
-  /* header */
-  .main-header .menu-wrapper {
-    display: none;
-  }
-  .main-header .menu-icon {
-    display: flex;
-  }
-  .main-header .logo-mark {
-    width: 64px;
-    height: 64px;
-  }
-  .main-header .logo-wordmark {
-    height: 38px;
-  }
-
-  /* sections */
-  .welcome-section,
-  .work-section,
-  .treatment-section,
-  .conditions-section,
-  .process-section,
-  .doctor-section,
-  .patient-section,
-  .contact-section {
-    padding: 4.5rem 0;
-  }
-  .hero-section {
-    min-height: 70vh;
-    padding: 0;
-  }
-  .hero-section > .container {
-    padding: 4.5rem 2rem;
-  }
-  .hero-section .hero-logo img {
-    height: 110px;
-  }
-
-  .welcome-section .inner,
-  .doctor-section .inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .welcome-section .image {
-    aspect-ratio: 16 / 9;
-  }
-  .doctor-section .image {
-    aspect-ratio: 4 / 5;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .doctor-section .image img {
-    object-position: center;
-  }
-
-  .treatment-section .inner {
-    grid-template-columns: 1fr;
-  }
-  .conditions-section .inner,
-  .patient-section .inner {
-    grid-template-columns: 1fr 1fr;
-  }
-  .conditions-section .item:last-child:nth-child(odd),
-  .patient-section .item:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-  }
-  .process-section .inner {
-    gap: 1.5rem;
-  }
+html {
+    scroll-padding-top: 100px;
 }
 
-/* Mobile 767 and below (Samsung A55) */
-@media (max-width: 767px) {
-  /* header */
-  .main-header > .container {
-    min-height: 68px;
-    gap: 1rem;
-  }
-  .main-header .logo-wrapper > a {
-    gap: 8px;
-  }
-  .main-header .logo-mark {
-    width: 52px;
-    height: 52px;
-  }
-  .main-header .logo-wordmark {
-    height: 30px;
-  }
-  .main-header .mobile-menu {
-    padding: 1.25rem 1.25rem 1.75rem;
-    max-height: calc(100vh - 68px);
-  }
-  .main-header .mobile-menu ul a {
-    font-size: 17px;
-  }
-  .admin-bar .main-header {
-    top: 46px;
-  }
-
-  /* sections: centered content */
-  .welcome-section,
-  .work-section,
-  .treatment-section,
-  .conditions-section,
-  .process-section,
-  .doctor-section,
-  .patient-section,
-  .contact-section {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  .hero-section {
-    min-height: auto;
+html,
+body {
+    margin: 0;
     padding: 0;
-  }
-  .hero-section > .container {
-    padding: 4rem 1.25rem;
-    text-align: center;
-  }
-  .hero-section .hero-logo img {
-    height: 90px;
-    margin: 0 auto;
-  }
-  .hero-section .content :is(h1, h2),
-  .hero-section .content h4,
-  .hero-section .content p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-section .content p {
-    font-size: 15px;
-    margin-bottom: 2rem;
-  }
-
-  :is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content) p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .work-section .inner,
-  .treatment-section .inner,
-  .conditions-section .inner,
-  .process-section .inner,
-  .patient-section .inner {
-    grid-template-columns: 1fr;
-  }
-  .process-section .inner {
-    gap: 2rem;
-  }
-  .process-section .inner::before {
-    display: none;
-  }
-  .process-section .number {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .treatment-section .item {
-    padding: 2rem 1.5rem;
-  }
-
-  .welcome-section .features {
-    justify-content: center;
-  }
-  .doctor-section .review {
-    justify-content: center;
-    text-align: center;
-    border-left: 0;
-    border-top: 4px solid var(--brand-blue);
-  }
-  .patient-section .heading {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .patient-section .stat {
-    text-align: center;
-  }
-
-  /* 100% width buttons */
-  .hero-section .buttons,
-  .welcome-section .buttons,
-  .doctor-section .buttons,
-  .contact-section .buttons {
-    display: flex;
-    flex-direction: column;
-  }
-  .hero-section .buttons a,
-  .welcome-section .buttons a,
-  .doctor-section .buttons a,
-  .contact-section .buttons a {
     width: 100%;
+    max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-  }
 }
 
-/* Same as the original at 600px */
-@media (max-width: 600px) {
-  .header-message {
-    font-size: 14px;
-    padding: 10px 12px;
-  }
-  .main-header > .container,
-  .welcome-section > .container,
-  .work-section > .container,
-  .treatment-section > .container,
-  .conditions-section > .container,
-  .process-section > .container,
-  .doctor-section > .container,
-  .patient-section > .container,
-  .contact-section > .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
+img,
+video,
+iframe {
+    max-width: 100%;
 }
 
-/* 374 and below */
-@media (max-width: 374px) {
-  .header-message {
-    font-size: 13px;
-  }
-  .main-header .logo-mark {
-    width: 44px;
-    height: 44px;
-  }
-  .main-header .logo-wordmark {
-    height: 24px;
-  }
-  .hero-section .hero-logo img {
-    height: 72px;
-  }
-  .hero-section .content :is(h1, h2) {
-    font-size: 2.3rem;
-  }
-  .welcome-section .image {
-    aspect-ratio: 4 / 3;
-  }
-  .work-section .item {
-    padding: 2rem 1.25rem;
-  }
+img {
+    height: auto;
 }
 
-/* ==========================================================
-   FOOTER RESPONSIVE
-   ========================================================== */
-
-/* Tablet 768 - 1024 (iPad mini) */
-@media (max-width: 1024px) {
-  .main-footer .footer-top {
-    grid-template-columns: 1fr 1fr;
-  }
-  .main-footer .footer-about {
-    grid-column: 1 / -1;
-  }
+body {
+    overflow-x: clip;
 }
 
-/* Mobile 767 and below (Samsung A55): centered content */
+#page,
+main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   2. HEADER DEFAULTS
+========================================================= */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    margin-top: 0;
+}
+
+.main-header,
+.main-header > .container,
+.logo-wrapper,
+.menu-wrapper {
+    margin-top: 0;
+}
+
+.main-header > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-section {
+    margin-top: 0;
+}
+
+/* Desktop navigation defaults */
+.menu-icon,
+.mobile-menu {
+    display: none;
+}
+
+
+/* =========================================================
+   3. LAPTOP — 1025px TO 1199px
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1199px) {
+
+    :root {
+        --responsive-gutter: 35px;
+    }
+
+    .main-header > .container,
+    .hero-section > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+}
+
+
+/* =========================================================
+   4. TABLET — 768px TO 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    :root {
+        --responsive-gutter: 40px;
+        --responsive-section-space: 55px;
+        --responsive-card-gap: 20px;
+    }
+
+
+    /* ---------- Consistent container padding ---------- */
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+
+
+    /* ---------- Header ---------- */
+
+    .main-header {
+        position: sticky;
+        top: 0 !important;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .main-header > .container {
+        min-height: 80px;
+        gap: 20px;
+    }
+
+    .logo-wrapper {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .logo-wrapper img {
+        max-width: 170px;
+        height: auto;
+    }
+
+    .menu-wrapper {
+        display: none !important;
+    }
+
+    .menu-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: auto;
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 25px var(--responsive-gutter);
+        background: #fff;
+        z-index: 10001;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mobile-menu li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .mobile-menu li a {
+        display: block;
+        padding: 13px 0;
+    }
+
+    .mobile-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero-section {
+        margin-top: 0 !important;
+        padding-top: 0;
+    }
+
+    .hero-section > .container {
+        margin-top: 0 !important;
+    }
+
+    .hero-section .content {
+        max-width: 100%;
+    }
+
+    .hero-section .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+
+    /* ---------- Section spacing ---------- */
+
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* ---------- Welcome and Doctor ---------- */
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .welcome-section .inner > .image,
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .image,
+    .doctor-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 100%;
+    }
+
+    .welcome-section .inner > .image,
+    .doctor-section .inner > .image {
+        order: 1;
+    }
+
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .content {
+        order: 2;
+    }
+
+    .welcome-section .image img,
+    .doctor-section .image img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+
+    /* ---------- Process / Effect connecting line ---------- */
+
+    .process-section .number::before,
+    .process-section .number::after,
+    .process-section .inner::before,
+    .process-section .inner::after,
+    .process-section .item::before,
+    .process-section .item::after,
+    .process-section .item:not(:last-child)::after {
+        display: none !important;
+        content: none !important;
+    }
+
+
+    /* ---------- Card sections: one card per row ---------- */
+
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+    }
+
+    .work-section .item,
+    .treatment-section .item,
+    .conditions-section .item,
+    .process-section .item,
+    .patient-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .main-footer .footer-top {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+
+    .main-footer .footer-about {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-footer .footer-col {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .main-footer .footer-contact {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-footer .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   5. MOBILE — 481px TO 767px
+========================================================= */
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    :root {
+        --responsive-gutter: 28px;
+        --responsive-section-space: 42px;
+        --responsive-card-gap: 20px;
+    }
+}
+
+
+/* =========================================================
+   6. MOBILE — UP TO 767px
+========================================================= */
+
 @media (max-width: 767px) {
-  .main-footer {
-    padding: 3rem 0 2rem;
-    text-align: center;
-  }
-  .main-footer .footer-top {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .main-footer .footer-logo-row {
-    justify-content: center;
-  }
-  .main-footer .footer-tagline p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .main-footer .footer-badges {
-    justify-content: center;
-  }
-  .main-footer .footer-bottom {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
+
+    :root {
+        --responsive-section-space: 42px;
+        --responsive-card-gap: 20px;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    #page,
+    main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---------- Consistent container padding ---------- */
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+
+
+    /* ---------- Header ---------- */
+
+    .main-header {
+        position: sticky;
+        top: 0 !important;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0 !important;
+        z-index: 9999;
+    }
+
+    .main-header > .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70px;
+        gap: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: calc(100% - 60px);
+        margin: 0 auto;
+    }
+
+    .logo-wrapper > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        max-width: 100%;
+    }
+
+    .logo-mark img {
+        display: block;
+        max-width: 55px;
+        max-height: 45px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .logo-wordmark img {
+        display: block;
+        width: auto;
+        max-width: 155px;
+        max-height: 42px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .menu-wrapper {
+        display: none !important;
+    }
+
+    .menu-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: var(--responsive-gutter);
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font-size: 24px;
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 70px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px var(--responsive-gutter) 25px;
+        background: #fff;
+        z-index: 10001;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mobile-menu li {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-menu li a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        white-space: normal;
+    }
+
+    .mobile-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .mobile-actions a {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero-section {
+        position: relative;
+        margin: 0 !important;
+        padding-top: 0;
+    }
+
+    .hero-section > .container {
+        margin-top: 0 !important;
+        padding-top: 0;
+    }
+
+    .hero-section .hero-logo {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .hero-section .hero-logo img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-section .content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-section .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .hero-section .buttons a {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Section spacing ---------- */
+
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* ---------- Welcome and Doctor: image first ---------- */
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .welcome-section .inner > .image,
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .image,
+    .doctor-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 100%;
+    }
+
+    .welcome-section .inner > .image,
+    .doctor-section .inner > .image {
+        order: 1;
+    }
+
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .content {
+        order: 2;
+    }
+
+    .welcome-section .image img,
+    .doctor-section .image img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+
+    /* ---------- Process / Effect connecting line ---------- */
+
+    .process-section .number::before,
+    .process-section .number::after,
+    .process-section .inner::before,
+    .process-section .inner::after,
+    .process-section .item::before,
+    .process-section .item::after,
+    .process-section .item:not(:last-child)::after {
+        display: none !important;
+        content: none !important;
+    }
+
+
+    /* ---------- Cards: one per row ---------- */
+
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+    }
+
+    .work-section .item,
+    .treatment-section .item,
+    .conditions-section .item,
+    .process-section .item,
+    .patient-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .process-section .number {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .main-footer .footer-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        text-align: center;
+    }
+
+    .main-footer .footer-about,
+    .main-footer .footer-col,
+    .main-footer .footer-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .main-footer .footer-logo-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .main-footer .footer-tagline {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-footer .footer-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        max-width: 100%;
+    }
+
+    .main-footer .footer-contact {
+        text-align: center;
+    }
+
+    .main-footer .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
 }
 
-@media (max-width: 600px) {
-  .main-footer > .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
+
+/* =========================================================
+   7. SMALL MOBILE — UP TO 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    :root {
+        --responsive-gutter: 24px;
+        --responsive-section-space: 35px;
+        --responsive-card-gap: 18px;
+    }
+
+    .main-header > .container {
+        min-height: 65px;
+    }
+
+    .logo-mark img {
+        max-width: 45px;
+        max-height: 38px;
+    }
+
+    .logo-wordmark img {
+        max-width: 135px;
+        max-height: 36px;
+    }
+
+    .menu-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+
+    .mobile-menu {
+        max-height: calc(100vh - 65px);
+    }
+
+    .hero-section .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-section .buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-footer .footer-logo-row,
+    .main-footer .footer-badges {
+        gap: 10px;
+    }
 }
 
-/* 374 and below */
+
+/* =========================================================
+   8. EXTRA-SMALL MOBILE — UP TO 374px
+========================================================= */
+
 @media (max-width: 374px) {
-  .main-footer .footer-logo-mark {
-    width: 56px;
-    height: 56px;
-  }
-  .main-footer .footer-logo-img {
-    height: 26px;
-  }
+
+    :root {
+        --responsive-gutter: 18px;
+        --responsive-section-space: 30px;
+    }
+
+    .logo-wrapper {
+        max-width: calc(100% - 48px);
+    }
+
+    .logo-mark img {
+        max-width: 38px;
+        max-height: 34px;
+    }
+
+    .logo-wordmark img {
+        max-width: 115px;
+        max-height: 32px;
+    }
+
+    .menu-icon {
+        right: var(--responsive-gutter);
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
 }
