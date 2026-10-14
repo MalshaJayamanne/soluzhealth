@@ -21,30 +21,9 @@
             "selected": 0
         },
         {
-            "key": "field_6acde608d04f2",
-            "label": "Page Title",
-            "name": "about_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6acde66303406",
             "label": "Content",
-            "name": "content",
+            "name": "about_content",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "Use <code>h1<\/code>for the title",
@@ -76,7 +55,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "table",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -180,7 +159,7 @@
             "name": "mission_content",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Use <code>h1<\/code> for the title.",
+            "instructions": "Use <code>h4<\/code> for the title.<br>\r\nUse <code>h5<\/code> for the sub heading below the title.<br>\r\nUse <code>h3<\/code> for the text below the sub heading.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -233,10 +212,10 @@
         {
             "key": "field_6acdecbad8d6e",
             "label": "Content",
-            "name": "content",
+            "name": "team_content",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Use <code>h4<\/code> for the title. <br>\r\nUse <code>h5<\/code> for the sub heading below the title. <br>\r\nUse <code>h3<\/code> for the text below the sub heading.",
+            "instructions": "Use <code>h4<\/code> for the title.<br>\r\nUse <code>h3<\/code> for the sub heading below the title .",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -556,5 +535,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791882657
+    "modified": 1791951062
 }

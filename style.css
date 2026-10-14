@@ -1272,7 +1272,8 @@ html {
 }
 
 /* =========================================================
-   RESPONSIVE CSS
+   RESPONSIVE CSS  (load AFTER style.css)
+   Home + About + Header + Footer
 ========================================================= */
 
 
@@ -1361,19 +1362,54 @@ main {
     display: none;
 }
 
+/* Logged-in admin bar (WordPress): 32px desktop, 46px up to 782px, not fixed up to 600px */
+.admin-bar .main-header {
+    top: 32px;
+}
+
+@media (max-width: 782px) {
+    .admin-bar .main-header {
+        top: 46px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-bar .main-header {
+        top: 0;
+    }
+}
+
 
 /* =========================================================
    3. LAPTOP — 1025px TO 1199px
+   Same gutter for the header and every section so the left
+   edges line up.
 ========================================================= */
 
 @media (min-width: 1025px) and (max-width: 1199px) {
 
     :root {
-        --responsive-gutter: 35px;
+        --responsive-gutter: 32px;
     }
 
     .main-header > .container,
-    .hero-section > .container {
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
+    .main-footer > .container {
         width: 100%;
         max-width: 100%;
         padding-left: var(--responsive-gutter);
@@ -1407,6 +1443,13 @@ main {
     .doctor-section > .container,
     .patient-section > .container,
     .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
     .main-footer > .container {
         width: 100%;
         max-width: 100%;
@@ -1419,7 +1462,6 @@ main {
 
     .main-header {
         position: sticky;
-        top: 0 !important;
         left: 0;
         right: 0;
         width: 100%;
@@ -1434,11 +1476,6 @@ main {
     .logo-wrapper {
         flex: 0 1 auto;
         min-width: 0;
-    }
-
-    .logo-wrapper img {
-        max-width: 170px;
-        height: auto;
     }
 
     .menu-wrapper {
@@ -1471,7 +1508,9 @@ main {
         z-index: 10001;
     }
 
-    .mobile-menu.active {
+    .mobile-menu.active,
+    .mobile-menu.open,
+    .mobile-menu.show {
         display: block;
     }
 
@@ -1497,7 +1536,7 @@ main {
     .mobile-actions {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 15px;
         margin-top: 20px;
     }
@@ -1508,10 +1547,19 @@ main {
     .hero-section {
         margin-top: 0 !important;
         padding-top: 0;
+        min-height: 70vh;
     }
 
     .hero-section > .container {
         margin-top: 0 !important;
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .hero-section .hero-logo img {
+        height: 110px;
+        width: auto;
+        max-width: 100%;
     }
 
     .hero-section .content {
@@ -1558,7 +1606,7 @@ main {
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        flex: 0 0 100%;
+        flex: 0 0 auto;
     }
 
     .welcome-section .inner > .image,
@@ -1571,25 +1619,32 @@ main {
         order: 2;
     }
 
+    /* the doctor photo stays a sensible size on tablet */
+    .doctor-section .inner > .image {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* keep the images filling their ratio box (cover), not stretched */
     .welcome-section .image img,
     .doctor-section .image img {
         display: block;
         width: 100%;
         max-width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
     }
 
 
-    /* ---------- Process / Effect connecting line ---------- */
+    /* ---------- Process connecting line ---------- */
 
     .process-section .number::before,
     .process-section .number::after,
     .process-section .inner::before,
     .process-section .inner::after,
-    .process-section .item::before,
-    .process-section .item::after,
-    .process-section .item:not(:last-child)::after {
+    .process-section .step::before,
+    .process-section .step::after {
         display: none !important;
         content: none !important;
     }
@@ -1610,12 +1665,12 @@ main {
     .work-section .item,
     .treatment-section .item,
     .conditions-section .item,
-    .process-section .item,
+    .process-section .step,
     .patient-section .item {
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        flex: 0 0 100%;
+        flex: 0 0 auto;
         margin-left: 0;
         margin-right: 0;
     }
@@ -1640,16 +1695,108 @@ main {
         min-width: 0;
     }
 
-    .main-footer .footer-contact {
+    /* Contact column (last column) spans the full width */
+    .main-footer .footer-col:last-child {
         grid-column: 1 / -1;
-        width: 100%;
-        max-width: 100%;
     }
 
     .main-footer .footer-bottom {
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
+    }
+
+
+    /* ================= ABOUT PAGE — TABLET ================= */
+
+    .page-hero-section {
+        padding-top: 4.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .stats-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .stats-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem var(--responsive-card-gap);
+    }
+
+    .mission-section,
+    .team-section,
+    .values-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+    }
+
+    /* mission: image first, then content */
+    .mission-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .mission-section .inner > .image,
+    .mission-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .mission-section .image {
+        aspect-ratio: 16 / 10;
+    }
+
+    .mission-section .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* team: full width cards (photo left, text right) */
+    .team-section .inner {
+        max-width: 100%;
+        gap: 2rem;
+    }
+
+    /* awards: 2 columns, no divider lines */
+    .awards-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .awards-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem var(--responsive-card-gap);
+    }
+
+    .awards-section .divider {
+        display: none;
+    }
+
+    /* values: one card per row */
+    .values-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+        margin-top: 2.5rem;
+    }
+
+    .values-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .cta-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 }
 
@@ -1707,6 +1854,13 @@ main {
     .doctor-section > .container,
     .patient-section > .container,
     .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
     .main-footer > .container {
         width: 100%;
         max-width: 100%;
@@ -1719,7 +1873,6 @@ main {
 
     .main-header {
         position: sticky;
-        top: 0 !important;
         left: 0;
         right: 0;
         width: 100%;
@@ -1815,7 +1968,9 @@ main {
         z-index: 10001;
     }
 
-    .mobile-menu.active {
+    .mobile-menu.active,
+    .mobile-menu.open,
+    .mobile-menu.show {
         display: block;
     }
 
@@ -1863,11 +2018,13 @@ main {
         position: relative;
         margin: 0 !important;
         padding-top: 0;
+        min-height: auto;
     }
 
     .hero-section > .container {
         margin-top: 0 !important;
-        padding-top: 0;
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
     }
 
     .hero-section .hero-logo {
@@ -1877,11 +2034,12 @@ main {
         text-align: center;
     }
 
+    /* explicit height (a height:auto here would show the logo at full file size) */
     .hero-section .hero-logo img {
         display: block;
         width: auto;
         max-width: 100%;
-        height: auto;
+        height: 90px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -1935,7 +2093,7 @@ main {
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        flex: 0 0 100%;
+        flex: 0 0 auto;
     }
 
     .welcome-section .inner > .image,
@@ -1953,20 +2111,19 @@ main {
         display: block;
         width: 100%;
         max-width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
     }
 
 
-    /* ---------- Process / Effect connecting line ---------- */
+    /* ---------- Process connecting line ---------- */
 
     .process-section .number::before,
     .process-section .number::after,
     .process-section .inner::before,
     .process-section .inner::after,
-    .process-section .item::before,
-    .process-section .item::after,
-    .process-section .item:not(:last-child)::after {
+    .process-section .step::before,
+    .process-section .step::after {
         display: none !important;
         content: none !important;
     }
@@ -1987,12 +2144,12 @@ main {
     .work-section .item,
     .treatment-section .item,
     .conditions-section .item,
-    .process-section .item,
+    .process-section .step,
     .patient-section .item {
         width: 100%;
         max-width: 100%;
         min-width: 0;
-        flex: 0 0 100%;
+        flex: 0 0 auto;
         margin-left: 0;
         margin-right: 0;
     }
@@ -2013,8 +2170,7 @@ main {
     }
 
     .main-footer .footer-about,
-    .main-footer .footer-col,
-    .main-footer .footer-contact {
+    .main-footer .footer-col {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2046,16 +2202,159 @@ main {
         max-width: 100%;
     }
 
-    .main-footer .footer-contact {
-        text-align: center;
-    }
-
     .main-footer .footer-bottom {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 12px;
         text-align: center;
+    }
+
+
+    /* ================= ABOUT PAGE — MOBILE ================= */
+
+    /* hero: centered */
+    .page-hero-section {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+
+    .page-hero-section .content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* stat bar: 2 columns */
+    .stats-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .stats-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.75rem var(--responsive-card-gap);
+    }
+
+    .stats-section .number {
+        font-size: 2.4rem;
+    }
+
+    /* mission: image first, centered text, full width button */
+    .mission-section,
+    .team-section,
+    .values-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+    }
+
+    .mission-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .mission-section .inner > .image,
+    .mission-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .mission-section .content,
+    .team-section .heading,
+    .values-section .heading {
+        text-align: center;
+    }
+
+    .team-section .heading p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mission-section .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mission-section .buttons a {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* team cards: stacked and centered */
+    .team-section .inner {
+        gap: var(--responsive-card-gap);
+        margin-top: 2.5rem;
+    }
+
+    .team-section .item {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .team-section .photo {
+        width: 200px;
+        height: 250px;
+    }
+
+    /* awards: one per row */
+    .awards-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .awards-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .awards-section .divider {
+        display: none;
+    }
+
+    /* values: one per row, centered */
+    .values-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+        margin-top: 2rem;
+    }
+
+    .values-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+    }
+
+    /* CTA: stacked full width buttons */
+    .cta-section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .cta-section .content h2 {
+        font-size: 1.9rem;
+    }
+
+    .cta-section .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .cta-section .buttons a {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -2110,6 +2409,16 @@ main {
     .main-footer .footer-badges {
         gap: 10px;
     }
+
+    /* about */
+    .stats-section .number {
+        font-size: 2.1rem;
+    }
+
+    .team-section .photo {
+        width: 180px;
+        height: 225px;
+    }
 }
 
 
@@ -2143,5 +2452,1645 @@ main {
         width: 32px;
         height: 32px;
         font-size: 20px;
+    }
+
+    .hero-section .hero-logo img {
+        height: 72px;
+    }
+
+    /* about */
+    .stats-section .inner {
+        grid-template-columns: 1fr;
+    }
+
+    .team-section .photo {
+        width: 160px;
+        height: 200px;
+    }
+}
+
+/* ==========================================================
+   ABOUT PAGE
+   (responsive rules for this page are in responsive.css)
+   ========================================================== */
+
+/* Same 1264px container (1200px content + 32px sides) as the rest of the site */
+.page-hero-section > .container,
+.stats-section > .container,
+.mission-section > .container,
+.team-section > .container,
+.awards-section > .container,
+.values-section > .container,
+.cta-section > .container {
+  width: 100%;
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.page-hero-section,
+.stats-section,
+.mission-section,
+.team-section,
+.awards-section,
+.values-section,
+.cta-section {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Reset Bootstrap defaults inside the about sections */
+:is(.page-hero-section, .stats-section, .mission-section, .team-section, .awards-section, .values-section, .cta-section) :is(h1, h2, h3, h4, h5, h6, p, ul, ol, figure) {
+  margin: 0;
+  padding: 0;
+}
+:is(.page-hero-section, .stats-section, .mission-section, .team-section, .awards-section, .values-section, .cta-section) img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+:is(.page-hero-section, .stats-section, .mission-section, .team-section, .awards-section, .values-section, .cta-section) a {
+  text-decoration: none;
+}
+
+/* Eyebrow (h4) */
+:is(.mission-section .content, .team-section .heading, .values-section .heading) h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--brand-blue);
+  margin: 0 0 0.75rem;
+}
+
+/* Title (h2 or h3) */
+:is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+:is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) span {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+.mission-section .content :is(h2, h3) {
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================================
+   PAGE HERO
+   ========================================================== */
+.page-hero-section {
+  background: var(--brand-navy);
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+.page-hero-section .page-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.page-hero-section .page-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.2;
+}
+.page-hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 31, 61, 0.4) 100%);
+  pointer-events: none;
+}
+.page-hero-section > .container {
+  position: relative;
+  z-index: 2;
+}
+.page-hero-section .breadcrumb {
+  display: block;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.page-hero-section .breadcrumb a {
+  color: rgba(255, 255, 255, 0.6);
+}
+.page-hero-section .breadcrumb a:hover {
+  color: var(--brand-blue);
+}
+.page-hero-section h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+.page-hero-section h1 :is(span, em) {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+.page-hero-section .content p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 580px;
+  margin: 0;
+}
+
+/* ==========================================================
+   STAT BAR
+   ========================================================== */
+.stats-section {
+  background: var(--brand-navy);
+  padding: 3.5rem 0;
+}
+.stats-section .inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.stats-section .item {
+  text-align: center;
+}
+.stats-section .number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--brand-blue);
+  margin-bottom: 0.5rem;
+}
+.stats-section .label {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==========================================================
+   MISSION
+   ========================================================== */
+.mission-section {
+  background: var(--off-white);
+  padding: 6rem 0;
+}
+.mission-section .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.mission-section .image {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.mission-section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mission-section .content h5 {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+  background: var(--brand-light-blue);
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin: 0 0 1rem;
+}
+.mission-section .content p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+.mission-section .buttons {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================
+   TEAM
+   ========================================================== */
+.team-section {
+  background: #fff;
+  padding: 6rem 0;
+}
+.team-section .heading p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0;
+}
+.team-section .inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 880px;
+  margin: 3.5rem auto 0;
+}
+.team-section .item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--off-white);
+  border-radius: var(--radius);
+  scroll-margin-top: 100px;
+}
+.team-section .photo {
+  flex-shrink: 0;
+  width: 160px;
+  height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.team-section .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.team-section .info h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 2px;
+}
+/* role (h4) */
+.team-section .info h4 {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin: 0 0 0.75rem;
+}
+.team-section .info p {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+}
+.team-section .info p + p {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================
+   AWARDS
+   ========================================================== */
+.awards-section {
+  background: var(--sage-light);
+  padding: 3rem 0;
+}
+.awards-section .inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.awards-section .item {
+  text-align: center;
+}
+.awards-section .icon {
+  font-size: 2rem;
+  line-height: 1.7;
+  margin-bottom: 0.4rem;
+}
+.awards-section .item h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0;
+}
+.awards-section .item p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+}
+.awards-section .divider {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: var(--border);
+}
+
+/* ==========================================================
+   VALUES
+   ========================================================== */
+.values-section {
+  background: var(--brand-navy);
+  padding: 6rem 0;
+}
+.values-section .heading :is(h4, h2, h3) {
+  color: #fff;
+}
+.values-section .inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.values-section .item {
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.values-section .number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--sage-light);
+  margin-bottom: 0.75rem;
+}
+.values-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 0.5rem;
+}
+.values-section .item p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ==========================================================
+   CTA BAND
+   ========================================================== */
+.cta-section {
+  background: linear-gradient(135deg, var(--brand-light-blue) 0%, #DEEEFF 100%);
+  padding: 4.5rem 0;
+  text-align: center;
+}
+.cta-section .content h2 {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 0.75rem;
+}
+.cta-section .content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--brand-navy-soft);
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.cta-section .buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* =========================================================
+   RESPONSIVE CSS  (load AFTER style.css)
+   Home + About + Header + Footer
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESPONSIVE FIXES
+========================================================= */
+
+:root {
+    --responsive-gutter: 40px;
+    --responsive-section-space: 70px;
+    --responsive-card-gap: 24px;
+}
+
+html {
+    scroll-padding-top: 100px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+body {
+    overflow-x: clip;
+}
+
+#page,
+main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   2. HEADER DEFAULTS
+========================================================= */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    margin-top: 0;
+}
+
+.main-header,
+.main-header > .container,
+.logo-wrapper,
+.menu-wrapper {
+    margin-top: 0;
+}
+
+.main-header > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-section {
+    margin-top: 0;
+}
+
+/* Desktop navigation defaults */
+.menu-icon,
+.mobile-menu {
+    display: none;
+}
+
+/* Logged-in admin bar (WordPress): 32px desktop, 46px up to 782px, not fixed up to 600px */
+.admin-bar .main-header {
+    top: 32px;
+}
+
+@media (max-width: 782px) {
+    .admin-bar .main-header {
+        top: 46px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-bar .main-header {
+        top: 0;
+    }
+}
+
+
+/* =========================================================
+   3. LAPTOP — 1025px TO 1199px
+   Same gutter for the header and every section so the left
+   edges line up.
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1199px) {
+
+    :root {
+        --responsive-gutter: 32px;
+    }
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+}
+
+
+/* =========================================================
+   4. TABLET — 768px TO 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    :root {
+        --responsive-gutter: 40px;
+        --responsive-section-space: 55px;
+        --responsive-card-gap: 20px;
+    }
+
+
+    /* ---------- Consistent container padding ---------- */
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+
+
+    /* ---------- Header ---------- */
+
+    .main-header {
+        position: sticky;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .main-header > .container {
+        min-height: 80px;
+        gap: 20px;
+    }
+
+    .logo-wrapper {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .menu-wrapper {
+        display: none !important;
+    }
+
+    .menu-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: auto;
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 25px var(--responsive-gutter);
+        background: #fff;
+        z-index: 10001;
+    }
+
+    .mobile-menu.active,
+    .mobile-menu.open,
+    .mobile-menu.show {
+        display: block;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mobile-menu li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .mobile-menu li a {
+        display: block;
+        padding: 13px 0;
+    }
+
+    .mobile-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero-section {
+        margin-top: 0 !important;
+        padding-top: 0;
+        min-height: 70vh;
+    }
+
+    .hero-section > .container {
+        margin-top: 0 !important;
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .hero-section .hero-logo img {
+        height: 110px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .hero-section .content {
+        max-width: 100%;
+    }
+
+    .hero-section .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+
+    /* ---------- Section spacing ---------- */
+
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* ---------- Welcome and Doctor ---------- */
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .welcome-section .inner > .image,
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .image,
+    .doctor-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .welcome-section .inner > .image,
+    .doctor-section .inner > .image {
+        order: 1;
+    }
+
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .content {
+        order: 2;
+    }
+
+    /* the doctor photo stays a sensible size on tablet */
+    .doctor-section .inner > .image {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* keep the images filling their ratio box (cover), not stretched */
+    .welcome-section .image img,
+    .doctor-section .image img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    /* ---------- Process connecting line ---------- */
+
+    .process-section .number::before,
+    .process-section .number::after,
+    .process-section .inner::before,
+    .process-section .inner::after,
+    .process-section .step::before,
+    .process-section .step::after {
+        display: none !important;
+        content: none !important;
+    }
+
+
+    /* ---------- Card sections: one card per row ---------- */
+
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+    }
+
+    .work-section .item,
+    .treatment-section .item,
+    .conditions-section .item,
+    .process-section .step,
+    .patient-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .main-footer .footer-top {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+
+    .main-footer .footer-about {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-footer .footer-col {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Contact column (last column) spans the full width */
+    .main-footer .footer-col:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .main-footer .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+
+    /* ================= ABOUT PAGE — TABLET ================= */
+
+    .page-hero-section {
+        padding-top: 4.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .stats-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .stats-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem var(--responsive-card-gap);
+    }
+
+    .mission-section,
+    .team-section,
+    .values-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+    }
+
+    /* mission: image first, then content */
+    .mission-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .mission-section .inner > .image,
+    .mission-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .mission-section .image {
+        aspect-ratio: 16 / 10;
+    }
+
+    .mission-section .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* team: full width cards (photo left, text right) */
+    .team-section .inner {
+        max-width: 100%;
+        gap: 2rem;
+    }
+
+    /* awards: 2 columns, no divider lines */
+    .awards-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .awards-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem var(--responsive-card-gap);
+    }
+
+    .awards-section .divider {
+        display: none;
+    }
+
+    /* values: one card per row */
+    .values-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+        margin-top: 2.5rem;
+    }
+
+    .values-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .cta-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+
+/* =========================================================
+   5. MOBILE — 481px TO 767px
+========================================================= */
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    :root {
+        --responsive-gutter: 28px;
+        --responsive-section-space: 42px;
+        --responsive-card-gap: 20px;
+    }
+}
+
+
+/* =========================================================
+   6. MOBILE — UP TO 767px
+========================================================= */
+
+@media (max-width: 767px) {
+
+    :root {
+        --responsive-section-space: 42px;
+        --responsive-card-gap: 20px;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    #page,
+    main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---------- Consistent container padding ---------- */
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .page-hero-section > .container,
+    .stats-section > .container,
+    .mission-section > .container,
+    .team-section > .container,
+    .awards-section > .container,
+    .values-section > .container,
+    .cta-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+
+
+    /* ---------- Header ---------- */
+
+    .main-header {
+        position: sticky;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0 !important;
+        z-index: 9999;
+    }
+
+    .main-header > .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70px;
+        gap: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: calc(100% - 60px);
+        margin: 0 auto;
+    }
+
+    .logo-wrapper > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        max-width: 100%;
+    }
+
+    .logo-mark img {
+        display: block;
+        max-width: 55px;
+        max-height: 45px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .logo-wordmark img {
+        display: block;
+        width: auto;
+        max-width: 155px;
+        max-height: 42px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .menu-wrapper {
+        display: none !important;
+    }
+
+    .menu-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: var(--responsive-gutter);
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font-size: 24px;
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 70px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px var(--responsive-gutter) 25px;
+        background: #fff;
+        z-index: 10001;
+    }
+
+    .mobile-menu.active,
+    .mobile-menu.open,
+    .mobile-menu.show {
+        display: block;
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mobile-menu li {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-menu li a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        white-space: normal;
+    }
+
+    .mobile-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .mobile-actions a {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero-section {
+        position: relative;
+        margin: 0 !important;
+        padding-top: 0;
+        min-height: auto;
+    }
+
+    .hero-section > .container {
+        margin-top: 0 !important;
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .hero-section .hero-logo {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    /* explicit height (a height:auto here would show the logo at full file size) */
+    .hero-section .hero-logo img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 90px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-section .content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-section .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .hero-section .buttons a {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Section spacing ---------- */
+
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    /* ---------- Welcome and Doctor: image first ---------- */
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .welcome-section .inner > .image,
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .image,
+    .doctor-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .welcome-section .inner > .image,
+    .doctor-section .inner > .image {
+        order: 1;
+    }
+
+    .welcome-section .inner > .content,
+    .doctor-section .inner > .content {
+        order: 2;
+    }
+
+    .welcome-section .image img,
+    .doctor-section .image img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    /* ---------- Process connecting line ---------- */
+
+    .process-section .number::before,
+    .process-section .number::after,
+    .process-section .inner::before,
+    .process-section .inner::after,
+    .process-section .step::before,
+    .process-section .step::after {
+        display: none !important;
+        content: none !important;
+    }
+
+
+    /* ---------- Cards: one per row ---------- */
+
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+    }
+
+    .work-section .item,
+    .treatment-section .item,
+    .conditions-section .item,
+    .process-section .step,
+    .patient-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .process-section .number {
+        max-width: 100%;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .main-footer .footer-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        text-align: center;
+    }
+
+    .main-footer .footer-about,
+    .main-footer .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .main-footer .footer-logo-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .main-footer .footer-tagline {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-footer .footer-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        max-width: 100%;
+    }
+
+    .main-footer .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+
+
+    /* ================= ABOUT PAGE — MOBILE ================= */
+
+    /* hero: centered */
+    .page-hero-section {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+
+    .page-hero-section .content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* stat bar: 2 columns */
+    .stats-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .stats-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.75rem var(--responsive-card-gap);
+    }
+
+    .stats-section .number {
+        font-size: 2.4rem;
+    }
+
+    /* mission: image first, centered text, full width button */
+    .mission-section,
+    .team-section,
+    .values-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+    }
+
+    .mission-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .mission-section .inner > .image,
+    .mission-section .inner > .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .mission-section .content,
+    .team-section .heading,
+    .values-section .heading {
+        text-align: center;
+    }
+
+    .team-section .heading p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mission-section .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mission-section .buttons a {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* team cards: stacked and centered */
+    .team-section .inner {
+        gap: var(--responsive-card-gap);
+        margin-top: 2.5rem;
+    }
+
+    .team-section .item {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .team-section .photo {
+        width: 200px;
+        height: 250px;
+    }
+
+    /* awards: one per row */
+    .awards-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .awards-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .awards-section .divider {
+        display: none;
+    }
+
+    /* values: one per row, centered */
+    .values-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--responsive-card-gap);
+        margin-top: 2rem;
+    }
+
+    .values-section .item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+    }
+
+    /* CTA: stacked full width buttons */
+    .cta-section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .cta-section .content h2 {
+        font-size: 1.9rem;
+    }
+
+    .cta-section .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .cta-section .buttons a {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   7. SMALL MOBILE — UP TO 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    :root {
+        --responsive-gutter: 24px;
+        --responsive-section-space: 35px;
+        --responsive-card-gap: 18px;
+    }
+
+    .main-header > .container {
+        min-height: 65px;
+    }
+
+    .logo-mark img {
+        max-width: 45px;
+        max-height: 38px;
+    }
+
+    .logo-wordmark img {
+        max-width: 135px;
+        max-height: 36px;
+    }
+
+    .menu-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+
+    .mobile-menu {
+        max-height: calc(100vh - 65px);
+    }
+
+    .hero-section .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-section .buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-footer .footer-logo-row,
+    .main-footer .footer-badges {
+        gap: 10px;
+    }
+
+    /* about */
+    .stats-section .number {
+        font-size: 2.1rem;
+    }
+
+    .team-section .photo {
+        width: 180px;
+        height: 225px;
+    }
+}
+
+
+/* =========================================================
+   8. EXTRA-SMALL MOBILE — UP TO 374px
+========================================================= */
+
+@media (max-width: 374px) {
+
+    :root {
+        --responsive-gutter: 18px;
+        --responsive-section-space: 30px;
+    }
+
+    .logo-wrapper {
+        max-width: calc(100% - 48px);
+    }
+
+    .logo-mark img {
+        max-width: 38px;
+        max-height: 34px;
+    }
+
+    .logo-wordmark img {
+        max-width: 115px;
+        max-height: 32px;
+    }
+
+    .menu-icon {
+        right: var(--responsive-gutter);
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+
+    .hero-section .hero-logo img {
+        height: 72px;
+    }
+
+    /* about */
+    .stats-section .inner {
+        grid-template-columns: 1fr;
+    }
+
+    .team-section .photo {
+        width: 160px;
+        height: 200px;
     }
 }
