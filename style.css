@@ -1271,1207 +1271,10 @@ html {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* =========================================================
-   RESPONSIVE CSS  (load AFTER style.css)
-   Home + About + Header + Footer
-========================================================= */
 
-
-/* =========================================================
-   1. GLOBAL RESPONSIVE FIXES
-========================================================= */
-
-:root {
-    --responsive-gutter: 40px;
-    --responsive-section-space: 70px;
-    --responsive-card-gap: 24px;
-}
-
-html {
-    scroll-padding-top: 100px;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-img,
-video,
-iframe {
-    max-width: 100%;
-}
-
-img {
-    height: auto;
-}
-
-body {
-    overflow-x: clip;
-}
-
-#page,
-main {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-
-/* =========================================================
-   2. HEADER DEFAULTS
-========================================================= */
-
-.main-header {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    margin-top: 0;
-}
-
-.main-header,
-.main-header > .container,
-.logo-wrapper,
-.menu-wrapper {
-    margin-top: 0;
-}
-
-.main-header > .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-section {
-    margin-top: 0;
-}
-
-/* Desktop navigation defaults */
-.menu-icon,
-.mobile-menu {
-    display: none;
-}
-
-/* Logged-in admin bar (WordPress): 32px desktop, 46px up to 782px, not fixed up to 600px */
-.admin-bar .main-header {
-    top: 32px;
-}
-
-@media (max-width: 782px) {
-    .admin-bar .main-header {
-        top: 46px;
-    }
-}
-
-@media (max-width: 600px) {
-    .admin-bar .main-header {
-        top: 0;
-    }
-}
-
-
-/* =========================================================
-   3. LAPTOP — 1025px TO 1199px
-   Same gutter for the header and every section so the left
-   edges line up.
-========================================================= */
-
-@media (min-width: 1025px) and (max-width: 1199px) {
-
-    :root {
-        --responsive-gutter: 32px;
-    }
-
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
-    }
-}
-
-
-/* =========================================================
-   4. TABLET — 768px TO 1024px
-========================================================= */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-    :root {
-        --responsive-gutter: 40px;
-        --responsive-section-space: 55px;
-        --responsive-card-gap: 20px;
-    }
-
-
-    /* ---------- Consistent container padding ---------- */
-
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
-    }
-
-
-    /* ---------- Header ---------- */
-
-    .main-header {
-        position: sticky;
-        left: 0;
-        right: 0;
-        width: 100%;
-        margin: 0 !important;
-    }
-
-    .main-header > .container {
-        min-height: 80px;
-        gap: 20px;
-    }
-
-    .logo-wrapper {
-        flex: 0 1 auto;
-        min-width: 0;
-    }
-
-    .menu-wrapper {
-        display: none !important;
-    }
-
-    .menu-icon {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        margin-left: auto;
-        text-decoration: none;
-        cursor: pointer;
-        z-index: 10002;
-    }
-
-    .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-height: calc(100vh - 80px);
-        overflow-x: hidden;
-        overflow-y: auto;
-        padding: 25px var(--responsive-gutter);
-        background: #fff;
-        z-index: 10001;
-    }
-
-    .mobile-menu.active,
-    .mobile-menu.open,
-    .mobile-menu.show {
-        display: block;
-    }
-
-    .mobile-menu ul {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .mobile-menu li {
-        width: 100%;
-        margin: 0;
-    }
-
-    .mobile-menu li a {
-        display: block;
-        padding: 13px 0;
-    }
-
-    .mobile-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-
-    /* ---------- Hero ---------- */
-
-    .hero-section {
-        margin-top: 0 !important;
-        padding-top: 0;
-        min-height: 70vh;
-    }
-
-    .hero-section > .container {
-        margin-top: 0 !important;
-        padding-top: 4.5rem;
-        padding-bottom: 4.5rem;
-    }
-
-    .hero-section .hero-logo img {
-        height: 110px;
-        width: auto;
-        max-width: 100%;
-    }
-
-    .hero-section .content {
-        max-width: 100%;
-    }
-
-    .hero-section .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-
-    /* ---------- Section spacing ---------- */
-
-    .welcome-section,
-    .work-section,
-    .treatment-section,
-    .conditions-section,
-    .process-section,
-    .doctor-section,
-    .patient-section,
-    .contact-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-
-    /* ---------- Welcome and Doctor ---------- */
-
-    .welcome-section .inner,
-    .doctor-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .welcome-section .inner > .image,
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .image,
-    .doctor-section .inner > .content {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .welcome-section .inner > .image,
-    .doctor-section .inner > .image {
-        order: 1;
-    }
-
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .content {
-        order: 2;
-    }
-
-    /* the doctor photo stays a sensible size on tablet */
-    .doctor-section .inner > .image {
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* keep the images filling their ratio box (cover), not stretched */
-    .welcome-section .image img,
-    .doctor-section .image img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-
-    /* ---------- Process connecting line ---------- */
-
-    .process-section .number::before,
-    .process-section .number::after,
-    .process-section .inner::before,
-    .process-section .inner::after,
-    .process-section .step::before,
-    .process-section .step::after {
-        display: none !important;
-        content: none !important;
-    }
-
-
-    /* ---------- Card sections: one card per row ---------- */
-
-    .work-section .inner,
-    .treatment-section .inner,
-    .conditions-section .inner,
-    .process-section .inner,
-    .patient-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: var(--responsive-card-gap);
-    }
-
-    .work-section .item,
-    .treatment-section .item,
-    .conditions-section .item,
-    .process-section .step,
-    .patient-section .item {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-
-    /* ---------- Footer ---------- */
-
-    .main-footer .footer-top {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 30px;
-    }
-
-    .main-footer .footer-about {
-        grid-column: 1 / -1;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .main-footer .footer-col {
-        width: 100%;
-        min-width: 0;
-    }
-
-    /* Contact column (last column) spans the full width */
-    .main-footer .footer-col:last-child {
-        grid-column: 1 / -1;
-    }
-
-    .main-footer .footer-bottom {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-
-    /* ================= ABOUT PAGE — TABLET ================= */
-
-    .page-hero-section {
-        padding-top: 4.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .stats-section {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
-
-    .stats-section .inner {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem var(--responsive-card-gap);
-    }
-
-    .mission-section,
-    .team-section,
-    .values-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-    }
-
-    /* mission: image first, then content */
-    .mission-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .mission-section .inner > .image,
-    .mission-section .inner > .content {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .mission-section .image {
-        aspect-ratio: 16 / 10;
-    }
-
-    .mission-section .image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* team: full width cards (photo left, text right) */
-    .team-section .inner {
-        max-width: 100%;
-        gap: 2rem;
-    }
-
-    /* awards: 2 columns, no divider lines */
-    .awards-section {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-    }
-
-    .awards-section .inner {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem var(--responsive-card-gap);
-    }
-
-    .awards-section .divider {
-        display: none;
-    }
-
-    /* values: one card per row */
-    .values-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: var(--responsive-card-gap);
-        margin-top: 2.5rem;
-    }
-
-    .values-section .item {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .cta-section {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-}
-
-
-/* =========================================================
-   5. MOBILE — 481px TO 767px
-========================================================= */
-
-@media (min-width: 481px) and (max-width: 767px) {
-
-    :root {
-        --responsive-gutter: 28px;
-        --responsive-section-space: 42px;
-        --responsive-card-gap: 20px;
-    }
-}
-
-
-/* =========================================================
-   6. MOBILE — UP TO 767px
-========================================================= */
-
-@media (max-width: 767px) {
-
-    :root {
-        --responsive-section-space: 42px;
-        --responsive-card-gap: 20px;
-    }
-
-    html,
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: clip;
-    }
-
-    #page,
-    main {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-
-    /* ---------- Consistent container padding ---------- */
-
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
-    }
-
-
-    /* ---------- Header ---------- */
-
-    .main-header {
-        position: sticky;
-        left: 0;
-        right: 0;
-        width: 100%;
-        margin: 0 !important;
-        z-index: 9999;
-    }
-
-    .main-header > .container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 70px;
-        gap: 12px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 1 auto;
-        min-width: 0;
-        max-width: calc(100% - 60px);
-        margin: 0 auto;
-    }
-
-    .logo-wrapper > a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 6px;
-        max-width: 100%;
-    }
-
-    .logo-mark img {
-        display: block;
-        max-width: 55px;
-        max-height: 45px;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .logo-wordmark img {
-        display: block;
-        width: auto;
-        max-width: 155px;
-        max-height: 42px;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .menu-wrapper {
-        display: none !important;
-    }
-
-    .menu-icon {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 50%;
-        right: var(--responsive-gutter);
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        color: inherit;
-        font-size: 24px;
-        text-decoration: none;
-        cursor: pointer;
-        z-index: 10002;
-    }
-
-    .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-height: calc(100vh - 70px);
-        overflow-x: hidden;
-        overflow-y: auto;
-        padding: 20px var(--responsive-gutter) 25px;
-        background: #fff;
-        z-index: 10001;
-    }
-
-    .mobile-menu.active,
-    .mobile-menu.open,
-    .mobile-menu.show {
-        display: block;
-    }
-
-    .mobile-menu ul {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .mobile-menu li {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .mobile-menu li a {
-        display: block;
-        width: 100%;
-        padding: 12px 0;
-        white-space: normal;
-    }
-
-    .mobile-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-        margin-top: 20px;
-    }
-
-    .mobile-actions a {
-        max-width: 100%;
-    }
-
-
-    /* ---------- Hero ---------- */
-
-    .hero-section {
-        position: relative;
-        margin: 0 !important;
-        padding-top: 0;
-        min-height: auto;
-    }
-
-    .hero-section > .container {
-        margin-top: 0 !important;
-        padding-top: 2.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .hero-section .hero-logo {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-
-    /* explicit height (a height:auto here would show the logo at full file size) */
-    .hero-section .hero-logo img {
-        display: block;
-        width: auto;
-        max-width: 100%;
-        height: 90px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-section .content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero-section .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .hero-section .buttons a {
-        max-width: 100%;
-    }
-
-
-    /* ---------- Section spacing ---------- */
-
-    .welcome-section,
-    .work-section,
-    .treatment-section,
-    .conditions-section,
-    .process-section,
-    .doctor-section,
-    .patient-section,
-    .contact-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-
-    /* ---------- Welcome and Doctor: image first ---------- */
-
-    .welcome-section .inner,
-    .doctor-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .welcome-section .inner > .image,
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .image,
-    .doctor-section .inner > .content {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .welcome-section .inner > .image,
-    .doctor-section .inner > .image {
-        order: 1;
-    }
-
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .content {
-        order: 2;
-    }
-
-    .welcome-section .image img,
-    .doctor-section .image img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-
-    /* ---------- Process connecting line ---------- */
-
-    .process-section .number::before,
-    .process-section .number::after,
-    .process-section .inner::before,
-    .process-section .inner::after,
-    .process-section .step::before,
-    .process-section .step::after {
-        display: none !important;
-        content: none !important;
-    }
-
-
-    /* ---------- Cards: one per row ---------- */
-
-    .work-section .inner,
-    .treatment-section .inner,
-    .conditions-section .inner,
-    .process-section .inner,
-    .patient-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: var(--responsive-card-gap);
-    }
-
-    .work-section .item,
-    .treatment-section .item,
-    .conditions-section .item,
-    .process-section .step,
-    .patient-section .item {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .process-section .number {
-        max-width: 100%;
-    }
-
-
-    /* ---------- Footer ---------- */
-
-    .main-footer .footer-top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
-        text-align: center;
-    }
-
-    .main-footer .footer-about,
-    .main-footer .footer-col {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        margin: 0;
-    }
-
-    .main-footer .footer-logo-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .main-footer .footer-tagline {
-        width: 100%;
-        text-align: center;
-    }
-
-    .main-footer .footer-badges {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        max-width: 100%;
-    }
-
-    .main-footer .footer-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
-    }
-
-
-    /* ================= ABOUT PAGE — MOBILE ================= */
-
-    /* hero: centered */
-    .page-hero-section {
-        padding-top: 4rem;
-        padding-bottom: 3rem;
-        text-align: center;
-    }
-
-    .page-hero-section .content p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* stat bar: 2 columns */
-    .stats-section {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-    }
-
-    .stats-section .inner {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.75rem var(--responsive-card-gap);
-    }
-
-    .stats-section .number {
-        font-size: 2.4rem;
-    }
-
-    /* mission: image first, centered text, full width button */
-    .mission-section,
-    .team-section,
-    .values-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-    }
-
-    .mission-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .mission-section .inner > .image,
-    .mission-section .inner > .content {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .mission-section .content,
-    .team-section .heading,
-    .values-section .heading {
-        text-align: center;
-    }
-
-    .team-section .heading p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .mission-section .buttons {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .mission-section .buttons a {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* team cards: stacked and centered */
-    .team-section .inner {
-        gap: var(--responsive-card-gap);
-        margin-top: 2.5rem;
-    }
-
-    .team-section .item {
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem;
-        text-align: center;
-    }
-
-    .team-section .photo {
-        width: 200px;
-        height: 250px;
-    }
-
-    /* awards: one per row */
-    .awards-section {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-    }
-
-    .awards-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .awards-section .divider {
-        display: none;
-    }
-
-    /* values: one per row, centered */
-    .values-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: var(--responsive-card-gap);
-        margin-top: 2rem;
-    }
-
-    .values-section .item {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-        padding: 1.75rem 1.5rem;
-        text-align: center;
-    }
-
-    /* CTA: stacked full width buttons */
-    .cta-section {
-        padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .cta-section .content h2 {
-        font-size: 1.9rem;
-    }
-
-    .cta-section .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-    }
-
-    .cta-section .buttons a {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-
-/* =========================================================
-   7. SMALL MOBILE — UP TO 480px
-========================================================= */
-
-@media (max-width: 480px) {
-
-    :root {
-        --responsive-gutter: 24px;
-        --responsive-section-space: 35px;
-        --responsive-card-gap: 18px;
-    }
-
-    .main-header > .container {
-        min-height: 65px;
-    }
-
-    .logo-mark img {
-        max-width: 45px;
-        max-height: 38px;
-    }
-
-    .logo-wordmark img {
-        max-width: 135px;
-        max-height: 36px;
-    }
-
-    .menu-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 22px;
-    }
-
-    .mobile-menu {
-        max-height: calc(100vh - 65px);
-    }
-
-    .hero-section .buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .hero-section .buttons a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .main-footer .footer-logo-row,
-    .main-footer .footer-badges {
-        gap: 10px;
-    }
-
-    /* about */
-    .stats-section .number {
-        font-size: 2.1rem;
-    }
-
-    .team-section .photo {
-        width: 180px;
-        height: 225px;
-    }
-}
-
-
-/* =========================================================
-   8. EXTRA-SMALL MOBILE — UP TO 374px
-========================================================= */
-
-@media (max-width: 374px) {
-
-    :root {
-        --responsive-gutter: 18px;
-        --responsive-section-space: 30px;
-    }
-
-    .logo-wrapper {
-        max-width: calc(100% - 48px);
-    }
-
-    .logo-mark img {
-        max-width: 38px;
-        max-height: 34px;
-    }
-
-    .logo-wordmark img {
-        max-width: 115px;
-        max-height: 32px;
-    }
-
-    .menu-icon {
-        right: var(--responsive-gutter);
-        width: 32px;
-        height: 32px;
-        font-size: 20px;
-    }
-
-    .hero-section .hero-logo img {
-        height: 72px;
-    }
-
-    /* about */
-    .stats-section .inner {
-        grid-template-columns: 1fr;
-    }
-
-    .team-section .photo {
-        width: 160px;
-        height: 200px;
-    }
-}
 
 /* ==========================================================
    ABOUT PAGE
-   (responsive rules for this page are in responsive.css)
    ========================================================== */
 
 /* Same 1264px container (1200px content + 32px sides) as the rest of the site */
@@ -2897,32 +1700,935 @@ main {
   gap: 1rem;
 }
 
+
+
+/* ==========================================================
+   KETAMINE PAGE
+   ========================================================== */
+
+/* Same 1264px container (1200px content + 32px sides) as the rest of the site */
+.what-section > .container,
+.local-section > .container,
+.cond-section > .container,
+.howit-section > .container,
+.steps-section > .container,
+.faq-section > .container,
+.credentials-section > .container {
+  width: 100%;
+  max-width: 1264px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.what-section,
+.local-section,
+.cond-section,
+.howit-section,
+.steps-section,
+.faq-section,
+.credentials-section {
+  position: relative;
+  padding: 6rem 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Reset Bootstrap defaults inside the ketamine sections */
+:is(.what-section, .local-section, .cond-section, .howit-section, .steps-section, .faq-section, .credentials-section) :is(h1, h2, h3, h4, h5, h6, p, ul, ol, figure) {
+  margin: 0;
+  padding: 0;
+}
+:is(.what-section, .local-section, .cond-section, .howit-section, .steps-section, .faq-section, .credentials-section) img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+:is(.what-section, .local-section, .cond-section, .howit-section, .steps-section, .faq-section, .credentials-section) a {
+  text-decoration: none;
+}
+
+/* Eyebrow (h4) */
+:is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--brand-blue);
+  margin: 0 0 0.75rem;
+}
+
+/* Title (h2 or h3) */
+:is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+:is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) :is(h2, h3) span {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+
+/* ==========================================================
+   PAGE HERO (extra rules for this page's WYSIWYG tags)
+   h5 = small eyebrow, h1 or h2 = title, p = lead paragraphs
+   ========================================================== */
+.page-hero-section .content h5 {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin: 0 0 1rem;
+}
+.page-hero-section .content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+.page-hero-section .content :is(h1, h2) :is(span, em) {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+.page-hero-section .content p + p {
+  margin-top: 1rem;
+}
+
+/* ==========================================================
+   WHAT KETAMINE DOES
+   ========================================================== */
+.what-section {
+  background: var(--off-white);
+}
+.what-section .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.what-section .content p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+.what-section .image {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.what-section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================
+   KETAMINE IN SAN ANTONIO
+   ========================================================== */
+.local-section {
+  background: #fff;
+}
+.local-section .inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.local-section .content p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+/* ==========================================================
+   CONDITIONS
+   ========================================================== */
+.cond-section {
+  background: var(--off-white);
+}
+.cond-section .heading p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0;
+}
+.cond-section .inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.cond-section .item {
+  position: relative;
+  padding: 1.75rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cond-section .item:hover {
+  border-color: var(--brand-blue);
+  transform: translateY(-2px);
+}
+.cond-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 0.4rem;
+}
+.cond-section .item p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+}
+.cond-section .card-link {
+  display: block;
+  margin-top: 1rem;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+.cond-section .card-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.cond-section .card-link::after {
+  content: ' →';
+}
+/* "Not sure?" card (last card) */
+.cond-section .item:last-child {
+  background: var(--sage-light);
+  border-color: transparent;
+}
+.cond-section .item:last-child:hover {
+  border-color: var(--brand-blue);
+}
+
+/* ==========================================================
+   HOW IT WORKS
+   ========================================================== */
+.howit-section {
+  background: var(--brand-navy);
+}
+.howit-section .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+  row-gap: 0;
+  align-items: start;
+}
+.howit-section .content {
+  display: contents;
+}
+.howit-section .content :is(h4, h2, h3) {
+  grid-column: 1 / -1;
+}
+.howit-section .content h4,
+.howit-section .content :is(h2, h3) {
+  color: #fff;
+}
+.howit-section .content :is(h2, h3) {
+  margin-bottom: 2rem;
+}
+.howit-section .content p {
+  grid-column: 1;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem;
+}
+.howit-section .safety {
+  grid-column: 2;
+  grid-row: 3 / span 8;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.howit-section .safety .item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem;
+  background: var(--sage-light);
+  border-radius: var(--radius);
+}
+.howit-section .safety .check {
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--brand-blue);
+}
+.howit-section .safety .text p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--brand-navy);
+  margin: 0;
+}
+
+/* ==========================================================
+   PROCESS TIMELINE
+   ========================================================== */
+.steps-section {
+  background: #EEF1FC;
+}
+.steps-section .inner {
+  max-width: 680px;
+  margin-top: 3rem;
+}
+.steps-section .item {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+}
+.steps-section .item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 56px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.steps-section .number {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand-navy);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+}
+.steps-section .info h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--brand-navy);
+  margin: 0 0 0.4rem;
+}
+.steps-section .info p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+.faq-section {
+  background: #fff;
+}
+.faq-section .inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-section .list {
+  margin-top: 2.5rem;
+}
+.faq-section .item {
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--border);
+}
+.faq-section .item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.faq-section .item h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0;
+  color: var(--brand-navy);
+  margin: 0 0 0.6rem;
+}
+.faq-section .item p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ==========================================================
+   CREDENTIALS (ASKP3)
+   ========================================================== */
+.credentials-section {
+  background: var(--off-white);
+}
+.credentials-section .inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.credentials-section .badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.credentials-section .badge img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+/* eyebrow (h4): small, like the original page */
+.credentials-section .content h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  margin: 0 0 0.85rem;
+}
+.credentials-section .content :is(h2, h3) {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--brand-navy);
+  margin: 0 0 1rem;
+}
+.credentials-section .content :is(h2, h3) span {
+  font-style: normal;
+  color: var(--brand-blue);
+}
+.credentials-section .content p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 0.85rem;
+}
+.credentials-section .credentials-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+.credentials-section .credentials-link::after {
+  content: ' →';
+}
+
 /* =========================================================
-   RESPONSIVE CSS  (load AFTER style.css)
-   Home + About + Header + Footer
+   SOLUZ HEALTH — HOME PAGE RESPONSIVE CSS
+   Desktop styles remain unchanged.
+========================================================= */
+
+/* ---------- TABLET & SMALL LAPTOP ---------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 1264px;
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    .hero-section,
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-section .inner,
+    .welcome-section .inner,
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .doctor-section .inner,
+    .patient-section .inner,
+    .contact-section .inner {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        align-items: center;
+    }
+
+    .welcome-section img,
+    .doctor-section img,
+    .hero-section img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        justify-items: center;
+    }
+
+    .work-section .inner > *,
+    .treatment-section .inner > *,
+    .conditions-section .inner > *,
+    .process-section .inner > *,
+    .patient-section .inner > * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .work-section .content,
+    .treatment-section .content,
+    .conditions-section .content,
+    .process-section .content,
+    .doctor-section .content,
+    .patient-section .content,
+    .contact-section .content {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}
+
+
+/* ---------- MOBILE: 767px AND BELOW ---------- */
+@media (max-width: 767px) {
+
+    /* Consistent page gutters */
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .main-footer > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Keep sections inside the viewport */
+    .hero-section,
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section,
+    .main-footer {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Center section layouts, not their text */
+    .hero-section .inner,
+    .welcome-section .inner,
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .doctor-section .inner,
+    .patient-section .inner,
+    .contact-section .inner {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Stack the two-column sections */
+    .welcome-section .inner,
+    .doctor-section .inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+    }
+
+    /* Center images without stretching them */
+    .hero-section img,
+    .welcome-section img,
+    .doctor-section img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Consistent responsive typography */
+    .hero-section h1 {
+        font-size: clamp(32px, 7vw, 42px);
+        line-height: 1.15;
+        margin-bottom: 18px;
+        overflow-wrap: anywhere;
+    }
+
+    .welcome-section h2,
+    .work-section h2,
+    .treatment-section h2,
+    .conditions-section h2,
+    .process-section h2,
+    .doctor-section h2,
+    .patient-section h2,
+    .contact-section h2 {
+        font-size: clamp(26px, 5.5vw, 34px);
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-section h2 {
+        font-size: clamp(26px, 5.5vw, 34px);
+        line-height: 1.2;
+    }
+
+    .hero-section p,
+    .welcome-section p,
+    .work-section p,
+    .treatment-section p,
+    .conditions-section p,
+    .process-section p,
+    .doctor-section p,
+    .patient-section p,
+    .contact-section p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .work-section h3,
+    .treatment-section h3,
+    .conditions-section h3,
+    .process-section h3,
+    .doctor-section h3,
+    .patient-section h3 {
+        font-size: 20px;
+        line-height: 1.35;
+    }
+
+    /* Center card collections and prevent overflow */
+    .work-section .inner,
+    .treatment-section .inner,
+    .conditions-section .inner,
+    .process-section .inner,
+    .patient-section .inner {
+        justify-items: center;
+    }
+
+    .work-section .inner > *,
+    .treatment-section .inner > *,
+    .conditions-section .inner > *,
+    .process-section .inner > *,
+    .patient-section .inner > * {
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Keep text inside content boxes left-aligned */
+    .welcome-section .content,
+    .work-section .content,
+    .treatment-section .content,
+    .conditions-section .content,
+    .process-section .content,
+    .doctor-section .content,
+    .patient-section .content,
+    .contact-section .content {
+        width: 100%;
+        min-width: 0;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    /* Buttons stay within the screen */
+    .hero-section .theme-blue,
+    .welcome-section .theme-blue,
+    .doctor-section .theme-blue,
+    .contact-section .theme-blue,
+    .welcome-section .theme-outline,
+    .doctor-section .theme-outline {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Footer layout */
+    .main-footer > .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .main-footer .footer-contact {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .main-footer img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+/* ---------- SMALL MOBILE: 600px AND BELOW ---------- */
+@media (max-width: 600px) {
+
+    .hero-section {
+        padding-top: 36px;
+        padding-bottom: 40px;
+    }
+
+    .welcome-section,
+    .work-section,
+    .treatment-section,
+    .conditions-section,
+    .process-section,
+    .doctor-section,
+    .patient-section,
+    .contact-section {
+        padding-top: 44px;
+        padding-bottom: 44px;
+    }
+
+    .hero-section h1 {
+        font-size: clamp(30px, 8vw, 36px);
+        line-height: 1.15;
+    }
+
+    .hero-section h2,
+    .welcome-section h2,
+    .work-section h2,
+    .treatment-section h2,
+    .conditions-section h2,
+    .process-section h2,
+    .doctor-section h2,
+    .patient-section h2,
+    .contact-section h2 {
+        font-size: 28px;
+        line-height: 1.25;
+    }
+
+    .hero-section p,
+    .welcome-section p,
+    .work-section p,
+    .treatment-section p,
+    .conditions-section p,
+    .process-section p,
+    .doctor-section p,
+    .patient-section p,
+    .contact-section p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .work-section h3,
+    .treatment-section h3,
+    .conditions-section h3,
+    .process-section h3,
+    .doctor-section h3,
+    .patient-section h3 {
+        font-size: 19px;
+        line-height: 1.4;
+    }
+
+    .welcome-section .inner,
+    .doctor-section .inner {
+        gap: 24px;
+    }
+
+    .main-footer > .container {
+        gap: 24px;
+    }
+}
+
+
+/* ---------- EXTRA-SMALL MOBILE: 374px AND BELOW ---------- */
+@media (max-width: 374px) {
+
+    .main-header > .container,
+    .hero-section > .container,
+    .welcome-section > .container,
+    .work-section > .container,
+    .treatment-section > .container,
+    .conditions-section > .container,
+    .process-section > .container,
+    .doctor-section > .container,
+    .patient-section > .container,
+    .contact-section > .container,
+    .main-footer > .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero-section h1 {
+        font-size: 29px;
+    }
+
+    .hero-section h2,
+    .welcome-section h2,
+    .work-section h2,
+    .treatment-section h2,
+    .conditions-section h2,
+    .process-section h2,
+    .doctor-section h2,
+    .patient-section h2,
+    .contact-section h2 {
+        font-size: 25px;
+        line-height: 1.25;
+    }
+
+    .hero-section p,
+    .welcome-section p,
+    .work-section p,
+    .treatment-section p,
+    .conditions-section p,
+    .process-section p,
+    .doctor-section p,
+    .patient-section p,
+    .contact-section p {
+        font-size: 15px;
+    }
+
+    .work-section h3,
+    .treatment-section h3,
+    .conditions-section h3,
+    .process-section h3,
+    .doctor-section h3,
+    .patient-section h3 {
+        font-size: 18px;
+    }
+}
+/* =========================================================
+   SOLUZ HEALTH — RESPONSIVE CSS
+   Home + About (+ Ketamine) + Header + Footer
+
+   Load this file AFTER style.css and remove the two old
+   responsive blocks from style.css:
+     - "HOME PAGE RESPONSIVE CSS"
+     - "RESPONSIVE CSS - ABOUT PAGE"
+
+   Breakpoints
+     1025 - 1199  laptop
+      768 - 1024  tablet (iPad mini)
+      767 & below mobile (Samsung A55)
+      480 & below small mobile
+      374 & below extra-small mobile
+
+   Font sizes are controlled by the variables in each
+   breakpoint's :root block (see section 3), so every section
+   uses the same type scale.
+
+   Mobile rule: all text is centered, EXCEPT the text inside
+   boxes (cards, review boxes, team cards, value cards...).
 ========================================================= */
 
 
 /* =========================================================
-   1. GLOBAL RESPONSIVE FIXES
+   1. GLOBAL
 ========================================================= */
 
 :root {
-    --responsive-gutter: 40px;
-    --responsive-section-space: 70px;
-    --responsive-card-gap: 24px;
+    --responsive-gutter: 32px;
+    --responsive-section-space: 72px;
+    --responsive-card-gap: 20px;
 }
 
 html {
     scroll-padding-top: 100px;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
 }
 
 *,
@@ -2937,10 +2643,6 @@ iframe {
     max-width: 100%;
 }
 
-img {
-    height: auto;
-}
-
 body {
     overflow-x: clip;
 }
@@ -2953,42 +2655,7 @@ main {
     padding: 0;
 }
 
-
-/* =========================================================
-   2. HEADER DEFAULTS
-========================================================= */
-
-.main-header {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    margin-top: 0;
-}
-
-.main-header,
-.main-header > .container,
-.logo-wrapper,
-.menu-wrapper {
-    margin-top: 0;
-}
-
-.main-header > .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-section {
-    margin-top: 0;
-}
-
-/* Desktop navigation defaults */
-.menu-icon,
-.mobile-menu {
-    display: none;
-}
-
-/* Logged-in admin bar (WordPress): 32px desktop, 46px up to 782px, not fixed up to 600px */
+/* Logged-in admin bar (WordPress) */
 .admin-bar .main-header {
     top: 32px;
 }
@@ -3007,195 +2674,204 @@ main {
 
 
 /* =========================================================
-   3. LAPTOP — 1025px TO 1199px
-   Same gutter for the header and every section so the left
-   edges line up.
+   2. LAPTOP — 1025px TO 1199px
+   Same gutter for the header and every section.
+   (the hero container keeps its desktop behaviour)
 ========================================================= */
 
 @media (min-width: 1025px) and (max-width: 1199px) {
 
-    :root {
-        --responsive-gutter: 32px;
-    }
-
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
+    :is(
+        .main-header,
+        .welcome-section, .work-section, .treatment-section, .conditions-section,
+        .process-section, .doctor-section, .patient-section, .contact-section,
+        .page-hero-section, .stats-section, .mission-section, .team-section,
+        .awards-section, .values-section, .cta-section,
+        .what-section, .local-section, .cond-section, .howit-section,
+        .steps-section, .faq-section, .credentials-section,
+        .main-footer
+    ) > .container {
         width: 100%;
         max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .main-header .logo-mark {
+        width: 44px;
+    }
+
+    .main-header .logo-wordmark {
+        height: 40px;
+    }
+
+    .main-header .navbar-nav,
+    .main-header .menu-wrapper {
+        gap: 1.25rem;
+    }
+
+    .main-header .navbar-nav a {
+        font-size: 13px;
+    }
+
+    .main-header .menu-wrapper .header-btn {
+        margin-left: 0;
+        padding: 11px 20px;
     }
 }
 
 
 /* =========================================================
-   4. TABLET — 768px TO 1024px
+   3. TYPE SCALE VARIABLES
+   One scale for the whole site. Tablet first, then each
+   smaller breakpoint only changes the values.
 ========================================================= */
 
-@media (min-width: 768px) and (max-width: 1024px) {
-
+@media (max-width: 1024px) {
     :root {
-        --responsive-gutter: 40px;
-        --responsive-section-space: 55px;
+        --responsive-gutter: 32px;
+        --responsive-section-space: 72px;
+        --responsive-hero-space: 80px;
         --responsive-card-gap: 20px;
+
+        --logo-mark: 44px;
+        --logo-word: 38px;
+
+        --fs-hero: 48px;
+        --fs-hero-sub: 20px;
+        --fs-page-title: 44px;
+        --fs-lead: 17px;
+
+        --fs-eyebrow: 26px;
+        --fs-title: 40px;
+        --fs-title-sm: 28px;
+        --fs-cta: 34px;
+        --fs-body: 16px;
+
+        --fs-card-title-lg: 24px;
+        --fs-card-title: 20px;
+        --fs-card-text: 14px;
+
+        --fs-stat: 44px;
+        --fs-rating: 42px;
+        --fs-score: 36px;
     }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --responsive-gutter: 24px;
+        --responsive-section-space: 56px;
+        --responsive-hero-space: 48px;
+
+        --logo-mark: 38px;
+        --logo-word: 30px;
+
+        --fs-hero: 38px;
+        --fs-hero-sub: 18px;
+        --fs-page-title: 34px;
+        --fs-lead: 16px;
+
+        --fs-eyebrow: 22px;
+        --fs-title: 30px;
+        --fs-title-sm: 24px;
+        --fs-cta: 28px;
+        --fs-body: 15px;
+
+        --fs-card-title-lg: 22px;
+        --fs-card-title: 19px;
+        --fs-card-text: 14px;
+
+        --fs-stat: 38px;
+        --fs-rating: 36px;
+        --fs-score: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --responsive-gutter: 20px;
+        --responsive-section-space: 48px;
+        --responsive-hero-space: 40px;
+        --responsive-card-gap: 18px;
+
+        --logo-mark: 34px;
+        --logo-word: 26px;
+
+        --fs-hero: 34px;
+        --fs-hero-sub: 17px;
+        --fs-page-title: 32px;
+        --fs-lead: 15px;
+
+        --fs-eyebrow: 20px;
+        --fs-title: 27px;
+        --fs-title-sm: 22px;
+        --fs-cta: 26px;
+
+        --fs-card-title-lg: 21px;
+        --fs-card-title: 18px;
+
+        --fs-stat: 34px;
+        --fs-rating: 32px;
+        --fs-score: 30px;
+    }
+}
+
+@media (max-width: 374px) {
+    :root {
+        --responsive-gutter: 16px;
+        --responsive-section-space: 40px;
+        --responsive-hero-space: 36px;
+
+        --logo-mark: 30px;
+        --logo-word: 22px;
+
+        --fs-hero: 30px;
+        --fs-hero-sub: 16px;
+        --fs-page-title: 28px;
+
+        --fs-eyebrow: 18px;
+        --fs-title: 24px;
+        --fs-title-sm: 21px;
+        --fs-cta: 24px;
+        --fs-body: 14.5px;
+
+        --fs-card-title-lg: 19px;
+        --fs-card-title: 17px;
+        --fs-card-text: 13.5px;
+
+        --fs-stat: 30px;
+        --fs-rating: 30px;
+        --fs-score: 28px;
+    }
+}
 
 
-    /* ---------- Consistent container padding ---------- */
+/* =========================================================
+   4. TABLET AND MOBILE (1024px AND BELOW)
+   Layout, header, footer and font sizes (the font sizes
+   come from the variables above).
+========================================================= */
 
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
+@media (max-width: 1024px) {
+
+    /* ---------- Container gutters ---------- */
+
+    :is(
+        .main-header,
+        .hero-section,
+        .welcome-section, .work-section, .treatment-section, .conditions-section,
+        .process-section, .doctor-section, .patient-section, .contact-section,
+        .page-hero-section, .stats-section, .mission-section, .team-section,
+        .awards-section, .values-section, .cta-section,
+        .what-section, .local-section, .cond-section, .howit-section,
+        .steps-section, .faq-section, .credentials-section,
+        .main-footer
+    ) > .container {
         width: 100%;
         max-width: 100%;
         padding-left: var(--responsive-gutter);
         padding-right: var(--responsive-gutter);
-    }
-
-
-    /* ---------- Header ---------- */
-
-    .main-header {
-        position: sticky;
-        left: 0;
-        right: 0;
-        width: 100%;
-        margin: 0 !important;
-    }
-
-    .main-header > .container {
-        min-height: 80px;
-        gap: 20px;
-    }
-
-    .logo-wrapper {
-        flex: 0 1 auto;
-        min-width: 0;
-    }
-
-    .menu-wrapper {
-        display: none !important;
-    }
-
-    .menu-icon {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        margin-left: auto;
-        text-decoration: none;
-        cursor: pointer;
-        z-index: 10002;
-    }
-
-    .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-height: calc(100vh - 80px);
-        overflow-x: hidden;
-        overflow-y: auto;
-        padding: 25px var(--responsive-gutter);
-        background: #fff;
-        z-index: 10001;
-    }
-
-    .mobile-menu.active,
-    .mobile-menu.open,
-    .mobile-menu.show {
-        display: block;
-    }
-
-    .mobile-menu ul {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .mobile-menu li {
-        width: 100%;
-        margin: 0;
-    }
-
-    .mobile-menu li a {
-        display: block;
-        padding: 13px 0;
-    }
-
-    .mobile-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-
-    /* ---------- Hero ---------- */
-
-    .hero-section {
-        margin-top: 0 !important;
-        padding-top: 0;
-        min-height: 70vh;
-    }
-
-    .hero-section > .container {
-        margin-top: 0 !important;
-        padding-top: 4.5rem;
-        padding-bottom: 4.5rem;
-    }
-
-    .hero-section .hero-logo img {
-        height: 110px;
-        width: auto;
-        max-width: 100%;
-    }
-
-    .hero-section .content {
-        max-width: 100%;
-    }
-
-    .hero-section .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
     }
 
 
@@ -3208,15 +2884,218 @@ main {
     .process-section,
     .doctor-section,
     .patient-section,
-    .contact-section {
+    .contact-section,
+    .mission-section,
+    .team-section,
+    .values-section,
+    .what-section,
+    .local-section,
+    .cond-section,
+    .howit-section,
+    .steps-section,
+    .faq-section,
+    .credentials-section {
         padding-top: var(--responsive-section-space);
         padding-bottom: var(--responsive-section-space);
-        padding-left: 0;
-        padding-right: 0;
     }
 
 
-    /* ---------- Welcome and Doctor ---------- */
+    /* ---------- Header: hamburger + dropdown menu ---------- */
+
+    .main-header .menu-wrapper {
+        display: none !important;
+    }
+
+    .main-header .menu-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: auto;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .main-header > .container {
+        gap: 20px;
+    }
+
+    .main-header .logo-mark {
+        width: var(--logo-mark);
+    }
+
+    .main-header .logo-wordmark {
+        height: var(--logo-word);
+    }
+
+    .main-header .mobile-menu {
+        padding: 24px var(--responsive-gutter) 28px;
+        overflow-x: hidden;
+        z-index: 10001;
+    }
+
+    .main-header .mobile-menu.active,
+    .main-header .mobile-menu.open,
+    .main-header .mobile-menu.show {
+        display: block;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero-section {
+        min-height: 70vh;
+    }
+
+    .hero-section > .container {
+        padding-top: var(--responsive-hero-space);
+        padding-bottom: var(--responsive-hero-space);
+    }
+
+    .hero-section .hero-logo img {
+        height: 110px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .hero-section .content :is(h1, h2) {
+        font-size: var(--fs-hero);
+        line-height: 1.1;
+        margin-bottom: 1.25rem;
+        overflow-wrap: break-word;
+    }
+
+    .hero-section .content h4 {
+        font-size: var(--fs-hero-sub);
+        line-height: 1.4;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-section .content p {
+        font-size: var(--fs-lead);
+        margin-bottom: 2rem;
+    }
+
+
+    /* ---------- Eyebrows ---------- */
+
+    .welcome-section .content h4,
+    .work-section .heading h3,
+    :is(.work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content) h5,
+    .treatment-section .heading .section-eyebrow,
+    .conditions-section .heading .section-eyebrow,
+    .process-section .heading .section-eyebrow,
+    :is(.mission-section .content, .team-section .heading, .values-section .heading, .what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) h4 {
+        font-size: var(--fs-eyebrow);
+        line-height: 1.25;
+        margin-bottom: 0.6rem;
+    }
+
+
+    /* ---------- Section titles ---------- */
+
+    .welcome-section .content :is(h2, h3),
+    .work-section .heading :is(h2, h4),
+    :is(.treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content, .doctor-section .content) h2,
+    :is(.mission-section .content, .team-section .heading, .values-section .heading, .what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
+        font-size: var(--fs-title);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        overflow-wrap: break-word;
+    }
+
+    .credentials-section .content :is(h2, h3) {
+        font-size: var(--fs-title-sm);
+        line-height: 1.2;
+        overflow-wrap: break-word;
+    }
+
+    .cta-section .content h2 {
+        font-size: var(--fs-cta);
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+    }
+
+
+    /* ---------- Body text ---------- */
+
+    :is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content, .doctor-section .content, .mission-section .content, .team-section .heading, .what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .credentials-section .content, .cta-section .content) p {
+        font-size: var(--fs-body);
+        line-height: 1.7;
+    }
+
+    .page-hero-section h1 {
+        font-size: var(--fs-page-title);
+        line-height: 1.1;
+        overflow-wrap: break-word;
+    }
+
+    .page-hero-section .content p {
+        font-size: var(--fs-lead);
+    }
+
+    .page-hero-section .content :is(h2) {
+        font-size: var(--fs-page-title);
+        line-height: 1.1;
+    }
+
+    .doctor-section .content h4 {
+        font-size: 14px;
+    }
+
+
+    /* ---------- Card titles and card text ---------- */
+
+    .work-section .item h3,
+    .treatment-section .item h3 {
+        font-size: var(--fs-card-title-lg);
+        line-height: 1.3;
+    }
+
+    .conditions-section .item h3,
+    .process-section .step h3,
+    .values-section .item h3,
+    .team-section .info h3,
+    .cond-section .item h3,
+    .steps-section .info h3,
+    .faq-section .item h3 {
+        font-size: var(--fs-card-title);
+        line-height: 1.35;
+    }
+
+    .work-section .item p,
+    .treatment-section .item p,
+    .conditions-section .item p,
+    .process-section .step p,
+    .patient-section .item p,
+    .values-section .item p,
+    .team-section .info p,
+    .cond-section .item p,
+    .steps-section .info p,
+    .faq-section .item p,
+    .howit-section .safety .text p {
+        font-size: var(--fs-card-text);
+        line-height: 1.7;
+    }
+
+
+    /* ---------- Numbers ---------- */
+
+    .stats-section .number,
+    .values-section .number {
+        font-size: var(--fs-stat);
+    }
+
+    .patient-section .stat .rating {
+        font-size: var(--fs-rating);
+    }
+
+    .doctor-section .review .score strong {
+        font-size: var(--fs-score);
+    }
+
+
+    /* ---------- Welcome and Doctor: image first ---------- */
 
     .welcome-section .inner,
     .doctor-section .inner {
@@ -3245,14 +3124,12 @@ main {
         order: 2;
     }
 
-    /* the doctor photo stays a sensible size on tablet */
     .doctor-section .inner > .image {
         max-width: 480px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* keep the images filling their ratio box (cover), not stretched */
     .welcome-section .image img,
     .doctor-section .image img {
         display: block;
@@ -3263,7 +3140,7 @@ main {
     }
 
 
-    /* ---------- Process connecting line ---------- */
+    /* ---------- Process: no connecting line, one step per row ---------- */
 
     .process-section .number::before,
     .process-section .number::after,
@@ -3276,7 +3153,7 @@ main {
     }
 
 
-    /* ---------- Card sections: one card per row ---------- */
+    /* ---------- Cards ---------- */
 
     .work-section .inner,
     .treatment-section .inner,
@@ -3301,6 +3178,10 @@ main {
         margin-right: 0;
     }
 
+    .doctor-section .review {
+        gap: 1.25rem;
+    }
+
 
     /* ---------- Footer ---------- */
 
@@ -3312,12 +3193,10 @@ main {
 
     .main-footer .footer-about {
         grid-column: 1 / -1;
-        width: 100%;
         max-width: 100%;
     }
 
     .main-footer .footer-col {
-        width: 100%;
         min-width: 0;
     }
 
@@ -3327,13 +3206,11 @@ main {
     }
 
     .main-footer .footer-bottom {
-        display: flex;
-        flex-wrap: wrap;
         gap: 15px;
     }
 
 
-    /* ================= ABOUT PAGE — TABLET ================= */
+    /* ================= ABOUT PAGE ================= */
 
     .page-hero-section {
         padding-top: 4.5rem;
@@ -3349,13 +3226,6 @@ main {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem var(--responsive-card-gap);
-    }
-
-    .mission-section,
-    .team-section,
-    .values-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
     }
 
     /* mission: image first, then content */
@@ -3377,16 +3247,14 @@ main {
         aspect-ratio: 16 / 10;
     }
 
-    .mission-section .image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
     /* team: full width cards (photo left, text right) */
     .team-section .inner {
         max-width: 100%;
         gap: 2rem;
+    }
+
+    .team-section .info h4 {
+        font-size: 11px;
     }
 
     /* awards: 2 columns, no divider lines */
@@ -3424,33 +3292,83 @@ main {
         padding-top: 4rem;
         padding-bottom: 4rem;
     }
-}
 
 
-/* =========================================================
-   5. MOBILE — 481px TO 767px
-========================================================= */
+    /* ================= KETAMINE PAGE ================= */
 
-@media (min-width: 481px) and (max-width: 767px) {
+    .what-section .inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 
-    :root {
-        --responsive-gutter: 28px;
-        --responsive-section-space: 42px;
-        --responsive-card-gap: 20px;
+    .what-section .inner > .content,
+    .what-section .inner > .image {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+    }
+
+    .what-section .image {
+        aspect-ratio: 16 / 10;
+    }
+
+    .cond-section .inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--responsive-card-gap);
+    }
+
+    .cond-section .item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+
+    .howit-section .inner {
+        display: block;
+    }
+
+    .howit-section .content {
+        display: block;
+    }
+
+    .howit-section .safety {
+        margin-top: 2rem;
+    }
+
+    .credentials-section .inner {
+        grid-template-columns: 180px 1fr;
+        gap: 2.5rem;
     }
 }
 
 
 /* =========================================================
-   6. MOBILE — UP TO 767px
+   5. TABLET ONLY — 768px TO 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .main-header > .container {
+        min-height: 80px;
+    }
+
+    .main-header .mobile-menu {
+        max-height: calc(100vh - 80px);
+    }
+
+    /* treatment cards: 2 per row on tablet */
+    .treatment-section .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   6. MOBILE — 767px AND BELOW
 ========================================================= */
 
 @media (max-width: 767px) {
-
-    :root {
-        --responsive-section-space: 42px;
-        --responsive-card-gap: 20px;
-    }
 
     html,
     body {
@@ -3459,109 +3377,33 @@ main {
         overflow-x: clip;
     }
 
-    #page,
-    main {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-
-    /* ---------- Consistent container padding ---------- */
-
-    .main-header > .container,
-    .hero-section > .container,
-    .welcome-section > .container,
-    .work-section > .container,
-    .treatment-section > .container,
-    .conditions-section > .container,
-    .process-section > .container,
-    .doctor-section > .container,
-    .patient-section > .container,
-    .contact-section > .container,
-    .page-hero-section > .container,
-    .stats-section > .container,
-    .mission-section > .container,
-    .team-section > .container,
-    .awards-section > .container,
-    .values-section > .container,
-    .cta-section > .container,
-    .main-footer > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
-    }
-
 
     /* ---------- Header ---------- */
 
-    .main-header {
-        position: sticky;
-        left: 0;
-        right: 0;
-        width: 100%;
-        margin: 0 !important;
-        z-index: 9999;
-    }
-
     .main-header > .container {
         position: relative;
-        display: flex;
-        align-items: center;
         justify-content: center;
-        min-height: 70px;
+        min-height: 68px;
         gap: 12px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
-    .logo-wrapper {
+    .main-header .logo-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex: 0 1 auto;
         min-width: 0;
         max-width: calc(100% - 60px);
         margin: 0 auto;
     }
 
-    .logo-wrapper > a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 6px;
+    .main-header .logo-wrapper > a {
+        gap: 8px;
         max-width: 100%;
     }
 
-    .logo-mark img {
-        display: block;
-        max-width: 55px;
-        max-height: 45px;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .logo-wordmark img {
-        display: block;
-        width: auto;
-        max-width: 155px;
-        max-height: 42px;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .menu-wrapper {
-        display: none !important;
-    }
-
-    .menu-icon {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
+    .main-header .menu-icon {
         position: absolute;
         top: 50%;
         right: var(--responsive-gutter);
@@ -3570,124 +3412,21 @@ main {
         height: 40px;
         margin: 0;
         padding: 0;
-        border: 0;
-        background: transparent;
-        color: inherit;
         font-size: 24px;
-        text-decoration: none;
-        cursor: pointer;
-        z-index: 10002;
     }
 
-    .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-height: calc(100vh - 70px);
-        overflow-x: hidden;
-        overflow-y: auto;
-        padding: 20px var(--responsive-gutter) 25px;
-        background: #fff;
-        z-index: 10001;
+    .main-header .mobile-menu {
+        max-height: calc(100vh - 68px);
     }
 
-    .mobile-menu.active,
-    .mobile-menu.open,
-    .mobile-menu.show {
-        display: block;
-    }
-
-    .mobile-menu ul {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .mobile-menu li {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .mobile-menu li a {
-        display: block;
-        width: 100%;
-        padding: 12px 0;
-        white-space: normal;
-    }
-
-    .mobile-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-        margin-top: 20px;
-    }
-
-    .mobile-actions a {
-        max-width: 100%;
+    .main-header .mobile-menu ul a {
+        font-size: 17px;
     }
 
 
-    /* ---------- Hero ---------- */
+    /* ---------- CENTER ALL TEXT ---------- */
 
-    .hero-section {
-        position: relative;
-        margin: 0 !important;
-        padding-top: 0;
-        min-height: auto;
-    }
-
-    .hero-section > .container {
-        margin-top: 0 !important;
-        padding-top: 2.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .hero-section .hero-logo {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-
-    /* explicit height (a height:auto here would show the logo at full file size) */
-    .hero-section .hero-logo img {
-        display: block;
-        width: auto;
-        max-width: 100%;
-        height: 90px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-section .content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero-section .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .hero-section .buttons a {
-        max-width: 100%;
-    }
-
-
-    /* ---------- Section spacing ---------- */
-
+    .hero-section,
     .welcome-section,
     .work-section,
     .treatment-section,
@@ -3695,104 +3434,147 @@ main {
     .process-section,
     .doctor-section,
     .patient-section,
-    .contact-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-        padding-left: 0;
-        padding-right: 0;
+    .contact-section,
+    .page-hero-section,
+    .stats-section,
+    .mission-section,
+    .team-section,
+    .awards-section,
+    .values-section,
+    .cta-section,
+    .what-section,
+    .local-section,
+    .cond-section,
+    .howit-section,
+    .steps-section,
+    .faq-section,
+    .credentials-section,
+    .main-footer {
+        text-align: center;
     }
 
-
-    /* ---------- Welcome and Doctor: image first ---------- */
-
-    .welcome-section .inner,
-    .doctor-section .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+    /* paragraphs and headings with a max-width stay centered */
+    :is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content, .team-section .heading, .cond-section .heading, .cta-section .content, .page-hero-section .content) p,
+    .hero-section .content :is(h1, h2),
+    .hero-section .content h4,
+    .hero-section .content p {
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .welcome-section .inner > .image,
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .image,
-    .doctor-section .inner > .content {
+    .hero-section > .container {
         width: 100%;
         max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
     }
 
-    .welcome-section .inner > .image,
-    .doctor-section .inner > .image {
-        order: 1;
+    .hero-section .hero-logo img {
+        height: 90px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .welcome-section .inner > .content,
-    .doctor-section .inner > .content {
-        order: 2;
+    .welcome-section .features {
+        justify-content: center;
     }
 
-    .welcome-section .image img,
-    .doctor-section .image img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-
-    /* ---------- Process connecting line ---------- */
-
-    .process-section .number::before,
-    .process-section .number::after,
-    .process-section .inner::before,
-    .process-section .inner::after,
-    .process-section .step::before,
-    .process-section .step::after {
-        display: none !important;
-        content: none !important;
-    }
-
-
-    /* ---------- Cards: one per row ---------- */
-
-    .work-section .inner,
-    .treatment-section .inner,
-    .conditions-section .inner,
-    .process-section .inner,
-    .patient-section .inner {
-        display: flex;
+    .patient-section .heading {
         flex-direction: column;
-        gap: var(--responsive-card-gap);
+        align-items: center;
     }
+
+    .patient-section .stat {
+        text-align: center;
+    }
+
+    /* process steps are not boxes: number above text, centered */
+    .process-section .number {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* ---------- BOXES KEEP LEFT-ALIGNED TEXT ---------- */
 
     .work-section .item,
     .treatment-section .item,
     .conditions-section .item,
-    .process-section .step,
-    .patient-section .item {
+    .patient-section .item,
+    .values-section .item,
+    .cond-section .item,
+    .team-section .item .info,
+    .doctor-section .review,
+    .howit-section .safety,
+    .faq-section .list {
+        text-align: left;
+    }
+
+    .treatment-section .item,
+    .patient-section .item,
+    .values-section .item,
+    .cond-section .item {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .doctor-section .review {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    /* ---------- One column grids ---------- */
+
+    .treatment-section .inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .conditions-section .inner,
+    .patient-section .inner {
+        grid-template-columns: 1fr;
+    }
+
+    .process-section .inner {
+        gap: 2rem;
+    }
+
+
+    /* ---------- Buttons: 100% width ---------- */
+
+    .hero-section .buttons,
+    .welcome-section .buttons,
+    .doctor-section .buttons,
+    .contact-section .buttons,
+    .mission-section .buttons,
+    .cta-section .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .hero-section .buttons a,
+    .welcome-section .buttons a,
+    .doctor-section .buttons a,
+    .contact-section .buttons a,
+    .mission-section .buttons a,
+    .cta-section .buttons a {
         width: 100%;
         max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .process-section .number {
-        max-width: 100%;
     }
 
 
-    /* ---------- Footer ---------- */
+    /* ---------- Footer: centered ---------- */
+
+    .main-footer {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
 
     .main-footer .footer-top {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 28px;
-        text-align: center;
     }
 
     .main-footer .footer-about,
@@ -3802,14 +3584,11 @@ main {
         align-items: center;
         width: 100%;
         max-width: 100%;
-        min-width: 0;
         margin: 0;
     }
 
     .main-footer .footer-logo-row {
-        display: flex;
         flex-wrap: wrap;
-        align-items: center;
         justify-content: center;
         gap: 15px;
         width: 100%;
@@ -3817,110 +3596,60 @@ main {
 
     .main-footer .footer-tagline {
         width: 100%;
-        text-align: center;
     }
 
-    .main-footer .footer-badges {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        max-width: 100%;
-    }
-
-    .main-footer .footer-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
-    }
-
-
-    /* ================= ABOUT PAGE — MOBILE ================= */
-
-    /* hero: centered */
-    .page-hero-section {
-        padding-top: 4rem;
-        padding-bottom: 3rem;
-        text-align: center;
-    }
-
-    .page-hero-section .content p {
+    .main-footer .footer-tagline p {
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* stat bar: 2 columns */
+    .main-footer .footer-badges {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .main-footer .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+    }
+
+
+    /* ================= ABOUT PAGE ================= */
+
+    .page-hero-section {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+    }
+
     .stats-section {
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
     }
 
     .stats-section .inner {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.75rem var(--responsive-card-gap);
     }
 
-    .stats-section .number {
-        font-size: 2.4rem;
-    }
-
-    /* mission: image first, centered text, full width button */
-    .mission-section,
-    .team-section,
-    .values-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-    }
-
     .mission-section .inner {
-        display: flex;
-        flex-direction: column;
         gap: 24px;
     }
 
-    .mission-section .inner > .image,
-    .mission-section .inner > .content {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        flex: 0 0 auto;
-    }
-
-    .mission-section .content,
-    .team-section .heading,
-    .values-section .heading {
-        text-align: center;
-    }
-
-    .team-section .heading p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .mission-section .buttons {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .mission-section .buttons a {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* team cards: stacked and centered */
     .team-section .inner {
         gap: var(--responsive-card-gap);
         margin-top: 2.5rem;
     }
 
+    /* team card: photo centered on top, text left aligned (box) */
     .team-section .item {
         flex-direction: column;
         align-items: center;
         padding: 1.5rem;
-        text-align: center;
+    }
+
+    .team-section .item .info {
+        width: 100%;
     }
 
     .team-section .photo {
@@ -3928,7 +3657,6 @@ main {
         height: 250px;
     }
 
-    /* awards: one per row */
     .awards-section {
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
@@ -3940,141 +3668,138 @@ main {
         gap: 2rem;
     }
 
-    .awards-section .divider {
-        display: none;
+    .values-section .inner {
+        margin-top: 2rem;
     }
 
-    /* values: one per row, centered */
-    .values-section .inner {
+    .cta-section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+
+    /* ================= KETAMINE PAGE ================= */
+
+    .what-section .inner {
+        gap: 24px;
+    }
+
+    .cond-section .inner {
         display: flex;
         flex-direction: column;
         gap: var(--responsive-card-gap);
         margin-top: 2rem;
     }
 
-    .values-section .item {
+    .cond-section .item {
         width: 100%;
         max-width: 100%;
         min-width: 0;
         flex: 0 0 auto;
-        padding: 1.75rem 1.5rem;
-        text-align: center;
     }
 
-    /* CTA: stacked full width buttons */
-    .cta-section {
-        padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
+    .howit-section .content :is(h2, h3) {
+        margin-bottom: 1.5rem;
     }
 
-    .cta-section .content h2 {
-        font-size: 1.9rem;
+    .howit-section .safety {
+        margin-top: 1.75rem;
     }
 
-    .cta-section .buttons {
-        display: flex;
+    /* timeline: number above text, no vertical line */
+    .steps-section .inner {
+        margin-top: 2rem;
+    }
+
+    .steps-section .item {
         flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 2rem;
     }
 
-    .cta-section .buttons a {
-        width: 100%;
-        max-width: 100%;
+    .steps-section .item::after {
+        display: none !important;
+    }
+
+    .faq-section .list {
+        margin-top: 2rem;
+    }
+
+    .credentials-section .inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .credentials-section .badge {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
+    .credentials-section .credentials-link {
+        display: block;
     }
 }
 
 
 /* =========================================================
-   7. SMALL MOBILE — UP TO 480px
+   7. SMALL MOBILE — 480px AND BELOW
 ========================================================= */
 
 @media (max-width: 480px) {
 
-    :root {
-        --responsive-gutter: 24px;
-        --responsive-section-space: 35px;
-        --responsive-card-gap: 18px;
-    }
-
     .main-header > .container {
-        min-height: 65px;
+        min-height: 64px;
     }
 
-    .logo-mark img {
-        max-width: 45px;
-        max-height: 38px;
+    .main-header .mobile-menu {
+        max-height: calc(100vh - 64px);
     }
 
-    .logo-wordmark img {
-        max-width: 135px;
-        max-height: 36px;
-    }
-
-    .menu-icon {
+    .main-header .menu-icon {
         width: 36px;
         height: 36px;
         font-size: 22px;
     }
 
-    .mobile-menu {
-        max-height: calc(100vh - 65px);
+    .hero-section .hero-logo img {
+        height: 80px;
     }
 
-    .hero-section .buttons {
-        flex-direction: column;
-        align-items: stretch;
+    .treatment-section .item,
+    .patient-section .item,
+    .values-section .item,
+    .cond-section .item {
+        padding: 1.5rem 1.25rem;
     }
 
-    .hero-section .buttons a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .main-footer .footer-logo-row,
-    .main-footer .footer-badges {
-        gap: 10px;
-    }
-
-    /* about */
-    .stats-section .number {
-        font-size: 2.1rem;
+    .work-section .item {
+        padding: 2rem 1.5rem;
     }
 
     .team-section .photo {
         width: 180px;
         height: 225px;
     }
+
+    .main-footer .footer-logo-row,
+    .main-footer .footer-badges {
+        gap: 10px;
+    }
 }
 
 
 /* =========================================================
-   8. EXTRA-SMALL MOBILE — UP TO 374px
+   8. EXTRA-SMALL MOBILE — 374px AND BELOW
 ========================================================= */
 
 @media (max-width: 374px) {
 
-    :root {
-        --responsive-gutter: 18px;
-        --responsive-section-space: 30px;
-    }
-
-    .logo-wrapper {
+    .main-header .logo-wrapper {
         max-width: calc(100% - 48px);
     }
 
-    .logo-mark img {
-        max-width: 38px;
-        max-height: 34px;
-    }
-
-    .logo-wordmark img {
-        max-width: 115px;
-        max-height: 32px;
-    }
-
-    .menu-icon {
-        right: var(--responsive-gutter);
+    .main-header .menu-icon {
         width: 32px;
         height: 32px;
         font-size: 20px;
@@ -4084,9 +3809,12 @@ main {
         height: 72px;
     }
 
-    /* about */
     .stats-section .inner {
         grid-template-columns: 1fr;
+    }
+
+    .work-section .item {
+        padding: 1.75rem 1.25rem;
     }
 
     .team-section .photo {

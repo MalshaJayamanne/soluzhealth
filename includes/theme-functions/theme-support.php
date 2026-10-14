@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -10,11 +11,10 @@ if (function_exists('add_theme_support')) {
 }
 
 /**
- * Add custom colors to wysiwyg editor
+ * Add custom colors to WYSIWYG editor
  */
 function theme_editor_color_options($init)
 {
-
     $custom_colours = '
         "000000", "Black",
         "993300", "Burnt orange",
@@ -51,15 +51,16 @@ function theme_editor_color_options($init)
         "FF99CC", "Pink",
         "FFCC99", "Peach",
         "FFFF99", "Light yellow",
-        "1D445B", "Primary Color",
-        "676363", "Secondary Color",
+        "36A9FF", "Primary Blue",
+        "808EED", "Secondary Purple",
+        "C0DFFF", "Light Blue",
+        "0A1F3D", "Dark Navy"
     ';
 
-    // build colour grid default+custom colors
+    // Build color grid with default and custom colors.
     $init['textcolor_map'] = '[' . $custom_colours . ']';
 
-    // change the number of rows in the grid if the number of colors changes
-    // 8 swatches per row
+    // 8 swatches per row.
     $init['textcolor_rows'] = 6;
 
     return $init;
