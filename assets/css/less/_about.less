@@ -1,66 +1,715 @@
-section.about-doctor {
+// =========================================================
+// ABOUT PAGE
+// =========================================================
 
-    .row {
-        --bs-gutter-x: 3rem;
-        --bs-gutter-y: 2rem;
-    }
-
-    .content-wrapper {
-        padding: 60px 0;
-    }
-
-    @media @mobileTab {
-        text-align: center;
-
-        .content-wrapper {
-            padding: 0;
-        }
-    }
+.page-hero-section,
+.stats-section,
+.mission-section,
+.team-section,
+.awards-section,
+.values-section,
+.cta-section {
+  position: relative;
+  font-family: @font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: @text;
 }
 
-section.about-team {
-    background-color: @primary-color-light;
-    padding: @default-margin 0;
+// Shared eyebrow / title
+:is(.mission-section .content, .team-section .heading, .values-section .heading) {
+  h4 {
+    font-family: @font-display;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: @brand-blue;
+    margin: 0 0 0.75rem;
+  }
 
-    .row {
-        --bs-gutter-x: 2rem;
-        --bs-gutter-y: 2rem;
+  :is(h2, h3) {
+    font-family: @font-display;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: @brand-navy;
+    margin: 0 0 1rem;
+
+    span {
+      font-style: normal;
+      color: @brand-blue;
+    }
+  }
+}
+
+.mission-section .content :is(h2, h3) {
+  margin-bottom: 1.25rem;
+}
+
+// =========================================================
+// PAGE HERO
+// =========================================================
+
+.page-hero-section {
+  background: @brand-navy;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.2;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 31, 61, 0.4) 100%);
+    pointer-events: none;
+  }
+
+  > .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .breadcrumb {
+    display: block;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    background: none;
+    font-family: @font-body;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+
+    a {
+      color: rgba(255, 255, 255, 0.6);
+
+      &:hover { color: @brand-blue; }
+    }
+  }
+
+  h1 {
+    font-family: @font-display;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin: 0 0 1.25rem;
+
+    :is(span, em) {
+      font-style: normal;
+      color: @brand-blue;
+    }
+  }
+
+  .content p {
+    font-family: @font-body;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 580px;
+    margin: 0;
+  }
+}
+
+// =========================================================
+// STAT BAR
+// =========================================================
+
+.stats-section {
+  background: @brand-navy;
+  padding: 3.5rem 0;
+
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .item { text-align: center; }
+
+  .number {
+    font-family: @font-display;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: @brand-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+// =========================================================
+// MISSION
+// =========================================================
+
+.mission-section {
+  background: @off-white;
+  padding: 6rem 0;
+
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .image {
+    aspect-ratio: 4 / 3;
+    border-radius: @radius;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    h5 {
+      display: inline-block;
+      font-family: @font-display;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: @brand-navy;
+      background: @brand-light-blue;
+      border-radius: 20px;
+      padding: 6px 14px;
+      margin: 0 0 1rem;
+    }
+
+    p {
+      font-family: @font-body;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: @text-muted;
+      margin: 0 0 1rem;
+    }
+  }
+
+  .buttons { margin-top: 1.5rem; }
+}
+
+// =========================================================
+// TEAM
+// =========================================================
+
+.team-section {
+  background: #fff;
+  padding: 6rem 0;
+
+  .heading p {
+    font-family: @font-body;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: @text-muted;
+    max-width: 580px;
+    margin: 0;
+  }
+
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 880px;
+    margin: 3.5rem auto 0;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    background: @off-white;
+    border-radius: @radius;
+    scroll-margin-top: 100px;
+  }
+
+  .photo {
+    flex-shrink: 0;
+    width: 160px;
+    height: 200px;
+    border-radius: @radius;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .info {
+    h3 {
+      font-family: @font-display;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: @brand-navy;
+      margin: 0 0 2px;
+    }
+
+    h4 {
+      font-family: @font-display;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.7;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: @brand-blue;
+      margin: 0 0 0.75rem;
+    }
+
+    p {
+      font-family: @font-body;
+      font-size: 14.5px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: @text-muted;
+      margin: 0;
+
+      + p { margin-top: 0.75rem; }
+    }
+  }
+}
+
+// =========================================================
+// AWARDS
+// =========================================================
+
+.awards-section {
+  background: @sage-light;
+  padding: 3rem 0;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .item { text-align: center; }
+
+  .icon {
+    font-size: 2rem;
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+  }
+
+  .item {
+    h4 {
+      font-family: @font-display;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.7;
+      color: @brand-navy;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 1.7;
+      color: @text-muted;
+      margin: 0;
+    }
+  }
+
+  .divider {
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: @border;
+  }
+}
+
+// =========================================================
+// VALUES
+// =========================================================
+
+.values-section {
+  background: @brand-navy;
+  padding: 6rem 0;
+
+  .heading :is(h4, h2, h3) {
+    color: #fff;
+  }
+
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .item {
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid @border;
+    border-radius: @radius;
+  }
+
+  .number {
+    font-family: @font-display;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    color: @sage-light;
+    margin-bottom: 0.75rem;
+  }
+
+  .item {
+    h3 {
+      font-family: @font-display;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: @brand-navy;
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      font-family: @font-body;
+      font-size: 14px;
+      line-height: 1.75;
+      color: @text-muted;
+      margin: 0;
+    }
+  }
+}
+
+// =========================================================
+// CTA BAND
+// =========================================================
+
+.cta-section {
+  background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
+  padding: 4.5rem 0;
+  text-align: center;
+
+  .content {
+    h2 {
+      font-family: @font-display;
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: @brand-navy;
+      margin: 0 0 0.75rem;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: @brand-navy-soft;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+// =========================================================
+// ABOUT RESPONSIVE
+// =========================================================
+
+@media (max-width: 1024px) {
+  .mission-section,
+  .team-section,
+  .values-section {
+    padding-top: var(--responsive-section-space);
+    padding-bottom: var(--responsive-section-space);
+  }
+
+  :is(.mission-section .content, .team-section .heading, .values-section .heading) {
+    h4 {
+      font-size: var(--fs-eyebrow);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+
+    :is(h2, h3) {
+      font-size: var(--fs-title);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      overflow-wrap: break-word;
+    }
+  }
+
+  :is(.mission-section .content, .team-section .heading) p {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+
+  .page-hero-section {
+    padding-top: 4.5rem;
+    padding-bottom: 3.5rem;
+
+    h1 {
+      font-size: var(--fs-page-title);
+      line-height: 1.1;
+      overflow-wrap: break-word;
+    }
+
+    .content p { font-size: var(--fs-lead); }
+  }
+
+  .stats-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    .inner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem var(--responsive-card-gap);
+    }
+
+    .number { font-size: var(--fs-stat); }
+  }
+
+  .values-section .number { font-size: var(--fs-stat); }
+
+  .mission-section .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    > .image,
+    > .content {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      flex: 0 0 auto;
+    }
+  }
+
+  .mission-section .image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .team-section {
+    .inner {
+      max-width: 100%;
+      gap: 2rem;
+    }
+    .info h4 { font-size: 11px; }
+    .info h3 {
+      font-size: var(--fs-card-title);
+      line-height: 1.35;
+    }
+    .info p {
+      font-size: var(--fs-card-text);
+      line-height: 1.7;
+    }
+  }
+
+  .awards-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+
+    .inner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem var(--responsive-card-gap);
+    }
+
+    .divider { display: none; }
+  }
+
+  .values-section .inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--responsive-card-gap);
+    margin-top: 2.5rem;
+  }
+
+  .values-section .item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+
+    h3 {
+      font-size: var(--fs-card-title);
+      line-height: 1.35;
+    }
+    p {
+      font-size: var(--fs-card-text);
+      line-height: 1.7;
+    }
+  }
+
+  .cta-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .content h2 {
+      font-size: var(--fs-cta);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .content p {
+      font-size: var(--fs-body);
+      line-height: 1.7;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .page-hero-section,
+  .stats-section,
+  .mission-section,
+  .team-section,
+  .awards-section,
+  .values-section,
+  .cta-section {
+    text-align: center;
+  }
+
+  :is(.team-section .heading, .cta-section .content) p,
+  .page-hero-section .content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero-section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .stats-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+
+    .inner {
+      gap: 1.75rem var(--responsive-card-gap);
+    }
+  }
+
+  .mission-section .inner { gap: 24px; }
+
+  .team-section {
+    .inner {
+      gap: var(--responsive-card-gap);
+      margin-top: 2.5rem;
     }
 
     .item {
-        overflow: hidden;
-        height: 100%;
-        padding: 20px;
-        background-color: #FFF;
-        border-radius: 20px;
-
-        .image {
-            position: relative;
-            padding-top: 120%;
-            width: calc(100% + 40px);
-            margin: -20px -20px 20px;
-        }
-
-        h4 {
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: 24px;
-        }
-
-        h6 {
-            margin-bottom: 10px;
-            color: @primary-color;
-        }
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
     }
 
-    @media @mobileTab {
-        text-align: center;
+    .item .info {
+      width: 100%;
+      text-align: left;
     }
+
+    .photo {
+      width: 200px;
+      height: 250px;
+    }
+  }
+
+  .awards-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  .values-section {
+    .inner { margin-top: 2rem; }
+    .item { text-align: left; }
+  }
+
+  .cta-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .mission-section .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+
+    a {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }
 
-section.about-office-gallery {
-    .row {
-        --bs-gutter-y: 1.5rem;
-        justify-content: center;
-    }
+@media (max-width: 480px) {
+  .team-section .photo {
+    width: 180px;
+    height: 225px;
+  }
+}
+
+@media (max-width: 374px) {
+  .stats-section .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .team-section .photo {
+    width: 160px;
+    height: 200px;
+  }
 }

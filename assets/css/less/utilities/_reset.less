@@ -226,6 +226,8 @@ body {
         width: 100%;
         height: 90vh;
         .fade-color-gradient(@primary-color-light, 0deg);
+        z-index: -1; // keep it behind everything
+        pointer-events: none;
     }
 }
 
@@ -246,8 +248,9 @@ div>p:last-child {
     margin-bottom: 0px;
 }
 
+// IMPORTANT: removed the forced margin-top that was causing big gaps
 section {
-    margin-top: @default-margin;
+    // margin-top: @default-margin;   ← REMOVED
     position: relative;
 }
 

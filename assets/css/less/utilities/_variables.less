@@ -1,3 +1,11 @@
+// =========================================================
+// SOLUZ HEALTH — VARIABLES 
+// =========================================================
+
+// ---------------------------------------------------------
+// OLD / DEFAULT THEME VARIABLES (needed by _reset.less etc.)
+// ---------------------------------------------------------
+
 @primary-color: #042B43;
 @secondary-color: #676363;
 
@@ -27,7 +35,7 @@
 @mobile: ~'screen and (max-width: @{mobile-device-width})';
 @mobileTab: ~'screen and (max-width: @{mobile-tab-device-width})';
 @tablet: ~'screen and (min-width: 768px) and (max-width: @{tablet-device-width})';
-@ipadLandscape: ~ 'screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1)';
+@ipadLandscape: ~'screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1)';
 @desktop: ~'screen and (min-width: 1025px)';
 @desktop1600: ~'screen and (min-width: 1600px)';
 @desktop1366: ~'screen and (min-width: 1025px) and (max-width: 1366px)';
@@ -42,3 +50,54 @@
     background: @color;
     background: linear-gradient(@rotation, fade(@color, 0%) 0%, @color 100%);
 }
+
+// ---------------------------------------------------------
+// NEW SOLUZ HEALTH VARIABLES
+// ---------------------------------------------------------
+
+// Brand
+@brand-blue:        #36A9FF;
+@brand-purple:      #808EED;
+@brand-light-blue:  #C0DFFF;
+@brand-white:       #FFFFFF;
+@brand-navy:        #0A1F3D;
+@brand-navy-soft:   #1B3358;
+@brand-mid:         #4A7FB8;
+
+// Neutrals
+@sage-light:        #E8F4FF;
+@text:              #1A2332;
+@text-muted:        #5A6B82;
+@white:             #fff;
+@off-white:         #F4F9FF;
+@border:            #D8E4F0;
+@radius:            8px;
+
+// Fonts (new)
+@font-display:      'Oswald', 'Arial Narrow', sans-serif;
+@font-body:         'Montserrat', 'Helvetica', sans-serif;
+
+// Responsive defaults (overridden in media queries)
+@responsive-gutter:         32px;
+@responsive-section-space:  72px;
+@responsive-card-gap:       20px;
+@responsive-hero-space:     80px;
+
+@logo-mark: 44px;
+@logo-word: 38px;
+
+@fs-hero:           48px;
+@fs-hero-sub:       20px;
+@fs-page-title:     44px;
+@fs-lead:           17px;
+@fs-eyebrow:        26px;
+@fs-title:          40px;
+@fs-title-sm:       28px;
+@fs-cta:            34px;
+@fs-body:           16px;
+@fs-card-title-lg:  24px;
+@fs-card-title:     20px;
+@fs-card-text:      14px;
+@fs-stat:           44px;
+@fs-rating:         42px;
+@fs-score:          36px;

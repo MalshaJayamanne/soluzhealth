@@ -216,11 +216,11 @@
             "sub_fields": [
                 {
                     "key": "field_6acf50619925f",
-                    "label": "Time (Number)",
+                    "label": "Time",
                     "name": "time",
                     "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "(00:00)",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -229,11 +229,9 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": "",
-                    "max": "",
+                    "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
-                    "step": "",
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_6acf4faf9925d"
@@ -478,30 +476,6 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_6acf54579926b",
-                    "label": "Number",
-                    "name": "number",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "min": "",
-                    "max": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6acf54029926a"
-                },
-                {
                     "key": "field_6acf546b9926c",
                     "label": "Label",
                     "name": "label",
@@ -521,6 +495,28 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "parent_repeater": "field_6acf54029926a"
+                },
+                {
+                    "key": "field_6acf54579926b",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": "",
+                    "placeholder": "",
+                    "new_lines": "",
                     "parent_repeater": "field_6acf54029926a"
                 }
             ]
@@ -651,7 +647,7 @@
                     "name": "content",
                     "aria-label": "",
                     "type": "wysiwyg",
-                    "instructions": "Use <code>h4<\/code> for the title.<br>\r\nUse <code>h3<\/code> for the sub heading below the title.",
+                    "instructions": "Use <code>h5<\/code> for the title.<br>\r\nUse <code>h3<\/code> for the sub heading below the title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -847,7 +843,7 @@
                     "name": "content",
                     "aria-label": "",
                     "type": "wysiwyg",
-                    "instructions": "Use <code>h5<\/code>for the sub heading above the title.<br>\r\nUse <code>h4<\/code> for the title.",
+                    "instructions": "Use <code>h5<\/code>for the sub heading above the title.<br>\r\nUse <code>h3<\/code> for the title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -926,5 +922,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791974995
+    "modified": 1792042752
 }
