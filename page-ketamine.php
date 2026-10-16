@@ -29,7 +29,6 @@ $sub_field = function (array $names) {
     return '';
 };
 
-// First phone number from the theme option (used for the "Call" button)
 $call_number = '';
 if ($telephone) {
     $phones      = array_filter(array_map('trim', explode(',', $telephone)));

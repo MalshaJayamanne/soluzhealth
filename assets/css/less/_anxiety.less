@@ -1,0 +1,456 @@
+// ==========================================================
+// SHARED SECTION STYLES
+// ==========================================================
+.anxiety-treatment-section,
+.anxiety-signs-section,
+.anxiety-approach-section {
+    position: relative;
+    padding: 6rem 0;
+    font-family: @font-body;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: @text;
+
+    // Reset Bootstrap defaults inside these sections.
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    figure {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+// ==========================================================
+// SHARED HEADINGS
+// ==========================================================
+// Eyebrow headings.
+.anxiety-treatment-section .content h4,
+.anxiety-signs-section .heading h4,
+.anxiety-approach-section .heading h4 {
+    font-family: @font-display;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: @brand-blue;
+    margin: 0 0 0.75rem;
+}
+
+// Main headings.
+.anxiety-treatment-section .content h2,
+.anxiety-treatment-section .content h3,
+.anxiety-signs-section .heading h2,
+.anxiety-signs-section .heading h3,
+.anxiety-approach-section .heading h2,
+.anxiety-approach-section .heading h3 {
+    font-family: @font-display;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: @brand-navy;
+    margin: 0 0 1rem;
+
+    span {
+        font-style: normal;
+        color: @brand-blue;
+    }
+}
+
+// Subtitles.
+.anxiety-signs-section .heading p,
+.anxiety-approach-section .heading p {
+    font-family: @font-body;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: @text-muted;
+    max-width: 580px;
+    margin: 0;
+}
+
+// ==========================================================
+// DEPRESSION TREATMENT
+// ==========================================================
+.anxiety-treatment-section {
+    background: @off-white;
+
+    .inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+    }
+
+    .content {
+        p {
+            font-family: @font-body;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: @text-muted;
+            margin: 0 0 1rem;
+        }
+    }
+
+    .buttons {
+        margin-top: 1.5rem;
+    }
+
+    .image {
+        aspect-ratio: 4 / 3;
+        border-radius: @radius;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+// ==========================================================
+// RECOGNIZING THE SIGNS
+// ==========================================================
+.anxiety-signs-section {
+    background: @white;
+
+    .signs {
+        max-width: 600px;
+        margin: 2rem 0 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            border-bottom: 1px solid @border;
+            font-size: 15px;
+            line-height: 1.7;
+            color: @text-muted;
+
+            &:first-child {
+                border-top: 1px solid @border;
+            }
+
+            &::before {
+                content: '•';
+                position: absolute;
+                left: 0;
+                color: @brand-blue;
+            }
+        }
+    }
+
+    .note {
+        margin: 1rem 0 0;
+        font-size: 13px;
+        font-style: italic;
+        line-height: 1.7;
+        color: @text-muted;
+    }
+}
+
+// ==========================================================
+// OUR APPROACH
+// ==========================================================
+.anxiety-approach-section {
+    background: @brand-navy;
+
+    .heading {
+        h4,
+        h2,
+        h3 {
+            color: @white;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    .inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .item {
+        padding: 2rem;
+        background: @white;
+        border: 1px solid @border;
+        border-radius: @radius;
+        transition: border-color 0.2s, transform 0.2s;
+
+        &:hover {
+            border-color: @brand-blue;
+            transform: translateY(-2px);
+        }
+
+        h3,
+        h2 {
+            font-family: @font-display;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            color: @brand-navy;
+            margin: 0 0 0.6rem;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: @text-muted;
+            margin: 0;
+        }
+    }
+
+    .learn-link {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.7;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: @brand-blue;
+        transition: color 0.2s;
+
+        &::after {
+            content: ' →';
+        }
+
+        &:hover {
+            color: @brand-navy;
+        }
+    }
+}
+
+// ==========================================================
+// RESPONSIVE STYLES
+// ==========================================================
+
+// ----------------------------------------------------------
+// LAPTOP: 1025px–1199px
+// ----------------------------------------------------------
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .anxiety-treatment-section > .container,
+    .anxiety-signs-section > .container,
+    .anxiety-approach-section > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .anxiety-treatment-section {
+        .inner {
+            gap: 3.5rem;
+        }
+    }
+}
+
+// ----------------------------------------------------------
+// TABLET AND MOBILE: 1024px AND BELOW
+// ----------------------------------------------------------
+@media (max-width: 1024px) {
+
+    // Container sizing.
+
+    .anxiety-treatment-section > .container,
+    .anxiety-signs-section > .container,
+    .anxiety-approach-section > .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: var(--responsive-gutter);
+        padding-right: var(--responsive-gutter);
+    }
+
+    // Section spacing.
+    .anxiety-treatment-section,
+    .anxiety-signs-section,
+    .anxiety-approach-section {
+        padding-top: var(--responsive-section-space);
+        padding-bottom: var(--responsive-section-space);
+    }
+
+    // Eyebrow typography.
+
+    .anxiety-treatment-section .content h4,
+    .anxiety-signs-section .heading h4,
+    .anxiety-approach-section .heading h4 {
+        font-size: var(--fs-eyebrow);
+        line-height: 1.25;
+        margin-bottom: 0.6rem;
+    }
+
+    // Main heading typography.
+    .anxiety-treatment-section .content h2,
+    .anxiety-treatment-section .content h3,
+    .anxiety-signs-section .heading h2,
+    .anxiety-signs-section .heading h3,
+    .anxiety-approach-section .heading h2,
+    .anxiety-approach-section .heading h3 {
+        font-size: var(--fs-title);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        overflow-wrap: break-word;
+    }
+
+    // Subtitle typography.
+    .anxiety-signs-section .heading p,
+    .anxiety-approach-section .heading p {
+        font-size: var(--fs-body);
+        line-height: 1.7;
+    }
+
+    // Approach card typography.
+    .anxiety-approach-section .item {
+        h3,
+        h2 {
+            font-size: var(--fs-card-title);
+            line-height: 1.35;
+        }
+
+        p {
+            font-size: var(--fs-card-text);
+            line-height: 1.7;
+        }
+    }
+
+    // Symptom list typography.
+    .anxiety-signs-section .signs li {
+        font-size: var(--fs-card-text);
+        line-height: 1.7;
+    }
+
+    // Treatment: text above image.
+    .anxiety-treatment-section {
+        .inner {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            > * {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                flex: 0 0 auto;
+            }
+        }
+
+        .image {
+            aspect-ratio: 16 / 10;
+        }
+    }
+
+    // Symptom list uses the available width.
+    .anxiety-signs-section {
+        .signs {
+            max-width: 100%;
+        }
+    }
+
+    // Keep approach cards in two columns on tablet.
+    .anxiety-approach-section {
+        .inner {
+            gap: var(--responsive-card-gap);
+        }
+    }
+}
+
+
+// ----------------------------------------------------------
+// MOBILE: 767px
+// ----------------------------------------------------------
+@media (max-width: 767px) {
+
+    .anxiety-treatment-section,
+    .anxiety-signs-section,
+    .anxiety-approach-section {
+        text-align: center;
+    }
+
+    // Center heading descriptions.
+    .anxiety-signs-section .heading p,
+    .anxiety-approach-section .heading p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // Treatment buttons stack vertically.
+    .anxiety-treatment-section {
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            a {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    // Center the list block, not the list text.
+    .anxiety-signs-section {
+        .signs {
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+    }
+
+    // Approach heading spacing.
+    .anxiety-approach-section {
+        .heading {
+            p {
+                margin-bottom: 2rem;
+            }
+        }
+
+        // One card per row on mobile.
+        .inner {
+            grid-template-columns: 1fr;
+        }
+
+        .item {
+            padding: 1.75rem 1.5rem;
+            text-align: left;
+        }
+    }
+}
+
+// ----------------------------------------------------------
+// SMALL MOBILE: 480px AND BELOW
+// ----------------------------------------------------------
+@media (max-width: 480px) {
+    .anxiety-approach-section {
+        .item {
+            padding: 1.5rem 1.25rem;
+        }
+    }
+}

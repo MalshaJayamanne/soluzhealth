@@ -4,9 +4,6 @@
  */
 get_header();
 
-$appointment = get_theme_option('appointment_link');
-$hero_logo   = get_theme_option('footer_logo_wordmark');
-
 /**
  * Builds href / target / rel attributes from an ACF Link array.
  */
@@ -17,16 +14,21 @@ $link_attrs = function ($link) {
 };
 
 /**
- * Number (0-5) => ★★★★★
+ * Number (0-5) => Font Awesome stars.
  */
 $stars = function ($rating) {
-    $rating = max(0, min(5, (int) round((float) $rating)));
-    return str_repeat('★', $rating);
+    $count = max(0, min(5, (int) round((float) $rating)));
+    $html  = '';
+
+    for ($i = 0; $i < $count; $i++) {
+        $html .= '<i class="fa-solid fa-star" aria-hidden="true"></i>';
+    }
+
+    return $html;
 };
 ?>
 
 <?php
-/* ==================== HERO ==================== */
 $hero_image   = get_field('hero_image');
 $hero_content = get_field('hero_content');
 ?>
@@ -34,15 +36,15 @@ $hero_content = get_field('hero_content');
     <section class="hero-section" id="home">
         <?php if ($hero_image) : ?>
             <div class="hero-bg">
-                <?php get_image($hero_image, 'full', get_bloginfo('name'), FALSE); ?>
+                <?php get_image($hero_image, 'full', get_bloginfo('name'), false); ?>
             </div>
         <?php endif; ?>
 
         <div class="container">
             <div class="inner">
-                <?php if ($hero_logo) : ?>
+                <?php if ($hero_logo = get_field('hero_logo_wordmark')) : ?>
                     <div class="hero-logo">
-                        <?php get_image($hero_logo, 'full', get_bloginfo('name'), FALSE); ?>
+                        <?php get_image($hero_logo, 'full', get_bloginfo('name'), false); ?>
                     </div>
                 <?php endif; ?>
 
@@ -52,6 +54,7 @@ $hero_content = get_field('hero_content');
                     </div>
                 <?php endif; ?>
 
+                <?php $appointment = get_theme_option('appointment_link'); ?>
                 <?php if (!empty($appointment['url'])) : ?>
                     <div class="buttons">
                         <a <?php echo $link_attrs($appointment); ?> class="theme-blue">
@@ -65,10 +68,8 @@ $hero_content = get_field('hero_content');
 <?php endif; ?>
 
 <?php
-/* ==================== WELCOME ==================== */
 $welcome_image   = get_field('welcome_image');
 $welcome_content = get_field('welcome_content');
-$welcome_link    = get_field('welcome_link');
 ?>
 <?php if ($welcome_image || $welcome_content) : ?>
     <section class="welcome-section" id="about">
@@ -76,7 +77,7 @@ $welcome_link    = get_field('welcome_link');
             <div class="inner">
                 <?php if ($welcome_image) : ?>
                     <div class="image">
-                        <?php get_image($welcome_image, 'large', get_bloginfo('name'), FALSE); ?>
+                        <?php get_image($welcome_image, 'large', '', false); ?>
                     </div>
                 <?php endif; ?>
 
@@ -93,6 +94,7 @@ $welcome_link    = get_field('welcome_link');
                         </ul>
                     <?php endif; ?>
 
+                    <?php $welcome_link = get_field('welcome_link'); ?>
                     <?php if (!empty($welcome_link['url'])) : ?>
                         <div class="buttons">
                             <a <?php echo $link_attrs($welcome_link); ?> class="theme-outline">
@@ -106,11 +108,7 @@ $welcome_link    = get_field('welcome_link');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== HOW WE WORK ==================== */
-$work_title = get_field('work_title');
-?>
-<?php if ($work_title || have_rows('work_cards')) : ?>
+<?php if (($work_title = get_field('work_title')) || have_rows('work_cards')) : ?>
     <section class="work-section">
         <div class="container">
             <?php if ($work_title) : ?>
@@ -137,11 +135,7 @@ $work_title = get_field('work_title');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== TREATMENTS ==================== */
-$treatment_content = get_field('treatment_content');
-?>
-<?php if ($treatment_content || have_rows('treatments')) : ?>
+<?php if (($treatment_content = get_field('treatment_content')) || have_rows('treatments')) : ?>
     <section class="treatment-section">
         <div class="container">
             <?php if ($treatment_content) : ?>
@@ -153,12 +147,12 @@ $treatment_content = get_field('treatment_content');
             <?php if (have_rows('treatments')) : ?>
                 <div class="inner">
                     <?php while (have_rows('treatments')) : the_row(); ?>
-                        <?php $link = get_sub_field('link'); ?>
                         <div class="item">
                             <?php if ($title = get_sub_field('title')) : ?>
                                 <h3><?php echo esc_html($title); ?></h3>
                             <?php endif; ?>
                             <?php echo get_sub_field('content'); ?>
+                            <?php $link = get_sub_field('link'); ?>
                             <?php if (!empty($link['url'])) : ?>
                                 <a <?php echo $link_attrs($link); ?> class="more-link">
                                     <?php echo esc_html($link['title']); ?>
@@ -172,11 +166,7 @@ $treatment_content = get_field('treatment_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== CONDITIONS ==================== */
-$conditions_content = get_field('conditions_content');
-?>
-<?php if ($conditions_content || have_rows('conditions')) : ?>
+<?php if (($conditions_content = get_field('conditions_content')) || have_rows('conditions')) : ?>
     <section class="conditions-section" id="conditions">
         <div class="container">
             <?php if ($conditions_content) : ?>
@@ -188,7 +178,6 @@ $conditions_content = get_field('conditions_content');
             <?php if (have_rows('conditions')) : ?>
                 <div class="inner">
                     <?php while (have_rows('conditions')) : the_row(); ?>
-                        <?php $link = get_sub_field('link'); ?>
                         <div class="item">
                             <?php if ($title = get_sub_field('title')) : ?>
                                 <h3><?php echo esc_html($title); ?></h3>
@@ -196,6 +185,7 @@ $conditions_content = get_field('conditions_content');
                             <?php if ($content = get_sub_field('content')) : ?>
                                 <?php echo wp_kses_post(wpautop($content)); ?>
                             <?php endif; ?>
+                            <?php $link = get_sub_field('link'); ?>
                             <?php if (!empty($link['url'])) : ?>
                                 <a <?php echo $link_attrs($link); ?> class="more-link">
                                     <?php echo esc_html($link['title']); ?>
@@ -209,11 +199,7 @@ $conditions_content = get_field('conditions_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== PROCESS ==================== */
-$process_title = get_field('process_title');
-?>
-<?php if ($process_title || have_rows('processes')) : ?>
+<?php if (($process_title = get_field('process_title')) || have_rows('processes')) : ?>
     <section class="process-section" id="process">
         <div class="container">
             <?php if ($process_title) : ?>
@@ -244,11 +230,8 @@ $process_title = get_field('process_title');
 <?php endif; ?>
 
 <?php
-/* ==================== DOCTOR ==================== */
 $doctor_image   = get_field('doctor_image');
 $doctor_content = get_field('doctor_content');
-$team_review    = get_field('team_review');
-$team_link      = get_field('team_link');
 ?>
 <?php if ($doctor_image || $doctor_content) : ?>
     <section class="doctor-section" id="team">
@@ -256,33 +239,35 @@ $team_link      = get_field('team_link');
             <div class="inner">
                 <?php if ($doctor_image) : ?>
                     <div class="image">
-                        <?php get_image($doctor_image, 'large', get_bloginfo('name'), FALSE); ?>
+                        <?php get_image($doctor_image, 'large', '', false); ?>
                     </div>
                 <?php endif; ?>
 
                 <div class="content">
                     <?php echo $doctor_content; ?>
 
+                    <?php $team_review = get_field('team_review'); ?>
                     <?php if (!empty($team_review['content'])) : ?>
                         <div class="review">
                             <div class="score">
                                 <?php if (isset($team_review['rating']) && $team_review['rating'] !== '') : ?>
                                     <strong><?php echo esc_html(number_format((float) $team_review['rating'], 1)); ?></strong>
-                                    <span class="stars"><?php echo esc_html($stars($team_review['rating'])); ?></span>
+                                    <span class="stars"><?php echo $stars($team_review['rating']); ?></span>
                                 <?php endif; ?>
                                 <?php if (!empty($team_review['text'])) : ?>
-                                    <span class="label"><?php echo esc_html($team_review['text']); ?></span>
+                                    <h5 class="label"><?php echo esc_html($team_review['text']); ?></h5>
                                 <?php endif; ?>
                             </div>
                             <div class="quote">
                                 <?php echo wp_kses_post(wpautop($team_review['content'])); ?>
                                 <?php if (!empty($team_review['reviewer'])) : ?>
-                                    <span class="reviewer"><?php echo esc_html($team_review['reviewer']); ?></span>
+                                    <h6 class="reviewer"><?php echo esc_html($team_review['reviewer']); ?></h6>
                                 <?php endif; ?>
                             </div>
                         </div>
                     <?php endif; ?>
 
+                    <?php $team_link = get_field('team_link'); ?>
                     <?php if (!empty($team_link['url'])) : ?>
                         <div class="buttons">
                             <a <?php echo $link_attrs($team_link); ?> class="theme-blue">
@@ -296,12 +281,7 @@ $team_link      = get_field('team_link');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== PATIENT REVIEWS ==================== */
-$patient_title = get_field('patient_title');
-$review_stat   = get_field('review_stat');
-?>
-<?php if ($patient_title || have_rows('reviews')) : ?>
+<?php if (($patient_title = get_field('patient_title')) || have_rows('reviews')) : ?>
     <section class="patient-section">
         <div class="container">
             <div class="heading">
@@ -311,6 +291,7 @@ $review_stat   = get_field('review_stat');
                     </div>
                 <?php endif; ?>
 
+                <?php $review_stat = get_field('review_stat'); ?>
                 <?php if (!empty($review_stat['current'])) : ?>
                     <div class="stat">
                         <div class="rating">
@@ -319,9 +300,9 @@ $review_stat   = get_field('review_stat');
                                 <span>/ <?php echo esc_html((float) $review_stat['overall']); ?></span>
                             <?php endif; ?>
                         </div>
-                        <div class="stars"><?php echo esc_html($stars($review_stat['current'])); ?></div>
+                        <div class="stars"><?php echo $stars($review_stat['current']); ?></div>
                         <?php if (!empty($review_stat['text'])) : ?>
-                            <div class="label"><?php echo esc_html($review_stat['text']); ?></div>
+                            <h5 class="label"><?php echo esc_html($review_stat['text']); ?></h5>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
@@ -332,13 +313,13 @@ $review_stat   = get_field('review_stat');
                     <?php while (have_rows('reviews')) : the_row(); ?>
                         <div class="item">
                             <?php if ($rating = get_sub_field('rating')) : ?>
-                                <div class="stars"><?php echo esc_html($stars($rating)); ?></div>
+                                <div class="stars"><?php echo $stars($rating); ?></div>
                             <?php endif; ?>
                             <?php if ($content = get_sub_field('content')) : ?>
                                 <?php echo wp_kses_post(wpautop($content)); ?>
                             <?php endif; ?>
                             <?php if ($patient = get_sub_field('patient')) : ?>
-                                <span class="patient"><?php echo esc_html($patient); ?></span>
+                                <h6 class="patient"><?php echo esc_html($patient); ?></h6>
                             <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
@@ -348,11 +329,7 @@ $review_stat   = get_field('review_stat');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== CONTACT ==================== */
-$contact_content = get_field('contact_content');
-?>
-<?php if ($contact_content) : ?>
+<?php if ($contact_content = get_field('contact_content')) : ?>
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="inner">
@@ -360,6 +337,7 @@ $contact_content = get_field('contact_content');
                     <?php echo $contact_content; ?>
                 </div>
 
+                <?php $appointment = get_theme_option('appointment_link'); ?>
                 <?php if (!empty($appointment['url'])) : ?>
                     <div class="buttons">
                         <a <?php echo $link_attrs($appointment); ?> class="theme-blue">

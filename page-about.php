@@ -4,9 +4,6 @@
  */
 get_header();
 
-$appointment = get_theme_option('appointment_link');
-$telephone   = get_theme_option('telephone');
-
 /**
  * Builds href / target / rel attributes from an ACF Link array.
  */
@@ -15,27 +12,18 @@ $link_attrs = function ($link) {
     $rel    = ($target === '_blank') ? ' rel="noopener noreferrer"' : '';
     return 'href="' . esc_url($link['url']) . '" target="' . esc_attr($target) . '"' . $rel;
 };
-
-// First phone number from the theme option (used for the "Call" button)
-$call_number = '';
-if ($telephone) {
-    $phones      = array_filter(array_map('trim', explode(',', $telephone)));
-    $call_number = $phones ? reset($phones) : '';
-}
 ?>
 
 <?php
-/* ==================== PAGE HERO ==================== */
 $about_title   = get_field('about_title');
 $about_content = get_field('about_content');
-// Optional background: an "about_image" field on this page, otherwise the home page hero image
 $about_image   = get_field('about_image') ?: get_field('hero_image', get_option('page_on_front'));
 ?>
 <?php if ($about_title || $about_content) : ?>
     <section class="page-hero-section">
         <?php if ($about_image) : ?>
             <div class="page-hero-bg">
-                <?php get_image($about_image, 'full', get_bloginfo('name'), FALSE); ?>
+                <?php get_image($about_image, 'full', '', false); ?>
             </div>
         <?php endif; ?>
 
@@ -59,9 +47,6 @@ $about_image   = get_field('about_image') ?: get_field('hero_image', get_option(
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== STAT BAR ==================== */
-?>
 <?php if (have_rows('about_features')) : ?>
     <section class="stats-section">
         <div class="container">
@@ -82,10 +67,8 @@ $about_image   = get_field('about_image') ?: get_field('hero_image', get_option(
 <?php endif; ?>
 
 <?php
-/* ==================== MISSION ==================== */
 $mission_image   = get_field('mission_image');
 $mission_content = get_field('mission_content');
-$mission_link    = get_field('mission_link');
 ?>
 <?php if ($mission_image || $mission_content) : ?>
     <section class="mission-section">
@@ -93,13 +76,14 @@ $mission_link    = get_field('mission_link');
             <div class="inner">
                 <?php if ($mission_image) : ?>
                     <div class="image">
-                        <?php get_image($mission_image, 'large', get_bloginfo('name'), FALSE); ?>
+                        <?php get_image($mission_image, 'large', '', false); ?>
                     </div>
                 <?php endif; ?>
 
                 <div class="content">
                     <?php echo $mission_content; ?>
 
+                    <?php $mission_link = get_field('mission_link'); ?>
                     <?php if (!empty($mission_link['url'])) : ?>
                         <div class="buttons">
                             <a <?php echo $link_attrs($mission_link); ?> class="theme-blue">
@@ -113,11 +97,7 @@ $mission_link    = get_field('mission_link');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== TEAM ==================== */
-$team_content = get_field('team_content');
-?>
-<?php if ($team_content || have_rows('members')) : ?>
+<?php if (($team_content = get_field('team_content')) || have_rows('members')) : ?>
     <section class="team-section" id="team">
         <div class="container">
             <?php if ($team_content) : ?>
@@ -136,7 +116,7 @@ $team_content = get_field('team_content');
                         <div class="item">
                             <?php if ($member_image) : ?>
                                 <div class="photo">
-                                    <?php get_image($member_image, 'medium_large', get_bloginfo('name')); ?>
+                                    <?php get_image($member_image, 'medium_large', '', false); ?>
                                 </div>
                             <?php endif; ?>
                             <?php if ($member_content) : ?>
@@ -152,9 +132,6 @@ $team_content = get_field('team_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== AWARDS ==================== */
-?>
 <?php if (have_rows('awards')) : ?>
     <section class="awards-section">
         <div class="container">
@@ -177,11 +154,7 @@ $team_content = get_field('team_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== VALUES ==================== */
-// Field is currently named "title"; "values_title" also works if you rename it later
-$values_title = get_field('values_title') ?: get_field('title');
-?>
+<?php $values_title = get_field('values_title') ?: get_field('title'); ?>
 <?php if ($values_title || have_rows('values')) : ?>
     <section class="values-section">
         <div class="container">
@@ -207,11 +180,7 @@ $values_title = get_field('values_title') ?: get_field('title');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== CTA ==================== */
-$cta_content = get_field('cta_content');
-?>
-<?php if ($cta_content) : ?>
+<?php if ($cta_content = get_field('cta_content')) : ?>
     <section class="cta-section">
         <div class="container">
             <div class="inner">
@@ -219,6 +188,15 @@ $cta_content = get_field('cta_content');
                     <?php echo $cta_content; ?>
                 </div>
 
+                <?php
+                $appointment = get_theme_option('appointment_link');
+                $telephone   = get_theme_option('telephone');
+                $call_number = '';
+                if ($telephone) {
+                    $phones      = array_filter(array_map('trim', explode(',', $telephone)));
+                    $call_number = $phones ? reset($phones) : '';
+                }
+                ?>
                 <?php if (!empty($appointment['url']) || $call_number) : ?>
                     <div class="buttons">
                         <?php if (!empty($appointment['url'])) : ?>
