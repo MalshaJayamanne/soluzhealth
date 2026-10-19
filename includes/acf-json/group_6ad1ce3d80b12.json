@@ -65,7 +65,7 @@
             "name": "qgeneral",
             "aria-label": "",
             "type": "group",
-            "instructions": "",
+            "instructions": "Use <code>h4<\/code> for the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -81,7 +81,7 @@
                     "name": "title",
                     "aria-label": "",
                     "type": "wysiwyg",
-                    "instructions": "",
+                    "instructions": "Use <code>h4<\/code> for the title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -124,7 +124,7 @@
                             "name": "question",
                             "aria-label": "",
                             "type": "text",
-                            "instructions": "Use <code>h5<\/code>.",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -187,8 +187,8 @@
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
+                    "type": "wysiwyg",
+                    "instructions": "Use <code>h4<\/code> for the title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -197,11 +197,11 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
                     "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 },
                 {
                     "key": "field_6ad1d15adc181",
@@ -231,7 +231,7 @@
                             "name": "question",
                             "aria-label": "",
                             "type": "text",
-                            "instructions": "Use <code>h5<\/code> for the title.",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -547,9 +547,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page",
                 "operator": "==",
-                "value": "post"
+                "value": "360"
             }
         ]
     ],
@@ -565,5 +565,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792136621
+    "modified": 1792381685
 }

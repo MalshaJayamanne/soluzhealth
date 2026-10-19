@@ -28,13 +28,9 @@ $stars = function ($rating) {
 };
 ?>
 
-<?php
-$hero_image   = get_field('hero_image');
-$hero_content = get_field('hero_content');
-?>
-<?php if ($hero_image || $hero_content) : ?>
+<?php if ($hero_content = get_field('hero_content')) : ?>
     <section class="hero-section" id="home">
-        <?php if ($hero_image) : ?>
+        <?php if ($hero_image = get_field('hero_image')) : ?>
             <div class="hero-bg">
                 <?php get_image($hero_image, 'full', get_bloginfo('name'), false); ?>
             </div>
@@ -48,14 +44,11 @@ $hero_content = get_field('hero_content');
                     </div>
                 <?php endif; ?>
 
-                <?php if ($hero_content) : ?>
-                    <div class="content">
-                        <?php echo $hero_content; ?>
-                    </div>
-                <?php endif; ?>
+                <div class="content">
+                    <?php echo $hero_content; ?>
+                </div>
 
-                <?php $appointment = get_theme_option('appointment_link'); ?>
-                <?php if (!empty($appointment['url'])) : ?>
+                <?php if (($appointment = get_theme_option('appointment_link')) && !empty($appointment['url'])) : ?>
                     <div class="buttons">
                         <a <?php echo $link_attrs($appointment); ?> class="theme-blue">
                             <?php echo esc_html($appointment['title']); ?>
@@ -67,17 +60,13 @@ $hero_content = get_field('hero_content');
     </section>
 <?php endif; ?>
 
-<?php
-$welcome_image   = get_field('welcome_image');
-$welcome_content = get_field('welcome_content');
-?>
-<?php if ($welcome_image || $welcome_content) : ?>
+<?php if ($welcome_content = get_field('welcome_content')) : ?>
     <section class="welcome-section" id="about">
         <div class="container">
             <div class="inner">
-                <?php if ($welcome_image) : ?>
+                <?php if ($welcome_image = get_field('welcome_image')) : ?>
                     <div class="image">
-                        <?php get_image($welcome_image, 'large', '', false); ?>
+                        <?php get_image($welcome_image, 'large'); ?>
                     </div>
                 <?php endif; ?>
 
@@ -94,8 +83,7 @@ $welcome_content = get_field('welcome_content');
                         </ul>
                     <?php endif; ?>
 
-                    <?php $welcome_link = get_field('welcome_link'); ?>
-                    <?php if (!empty($welcome_link['url'])) : ?>
+                    <?php if (($welcome_link = get_field('welcome_link')) && !empty($welcome_link['url'])) : ?>
                         <div class="buttons">
                             <a <?php echo $link_attrs($welcome_link); ?> class="theme-outline">
                                 <?php echo esc_html($welcome_link['title']); ?>
@@ -152,8 +140,7 @@ $welcome_content = get_field('welcome_content');
                                 <h3><?php echo esc_html($title); ?></h3>
                             <?php endif; ?>
                             <?php echo get_sub_field('content'); ?>
-                            <?php $link = get_sub_field('link'); ?>
-                            <?php if (!empty($link['url'])) : ?>
+                            <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
                                 <a <?php echo $link_attrs($link); ?> class="more-link">
                                     <?php echo esc_html($link['title']); ?>
                                 </a>
@@ -185,8 +172,7 @@ $welcome_content = get_field('welcome_content');
                             <?php if ($content = get_sub_field('content')) : ?>
                                 <?php echo wp_kses_post(wpautop($content)); ?>
                             <?php endif; ?>
-                            <?php $link = get_sub_field('link'); ?>
-                            <?php if (!empty($link['url'])) : ?>
+                            <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
                                 <a <?php echo $link_attrs($link); ?> class="more-link">
                                     <?php echo esc_html($link['title']); ?>
                                 </a>
@@ -229,25 +215,20 @@ $welcome_content = get_field('welcome_content');
     </section>
 <?php endif; ?>
 
-<?php
-$doctor_image   = get_field('doctor_image');
-$doctor_content = get_field('doctor_content');
-?>
-<?php if ($doctor_image || $doctor_content) : ?>
+<?php if ($doctor_content = get_field('doctor_content')) : ?>
     <section class="doctor-section" id="team">
         <div class="container">
             <div class="inner">
-                <?php if ($doctor_image) : ?>
+                <?php if ($doctor_image = get_field('doctor_image')) : ?>
                     <div class="image">
-                        <?php get_image($doctor_image, 'large', '', false); ?>
+                        <?php get_image($doctor_image, 'large'); ?>
                     </div>
                 <?php endif; ?>
 
                 <div class="content">
                     <?php echo $doctor_content; ?>
 
-                    <?php $team_review = get_field('team_review'); ?>
-                    <?php if (!empty($team_review['content'])) : ?>
+                    <?php if (($team_review = get_field('team_review')) && !empty($team_review['content'])) : ?>
                         <div class="review">
                             <div class="score">
                                 <?php if (isset($team_review['rating']) && $team_review['rating'] !== '') : ?>
@@ -267,8 +248,7 @@ $doctor_content = get_field('doctor_content');
                         </div>
                     <?php endif; ?>
 
-                    <?php $team_link = get_field('team_link'); ?>
-                    <?php if (!empty($team_link['url'])) : ?>
+                    <?php if (($team_link = get_field('team_link')) && !empty($team_link['url'])) : ?>
                         <div class="buttons">
                             <a <?php echo $link_attrs($team_link); ?> class="theme-blue">
                                 <?php echo esc_html($team_link['title']); ?>
@@ -291,8 +271,7 @@ $doctor_content = get_field('doctor_content');
                     </div>
                 <?php endif; ?>
 
-                <?php $review_stat = get_field('review_stat'); ?>
-                <?php if (!empty($review_stat['current'])) : ?>
+                <?php if (($review_stat = get_field('review_stat')) && !empty($review_stat['current'])) : ?>
                     <div class="stat">
                         <div class="rating">
                             <?php echo esc_html(number_format((float) $review_stat['current'], 1)); ?>
@@ -337,8 +316,7 @@ $doctor_content = get_field('doctor_content');
                     <?php echo $contact_content; ?>
                 </div>
 
-                <?php $appointment = get_theme_option('appointment_link'); ?>
-                <?php if (!empty($appointment['url'])) : ?>
+                <?php if (($appointment = get_theme_option('appointment_link')) && !empty($appointment['url'])) : ?>
                     <div class="buttons">
                         <a <?php echo $link_attrs($appointment); ?> class="theme-blue">
                             <?php echo esc_html($appointment['title']); ?>
