@@ -134,6 +134,32 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_6ad59ac4a939e",
+            "label": "Logo Wordmark White",
+            "name": "logo_wordmark_white",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_672f75a6400b2",
             "label": "Menu",
             "name": "menu",
@@ -153,23 +179,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_6ad0c093de3f6",
-            "label": "Phone Link",
-            "name": "phone",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "allow_in_bindings": 0
         },
         {
             "key": "field_6acccda35bbf3",
@@ -265,6 +274,23 @@
             "maxlength": "",
             "rows": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_6ad5dec12f02d",
+            "label": "Address Link",
+            "name": "address_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
         },
         {
             "key": "field_61ec3acc6b0ac",
@@ -375,6 +401,48 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_6ad5dfd05e2d1",
+            "label": "Quick Links",
+            "name": "quick_links",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6ad5dff55e2d2",
+            "label": "Treatment Quick Links",
+            "name": "treatment_quick_links",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_61ec3af16b0ae",
             "label": "Copyrights Text",
             "name": "copyrights_text",
@@ -396,10 +464,10 @@
         },
         {
             "key": "field_6accc5234e9da",
-            "label": "Policy Text",
-            "name": "policy_text",
+            "label": "Policy and Terms",
+            "name": "policies",
             "aria-label": "",
-            "type": "text",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -408,12 +476,33 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6ad5e2a96644d",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6accc5234e9da"
+                }
+            ]
         },
         {
             "key": "field_6a3235169b027",
@@ -591,5 +680,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792150929
+    "modified": 1792404047
 }

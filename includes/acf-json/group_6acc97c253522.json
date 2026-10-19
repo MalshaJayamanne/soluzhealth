@@ -78,7 +78,7 @@
             "name": "hero_content",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Use <code>h2<\/code> for text under logo <br>\r\nUse <code>h4<\/code> for text below the span <br>",
+            "instructions": "Use <code>h2<\/code> for the title.<br>\r\nUse <code>h4<\/code> for text below the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1150,5 +1150,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792138206
+    "modified": 1792402970
 }

@@ -1,10 +1,9 @@
 </main>
-
 </div>
 
 <?php if ((get_theme_option('appointment_link_type') == 2) && ($form_shortcode = get_theme_option('appointment_form'))) : ?>
     <!-- Offer Modal -->
-    <div class="modal theme-modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalabel" aria-hidden="true">
+    <div class="modal theme-modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,7 +11,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="content-wrapper">
-                        <h2><?php echo get_theme_option('appointment_modal_title') ?: 'Schedule an Appointment'; ?></h2>
+                        <h2 id="appointmentModalLabel"><?php echo esc_html(get_theme_option('appointment_modal_title') ?: 'Schedule an Appointment'); ?></h2>
                     </div>
                     <?php echo do_shortcode($form_shortcode); ?>
                 </div>
@@ -27,49 +26,41 @@
             <div class="footer-top">
 
                 <div class="footer-about">
-                    <?php
-                    $footer_logo     = get_theme_option('logo');
-                    $footer_wordmark = get_theme_option('footer_logo_wordmark');
-                    ?>
-                    <?php if ($footer_logo || $footer_wordmark) : ?>
+                    <?php if (get_theme_option('logo') || get_theme_option('footer_logo_wordmark')) : ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo-row">
-                            <?php if ($footer_logo) : ?>
+                            <?php if ($footer_logo = get_theme_option('logo')) : ?>
                                 <div class="footer-logo-mark">
                                     <?php get_image($footer_logo, 'footer-logo-mark-img', get_bloginfo('name'), false); ?>
                                 </div>
                             <?php endif; ?>
-                            <?php if ($footer_wordmark) : ?>
+
+                            <?php if ($footer_wordmark = get_theme_option('footer_logo_wordmark')) : ?>
                                 <?php get_image($footer_wordmark, 'footer-logo-img', get_bloginfo('name'), false); ?>
                             <?php endif; ?>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ($footer_content = get_theme_option('footer_menu')) : ?>
+                    <?php if (get_theme_option('footer_menu')) : ?>
                         <div class="footer-tagline">
-                            <?php echo $footer_content; ?>
+                            <?php echo get_theme_option('footer_menu'); ?>
                         </div>
                     <?php endif; ?>
-                    
+
                     <?php if ($bbb_logo = get_theme_option('bbb_logo')) : ?>
                         <div class="footer-badges">
-                            <?php if ($bbb_url = get_theme_option('bbb_link')) : ?>
-                                <a href="<?php echo esc_url($bbb_url); ?>" target="_blank" rel="noopener noreferrer" aria-label="BBB Accredited Business">
-                                    <?php get_image($bbb_logo, 'footer-badge-img', 'BBB Accredited Business', false); ?>
-                                </a>
-                            <?php else : ?>
-                                <?php get_image($bbb_logo, 'footer-badge-img', 'BBB Accredited Business', false); ?>
-                            <?php endif; ?>
+                            <?php if ($bbb_url = get_theme_option('bbb_link')) echo '<a href="' . esc_url($bbb_url) . '" target="_blank" rel="noopener noreferrer" aria-label="BBB Accredited Business">'; ?>
+                            <?php get_image($bbb_logo, 'footer-badge-img'); ?>
+                            <?php if (!empty($bbb_url)) echo '</a>'; ?>
                         </div>
                     <?php endif; ?>
-
                 </div>
 
-                <?php foreach (array('Quick Links', 'Treatments') as $menu_name) : ?>
-                    <?php if ($menu_items = wp_get_nav_menu_items($menu_name)) : ?>
+                <?php foreach (array('quick_links', 'treatment_quick_links') as $field) : ?>
+                    <?php if (get_theme_option($field) && ($menu_items = wp_get_nav_menu_items(get_theme_option($field)))) : ?>
                         <div class="footer-col">
-                            <h4><?php echo esc_html($menu_name); ?></h4>
+                            <h4><?php echo esc_html(get_theme_option($field)); ?></h4>
                             <?php foreach ($menu_items as $menu_item) : ?>
-                                <?php if ((int) $menu_item->menu_item_parent !== 0) { continue; } ?>
+                                <?php if ((int) $menu_item->menu_item_parent !== 0) continue; ?>
                                 <a href="<?php echo esc_url($menu_item->url); ?>"<?php echo $menu_item->target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>><?php echo esc_html($menu_item->title); ?></a>
                             <?php endforeach; ?>
                         </div>
@@ -77,13 +68,11 @@
                 <?php endforeach; ?>
 
                 <?php
-                $telephone  = get_theme_option('telephone');
-                $email      = get_theme_option('email');
-                $address    = get_theme_option('address');
-                $phone_list = $telephone ? array_filter(array_map('trim', explode(',', $telephone))) : array();
-                $email_list = $email ? array_filter(array_map('trim', explode(',', $email))) : array();
+                $phone_list = get_theme_option('telephone') ? array_filter(array_map('trim', explode(',', get_theme_option('telephone')))) : array();
+                $email_list = get_theme_option('email') ? array_filter(array_map('trim', explode(',', get_theme_option('email')))) : array();
                 ?>
-                <?php if ($phone_list || $email_list || $address) : ?>
+
+                <?php if ($phone_list || $email_list || get_theme_option('address')) : ?>
                     <div class="footer-col">
                         <h4>Contact</h4>
 
@@ -95,28 +84,35 @@
                             <a href="mailto:<?php echo esc_attr($mail); ?>"><?php echo esc_html($mail); ?></a>
                         <?php endforeach; ?>
 
-                        <?php if ($address) : ?>
-                            <a href="<?php echo esc_url('https://www.google.com/maps/search/?api=1&query=' . rawurlencode(trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($address))))); ?>" target="_blank" rel="noopener noreferrer"><?php echo nl2br(esc_html($address)); ?></a>
+                        <?php if (get_theme_option('address')) : ?>
+                            <a <?php echo get_link_attrs(get_theme_option('address_link')); ?>><?php echo nl2br(esc_html(get_theme_option('address'))); ?></a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
 
             </div>
 
-            <?php
-            $copyrights  = get_theme_option('copyrights_text');
-            $policy_text = get_theme_option('policy_text');
-            ?>
-            <?php if ($copyrights || $policy_text) : ?>
+            <?php if (get_theme_option('copyrights_text') || get_theme_option('policies')) : ?>
                 <div class="footer-bottom">
-                    <?php if ($copyrights) : ?>
-                        <p><?php echo esc_html(str_replace('[year]', date('Y'), $copyrights)); ?></p>
+                    <?php if (get_theme_option('copyrights_text')) : ?>
+                        <p><?php echo esc_html(str_replace('[year]', date('Y'), get_theme_option('copyrights_text'))); ?></p>
                     <?php endif; ?>
-                    <?php if ($policy_text) : ?>
-                        <p><?php echo esc_html($policy_text); ?></p>
+
+                    <?php if (get_theme_option('policies')) : ?>
+                        <p class="footer-policies">
+                            <?php $first_policy = true; ?>
+                            <?php foreach (get_theme_option('policies') as $policy) : ?>
+                                <?php if (!empty($policy['link']['url'])) : ?>
+                                    <?php if (!$first_policy) echo ' · '; ?>
+                                    <a href="<?php echo esc_url($policy['link']['url']); ?>"<?php echo !empty($policy['link']['target']) ? ' target="' . esc_attr($policy['link']['target']) . '"' : ''; ?><?php echo ($policy['link']['target'] ?? '') === '_blank' ? ' rel="noopener noreferrer"' : ''; ?>><?php echo esc_html($policy['link']['title'] ?? ''); ?></a>
+                                    <?php $first_policy = false; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </p>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+
         </div>
     </div>
 </footer>

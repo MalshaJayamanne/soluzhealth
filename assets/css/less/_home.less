@@ -22,7 +22,7 @@
   padding: 0;
 }
 // Shared eyebrow / title / paragraph
-:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content) {
+:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content-wrapper) {
   h5 {
     font-family: @font-display;
     font-size: clamp(1.5rem, 2.4vw, 2rem);
@@ -34,7 +34,7 @@
     margin: 0 0 0.75rem;
   }
 }
-:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content, .contact-section .content) {
+:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
   h2 {
     font-family: @font-display;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
@@ -49,7 +49,7 @@
     }
   }
 }
-:is(.welcome-section .content, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .contact-section .content) {
+:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
   p {
     font-family: @font-body;
     font-size: 16px;
@@ -60,11 +60,11 @@
     margin: 0;
   }
 }
-:is(.welcome-section .content, .doctor-section .content) p + p {
+:is(.welcome-section .content-wrapper, .doctor-section .content-wrapper) p + p {
   margin-top: 1rem;
 }
 // Dark sections
-:is(.conditions-section .heading, .contact-section .content) {
+:is(.conditions-section .heading, .contact-section .content-wrapper) {
   :is(h5, h2) {
     color: #fff;
   }
@@ -120,18 +120,17 @@
   position: relative;
   padding: 0;
   text-align: left;
-  .hero-bg {
+  > img {
     position: absolute;
     inset: 0;
     z-index: 0;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.3;
-    }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.3;
   }
+  
   &::after {
     content: '';
     position: absolute;
@@ -152,17 +151,15 @@
   }
   .inner {
     padding: 0;
-  }
-  .hero-logo {
-    margin-bottom: 1.75rem;
-    img {
+    > img {
       display: block;
       height: 140px;
       width: auto;
       max-width: 100%;
+      margin-bottom: 1.75rem;
     }
   }
-  .content {
+  .content-wrapper {
     :is(h1, h2) {
       font-family: @font-display;
       font-size: clamp(2.8rem, 6.5vw, 5.2rem);
@@ -231,15 +228,16 @@
       object-fit: cover;
     }
   }
-  .content {
-    h4 {
+  .content-wrapper {
+    h4 > span {
       font-family: @font-display;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.2;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
       letter-spacing: 0.01em;
-      color: @brand-navy;
-      margin: 0 0 1rem;
+      text-transform: none;
+      color: var(--brand-blue);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
     h5 {
       display: inline-block;
@@ -280,6 +278,7 @@
       background: @brand-light-blue;
       border-radius: 24px;
       padding: 6px 16px;
+      list-style: none;
     }
   }
   .buttons {
@@ -295,15 +294,16 @@
     max-width: 640px;
     margin: 0 auto 1rem;
     text-align: center;
-    h3 {
+    h3 > span {
       font-family: @font-display;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.2;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
       letter-spacing: 0.01em;
-      color: @brand-navy;
+      text-transform: none;
+      color: @brand-blue;
+      font-weight: 600;
       margin-bottom: 0.75rem;
-    }
+      line-height: 1.2;
+      }
     h4 {
       font-family: @font-display;
       font-size: 3.2rem;
@@ -352,15 +352,15 @@
     max-width: 680px;
     margin: 0 auto 3rem;
     text-align: center;
-    h4 {
+    h4 > span {
       font-family: @font-display;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.2;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
       letter-spacing: 0.01em;
       text-transform: none;
       color: @brand-blue;
+      font-weight: 600;
       margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
     p {
       margin: 0 auto;
@@ -411,7 +411,7 @@
 // =========================================================
 .conditions-section {
   background: @brand-navy;
-  .heading {
+  .heading.content-wrapper {
     margin: 0 0 3.5rem;
     h3 {
       font-family: @font-display;
@@ -420,7 +420,7 @@
       line-height: 1.2;
       letter-spacing: 0.01em;
       text-transform: none;
-      color: #fff;
+      color: white;
       margin-bottom: 0.75rem;
     }
   }
@@ -468,7 +468,7 @@
 // =========================================================
 .process-section {
   background: @brand-light-blue;
-  .heading {
+  .heading.content-wrapper {
     h3 {
       font-family: @font-display;
       font-size: 2rem;
@@ -557,7 +557,7 @@
       object-position: top;
     }
   }
-  .content {
+  .content-wrapper {
     h5 {
       font-family: @font-display;
       font-size: 12px;
@@ -568,9 +568,14 @@
       margin: 0 0 0.5rem;
     }
     h2 {
+      font-family: @font-display;
       font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: @brand-navy;
+      margin-bottom: 0.4rem;
+      margin-top: 0;
       line-height: 1.1;
-      margin: 0 0 0.4rem;
+      letter-spacing: -0.01em;
     }
     h3 {
       font-family: @font-body;
@@ -598,27 +603,29 @@
     background: @sage-light;
     border-left: 4px solid @brand-blue;
     border-radius: @radius;
-    .score strong {
+    .score {
+      strong {
       display: block;
       font-family: @font-display;
       font-size: 2.4rem;
       font-weight: 700;
       line-height: 1;
       color: @brand-navy;
-    }
-    .stars {
-      display: block;
-      margin-top: 4px;
-      font-size: 16px;
-      color: @brand-blue;
-    }
-    h5 {
-      font-size: 12px;
-      font-family: @font-sub-body;
-      color: @text-muted;
-      margin-top: 2px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      }
+      .stars {
+        display: block;
+        margin-top: 4px;
+        font-size: 16px;
+        color: @brand-blue;
+      }
+      h5 {
+        font-size: 12px;
+        font-family: @font-sub-body;
+        color: @text-muted;
+        margin-top: 2px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
     }
     .quote {
       flex: 1;
@@ -703,6 +710,7 @@
       font-weight: 500;
       text-transform: uppercase;
       color: @text-muted;
+      letter-spacing: 0.03rem;
     }
   }
   .inner {
@@ -748,15 +756,38 @@
     margin: 0 auto;
     text-align: center;
   }
-  .content p {
-    margin: 0 auto;
+  .inner .content-wrapper {
+    h3 {
+      font-family: @font-display;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      color: #fff;
+      text-transform: none;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    h2 {
+      font-family: @font-display;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+    p {
+      margin: 0 auto 1rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
   .buttons {
     margin-top: 2rem;
   }
 }
+
 // =========================================================
-// HOME RESPONSIVE
+// RESPONSIVE
 // =========================================================
 @media (max-width: 1024px) {
   .welcome-section,
@@ -770,26 +801,82 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
+  // Hero (left on tablet)
   .hero-section {
     min-height: 70vh;
+    text-align: left;
     > .container {
+      width: 100%;
       max-width: 100%;
       padding-top: var(--responsive-hero-space);
       padding-bottom: var(--responsive-hero-space);
     }
-    .hero-logo img {
+    .inner > img {
       height: 110px;
-      width: auto;
-      max-width: 100%;
+      margin: 0 0 1.5rem;
+    }
+    .content-wrapper {
+      text-align: left;
+      :is(h1, h2) {
+        font-size: clamp(2.4rem, 5vw, 3.5rem);
+        line-height: 1.1;
+      }
+      h4 {
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0 0 2rem;
+      }
+    }
+    .buttons {
+      justify-content: flex-start;
     }
   }
+  // Eyebrows
+  .welcome-section .content-wrapper h4 > span,
+  .work-section .heading h3 > span,
+  .treatment-section .heading h4 > span,
+  .conditions-section .heading h3,
+  .process-section .heading h3,
+  .patient-section .heading .title h3,
+  .contact-section .content-wrapper h3 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+  // Main titles
+  .welcome-section .content-wrapper h3,
+  .work-section .heading h4,
+  .treatment-section .heading h2,
+  .conditions-section .heading h2,
+  .process-section .heading h2,
+  .doctor-section .content-wrapper h2,
+  .patient-section .heading .title h2,
+  .contact-section .content-wrapper h2 {
+    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+  }
+  // Body paragraphs
+  .welcome-section .content-wrapper p,
+  .work-section .heading p,
+  .treatment-section .heading p,
+  .conditions-section .heading p,
+  .process-section .heading p,
+  .doctor-section .content-wrapper p,
+  .contact-section .content-wrapper p {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  // Welcome + Doctor stack
   .welcome-section .inner,
   .doctor-section .inner {
     display: flex;
     flex-direction: column;
     gap: 30px;
     > .image,
-    > .content {
+    > .content-wrapper {
       width: 100%;
       max-width: 100%;
       min-width: 0;
@@ -798,23 +885,46 @@
     > .image {
       order: 1;
     }
-    > .content {
+    > .content-wrapper {
       order: 2;
+      text-align: left;
     }
+  }
+  .welcome-section .image {
+    aspect-ratio: 16 / 11;
   }
   .doctor-section .inner > .image {
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
   }
-  .welcome-section .image img,
-  .doctor-section .image img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .welcome-section .features,
+  .welcome-section .buttons,
+  .doctor-section .buttons {
+    justify-content: flex-start;
   }
+  // Headings alignment (same as desktop)
+  .work-section .heading,
+  .treatment-section .heading {
+    text-align: center;
+  }
+  .conditions-section .heading,
+  .process-section .heading {
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+  .work-section .heading,
+  .work-section .heading p,
+  .treatment-section .heading p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .conditions-section .heading p,
+  .process-section .heading p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  // Process line off
   .process-section {
     .number::before,
     .number::after,
@@ -822,111 +932,257 @@
     .inner::after,
     .step::before,
     .step::after {
-      display: none !important;
-      content: none !important;
+      display: none;
+      content: none;
     }
   }
+  // Card grids
+  .work-section .inner,
+  .process-section .inner,
+  .patient-section .inner {
+    grid-template-columns: 1fr;
+    gap: var(--responsive-card-gap);
+  }
+  .treatment-section .inner,
+  .conditions-section .inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--responsive-card-gap);
+  }
+  .process-section .inner {
+    margin-top: 2.5rem;
+  }
+    // Doctor (centered)
+  .doctor-section .inner > .content-wrapper {
+    text-align: center;
+    :is(h2, h3, h5, p) {
+      text-align: center;
+    }
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .doctor-section .buttons {
+    justify-content: center;
+  }
+  .doctor-section .review {
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+    .score,
+    .quote {
+      text-align: center;
+      :is(strong, .stars, h5, h6, p) {
+        text-align: center;
+      }
+    }
+  }
+  // Inner items: everything left aligned
+  :is(.work-section .item, .treatment-section .item, .conditions-section .item, .process-section .step, .patient-section .item) {
+    min-width: 0;
+    text-align: left;
+    :is(h3, h5, h6, p, em, a, .number, .stars) {
+      text-align: left;
+    }
+    h3 {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .work-section .item,
+  .treatment-section .item {
+    padding: 2rem 1.75rem;
+  }
+  .conditions-section .item {
+    padding: 1.75rem;
+  }
+  .process-section .number {
+    margin: 0 0 1rem;
+  }
+    .patient-section .heading {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      margin-bottom: 2.5rem;
+      :is(.title, .stat) {
+        width: 100%;
+        text-align: left;
+        :is(h2, h3, h5, .rating, .stars) {
+          text-align: left;
+        }
+      }
+    }
+}
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: 0;
+    text-align: center;
+    > .container {
+      padding: 5rem 1.25rem;
+    }
+    .inner > img {
+      height: 90px;
+      margin: 0 auto 1.25rem;
+    }
+    .content-wrapper {
+      text-align: center;
+      :is(h1, h2) {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        line-height: 1.12;
+        margin: 0 auto 1rem;
+      }
+      h4 {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0 auto 1.25rem;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0 auto 1.75rem;
+      }
+    }
+    .buttons {
+      justify-content: center;
+    }
+  }
+  // Eyebrows
+  .welcome-section .content-wrapper h4 > span,
+  .work-section .heading h3 > span,
+  .treatment-section .heading h4 > span,
+  .conditions-section .heading h3,
+  .process-section .heading h3,
+  .patient-section .heading .title h3,
+  .contact-section .content-wrapper h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  // Main titles
+  .welcome-section .content-wrapper h3,
+  .work-section .heading h4,
+  .treatment-section .heading h2,
+  .conditions-section .heading h2,
+  .process-section .heading h2,
+  .doctor-section .content-wrapper h2,
+  .patient-section .heading .title h2,
+  .contact-section .content-wrapper h2 {
+    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+    line-height: 1.18;
+  }
+  // Body paragraphs
+  .welcome-section .content-wrapper p,
+  .work-section .heading p,
+  .treatment-section .heading p,
+  .conditions-section .heading p,
+  .process-section .heading p,
+  .doctor-section .content-wrapper p,
+  .contact-section .content-wrapper p {
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+  .welcome-section .image {
+    aspect-ratio: 4 / 3.4;
+  }
+  .welcome-section .features li {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+  // Single column grids
   .work-section .inner,
   .treatment-section .inner,
   .conditions-section .inner,
   .process-section .inner,
   .patient-section .inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--responsive-card-gap);
-  }
-  .work-section .item,
-  .treatment-section .item,
-  .conditions-section .item,
-  .process-section .step,
-  .patient-section .item {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    flex: 0 0 auto;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .doctor-section .review {
+    grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-  .treatment-section .inner {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .conditions-section .heading,
+  .process-section .heading,
+  .treatment-section .heading {
+    margin-bottom: 2rem;
   }
-}
-@media (max-width: 767px) {
-  .hero-section,
-  .welcome-section,
-  .work-section,
-  .treatment-section,
-  .conditions-section,
-  .process-section,
-  .doctor-section,
-  .patient-section,
-  .contact-section {
-    text-align: center;
+  .work-section .heading {
+    margin-bottom: 0;
   }
-  .hero-section {
-    > .container {
-      width: 100%;
-      max-width: 100%;
+  .work-section .inner {
+    margin-top: 2rem;
+  }
+  // Inner items: everything left aligned
+  :is(.work-section .item, .treatment-section .item, .conditions-section .item, .process-section .step, .patient-section .item) {
+    text-align: left;
+    :is(h3, h5, h6, p, em, a, .number, .stars) {
+      text-align: left;
     }
-    .hero-logo img {
-      height: 90px;
-      margin-left: auto;
-      margin-right: auto;
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.7;
     }
   }
-  .welcome-section .features {
-    justify-content: center;
+  .work-section .item {
+    padding: 1.75rem 1.25rem;
   }
-  .patient-section {
-    .heading {
-      flex-direction: column;
-      align-items: center;
-    }
-    .stat {
-      text-align: center;
-    }
-  }
-  .process-section .number {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .work-section .item,
   .treatment-section .item,
   .conditions-section .item,
-  .patient-section .item,
-  .doctor-section .review {
-    text-align: left;
-  }
-  .treatment-section .item,
   .patient-section .item {
-    padding: 1.75rem 1.5rem;
-  }
-  .doctor-section .review {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .treatment-section .inner {
-    display: flex;
-    flex-direction: column;
-  }
-  .conditions-section .inner,
-  .patient-section .inner {
-    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
   }
   .process-section .inner {
     gap: 2rem;
+    margin-top: 2rem;
   }
+  .process-section .number {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    margin: 0 0 1rem;
+  }
+  // Doctor
+  .doctor-section .review {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    .quote {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+  // Patient
+  .patient-section .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  .patient-section .heading .title,
+  .patient-section .stat {
+    width: 100%;
+    text-align: left;
+  }
+  .patient-section .stat .rating {
+    font-size: 2.5rem;
+  }
+  // Contact (centered like desktop)
+  .contact-section .inner .content-wrapper {
+    text-align: center;
+  }
+  // Buttons (stacked, full width)
   .hero-section .buttons,
   .welcome-section .buttons,
   .doctor-section .buttons,
   .contact-section .buttons {
-    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 14px;
@@ -937,22 +1193,37 @@
   }
 }
 @media (max-width: 480px) {
-  .hero-section .hero-logo img {
+  .hero-section > .container {
+    padding: 4.5rem 1.25rem;
+  }
+  .hero-section .inner > img {
     height: 80px;
   }
-  .treatment-section .item,
-  .patient-section .item {
+  .work-section .item {
     padding: 1.5rem 1.25rem;
   }
-  .work-section .item {
-    padding: 2rem 1.5rem;
+  .treatment-section .item,
+  .conditions-section .item,
+  .patient-section .item {
+    padding: 1.4rem 1.1rem;
   }
 }
 @media (max-width: 374px) {
-  .hero-section .hero-logo img {
+  .hero-section .inner > img {
     height: 72px;
   }
-  .work-section .item {
-    padding: 1.75rem 1.25rem;
+  .hero-section .content-wrapper {
+    :is(h1, h2) {
+      font-size: 1.9rem;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .work-section .item,
+  .treatment-section .item,
+  .conditions-section .item,
+  .patient-section .item {
+    padding: 1.25rem 1rem;
   }
 }

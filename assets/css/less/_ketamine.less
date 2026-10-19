@@ -1,6 +1,22 @@
 // =========================================================
 // KETAMINE PAGE
 // =========================================================
+.page-hero-section,
+.what-section,
+.local-section,
+.cond-section,
+.howit-section,
+.steps-section,
+.faq-section,
+.cta-section,
+.credentials-section {
+  position: relative;
+  font-family: @font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: @text;
+}
 .what-section,
 .local-section,
 .cond-section,
@@ -8,17 +24,10 @@
 .steps-section,
 .faq-section,
 .credentials-section {
-  position: relative;
   padding: 6rem 0;
-  font-family: @font-body;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: @text;
 }
-
 // Shared eyebrow / title
-:is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) {
+:is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) {
   h4 {
     font-family: @font-display;
     font-size: clamp(1.5rem, 2.4vw, 2rem);
@@ -29,7 +38,6 @@
     color: @brand-blue;
     margin: 0 0 0.75rem;
   }
-
   :is(h2, h3) {
     font-family: @font-display;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
@@ -38,73 +46,133 @@
     letter-spacing: -0.01em;
     color: @brand-navy;
     margin: 0 0 1rem;
-
     span {
       font-style: normal;
       color: @brand-blue;
     }
   }
 }
-
-// Page hero extras for this page
-.page-hero-section .content {
-  h5 {
-    font-family: @font-display;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.7;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: @brand-blue;
-    margin: 0 0 1rem;
+// =========================================================
+// PAGE HERO
+// =========================================================
+.page-hero-section {
+  background: @brand-navy;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+  > img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.2;
   }
-
-  h2 {
-    font-family: @font-display;
-    font-size: clamp(2.4rem, 6vw, 4.4rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: #fff;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 31, 61, 0.4) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  > .container {
+    position: relative;
+    z-index: 2;
+  }
+  .breadcrumb {
+    display: block;
+    padding: 0;
     margin: 0 0 1.25rem;
+    background: none;
+    font-family: @font-body;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    a {
+      color: rgba(255, 255, 255, 0.6);
+      &:hover {
+        color: @brand-blue;
+      }
+    }
   }
-
-  :is(h1, h2) :is(span, em) {
-    font-style: normal;
-    color: @brand-blue;
+  .content-wrapper {
+    h5 {
+      font-family: @font-display;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.7;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: @brand-blue;
+      margin: 0 0 1rem;
+    }
+    :is(h1, h2) {
+      font-family: @font-display;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin: 0 0 1.25rem;
+      :is(span, em) {
+        font-style: normal;
+        color: @brand-blue;
+      }
+    }
+    p {
+      font-family: @font-body;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 580px;
+      margin: 0;
+    }
+    p + p {
+      margin-top: 1rem;
+    }
   }
-
-  p + p { margin-top: 1rem; }
 }
-
 // =========================================================
 // WHAT KETAMINE DOES
 // =========================================================
-
 .what-section {
   background: @off-white;
-
   .inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     align-items: center;
+    .content-wrapper {
+      h4 {
+      font-family: @font-display;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: @brand-blue;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+      }
+      p {
+      font-family: @font-body;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: @text-muted;
+      margin: 0 0 1rem;
+      }
+    }
   }
-
-  .content p {
-    font-family: @font-body;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: @text-muted;
-    margin: 0 0 1rem;
-  }
-
   .image {
     aspect-ratio: 4 / 3;
     border-radius: @radius;
     overflow: hidden;
-
     img {
       width: 100%;
       height: 100%;
@@ -112,36 +180,41 @@
     }
   }
 }
-
 // =========================================================
-// KETAMINE IN SAN ANTONIO
+// LOCAL
 // =========================================================
-
 .local-section {
   background: #fff;
-
   .inner {
     max-width: 820px;
     margin: 0 auto;
-  }
-
-  .content p {
-    font-family: @font-body;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: @text-muted;
-    margin: 0 0 1rem;
+  
+    .content-wrapper {
+      h4 {
+        font-family: @font-display;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        letter-spacing: 0.01em;
+        text-transform: none;
+        color: @brand-blue;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+      }
+      p {
+      font-family: @font-body;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: @text-muted;
+      margin: 0 0 1rem;
+    }
   }
 }
-
 // =========================================================
 // CONDITIONS
 // =========================================================
-
 .cond-section {
   background: @off-white;
-
   .heading p {
     font-family: @font-body;
     font-size: 16px;
@@ -151,14 +224,12 @@
     max-width: 580px;
     margin: 0;
   }
-
   .inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-top: 3rem;
   }
-
   .item {
     position: relative;
     padding: 1.75rem;
@@ -166,12 +237,10 @@
     border: 1px solid @border;
     border-radius: @radius;
     transition: border-color 0.2s, transform 0.2s;
-
     &:hover {
       border-color: @brand-blue;
       transform: translateY(-2px);
     }
-
     h3 {
       font-family: @font-display;
       font-size: 1.2rem;
@@ -180,7 +249,6 @@
       color: @brand-navy;
       margin: 0 0 0.4rem;
     }
-
     p {
       font-family: @font-body;
       font-size: 13px;
@@ -188,8 +256,14 @@
       color: @text-muted;
       margin: 0;
     }
+    &:last-child {
+      background: @sage-light;
+      border-color: transparent;
+      &:hover {
+        border-color: @brand-blue;
+      }
+    }
   }
-
   .card-link {
     display: block;
     margin-top: 1rem;
@@ -199,30 +273,21 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: @brand-blue;
-
     &::before {
       content: '';
       position: absolute;
       inset: 0;
     }
-    &::after { content: ' →'; }
-  }
-
-  .item:last-child {
-    background: @sage-light;
-    border-color: transparent;
-
-    &:hover { border-color: @brand-blue; }
+    &::after {
+      content: ' →';
+    }
   }
 }
-
 // =========================================================
 // HOW IT WORKS
 // =========================================================
-
 .howit-section {
   background: @brand-navy;
-
   .inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -230,23 +295,15 @@
     row-gap: 0;
     align-items: start;
   }
-
-  .content {
+  .content-wrapper {
     display: contents;
-
     :is(h4, h2, h3) {
       grid-column: 1 / -1;
-    }
-
-    h4,
-    :is(h2, h3) {
       color: #fff;
     }
-
     :is(h2, h3) {
       margin-bottom: 2rem;
     }
-
     p {
       grid-column: 1;
       font-family: @font-body;
@@ -257,14 +314,12 @@
       margin: 0 0 1rem;
     }
   }
-
   .safety {
     grid-column: 2;
     grid-row: 3 / span 8;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-
     .item {
       display: flex;
       align-items: flex-start;
@@ -272,44 +327,42 @@
       padding: 1rem;
       background: @sage-light;
       border-radius: @radius;
-    }
-
-    .check p {
-      flex-shrink: 0;
-      margin-top: 1px;
-      font-size: 18px;
-      line-height: 1.7;
-      color: @brand-blue;
-    }
-
-    .text p {
-      font-family: @font-body;
-      font-size: 14px;
-      line-height: 1.65;
-      color: @brand-navy;
-      margin: 0;
+      &::before {
+        content: '✓';
+        flex-shrink: 0;
+        margin-top: 1px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: @brand-blue;
+      }
+      .content-wrapper {
+        display: block;
+      }
+      p {
+        grid-column: auto;
+        font-family: @font-body;
+        font-size: 14px;
+        line-height: 1.65;
+        color: @brand-navy;
+        margin: 0;
+      }
     }
   }
 }
-
 // =========================================================
-// PROCESS TIMELINE
+// STEPS
 // =========================================================
-
 .steps-section {
   background: #EEF1FC;
-
   .inner {
     max-width: 680px;
     margin-top: 3rem;
   }
-
   .item {
     position: relative;
     display: flex;
     gap: 2rem;
     padding-bottom: 2.5rem;
-
     &:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -320,7 +373,6 @@
       background: @border;
     }
   }
-
   .number {
     position: relative;
     z-index: 1;
@@ -337,7 +389,6 @@
     font-size: 18px;
     line-height: 1;
   }
-
   .info {
     h3 {
       font-family: @font-display;
@@ -347,7 +398,6 @@
       color: @brand-navy;
       margin: 0 0 0.4rem;
     }
-
     p {
       font-family: @font-body;
       font-size: 14px;
@@ -357,29 +407,33 @@
     }
   }
 }
-
 // =========================================================
 // FAQ
 // =========================================================
-
 .faq-section {
   background: #fff;
-
   .inner {
     max-width: 760px;
     margin: 0 auto;
   }
-
-  .list { margin-top: 2.5rem; }
-
+  .heading p {
+    font-family: @font-body;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: @text-muted;
+    max-width: 580px;
+    margin: 0;
+  }
+  .list {
+    margin-top: 2.5rem;
+  }
   .item {
     padding: 1.6rem 0;
     border-top: 1px solid @border;
-
     &:last-child {
       border-bottom: 1px solid @border;
     }
-
     h3 {
       font-family: @font-display;
       font-size: 1.15rem;
@@ -389,7 +443,6 @@
       color: @brand-navy;
       margin: 0 0 0.6rem;
     }
-
     p {
       font-family: @font-body;
       font-size: 14px;
@@ -399,14 +452,44 @@
     }
   }
 }
-
 // =========================================================
-// CREDENTIALS (ASKP3)
+// CTA
 // =========================================================
-
+.cta-section {
+  background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
+  padding: 4.5rem 0;
+  text-align: center;
+  .content-wrapper {
+    h2 {
+      font-family: @font-display;
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: @brand-navy;
+      margin: 0 0 0.75rem;
+    }
+    p {
+      font-family: @font-body;
+      font-size: 16px;
+      line-height: 1.7;
+      color: @brand-navy-soft;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+// =========================================================
+// CREDENTIALS
+// =========================================================
 .credentials-section {
   background: @off-white;
-
   .inner {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -415,7 +498,6 @@
     max-width: 980px;
     margin: 0 auto;
   }
-
   .badge {
     display: flex;
     align-items: center;
@@ -424,15 +506,13 @@
     background: #fff;
     border: 1px solid @border;
     border-radius: @radius;
-
     img {
       width: 100%;
       max-width: 180px;
       height: auto;
     }
   }
-
-  .content {
+  .content-wrapper {
     h4 {
       font-family: @font-display;
       font-size: 15px;
@@ -442,7 +522,6 @@
       color: @text-muted;
       margin: 0 0 0.85rem;
     }
-
     :is(h2, h3) {
       font-family: @font-display;
       font-size: 1.9rem;
@@ -451,13 +530,11 @@
       letter-spacing: -0.01em;
       color: @brand-navy;
       margin: 0 0 1rem;
-
       span {
         font-style: normal;
         color: @brand-blue;
       }
     }
-
     p {
       font-family: @font-body;
       font-size: 15px;
@@ -467,7 +544,6 @@
       margin: 0 0 0.85rem;
     }
   }
-
   .credentials-link {
     display: inline-block;
     margin-top: 0.5rem;
@@ -478,15 +554,14 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: @brand-blue;
-
-    &::after { content: ' →'; }
+    &::after {
+      content: ' →';
+    }
   }
 }
-
 // =========================================================
-// KETAMINE RESPONSIVE
+// RESPONSIVE
 // =========================================================
-
 @media (max-width: 1024px) {
   .what-section,
   .local-section,
@@ -498,168 +573,325 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
-
-  :is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .steps-section .heading, .faq-section .heading) {
-    h4 {
-      font-size: var(--fs-eyebrow);
-      line-height: 1.25;
-      margin-bottom: 0.6rem;
-    }
-
-    :is(h2, h3) {
-      font-size: var(--fs-title);
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      overflow-wrap: break-word;
+  // Page hero (left on tablet)
+  .page-hero-section {
+    padding-top: 4.5rem;
+    padding-bottom: 3.5rem;
+    text-align: left;
+    .content-wrapper {
+      h5 {
+        font-size: 12px;
+      }
+      :is(h1, h2) {
+        font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+        line-height: 1.1;
+        overflow-wrap: break-word;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
     }
   }
-
-  :is(.what-section .content, .local-section .content, .cond-section .heading, .howit-section .content, .credentials-section .content) p {
-    font-size: var(--fs-body);
-    line-height: 1.7;
+  // Eyebrows
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) h4 {
+    font-size: 1.4rem;
+    line-height: 1.25;
   }
-
-  .credentials-section .content :is(h2, h3) {
-    font-size: var(--fs-title-sm);
-    line-height: 1.2;
+  // Main titles
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
+    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
     overflow-wrap: break-word;
   }
-
-  .cond-section .item h3,
-  .steps-section .info h3,
-  .faq-section .item h3 {
-    font-size: var(--fs-card-title);
-    line-height: 1.35;
+  // Body paragraphs
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .faq-section .heading) p {
+    font-size: 16px;
+    line-height: 1.75;
   }
-
-  .cond-section .item p,
-  .steps-section .info p,
-  .faq-section .item p,
-  .howit-section .safety .text p {
-    font-size: var(--fs-card-text);
-    line-height: 1.7;
-  }
-
-  .what-section .inner {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-
-    > .content,
-    > .image {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      flex: 0 0 auto;
-    }
-  }
-
-  .what-section .image {
-    aspect-ratio: 16 / 10;
-  }
-
-  .cond-section .inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--responsive-card-gap);
-  }
-
-  .cond-section .item:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-  }
-
-  .howit-section {
-    .inner { display: block; }
-    .content { display: block; }
-    .safety { margin-top: 2rem; }
-  }
-
-  .credentials-section .inner {
-    grid-template-columns: 180px 1fr;
-    gap: 2.5rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .what-section,
-  .local-section,
-  .cond-section,
-  .howit-section,
-  .steps-section,
-  .faq-section,
-  .credentials-section {
-    text-align: center;
-  }
-
-  :is(.cond-section .heading) p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .what-section .inner { gap: 24px; }
-
-  .cond-section {
+  // What (stack, left)
+  .what-section {
     .inner {
       display: flex;
       flex-direction: column;
+      gap: 30px;
+      > .content-wrapper,
+      > .image {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+      }
+    }
+    .image {
+      aspect-ratio: 16 / 10;
+    }
+  }
+  // Conditions (2 columns, left)
+  .cond-section {
+    .inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--responsive-card-gap);
+      margin-top: 2.5rem;
+    }
+    .item {
+      min-width: 0;
+      text-align: left;
+      padding: 1.75rem;
+      h3 {
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+      p {
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      &:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+    }
+    .card-link {
+      font-size: 12.5px;
+    }
+  }
+  // How it works (stack)
+  .howit-section {
+    .inner {
+      display: block;
+    }
+    .content-wrapper {
+      display: block;
+    }
+    .safety {
       margin-top: 2rem;
     }
-
-    .item {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      flex: 0 0 auto;
-      text-align: left;
-      padding: 1.75rem 1.5rem;
+    .safety .item p {
+      font-size: 15px;
+      line-height: 1.65;
     }
   }
-
+  // Steps (left)
+  .steps-section {
+    .inner {
+      max-width: 100%;
+      margin-top: 2.5rem;
+    }
+    .info {
+      h3 {
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+  }
+  // FAQ (left)
+  .faq-section {
+    .inner {
+      max-width: 100%;
+    }
+    .item {
+      h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+  }
+  // CTA (centered)
+  .cta-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    .content-wrapper {
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  // Credentials
+  .credentials-section {
+    .inner {
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+    }
+    .content-wrapper {
+      :is(h2, h3) {
+        font-size: 1.7rem;
+        line-height: 1.2;
+        overflow-wrap: break-word;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  // Page hero (centered on mobile only)
+  .page-hero-section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    .breadcrumb {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+    .content-wrapper {
+      :is(h1, h2) {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        line-height: 1.12;
+      }
+      p {
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  // Eyebrows
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  // Main titles
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
+    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+    line-height: 1.18;
+  }
+  // Body paragraphs
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .faq-section .heading) p {
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+  .what-section {
+    .inner {
+      gap: 24px;
+    }
+    .image {
+      aspect-ratio: 4 / 3.4;
+    }
+  }
+  // Conditions (1 column, left)
+  .cond-section {
+    .inner {
+      grid-template-columns: 1fr;
+      margin-top: 2rem;
+    }
+    .item {
+      padding: 1.5rem 1.25rem;
+      h3 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  }
   .howit-section {
-    .content :is(h2, h3) { margin-bottom: 1.5rem; }
+    .content-wrapper :is(h2, h3) {
+      margin-bottom: 1.5rem;
+    }
     .safety {
       margin-top: 1.75rem;
-      text-align: left;
     }
   }
-
+  // Steps (timeline stays left)
   .steps-section {
-    .inner { margin-top: 2rem; }
-
+    .inner {
+      margin-top: 2rem;
+    }
     .item {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
       padding-bottom: 2rem;
-
-      &::after { display: none !important; }
+      &:not(:last-child)::after {
+        left: 19px;
+        top: 50px;
+      }
+    }
+    .number {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+    .info h3 {
+      font-size: 1.15rem;
     }
   }
-
   .faq-section {
     .list {
       margin-top: 2rem;
-      text-align: left;
+    }
+    .item {
+      padding: 1.4rem 0;
+      h3 {
+        font-size: 1.1rem;
+      }
     }
   }
-
+  // CTA (centered, stacked buttons)
+  .cta-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    .content-wrapper {
+      h2 {
+        font-size: clamp(1.6rem, 6.5vw, 1.9rem);
+      }
+      p {
+        font-size: 15.5px;
+      }
+    }
+    .buttons {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  // Credentials (badge centered, text left)
   .credentials-section {
     .inner {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-
     .badge {
       max-width: 220px;
       margin: 0 auto;
     }
-
-    .credentials-link { display: block; }
+    .content-wrapper {
+      :is(h2, h3) {
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+    .credentials-link {
+      display: block;
+    }
   }
 }
-
 @media (max-width: 480px) {
   .cond-section .item {
-    padding: 1.5rem 1.25rem;
+    padding: 1.4rem 1.1rem;
+  }
+}
+@media (max-width: 374px) {
+  .page-hero-section .content-wrapper :is(h1, h2) {
+    font-size: 1.9rem;
+  }
+  .cond-section .item {
+    padding: 1.25rem 1rem;
   }
 }

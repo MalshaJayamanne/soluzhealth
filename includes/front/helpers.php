@@ -117,6 +117,20 @@ function get_page_data($key = '')
     return FALSE;
 }
 
+/**
+ * Get link attributes from an ACF Link field.
+ */
+function get_link_attrs($link)
+{
+    if (empty($link['url'])) {
+        return '';
+    }
+
+    $target = !empty($link['target']) ? $link['target'] : '_self';
+    $rel = ($target === '_blank') ? ' rel="noopener noreferrer"' : '';
+
+    return 'href="' . esc_url($link['url']) . '" target="' . esc_attr($target) . '"' . $rel;
+}
 
 /**
  * Print ancher tag.
