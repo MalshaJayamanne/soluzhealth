@@ -1,54 +1,27 @@
-// ==========================================================
-// SHARED SECTION STYLES
-// ==========================================================
+// =========================================================
+// PTSD PAGE
+// =========================================================
+.page-hero-section,
+.stats-section,
+.ptsd-treatment-section,
+.ptsd-signs-section,
+.ptsd-approach-section,
+.cta-section {
+  position: relative;
+  font-family: @font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: @text;
+}
 .ptsd-treatment-section,
 .ptsd-signs-section,
 .ptsd-approach-section {
-    position: relative;
-    padding: 6rem 0;
-    font-family: @font-body;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.7;
-    color: @text;
-
-    // Reset Bootstrap defaults inside these sections.
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    ul,
-    ol,
-    figure {
-        margin: 0;
-        padding: 0;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-    }
-
-    a {
-        text-decoration: none;
-    }
+  padding: 6rem 0;
 }
-
-// ==========================================================
-// SHARED HEADINGS
-// ==========================================================
-// Eyebrow headings.
-.ptsd-treatment-section .content h4,
-.ptsd-signs-section .heading h4,
-.ptsd-approach-section .heading h4 {
+// Shared eyebrow / title
+:is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) {
+  h4 {
     font-family: @font-display;
     font-size: clamp(1.5rem, 2.4vw, 2rem);
     font-weight: 600;
@@ -57,15 +30,8 @@
     text-transform: none;
     color: @brand-blue;
     margin: 0 0 0.75rem;
-}
-
-// Main headings.
-.ptsd-treatment-section .content h2,
-.ptsd-treatment-section .content h3,
-.ptsd-signs-section .heading h2,
-.ptsd-signs-section .heading h3,
-.ptsd-approach-section .heading h2,
-.ptsd-approach-section .heading h3 {
+  }
+  :is(h2, h3) {
     font-family: @font-display;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 700;
@@ -73,384 +39,574 @@
     letter-spacing: -0.01em;
     color: @brand-navy;
     margin: 0 0 1rem;
-
     span {
+      font-style: normal;
+      color: @brand-blue;
+    }
+  }
+}
+// Subtitles
+:is(.ptsd-signs-section .heading, .ptsd-approach-section .heading) p {
+  font-family: @font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: @text-muted;
+  max-width: 580px;
+  margin: 0;
+}
+// =========================================================
+// PAGE HERO
+// =========================================================
+.page-hero-section {
+  background: @brand-navy;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+  > img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.2;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 31, 61, 0.4) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  > .container {
+    position: relative;
+    z-index: 2;
+  }
+  .breadcrumb {
+    display: block;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    background: none;
+    font-family: @font-body;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    a {
+      color: rgba(255, 255, 255, 0.6);
+      &:hover {
+        color: @brand-blue;
+      }
+    }
+  }
+  .content-wrapper {
+    :is(h1, h2) {
+      font-family: @font-display;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin: 0 0 1.25rem;
+      :is(span, em) {
         font-style: normal;
         color: @brand-blue;
+      }
     }
+    p {
+      font-family: @font-body;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 580px;
+      margin: 0;
+    }
+    p + p {
+      margin-top: 1rem;
+    }
+  }
 }
-
-// Subtitles.
-.ptsd-signs-section .heading p,
-.ptsd-approach-section .heading p {
-    font-family: @font-body;
-    font-size: 16px;
+// =========================================================
+// STATS
+// =========================================================
+.stats-section {
+  background: @brand-navy;
+  padding: 3.5rem 0;
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .item {
+    text-align: center;
+  }
+  .number {
+    font-family: @font-display;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: @brand-blue;
+    margin-bottom: 0.5rem;
+  }
+  .label {
+    font-size: 13px;
     font-weight: 400;
-    line-height: 1.75;
-    color: @text-muted;
-    max-width: 580px;
-    margin: 0;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.65);
+  }
 }
-
-// ==========================================================
-// PTSD TREATMENT
-// ==========================================================
+// =========================================================
+// DEPRESSION TREATMENT
+// =========================================================
 .ptsd-treatment-section {
-    background: @off-white;
-
-    .inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: center;
-    }
-
-    .content {
-        p {
-            font-family: @font-body;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.8;
-            color: @text-muted;
-            margin: 0 0 1rem;
-        }
-    }
-
-    .buttons {
-        margin-top: 1.5rem;
-    }
-
-    .image {
-        aspect-ratio: 4 / 3;
-        border-radius: @radius;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-}
-
-// ==========================================================
-// RECOGNIZING THE SIGNS
-// ==========================================================
-.ptsd-signs-section {
-    background: @white;
-
-    .signs {
-        max-width: 600px;
-        margin: 2rem 0 0;
-        padding: 0;
-
-        li {
-            position: relative;
-            padding: 0.4rem 0 0.4rem 1.4rem;
-            border-bottom: 1px solid @border;
-            font-size: 15px;
-            line-height: 1.7;
-            color: @text-muted;
-
-            &:first-child {
-                border-top: 1px solid @border;
-            }
-
-            &::before {
-                content: '•';
-                position: absolute;
-                left: 0;
-                color: @brand-blue;
-            }
-        }
-    }
-
-    .note {
-        margin: 1rem 0 0;
-        font-size: 13px;
-        font-style: italic;
-        line-height: 1.7;
+  background: @off-white;
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    .content-wrapper {
+      h4 {
+        font-family: @font-display;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        letter-spacing: 0.01em;
+        text-transform: none;
+        color: @brand-blue;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+      }
+      p {
+        font-family: @font-body;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.8;
         color: @text-muted;
+        margin: 0 0 1rem;
+      }
     }
+    .buttons {
+      margin-top: 1.5rem;
+    }
+    .image {
+      aspect-ratio: 4 / 3;
+      border-radius: @radius;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }
-
-// ==========================================================
-// OUR APPROACH
-// ==========================================================
-.ptsd-approach-section {
-    background: @brand-navy;
-
-    .heading {
-        h4,
-        h2,
-        h3 {
-            color: @white;
-        }
-
-        p {
-            color: rgba(255, 255, 255, 0.65);
-            margin-bottom: 2.5rem;
-        }
+// =========================================================
+// RECOGNIZING THE SIGNS
+// =========================================================
+.ptsd-signs-section {
+  background: @white;
+  .heading.content-wrapper {
+    h4 {
+      font-family: @font-display;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: @brand-blue;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
-
+  }
+  .signs {
+    max-width: 600px;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+    li {
+      position: relative;
+      padding: 0.4rem 0 0.4rem 1.4rem;
+      border-bottom: 1px solid @border;
+      font-size: 15px;
+      line-height: 1.7;
+      color: @text-muted;
+      &:first-child {
+        border-top: 1px solid @border;
+      }
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: @brand-blue;
+      }
+    }
+  }
+  .note {
+    margin: 1rem 0 0;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.7;
+    color: @text-muted;
+  }
+}
+// =========================================================
+// OUR APPROACH
+// =========================================================
+.ptsd-approach-section {
+  background: @brand-navy;
+  .heading.content-wrapper {
+    :is(h4, h2, h3) {
+      color: @white;
+    }
+    h4 {
+      font-family: @font-display;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 2.5rem;
+    }
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    .item {
+      padding: 2rem;
+      background: @white;
+      border: 1px solid @border;
+      border-radius: @radius;
+      transition: border-color 0.2s, transform 0.2s;
+      .content-wrapper {
+        h3 {
+          font-family: @font-display;
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: @brand-navy;
+          margin-bottom: 0.6rem;
+          letter-spacing: 0.01em;
+        }
+        &:hover {
+          border-color: @brand-blue;
+          transform: translateY(-2px);
+        }
+        :is(h2, h3) {
+          font-family: @font-display;
+          font-size: 1.3rem;
+          font-weight: 600;
+          line-height: 1.7;
+          letter-spacing: 0.01em;
+          color: @brand-navy;
+          margin: 0 0 0.6rem;
+        }
+        p {
+          font-size: 14px;
+          line-height: 1.75;
+          color: @text-muted;
+          margin: 0;
+        }
+      }
+    }
+    .learn-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: @brand-blue;
+      transition: color 0.2s;
+      &::after {
+        content: ' →';
+      }
+      &:hover {
+        color: @brand-navy;
+      }
+    }
+  }
+}
+// =========================================================
+// CTA
+// =========================================================
+.cta-section {
+  background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
+  padding: 4.5rem 0;
+  text-align: center;
+  .content-wrapper {
+    h2 {
+      font-family: @font-display;
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: @brand-navy;
+      margin: 0 0 0.75rem;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: @brand-navy-soft;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+// =========================================================
+// RESPONSIVE
+// =========================================================
+@media (max-width: 1024px) {
+  .ptsd-treatment-section,
+  .ptsd-signs-section,
+  .ptsd-approach-section {
+    padding-top: var(--responsive-section-space);
+    padding-bottom: var(--responsive-section-space);
+  }
+  // Page hero (left on tablet)
+  .page-hero-section {
+    padding-top: 4.5rem;
+    padding-bottom: 3.5rem;
+    text-align: left;
+    .content-wrapper {
+      :is(h1, h2) {
+        font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+        line-height: 1.1;
+        overflow-wrap: break-word;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+    }
+  }
+  // Eyebrows
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) h4 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  // Main titles
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) :is(h2, h3) {
+    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+  // Body paragraphs
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) p {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  // Stats (centered like desktop)
+  .stats-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     .inner {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem var(--responsive-card-gap);
+    }
+    .number {
+      font-size: 2.6rem;
+    }
+    .label {
+      font-size: 14px;
+    }
+  }
+  // Treatment (stack, left)
+  .ptsd-treatment-section {
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      > .content-wrapper,
+      > .image {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        flex: 0 0 auto;
+      }
+    }
+    .image {
+      aspect-ratio: 16 / 10;
+    }
+  }
+  // Signs (left)
+  .ptsd-signs-section .signs {
+    max-width: 100%;
+    li {
+      font-size: 15px;
+    }
+  }
+  // Approach (2 columns, left)
+  .ptsd-approach-section {
+    .inner {
+      gap: var(--responsive-card-gap);
     }
     .item {
-        padding: 2rem;
-        background: @white;
-        border: 1px solid @border;
-        border-radius: @radius;
-        transition: border-color 0.2s, transform 0.2s;
-
-        &:hover {
-            border-color: @brand-blue;
-            transform: translateY(-2px);
-        }
-
-        h3,
-        h2 {
-            font-family: @font-display;
-            font-size: 1.3rem;
-            font-weight: 600;
-            line-height: 1.7;
-            letter-spacing: 0.01em;
-            color: @brand-navy;
-            margin: 0 0 0.6rem;
-        }
-
-        p {
-            font-size: 14px;
-            line-height: 1.75;
-            color: @text-muted;
-            margin: 0;
-        }
-    }
-
-    .learn-link {
-        display: inline-block;
-        margin-top: 1rem;
-        font-size: 13px;
-        font-weight: 500;
+      min-width: 0;
+      text-align: left;
+      :is(h2, h3) {
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+      p {
+        font-size: 15px;
         line-height: 1.7;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: @brand-blue;
-        transition: color 0.2s;
-
-        &::after {
-            content: ' →';
-        }
-
-        &:hover {
-            color: @brand-navy;
-        }
+      }
     }
+  }
+  // CTA (centered)
+  .cta-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    .content-wrapper {
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
 }
-
-// ==========================================================
-// RESPONSIVE STYLES
-// ==========================================================
-
-// ----------------------------------------------------------
-// LAPTOP: 1025px–1199px
-// ----------------------------------------------------------
-@media (min-width: 1025px) and (max-width: 1199px) {
-    .ptsd-treatment-section > .container,
-    .ptsd-signs-section > .container,
-    .ptsd-approach-section > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
-    .ptsd-treatment-section {
-        .inner {
-            gap: 3.5rem;
-        }
-    }
-}
-
-// ----------------------------------------------------------
-// TABLET AND MOBILE: 1024px AND BELOW
-// ----------------------------------------------------------
-@media (max-width: 1024px) {
-
-    // Container sizing.
-
-    .ptsd-treatment-section > .container,
-    .ptsd-signs-section > .container,
-    .ptsd-approach-section > .container {
-        width: 100%;
-        max-width: 100%;
-        padding-left: var(--responsive-gutter);
-        padding-right: var(--responsive-gutter);
-    }
-
-    // Section spacing.
-    .ptsd-treatment-section,
-    .ptsd-signs-section,
-    .ptsd-approach-section {
-        padding-top: var(--responsive-section-space);
-        padding-bottom: var(--responsive-section-space);
-    }
-
-    // Eyebrow typography.
-
-    .ptsd-treatment-section .content h4,
-    .ptsd-signs-section .heading h4,
-    .ptsd-approach-section .heading h4 {
-        font-size: var(--fs-eyebrow);
-        line-height: 1.25;
-        margin-bottom: 0.6rem;
-    }
-
-    // Main heading typography.
-    .ptsd-treatment-section .content h2,
-    .ptsd-treatment-section .content h3,
-    .ptsd-signs-section .heading h2,
-    .ptsd-signs-section .heading h3,
-    .ptsd-approach-section .heading h2,
-    .ptsd-approach-section .heading h3 {
-        font-size: var(--fs-title);
-        line-height: 1.15;
-        margin-bottom: 1rem;
-        overflow-wrap: break-word;
-    }
-
-    // Subtitle typography.
-    .ptsd-signs-section .heading p,
-    .ptsd-approach-section .heading p {
-        font-size: var(--fs-body);
-        line-height: 1.7;
-    }
-
-    // Approach card typography.
-    .ptsd-approach-section .item {
-        h3,
-        h2 {
-            font-size: var(--fs-card-title);
-            line-height: 1.35;
-        }
-
-        p {
-            font-size: var(--fs-card-text);
-            line-height: 1.7;
-        }
-    }
-
-    // Symptom list typography.
-    .ptsd-signs-section .signs li {
-        font-size: var(--fs-card-text);
-        line-height: 1.7;
-    }
-
-    // Treatment: text above image.
-    .ptsd-treatment-section {
-        .inner {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-
-            > * {
-                width: 100%;
-                max-width: 100%;
-                min-width: 0;
-                flex: 0 0 auto;
-            }
-        }
-
-        .image {
-            aspect-ratio: 16 / 10;
-        }
-    }
-
-    // Symptom list uses the available width.
-    .ptsd-signs-section {
-        .signs {
-            max-width: 100%;
-        }
-    }
-
-    // Keep approach cards in two columns on tablet.
-    .ptsd-approach-section {
-        .inner {
-            gap: var(--responsive-card-gap);
-        }
-    }
-}
-
-
-// ----------------------------------------------------------
-// MOBILE: 767px
-// ----------------------------------------------------------
 @media (max-width: 767px) {
-
-    .ptsd-treatment-section,
-    .ptsd-signs-section,
-    .ptsd-approach-section {
-        text-align: center;
+  // Page hero (centered on mobile only)
+  .page-hero-section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    .breadcrumb {
+      font-size: 11px;
+      letter-spacing: 0.12em;
     }
-
-    // Center heading descriptions.
-    .ptsd-signs-section .heading p,
-    .ptsd-approach-section .heading p {
+    .content-wrapper {
+      :is(h1, h2) {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        line-height: 1.12;
+      }
+      p {
+        font-size: 16px;
         margin-left: auto;
         margin-right: auto;
+      }
     }
-
-    // Treatment buttons stack vertically.
-    .ptsd-treatment-section {
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-
-            a {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
+  }
+  // Eyebrows
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  // Main titles
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) :is(h2, h3) {
+    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+    line-height: 1.18;
+  }
+  // Body paragraphs
+  :is(.ptsd-treatment-section .content-wrapper, .ptsd-signs-section .heading, .ptsd-approach-section .heading) p {
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+  .stats-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    .inner {
+      gap: 1.75rem var(--responsive-card-gap);
     }
-
-    // Center the list block, not the list text.
-    .ptsd-signs-section {
-        .signs {
-            margin: 2rem auto 0;
-            text-align: left;
-        }
+    .number {
+      font-size: 2.2rem;
     }
-
-    // Approach heading spacing.
-    .ptsd-approach-section {
-        .heading {
-            p {
-                margin-bottom: 2rem;
-            }
-        }
-
-        // One card per row on mobile.
-        .inner {
-            grid-template-columns: 1fr;
-        }
-
-        .item {
-            padding: 1.75rem 1.5rem;
-            text-align: left;
-        }
+    .label {
+      font-size: 13px;
     }
+  }
+  .ptsd-treatment-section {
+    .inner {
+      gap: 24px;
+    }
+    .image {
+      aspect-ratio: 4 / 3.4;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  .ptsd-signs-section .signs {
+    margin-top: 1.5rem;
+  }
+  // Approach (1 column, left)
+  .ptsd-approach-section {
+    .heading p {
+      margin-bottom: 2rem;
+    }
+    .inner {
+      grid-template-columns: 1fr;
+    }
+    .item {
+      padding: 1.75rem 1.5rem;
+      :is(h2, h3) {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+  // CTA (centered, stacked buttons)
+  .cta-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    .content-wrapper {
+      h2 {
+        font-size: clamp(1.6rem, 6.5vw, 1.9rem);
+      }
+      p {
+        font-size: 15.5px;
+      }
+    }
+    .buttons {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
 }
-
-// ----------------------------------------------------------
-// SMALL MOBILE: 480px AND BELOW
-// ----------------------------------------------------------
 @media (max-width: 480px) {
-    .ptsd-approach-section {
-        .item {
-            padding: 1.5rem 1.25rem;
-        }
-    }
+  .ptsd-approach-section .item {
+    padding: 1.5rem 1.25rem;
+  }
+}
+@media (max-width: 374px) {
+  .page-hero-section .content-wrapper :is(h1, h2) {
+    font-size: 1.9rem;
+  }
+  .stats-section .inner {
+    grid-template-columns: 1fr;
+  }
 }

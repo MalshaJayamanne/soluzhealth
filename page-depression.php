@@ -1,39 +1,12 @@
 <?php
-/**
- * Template Name: Depression
- */
+/** Template Name: Depression **/
 get_header();
-
-$appointment = get_field('appointment_link') ?: get_theme_option('appointment_link');
-$telephone   = get_theme_option('telephone');
-
-/**
- * Builds href / target / rel attributes from an ACF Link array.
- */
-$link_attrs = function ($link) {
-    $target = !empty($link['target']) ? $link['target'] : '_self';
-    $rel    = ($target === '_blank') ? ' rel="noopener noreferrer"' : '';
-    return 'href="' . esc_url($link['url']) . '" target="' . esc_attr($target) . '"' . $rel;
-};
-
-$call_number = '';
-if ($telephone) {
-    $phones      = array_filter(array_map('trim', explode(',', $telephone)));
-    $call_number = $phones ? reset($phones) : '';
-}
 ?>
 
-<?php
-/* ==================== PAGE HERO ==================== */
-$hero_image   = get_field('dp_hero_image');
-$hero_content = get_field('dp_hero_content');
-?>
-<?php if ($hero_image || $hero_content) : ?>
+<?php if ($hero_content = get_field('dp_hero_content')) : ?>
     <section class="page-hero-section dp-hero">
-        <?php if ($hero_image) : ?>
-            <div class="page-hero-bg">
-                <?php get_image($hero_image, 'full'); ?>
-            </div>
+        <?php if ($hero_image = get_field('dp_hero_image')) : ?>
+            <?php get_image($hero_image, 'full', get_bloginfo('name'), false); ?>
         <?php endif; ?>
 
         <div class="container">
@@ -44,19 +17,14 @@ $hero_content = get_field('dp_hero_content');
                     <?php echo esc_html(get_the_title()); ?>
                 </div>
 
-                <?php if ($hero_content) : ?>
-                    <div class="content">
-                        <?php echo $hero_content; ?>
-                    </div>
-                <?php endif; ?>
+                <div class="content-wrapper">
+                    <?php echo $hero_content; ?>
+                </div>
             </div>
         </div>
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== STAT BAR ==================== */
-?>
 <?php if (have_rows('dp_features')) : ?>
     <section class="stats-section">
         <div class="container">
@@ -66,6 +34,7 @@ $hero_content = get_field('dp_hero_content');
                         <?php if ($value = get_sub_field('value')) : ?>
                             <div class="number"><?php echo esc_html($value); ?></div>
                         <?php endif; ?>
+
                         <?php if ($name = get_sub_field('name')) : ?>
                             <div class="label"><?php echo esc_html($name); ?></div>
                         <?php endif; ?>
@@ -76,28 +45,23 @@ $hero_content = get_field('dp_hero_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== DEPRESSION TREATMENT ==================== */
-$treatment_image   = get_field('dp_treatment_image');
-$treatment_content = get_field('dp_treatment_content');
-?>
-<?php if ($treatment_image || $treatment_content) : ?>
+<?php if ($treatment_content = get_field('dp_treatment_content')) : ?>
     <section class="dp-treatment-section">
         <div class="container">
             <div class="inner">
-                <div class="content">
+                <div class="content-wrapper">
                     <?php echo $treatment_content; ?>
 
-                    <?php if (!empty($appointment['url'])) : ?>
+                    <?php if (($appointment = get_field('appointment_link') ?: get_theme_option('appointment_link')) && !empty($appointment['url'])) : ?>
                         <div class="buttons">
-                            <a <?php echo $link_attrs($appointment); ?> class="theme-blue">
+                            <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
                                 <?php echo esc_html($appointment['title']); ?>
                             </a>
                         </div>
                     <?php endif; ?>
                 </div>
 
-                <?php if ($treatment_image) : ?>
+                <?php if ($treatment_image = get_field('dp_treatment_image')) : ?>
                     <div class="image">
                         <?php get_image($treatment_image, 'large'); ?>
                     </div>
@@ -107,16 +71,11 @@ $treatment_content = get_field('dp_treatment_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== RECOGNIZING THE SIGNS ==================== */
-$recognize_title = get_field('dp_recognize_title');
-$recognize_note  = get_field('dp_recognize_note');
-?>
-<?php if ($recognize_title || have_rows('dp_signs')) : ?>
+<?php if (($recognize_title = get_field('dp_recognize_title')) || have_rows('dp_signs')) : ?>
     <section class="dp-signs-section">
         <div class="container">
             <?php if ($recognize_title) : ?>
-                <div class="heading">
+                <div class="heading content-wrapper">
                     <?php echo $recognize_title; ?>
                 </div>
             <?php endif; ?>
@@ -131,22 +90,18 @@ $recognize_note  = get_field('dp_recognize_note');
                 </ul>
             <?php endif; ?>
 
-            <?php if ($recognize_note) : ?>
+            <?php if ($recognize_note = get_field('dp_recognize_note')) : ?>
                 <p class="note"><?php echo esc_html($recognize_note); ?></p>
             <?php endif; ?>
         </div>
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== OUR APPROACH ==================== */
-$approach_content = get_field('dp_approach_content');
-?>
-<?php if ($approach_content || have_rows('dp_approaches')) : ?>
+<?php if (($approach_content = get_field('dp_approach_content')) || have_rows('dp_approaches')) : ?>
     <section class="dp-approach-section">
         <div class="container">
             <?php if ($approach_content) : ?>
-                <div class="heading">
+                <div class="heading content-wrapper">
                     <?php echo $approach_content; ?>
                 </div>
             <?php endif; ?>
@@ -154,16 +109,14 @@ $approach_content = get_field('dp_approach_content');
             <?php if (have_rows('dp_approaches')) : ?>
                 <div class="inner">
                     <?php while (have_rows('dp_approaches')) : the_row(); ?>
-                        <?php
-                        $card_content = get_sub_field('content');
-                        $card_link    = get_sub_field('link');
-                        ?>
                         <div class="item">
-                            <?php echo $card_content; ?>
+                            <?php if ($content = get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo $content; ?></div>
+                            <?php endif; ?>
 
-                            <?php if (!empty($card_link['url'])) : ?>
-                                <a <?php echo $link_attrs($card_link); ?> class="learn-link">
-                                    <?php echo esc_html($card_link['title']); ?>
+                            <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
+                                <a <?php echo get_link_attrs($link); ?> class="learn-link">
+                                    <?php echo esc_html($link['title']); ?>
                                 </a>
                             <?php endif; ?>
                         </div>
@@ -174,25 +127,29 @@ $approach_content = get_field('dp_approach_content');
     </section>
 <?php endif; ?>
 
-<?php
-/* ==================== CTA ==================== */
-$cta_content = get_field('dp_cta_content');
-?>
-<?php if ($cta_content) : ?>
+<?php if ($cta_content = get_field('dp_cta_content')) : ?>
     <section class="cta-section">
         <div class="container">
             <div class="inner">
-                <div class="content">
+                <div class="content-wrapper">
                     <?php echo $cta_content; ?>
                 </div>
+
+                <?php $appointment = get_field('appointment_link') ?: get_theme_option('appointment_link'); ?>
+                <?php $call_number = ''; ?>
+                <?php if ($telephone = get_theme_option('telephone')) : ?>
+                    <?php $phones = array_filter(array_map('trim', explode(',', $telephone))); ?>
+                    <?php $call_number = $phones ? reset($phones) : ''; ?>
+                <?php endif; ?>
 
                 <?php if (!empty($appointment['url']) || $call_number) : ?>
                     <div class="buttons">
                         <?php if (!empty($appointment['url'])) : ?>
-                            <a <?php echo $link_attrs($appointment); ?> class="theme-blue">
+                            <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
                                 <?php echo esc_html($appointment['title']); ?>
                             </a>
                         <?php endif; ?>
+
                         <?php if ($call_number) : ?>
                             <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
                                 Call <?php echo esc_html($call_number); ?>
