@@ -10,780 +10,902 @@
 .doctor-section,
 .patient-section,
 .contact-section {
-  position: relative;
-  padding: 6rem 0;
-  font-family: @font-body;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: @text;
+	position: relative;
+	padding: 6rem 0;
+	font-family: @font-body;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.7;
+	color: @text;
 }
+
 .hero-section {
-  padding: 0;
+	padding: 0;
 }
+
 // Shared eyebrow / title / paragraph
 :is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content-wrapper) {
-  h5 {
-    font-family: @font-display;
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: @brand-blue;
-    margin: 0 0 0.75rem;
-  }
+	h5 {
+		font-family: @font-display;
+		font-size: clamp(1.5rem, 2.4vw, 2rem);
+		font-weight: 600;
+		line-height: 1.2;
+		letter-spacing: 0.01em;
+		text-transform: none;
+		color: @brand-blue;
+		margin: 0 0 0.75rem;
+	}
 }
+
 :is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
-  h2 {
-    font-family: @font-display;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: @brand-navy;
-    margin: 0 0 1rem;
-    span {
-      font-style: normal;
-      color: @brand-blue;
-    }
-  }
+	h2 {
+		font-family: @font-display;
+		font-size: clamp(2rem, 4.5vw, 3.2rem);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.01em;
+		color: @brand-navy;
+		margin: 0 0 1rem;
+
+		span {
+			font-style: normal;
+			color: @brand-blue;
+		}
+	}
 }
+
 :is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
-  p {
-    font-family: @font-body;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.75;
-    color: @text-muted;
-    max-width: 580px;
-    margin: 0;
-  }
+	p {
+		font-family: @font-body;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 1.75;
+		color: @text-muted;
+		max-width: 580px;
+		margin: 0;
+	}
 }
-:is(.welcome-section .content-wrapper, .doctor-section .content-wrapper) p + p {
-  margin-top: 1rem;
+
+:is(.welcome-section .content-wrapper, .doctor-section .content-wrapper) p+p {
+	margin-top: 1rem;
 }
+
 // Dark sections
 :is(.conditions-section .heading, .contact-section .content-wrapper) {
-  :is(h5, h2) {
-    color: #fff;
-  }
-  h2 span {
-    color: @brand-blue;
-  }
-  p {
-    color: rgba(255, 255, 255, 0.7);
-  }
+	:is(h5, h2) {
+		color: #fff;
+	}
+
+	h2 span {
+		color: @brand-blue;
+	}
+
+	p {
+		color: rgba(255, 255, 255, 0.7);
+	}
 }
+
 // Card link arrow
 :is(.treatment-section, .conditions-section) {
-  .item {
-    position: relative;
-  }
-  .more-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: @font-display;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: @brand-blue;
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-    }
-    &::after {
-      content: '→';
-      transition: transform 0.2s;
-    }
-  }
+	.item {
+		position: relative;
+	}
+
+	.more-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-family: @font-display;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: @brand-blue;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+		}
+
+		&::after {
+			content: '→';
+			transition: transform 0.2s;
+		}
+	}
 }
+
 .treatment-section .more-link {
-  letter-spacing: 0.06em;
+	letter-spacing: 0.06em;
 }
+
 :is(.treatment-section, .conditions-section) .item:hover .more-link::after {
-  transform: translateX(4px);
+	transform: translateX(4px);
 }
+
 // =========================================================
 // HERO
 // =========================================================
 .hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 92vh;
-  background: @brand-navy;
-  overflow: hidden;
-  position: relative;
-  padding: 0;
-  text-align: left;
-  > img {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.3;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(10, 31, 61, 0.7) 0%, rgba(10, 31, 61, 0.4) 50%, rgba(10, 31, 61, 0.7) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-  > .container {
-    position: relative;
-    z-index: 2;
-    flex: 0 1 auto;
-    width: auto;
-    max-width: 760px;
-    min-width: 0;
-    margin: 0 auto;
-    padding: 9rem 2rem;
-  }
-  .inner {
-    padding: 0;
-    > img {
-      display: block;
-      height: 140px;
-      width: auto;
-      max-width: 100%;
-      margin-bottom: 1.75rem;
-    }
-  }
-  .content-wrapper {
-    :is(h1, h2) {
-      font-family: @font-display;
-      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-      font-weight: 700;
-      line-height: 1.02;
-      letter-spacing: -0.02em;
-      color: #fff;
-      max-width: 760px;
-      margin: 0 0 1.5rem;
-      span {
-        font-style: normal;
-        color: @brand-blue;
-      }
-    }
-    h4 {
-      font-family: @font-display;
-      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-      font-weight: 600;
-      line-height: 1.7;
-      letter-spacing: 0;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 760px;
-      margin: -0.25rem 0 1.75rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.78);
-      max-width: 540px;
-      margin: 0 0 2.5rem;
-    }
-  }
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 92vh;
+	background: @brand-navy;
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	text-align: left;
+
+	>img {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		opacity: 0.3;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(10, 31, 61, 0.7) 0%, rgba(10, 31, 61, 0.4) 50%, rgba(10, 31, 61, 0.7) 100%);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	>.container {
+		position: relative;
+		z-index: 2;
+		flex: 0 1 auto;
+		width: auto;
+		max-width: 760px;
+		min-width: 0;
+		margin: 0 auto;
+		padding: 9rem 2rem;
+	}
+
+	.inner {
+		padding: 0;
+
+		>img {
+			display: block;
+			height: 140px;
+			width: auto;
+			max-width: 100%;
+			margin-bottom: 1.75rem;
+		}
+	}
+
+	.content-wrapper {
+		:is(h1, h2) {
+			font-family: @font-display;
+			font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+			font-weight: 700;
+			line-height: 1.02;
+			letter-spacing: -0.02em;
+			color: #fff;
+			max-width: 760px;
+			margin: 0 0 1.5rem;
+
+			span {
+				font-style: normal;
+				color: @brand-blue;
+			}
+		}
+
+		h4 {
+			font-family: @font-display;
+			font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+			font-weight: 600;
+			line-height: 1.7;
+			letter-spacing: 0;
+			color: rgba(255, 255, 255, 0.9);
+			max-width: 760px;
+			margin: -0.25rem 0 1.75rem;
+		}
+
+		p {
+			font-family: @font-body;
+			font-size: 17px;
+			font-weight: 400;
+			line-height: 1.75;
+			color: rgba(255, 255, 255, 0.78);
+			max-width: 540px;
+			margin: 0 0 2.5rem;
+		}
+	}
+
+	.buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
 }
+
 @media (min-width: 1025px) {
-  .hero-section > .container {
-    max-width: 820px;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+	.hero-section>.container {
+		max-width: 820px;
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
 }
+
 // =========================================================
 // WELCOME
 // =========================================================
 .welcome-section {
-  background: @off-white;
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .image {
-    aspect-ratio: 4 / 5;
-    border-radius: @radius;
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  .content-wrapper {
-    h4 > span {
-      font-family: @font-display;
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: var(--brand-blue);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-    h5 {
-      display: inline-block;
-      font-family: @font-display;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1.7;
-      text-transform: uppercase;
-      color: @brand-navy;
-      background: @brand-light-blue;
-      border-radius: 20px;
-      padding: 6px 14px;
-      margin: 0 0 1rem;
-    }
-    h3 {
-      font-family: @font-display;
-      font-size: 3.2rem;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: @brand-navy;
-      margin: 0 0 1rem;
-    }
-  }
-  .features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin: 1.75rem 0 0;
-    li {
-      font-family: @font-display;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      line-height: 1.7;
-      color: @brand-navy;
-      background: @brand-light-blue;
-      border-radius: 24px;
-      padding: 6px 16px;
-      list-style: none;
-    }
-  }
-  .buttons {
-    margin-top: 2rem;
-  }
+	background: @off-white;
+
+	.inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5rem;
+		align-items: center;
+	}
+
+	.image {
+		aspect-ratio: 4 / 5;
+		border-radius: @radius;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.content-wrapper {
+		h4>span {
+			font-family: @font-display;
+			font-size: clamp(1.5rem, 2.4vw, 2rem);
+			letter-spacing: 0.01em;
+			text-transform: none;
+			color: var(--brand-blue);
+			font-weight: 600;
+			margin-bottom: 0.75rem;
+			line-height: 1.2;
+		}
+
+		h5 {
+			display: inline-block;
+			font-family: @font-display;
+			font-size: 12px;
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			line-height: 1.7;
+			text-transform: uppercase;
+			color: @brand-navy;
+			background: @brand-light-blue;
+			border-radius: 20px;
+			padding: 6px 14px;
+			margin: 0 0 1rem;
+		}
+
+		h3 {
+			font-family: @font-display;
+			font-size: 3.2rem;
+			font-weight: 700;
+			line-height: 1.1;
+			letter-spacing: -0.01em;
+			color: @brand-navy;
+			margin: 0 0 1rem;
+		}
+	}
+
+	.features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin: 1.75rem 0 0;
+
+		li {
+			font-family: @font-display;
+			font-size: 12px;
+			font-weight: 500;
+			letter-spacing: 0.05em;
+			line-height: 1.7;
+			color: @brand-navy;
+			background: @brand-light-blue;
+			border-radius: 24px;
+			padding: 6px 16px;
+			list-style: none;
+		}
+	}
+
+	.buttons {
+		margin-top: 2rem;
+	}
 }
+
 // =========================================================
 // HOW WE WORK
 // =========================================================
 .work-section {
-  background: #fff;
-  .heading {
-    max-width: 640px;
-    margin: 0 auto 1rem;
-    text-align: center;
-    h3 > span {
-      font-family: @font-display;
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: @brand-blue;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-      }
-    h4 {
-      font-family: @font-display;
-      font-size: 3.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: @brand-navy-soft;
-      margin-bottom: 1rem;
-    }
-  }
-  .inner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 3rem;
-    gap: 1.5rem;
-  }
-  .item {
-    background: @brand-light-blue;
-    border-radius: 18px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    h3 {
-      font-family: @font-display;
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-      color: @brand-navy;
-      margin: 0 0 1rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 14.5px;
-      line-height: 1.75;
-      color: @brand-navy-soft;
-      margin: 0;
-    }
-  }
+	background: #fff;
+
+	.heading.content-wrapper {
+		max-width: 640px;
+		margin: 0 auto 1rem;
+		text-align: center;
+
+		h3 {
+			font-family: @font-display;
+			font-size: clamp(1.5rem, 2.4vw, 2rem);
+			letter-spacing: 0.01em;
+			text-transform: none;
+			font-weight: 600;
+			color: @brand-blue;
+			margin-bottom: 0.75rem;
+			line-height: 1.2;
+		}
+
+		h2 {
+			font-family: @font-display;
+			font-size: 3.2rem;
+			font-weight: 700;
+			line-height: 1.2;
+			letter-spacing: -0.01em;
+			color: @brand-navy-soft;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.inner {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin-top: 3rem;
+		gap: 1.5rem;
+	}
+
+	.item {
+		background: @brand-light-blue;
+		border-radius: 18px;
+		padding: 2.5rem 2rem;
+		text-align: center;
+
+		h3 {
+			font-family: @font-display;
+			font-size: 1.8rem;
+			font-weight: 700;
+			line-height: 1.5;
+			letter-spacing: 0.01em;
+			color: @brand-navy;
+			margin: 0 0 1rem;
+		}
+
+		p {
+			font-family: @font-body;
+			font-size: 14.5px;
+			line-height: 1.75;
+			color: @brand-navy-soft;
+			margin: 0;
+		}
+	}
 }
+
 // =========================================================
 // TREATMENTS
 // =========================================================
 .treatment-section {
-  background: @off-white;
-  .heading {
-    max-width: 680px;
-    margin: 0 auto 3rem;
-    text-align: center;
-    h4 > span {
-      font-family: @font-display;
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: @brand-blue;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-    p {
-      margin: 0 auto;
-    }
-  }
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .item {
-    background: #fff;
-    border: 1px solid @border;
-    border-radius: @radius;
-    padding: 2.5rem;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    &:hover {
-      border-color: @brand-blue;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
-    }
-    h3 {
-      font-family: @font-display;
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 1.7;
-      letter-spacing: -0.01em;
-      color: @brand-navy;
-      margin: 0 0 0.75rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 15px;
-      line-height: 1.75;
-      color: @text-muted;
-      margin: 0 0 1.25rem;
-      em {
-        display: block;
-        font-size: 13px;
-        line-height: 1.6;
-        font-style: italic;
-      }
-    }
-  }
+	background: @off-white;
+
+	.heading.content-wrapper {
+		max-width: 680px;
+		margin: 0 auto 3rem;
+		text-align: center;
+
+		h4 {
+			font-family: @font-display;
+			font-size: clamp(1.5rem, 2.4vw, 2rem);
+			letter-spacing: 0.01em;
+			text-transform: none;
+			color: @brand-blue;
+			font-weight: 600;
+			margin-bottom: 0.75rem;
+			line-height: 1.2;
+		}
+
+		p {
+			margin: 0 auto;
+		}
+	}
+
+	.inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+
+		.item {
+			display: flex;
+			flex-direction: column;
+			background: #fff;
+			border: 1px solid @border;
+			border-radius: @radius;
+			padding: 2.5rem;
+			transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+			.more-link {
+				margin-top: auto;
+    			align-self: flex-start;
+			}
+			&:hover {
+				border-color: @brand-blue;
+				transform: translateY(-3px);
+				box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
+			}
+
+			h3 {
+				font-family: @font-display;
+				font-size: 1.8rem;
+				font-weight: 700;
+				line-height: 1.7;
+				letter-spacing: -0.01em;
+				color: @brand-navy;
+				margin: 0 0 0.75rem;
+			}
+
+			p {
+				font-family: @font-body;
+				font-size: 15px;
+				line-height: 1.75;
+				color: @text-muted;
+				margin: 0 0 1.25rem;
+
+				em {
+					display: block;
+					font-size: 13px;
+					line-height: 1.6;
+					font-style: italic;
+				}
+			}
+		}
+	}
 }
+
 // =========================================================
 // CONDITIONS
 // =========================================================
 .conditions-section {
-  background: @brand-navy;
-  .heading.content-wrapper {
-    margin: 0 0 3.5rem;
-    h3 {
-      font-family: @font-display;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: white;
-      margin-bottom: 0.75rem;
-    }
-  }
-  .inner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .item {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: @radius;
-    padding: 2rem;
-    transition: background 0.2s, border-color 0.2s;
-    &:hover {
-      background: rgba(54, 169, 255, 0.1);
-      border-color: @brand-blue;
-    }
-    h3 {
-      font-family: @font-display;
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: 1.7;
-      color: #fff;
-      margin: 0 0 0.75rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 14px;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.65);
-      margin: 0 0 1.5rem;
-    }
-    &:last-child {
-      background: rgba(54, 169, 255, 0.12);
-      border-color: @brand-blue;
-      h3 {
-        color: @brand-blue;
-      }
-    }
-  }
+	background: @brand-navy;
+
+	.heading.content-wrapper {
+		margin: 0 0 3.5rem;
+
+		h3 {
+			font-family: @font-display;
+			font-size: 2rem;
+			font-weight: 600;
+			line-height: 1.2;
+			letter-spacing: 0.01em;
+			text-transform: none;
+			color: white;
+			margin-bottom: 0.75rem;
+		}
+	}
+
+	.inner {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+
+		.item {
+			display: flex;
+ 			flex-direction: column;
+			background: rgba(255, 255, 255, 0.06);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			border-radius: @radius;
+			padding: 2rem;
+			transition: background 0.2s, border-color 0.2s;
+			.more-link {
+				margin-top: auto;
+    			align-self: flex-start;
+			}
+			&:hover {
+				background: rgba(54, 169, 255, 0.1);
+				border-color: @brand-blue;
+			}
+
+			h3 {
+				font-family: @font-display;
+				font-size: 1.4rem;
+				font-weight: 600;
+				line-height: 1.7;
+				color: #fff;
+				margin: 0 0 0.75rem;
+			}
+
+			p {
+				font-family: @font-body;
+				font-size: 14px;
+				line-height: 1.75;
+				color: rgba(255, 255, 255, 0.65);
+				margin: 0 0 1.5rem;
+			}
+
+			&:last-child {
+				background: rgba(54, 169, 255, 0.12);
+				border-color: @brand-blue;
+
+				h3 {
+					color: @brand-blue;
+				}
+			}
+		}
+	}
 }
+
 // =========================================================
 // PROCESS
 // =========================================================
 .process-section {
-  background: @brand-light-blue;
-  .heading.content-wrapper {
-    h3 {
-      font-family: @font-display;
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: 0.01em;
-      text-transform: none;
-      margin-bottom: 0.75rem;
-    }
-    p {
-      color: @brand-navy-soft;
-    }
-  }
-  .inner {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 3.5rem;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 32px;
-      left: 3%;
-      right: 3%;
-      height: 2px;
-      background: @brand-navy;
-      opacity: 0.25;
-    }
-  }
-  .step {
-    position: relative;
-    h3 {
-      font-family: @font-display;
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.7;
-      color: @brand-navy;
-      margin: 0 0 0.6rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 14px;
-      line-height: 1.75;
-      color: @brand-navy-soft;
-      margin: 0;
-    }
-  }
-  .number {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: @brand-navy;
-    color: @brand-blue;
-    font-family: @font-display;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
+	background: @brand-light-blue;
+
+	.heading.content-wrapper {
+		h3 {
+			font-family: @font-display;
+			font-size: 2rem;
+			font-weight: 600;
+			line-height: 1.2;
+			letter-spacing: 0.01em;
+			text-transform: none;
+			margin-bottom: 0.75rem;
+		}
+
+		p {
+			color: @brand-navy-soft;
+		}
+	}
+
+	.inner {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 3rem;
+		margin-top: 3.5rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 32px;
+			left: 3%;
+			right: 3%;
+			height: 2px;
+			background: @brand-navy;
+			opacity: 0.25;
+		}
+	}
+
+	.step {
+		position: relative;
+
+		h3 {
+			font-family: @font-display;
+			font-size: 1.3rem;
+			font-weight: 700;
+			line-height: 1.7;
+			color: @brand-navy;
+			margin: 0 0 0.6rem;
+		}
+
+		p {
+			font-family: @font-body;
+			font-size: 14px;
+			line-height: 1.75;
+			color: @brand-navy-soft;
+			margin: 0;
+		}
+	}
+
+	.number {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background: @brand-navy;
+		color: @brand-blue;
+		font-family: @font-display;
+		font-size: 22px;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+	}
 }
+
 // =========================================================
 // DOCTOR
 // =========================================================
 .doctor-section {
-  background: #fff;
-  .inner {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .image {
-    aspect-ratio: 3 / 4;
-    border: 8px solid @brand-light-blue;
-    border-radius: @radius;
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-  }
-  .content-wrapper {
-    h5 {
-      font-family: @font-display;
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.7;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin: 0 0 0.5rem;
-    }
-    h2 {
-      font-family: @font-display;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 700;
-      color: @brand-navy;
-      margin-bottom: 0.4rem;
-      margin-top: 0;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-    }
-    h3 {
-      font-family: @font-body;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.7;
-      color: @text-muted;
-      margin: 0 0 1.5rem;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.8;
-      color: @text-muted;
-    }
-  }
-  .review {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.75rem;
-    background: @sage-light;
-    border-left: 4px solid @brand-blue;
-    border-radius: @radius;
-    .score {
-      strong {
-      display: block;
-      font-family: @font-display;
-      font-size: 2.4rem;
-      font-weight: 700;
-      line-height: 1;
-      color: @brand-navy;
-      }
-      .stars {
-        display: block;
-        margin-top: 4px;
-        font-size: 16px;
-        color: @brand-blue;
-      }
-      h5 {
-        font-size: 12px;
-        font-family: @font-sub-body;
-        color: @text-muted;
-        margin-top: 2px;
-        font-weight: 500;
-        letter-spacing: 0.03em;
-      }
-    }
-    .quote {
-      flex: 1;
-      min-width: 220px;
-      p {
-        font-size: 14px;
-        line-height: 1.7;
-        color: @text;
-      }
-      h6 {
-        font-family: @font-display;
-        font-weight: 600;
-        font-size: 13px;
-        color: @brand-navy;
-        margin-top: 8px;
-      }
-    }
-  }
-  .buttons {
-    margin-top: 2rem;
-  }
+	background: #fff;
+
+	.inner {
+		display: grid;
+		grid-template-columns: 420px 1fr;
+		gap: 5rem;
+		align-items: center;
+	}
+
+	.image {
+		aspect-ratio: 3 / 4;
+		border: 8px solid @brand-light-blue;
+		border-radius: @radius;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: top;
+		}
+	}
+
+	.content-wrapper {
+		h5 {
+			font-family: @font-display;
+			font-size: 12px;
+			font-weight: 600;
+			line-height: 1.7;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			margin: 0 0 0.5rem;
+		}
+
+		h2 {
+			font-family: @font-display;
+			font-size: clamp(2rem, 3.5vw, 2.8rem);
+			font-weight: 700;
+			color: @brand-navy;
+			margin-bottom: 0.4rem;
+			margin-top: 0;
+			line-height: 1.1;
+			letter-spacing: -0.01em;
+		}
+
+		h3 {
+			font-family: @font-body;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 1.7;
+			color: @text-muted;
+			margin: 0 0 1.5rem;
+		}
+
+		p {
+			font-family: @font-body;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 1.8;
+			color: @text-muted;
+		}
+	}
+
+	.review {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+		margin-top: 2rem;
+		padding: 1.75rem;
+		background: @sage-light;
+		border-left: 4px solid @brand-blue;
+		border-radius: @radius;
+
+		.score {
+			strong {
+				display: block;
+				font-family: @font-display;
+				font-size: 2.4rem;
+				font-weight: 700;
+				line-height: 1;
+				color: @brand-navy;
+			}
+
+			.stars {
+				display: block;
+				margin-top: 4px;
+				font-size: 12px;
+				color: @brand-blue;
+			}
+
+			h5 {
+				font-size: 12px;
+				font-family: @font-sub-body;
+				color: @text-muted;
+				margin-top: 2px;
+				font-weight: 500;
+				letter-spacing: 0.03em;
+			}
+		}
+
+		.quote {
+			flex: 1;
+			min-width: 220px;
+
+			p {
+				font-size: 14px;
+				line-height: 1.7;
+				color: @text;
+			}
+
+			h6 {
+				font-family: @font-display;
+				font-weight: 600;
+				font-size: 13px;
+				color: @brand-navy;
+				margin-top: 8px;
+			}
+		}
+	}
+
+	.buttons {
+		margin-top: 2rem;
+	}
 }
+
 // =========================================================
 // PATIENT REVIEWS
 // =========================================================
 .patient-section {
-  background: @off-white;
-  .heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    .title {
-      h3 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      }
-      h2 {
-        font-family: @font-display;
-        font-size: clamp(2rem, 4.5vw, 3.2rem);
-        font-weight: 700;
-        line-height: 1.1;
-        color: @brand-navy;
-        margin-bottom: 1rem;
-        letter-spacing: -0.01em;
-      }
-    }
-  }
-  .stat {
-    text-align: right;
-    .rating {
-      font-family: @font-display;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1;
-      color: @brand-navy;
-      span {
-        font-family: @font-body;
-        font-size: 1rem;
-        font-weight: 400;
-        color: @text-muted;
-      }
-    }
-    .stars {
-      margin-top: 6px;
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: @brand-blue;
-    }
-    h5 {
-      margin-top: 4px;
-      font-size: 13px;
-      font-family: @font-sub-body;
-      font-weight: 500;
-      text-transform: uppercase;
-      color: @text-muted;
-      letter-spacing: 0.03rem;
-    }
-  }
-  .inner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .item {
-    background: #fff;
-    border: 1px solid @border;
-    border-radius: @radius;
-    padding: 2rem;
-    .stars {
-      margin-bottom: 1rem;
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: @brand-blue;
-    }
-    p {
-      font-family: @font-body;
-      font-size: 15px;
-      line-height: 1.8;
-      color: @text;
-      margin: 0 0 1.2rem;
-    }
-    h6 {
-      display: block;
-      font-family: @font-display;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: @brand-navy;
-    }
-  }
+	background: @off-white;
+
+	.heading {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-bottom: 3rem;
+
+		.title {
+			h3 {
+				font-family: @font-display;
+				font-size: clamp(1.5rem, 2.4vw, 2rem);
+				letter-spacing: 0.01em;
+				text-transform: none;
+				color: @brand-blue;
+				font-weight: 600;
+				margin-bottom: 0.75rem;
+				line-height: 1.2;
+			}
+
+			h2 {
+				font-family: @font-display;
+				font-size: clamp(2rem, 4.5vw, 3.2rem);
+				font-weight: 700;
+				line-height: 1.1;
+				color: @brand-navy;
+				margin-bottom: 1rem;
+				letter-spacing: -0.01em;
+			}
+		}
+	}
+
+	.stat {
+		text-align: right;
+
+		.rating {
+			font-family: @font-display;
+			font-size: 3rem;
+			font-weight: 700;
+			line-height: 1;
+			color: @brand-navy;
+
+			span {
+				font-family: @font-body;
+				font-size: 1rem;
+				font-weight: 400;
+				color: @text-muted;
+			}
+		}
+
+		.stars {
+			margin-top: 6px;
+			font-size: 12px;
+			letter-spacing: 2px;
+			color: @brand-blue;
+		}
+
+		h5 {
+			margin-top: 4px;
+			font-size: 13px;
+			font-family: @font-sub-body;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: @text-muted;
+			letter-spacing: 0.03rem;
+		}
+	}
+
+	.inner {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		.item {
+			background: #fff;
+			border: 1px solid @border;
+			border-radius: @radius;
+			padding: 2rem;
+			display: flex; //pushes the content
+			flex-direction: column;
+
+			.stars {
+				margin-bottom: 1rem;
+				font-size: 12px;
+				letter-spacing: 2px;
+				color: @brand-blue;
+			}
+
+			p {
+				font-family: @font-body;
+				font-size: 15px;
+				line-height: 1.8;
+				color: @text;
+				margin: 0 0 1.2rem;
+			}
+
+			h6 {
+				display: block;
+				font-family: @font-display;
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				color: @brand-navy;
+				margin-top: auto; // Push to bottom of card
+    			align-self: flex-start;
+			}
+		}
+	}
 }
+
 // =========================================================
 // CONTACT
 // =========================================================
 .contact-section {
-  background: @brand-navy;
-  .inner {
-    max-width: 760px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .inner .content-wrapper {
-    h3 {
-      font-family: @font-display;
-      font-size: clamp(1.5rem, 2.4vw, 2rem);
-      letter-spacing: 0.01em;
-      color: #fff;
-      text-transform: none;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-    h2 {
-      font-family: @font-display;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-      color: #fff;
-    }
-    p {
-      margin: 0 auto 1rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-  }
-  .buttons {
-    margin-top: 2rem;
-  }
+	background: @brand-navy;
+
+	.inner {
+		max-width: 760px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.inner .content-wrapper {
+		h3 {
+			font-family: @font-display;
+			font-size: clamp(1.5rem, 2.4vw, 2rem);
+			letter-spacing: 0.01em;
+			color: #fff;
+			text-transform: none;
+			font-weight: 600;
+			margin-bottom: 0.75rem;
+			line-height: 1.2;
+		}
+
+		h2 {
+			font-family: @font-display;
+			font-size: clamp(2rem, 4.5vw, 3.2rem);
+			font-weight: 700;
+			line-height: 1.1;
+			margin-bottom: 1rem;
+			letter-spacing: -0.01em;
+			color: #fff;
+		}
+
+		p {
+			margin: 0 auto 1rem;
+			color: rgba(255, 255, 255, 0.7);
+		}
+	}
+
+	.buttons {
+		margin-top: 2rem;
+	}
 }
 
 // =========================================================
@@ -801,62 +923,69 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
-  // Hero (left on tablet)
+  // Hero
   .hero-section {
     min-height: 70vh;
-    text-align: left;
+    text-align: center;
     > .container {
       width: 100%;
-      max-width: 100%;
-      padding-top: var(--responsive-hero-space);
-      padding-bottom: var(--responsive-hero-space);
+      max-width: 820px;
+      padding: 5rem 2rem;
     }
     .inner > img {
       height: 110px;
-      margin: 0 0 1.5rem;
+      margin: 0 auto 1.25rem;
     }
     .content-wrapper {
-      text-align: left;
+      text-align: center;
       :is(h1, h2) {
-        font-size: clamp(2.4rem, 5vw, 3.5rem);
+        font-size: clamp(2.8rem, 5.5vw, 3.5rem);
         line-height: 1.1;
+        margin-left: auto;
+        margin-right: auto;
       }
       h4 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         line-height: 1.6;
+        margin-left: auto;
+        margin-right: auto;
       }
       p {
         font-size: 16px;
         line-height: 1.7;
-        margin: 0 0 2rem;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     .buttons {
-      justify-content: flex-start;
+      justify-content: center;
     }
-  }
-  // Eyebrows
-  .welcome-section .content-wrapper h4 > span,
-  .work-section .heading h3 > span,
-  .treatment-section .heading h4 > span,
-  .conditions-section .heading h3,
-  .process-section .heading h3,
-  .patient-section .heading .title h3,
-  .contact-section .content-wrapper h3 {
-    font-size: 1.4rem;
-    line-height: 1.25;
   }
   // Main titles
   .welcome-section .content-wrapper h3,
-  .work-section .heading h4,
+  .work-section .heading.content-wrapper h2,
   .treatment-section .heading h2,
   .conditions-section .heading h2,
   .process-section .heading h2,
   .doctor-section .content-wrapper h2,
   .patient-section .heading .title h2,
-  .contact-section .content-wrapper h2 {
-    font-size: clamp(2rem, 4.5vw, 2.6rem);
+  .contact-section .inner .content-wrapper h2 {
+    font-size: clamp(2.2rem, 4vw, 2.6rem);
     line-height: 1.15;
+  }
+  .doctor-section .content-wrapper h2 {
+    font-size: clamp(2rem, 3.6vw, 2.4rem);
+  }
+  // Eyebrows
+  .welcome-section .content-wrapper h4 > span,
+  .work-section .heading.content-wrapper h3,
+  .treatment-section .heading.content-wrapper h4,
+  .conditions-section .heading.content-wrapper h3,
+  .process-section .heading.content-wrapper h3,
+  .patient-section .heading .title h3,
+  .contact-section .inner .content-wrapper h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
   }
   // Body paragraphs
   .welcome-section .content-wrapper p,
@@ -869,213 +998,328 @@
     font-size: 16px;
     line-height: 1.75;
   }
-  // Welcome + Doctor stack
-  .welcome-section .inner,
-  .doctor-section .inner {
+  // Welcome
+  .welcome-section .inner {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    gap: 2rem;
     > .image,
     > .content-wrapper {
       width: 100%;
       max-width: 100%;
       min-width: 0;
-      flex: 0 0 auto;
     }
     > .image {
-      order: 1;
+      max-width: 480px;
     }
     > .content-wrapper {
-      order: 2;
-      text-align: left;
+      text-align: center;
     }
   }
   .welcome-section .image {
     aspect-ratio: 16 / 11;
   }
-  .doctor-section .inner > .image {
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
   .welcome-section .features,
-  .welcome-section .buttons,
-  .doctor-section .buttons {
-    justify-content: flex-start;
+  .welcome-section .buttons {
+    justify-content: center;
   }
-  // Headings alignment (same as desktop)
+  .welcome-section .features li {
+    font-size: 12px;
+  }
+  // Work and Treatment headings centered
   .work-section .heading,
   .treatment-section .heading {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .conditions-section .heading,
-  .process-section .heading {
-    text-align: left;
-    margin-bottom: 2.5rem;
-  }
-  .work-section .heading,
   .work-section .heading p,
   .treatment-section .heading p {
     margin-left: auto;
     margin-right: auto;
   }
-  .conditions-section .heading p,
-  .process-section .heading p {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  // Process line off
-  .process-section {
-    .number::before,
-    .number::after,
-    .inner::before,
-    .inner::after,
-    .step::before,
-    .step::after {
-      display: none;
-      content: none;
+  // Conditions heading centered
+  .conditions-section .heading.content-wrapper {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    h3,
+    h2,
+    p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
+  }
+  .conditions-section .inner .content-wrapper {
+    text-align: left;
+    :is(h3, h4, h5, h6, p, a) {
+      text-align: left;
+    }
+  }
+  // Process heading left
+  .process-section .heading {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  .process-section .inner::before {
+    display: none;
   }
   // Card grids
   .work-section .inner,
-  .process-section .inner,
-  .patient-section .inner {
-    grid-template-columns: 1fr;
-    gap: var(--responsive-card-gap);
-  }
+  .patient-section .inner,
   .treatment-section .inner,
   .conditions-section .inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--responsive-card-gap);
+    gap: 1.25rem;
   }
+  // Process steps
   .process-section .inner {
-    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
-    // Doctor (centered)
-  .doctor-section .inner > .content-wrapper {
-    text-align: center;
-    :is(h2, h3, h5, p) {
-      text-align: center;
+  .process-section .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-width: 0;
+    text-align: left;
+    h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      text-align: left;
     }
     p {
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0;
+      font-size: 15px;
+      text-align: left;
+    }
+  }
+  .process-section .number {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    margin: 0;
+  }
+  // Cards (same selectors as desktop)
+  .work-section .item {
+    min-width: 0;
+    padding: 2rem 1.75rem;
+    text-align: left;
+    :is(h3, p) {
+      text-align: left;
+    }
+    h3 {
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+  .treatment-section .inner .item {
+    min-width: 0;
+    padding: 2rem 1.75rem;
+    text-align: left;
+    :is(h3, p, em, a) {
+      text-align: left;
+    }
+    h3 {
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+  .conditions-section .inner .item {
+    min-width: 0;
+    padding: 1.75rem;
+    text-align: left;
+    :is(h3, p, a, .content-wrapper) {
+      text-align: left;
+    }
+    h3 {
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+  .patient-section .inner .item {
+    min-width: 0;
+    padding: 1.75rem;
+    text-align: left;
+    :is(h6, p, .stars) {
+      text-align: left;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    h6 {
+      font-size: 14px;
+    }
+  }
+  // Doctor
+  .doctor-section .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    > .image,
+    > .content-wrapper {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    > .image {
+      max-width: 400px;
+    }
+    > .content-wrapper {
+      text-align: center;
+    }
+  }
+  .doctor-section .content-wrapper p.doctor-bio {
+    display: block;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center !important;
+  }
+  .doctor-section .content-wrapper p.doctor-bio + p.doctor-bio {
+    margin-top: 1rem;
+  }
+  .doctor-section .review {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    text-align: left;
+    .score,
+    .quote {
+      text-align: left;
+      :is(strong, .stars, h5, h6, p) {
+        text-align: left;
+      }
+    }
+    .quote {
+      flex: 1 1 220px;
+      min-width: 0;
+    }
+    .score strong {
+      font-size: 2.2rem;
+    }
+    .quote p {
+      font-size: 14px;
     }
   }
   .doctor-section .buttons {
     justify-content: center;
   }
-  .doctor-section .review {
-    justify-content: center;
+  // Patient heading and rating centered
+  .patient-section .heading {
+    flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    justify-content: center;
     text-align: center;
-    .score,
-    .quote {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    .title,
+    .stat {
+      width: 100%;
       text-align: center;
-      :is(strong, .stars, h5, h6, p) {
-        text-align: center;
-      }
+    }
+    .title :is(h2, h3, p) {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat :is(.rating, .stars, h5) {
+      text-align: center;
     }
   }
-  // Inner items: everything left aligned
-  :is(.work-section .item, .treatment-section .item, .conditions-section .item, .process-section .step, .patient-section .item) {
-    min-width: 0;
-    text-align: left;
-    :is(h3, h5, h6, p, em, a, .number, .stars) {
-      text-align: left;
-    }
-    h3 {
-      font-size: 1.4rem;
-      line-height: 1.4;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.75;
-      margin-left: 0;
-      margin-right: 0;
-    }
+  .patient-section .stat .rating {
+    font-size: 2.6rem;
   }
-  .work-section .item,
-  .treatment-section .item {
-    padding: 2rem 1.75rem;
+  // Contact
+  .contact-section .inner .content-wrapper {
+    text-align: center;
   }
-  .conditions-section .item {
-    padding: 1.75rem;
-  }
-  .process-section .number {
-    margin: 0 0 1rem;
-  }
-    .patient-section .heading {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      text-align: left;
-      margin-bottom: 2.5rem;
-      :is(.title, .stat) {
-        width: 100%;
-        text-align: left;
-        :is(h2, h3, h5, .rating, .stars) {
-          text-align: left;
-        }
-      }
-    }
 }
 @media (max-width: 767px) {
+  .welcome-section,
+  .work-section,
+  .treatment-section,
+  .conditions-section,
+  .process-section,
+  .doctor-section,
+  .patient-section,
+  .contact-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  // Hero (38px title)
   .hero-section {
     min-height: 0;
     text-align: center;
     > .container {
-      padding: 5rem 1.25rem;
+      padding: 4rem 1.25rem;
     }
     .inner > img {
       height: 90px;
       margin: 0 auto 1.25rem;
     }
     .content-wrapper {
-      text-align: center;
       :is(h1, h2) {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        font-size: 38px;
         line-height: 1.12;
         margin: 0 auto 1rem;
       }
       h4 {
-        font-size: 1.05rem;
-        line-height: 1.6;
+        font-size: 1.1rem;
+        line-height: 1.55;
         margin: 0 auto 1.25rem;
       }
       p {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.7;
-        margin: 0 auto 1.75rem;
+        margin: 0 auto 1.5rem;
       }
     }
-    .buttons {
-      justify-content: center;
-    }
-  }
-  // Eyebrows
-  .welcome-section .content-wrapper h4 > span,
-  .work-section .heading h3 > span,
-  .treatment-section .heading h4 > span,
-  .conditions-section .heading h3,
-  .process-section .heading h3,
-  .patient-section .heading .title h3,
-  .contact-section .content-wrapper h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
   }
   // Main titles
   .welcome-section .content-wrapper h3,
-  .work-section .heading h4,
+  .work-section .heading.content-wrapper h2,
   .treatment-section .heading h2,
   .conditions-section .heading h2,
   .process-section .heading h2,
   .doctor-section .content-wrapper h2,
   .patient-section .heading .title h2,
-  .contact-section .content-wrapper h2 {
-    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
-    line-height: 1.18;
+  .contact-section .inner .content-wrapper h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  // Eyebrows
+  .welcome-section .content-wrapper h4 > span,
+  .work-section .heading.content-wrapper h3,
+  .treatment-section .heading.content-wrapper h4,
+  .conditions-section .heading.content-wrapper h3,
+  .process-section .heading.content-wrapper h3,
+  .patient-section .heading .title h3,
+  .contact-section .inner .content-wrapper h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
   }
   // Body paragraphs
   .welcome-section .content-wrapper p,
@@ -1085,145 +1329,183 @@
   .process-section .heading p,
   .doctor-section .content-wrapper p,
   .contact-section .content-wrapper p {
-    font-size: 15.5px;
-    line-height: 1.75;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  // Welcome
+  .welcome-section .inner {
+    gap: 1.5rem;
   }
   .welcome-section .image {
-    aspect-ratio: 4 / 3.4;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
   }
   .welcome-section .features li {
-    font-size: 12px;
-    padding: 6px 14px;
+    font-size: 11.5px;
+    padding: 5px 12px;
   }
-  // Single column grids
+  // Single column cards
   .work-section .inner,
   .treatment-section .inner,
   .conditions-section .inner,
   .process-section .inner,
   .patient-section .inner {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
   }
-  .conditions-section .heading,
-  .process-section .heading,
-  .treatment-section .heading {
-    margin-bottom: 2rem;
+  .work-section .heading,
+  .treatment-section .heading,
+  .process-section .heading {
+    margin-bottom: 1.75rem;
   }
-  .work-section .heading {
-    margin-bottom: 0;
+  .conditions-section .heading.content-wrapper {
+    margin-bottom: 1.75rem;
   }
   .work-section .inner {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
-  // Inner items: everything left aligned
-  :is(.work-section .item, .treatment-section .item, .conditions-section .item, .process-section .step, .patient-section .item) {
-    text-align: left;
-    :is(h3, h5, h6, p, em, a, .number, .stars) {
-      text-align: left;
-    }
+  // Cards
+  .work-section .item {
+    padding: 1.75rem 1.25rem;
     h3 {
-      font-size: 1.25rem;
-      line-height: 1.4;
+      font-size: 1.3rem;
     }
     p {
       font-size: 15px;
-      line-height: 1.7;
     }
   }
-  .work-section .item {
-    padding: 1.75rem 1.25rem;
-  }
-  .treatment-section .item,
-  .conditions-section .item,
-  .patient-section .item {
+  .treatment-section .inner .item {
     padding: 1.5rem 1.25rem;
+    h3 {
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .conditions-section .inner .item {
+    padding: 1.5rem 1.25rem;
+    h3 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .patient-section .inner .item {
+    padding: 1.5rem 1.25rem;
+    p {
+      font-size: 15px;
+    }
+  }
+  // Process centered on mobile
+  .process-section .heading {
+    text-align: center;
+    :is(h2, h3, p) {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   .process-section .inner {
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.75rem;
+    margin-top: 1.75rem;
+  }
+  .process-section .step {
+    align-items: center;
+    text-align: center;
+    h3 {
+      font-size: 1.2rem;
+    }
+    :is(h3, p) {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   .process-section .number {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
-    margin: 0 0 1rem;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    margin: 0 auto 0.25rem;
   }
   // Doctor
+  .doctor-section .inner {
+    gap: 1.5rem;
+  }
+  .doctor-section .inner > .image {
+    max-width: 320px;
+    border-width: 5px;
+  }
   .doctor-section .review {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    .score,
     .quote {
       width: 100%;
       min-width: 0;
     }
+    .score strong {
+      font-size: 2rem;
+    }
+    .quote p {
+      font-size: 14px;
+    }
   }
   // Patient
   .patient-section .heading {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-  .patient-section .heading .title,
-  .patient-section .stat {
-    width: 100%;
-    text-align: left;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
   }
   .patient-section .stat .rating {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
-  // Contact (centered like desktop)
-  .contact-section .inner .content-wrapper {
-    text-align: center;
-  }
-  // Buttons (stacked, full width)
+  // Buttons
   .hero-section .buttons,
   .welcome-section .buttons,
   .doctor-section .buttons,
   .contact-section .buttons {
     flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
+    align-items: center;
+    gap: 0.75rem;
     a {
       width: 100%;
-      max-width: 100%;
+      max-width: 320px;
     }
   }
 }
 @media (max-width: 480px) {
-  .hero-section > .container {
-    padding: 4.5rem 1.25rem;
-  }
-  .hero-section .inner > img {
-    height: 80px;
-  }
   .work-section .item {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem 1.1rem;
   }
-  .treatment-section .item,
-  .conditions-section .item,
-  .patient-section .item {
-    padding: 1.4rem 1.1rem;
+  .treatment-section .inner .item,
+  .conditions-section .inner .item,
+  .patient-section .inner .item {
+    padding: 1.35rem 1.1rem;
   }
 }
 @media (max-width: 374px) {
   .hero-section .inner > img {
-    height: 72px;
+    height: 80px;
   }
   .hero-section .content-wrapper {
     :is(h1, h2) {
-      font-size: 1.9rem;
+      font-size: 34px;
     }
     p {
-      font-size: 15px;
+      font-size: 14.5px;
     }
   }
-  .work-section .item,
-  .treatment-section .item,
-  .conditions-section .item,
-  .patient-section .item {
-    padding: 1.25rem 1rem;
+  .welcome-section .content-wrapper h3,
+  .work-section .heading.content-wrapper h2,
+  .treatment-section .heading h2,
+  .conditions-section .heading h2,
+  .process-section .heading h2,
+  .doctor-section .content-wrapper h2,
+  .patient-section .heading .title h2,
+  .contact-section .inner .content-wrapper h2 {
+    font-size: 1.8rem;
   }
 }

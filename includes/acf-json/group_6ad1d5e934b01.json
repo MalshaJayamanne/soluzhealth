@@ -87,7 +87,7 @@
                     "name": "content",
                     "aria-label": "",
                     "type": "wysiwyg",
-                    "instructions": "Use <code>h3<\/code> for the title.",
+                    "instructions": "Use <code>h5<\/code> for the date. <br>\r\nUse <code>h3<\/code> for the title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -184,5 +184,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792137353
+    "modified": 1792555411
 }

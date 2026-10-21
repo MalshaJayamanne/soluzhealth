@@ -245,7 +245,7 @@
             "name": "work_title",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Use <code> h3<\/code> for the title. <br>\r\nUse <code> h4<\/code> for the sub-heading below the title.",
+            "instructions": "Use <code> h3<\/code> for the title. <br>\r\nUse <code> h2<\/code> for the sub-heading below the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1150,5 +1150,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792402970
+    "modified": 1792576348
 }

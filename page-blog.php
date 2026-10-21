@@ -1,52 +1,81 @@
-<?php /* Template Name: Blog */ ?>
-<?php get_header(); ?>
-
-<?php get_template_part('templates/sub-page', 'banner'); ?>
-
-<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = array(
-    'post_type'         => 'post',
-    'orderby'           => 'date',
-    'order'             => 'DESC',
-    'posts_per_page'    => get_option('posts_per_page') ?: 12,
-    'paged'             => $paged,
-);
-$blog = new WP_Query($args);
-if ($blog->have_posts()) :
+<?php
+/** Template Name: Blog **/
+get_header();
 ?>
 
-    <section class="blog-section">
+<?php if ($blog_hero_content = get_field('blog_hero_content')) : ?>
+    <section class="blog-hero-section">
         <div class="container">
-            <div class="row blog-listing">
-                <div class="col-sm-12 col-lg-3">
-                    <?php get_template_part('templates/blog', 'sidebar'); ?>
+            <div class="inner">
+                <div class="breadcrumb">
+                    <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <?php echo esc_html(get_the_title()); ?>
                 </div>
-                <div class="col-sm-12 col-lg-9">
-                    <div class="row">
-                        <?php while ($blog->have_posts()) : $blog->the_post(); ?>
-                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                <?php get_template_part('templates/blog', 'item'); ?>
-                            </div>
-                        <?php endwhile;
-                        wp_reset_postdata(); ?>
-                    </div>
 
-                    <div class="pagination-wrapper">
-                        <?php
-                        $big = 999999999; // need an unlikely integer
-                        echo paginate_links(array(
-                            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                            'format' => '?paged=%#%',
-                            'current' => $paged,
-                            'total' => $blog->max_num_pages,
-                        ));
-                        ?>
-                    </div>
+                <div class="content-wrapper">
+                    <?php echo $blog_hero_content; ?>
                 </div>
             </div>
         </div>
     </section>
+<?php endif; ?>
 
+<?php if (have_rows('blogs')) : ?>
+    <section class="blog-section">
+        <div class="container">
+            <div class="inner">
+                <?php while (have_rows('blogs')) : the_row(); ?>
+                    <div class="item">
+                        <?php if ($content = get_sub_field('content')) : ?>
+                            <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                        <?php endif; ?>
+
+                        <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
+                            <a <?php echo get_link_attrs($link); ?> class="more-link">
+                                <?php echo esc_html($link['title']); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php if ($cta_content = get_field('blog_cta_content')) : ?>
+    <section class="cta-section">
+        <div class="container">
+            <div class="inner">
+                <div class="content-wrapper">
+                    <?php echo $cta_content; ?>
+                </div>
+
+                <?php $appointment = get_theme_option('appointment_link'); ?>
+                <?php $call_number = ''; ?>
+                <?php if ($telephone = get_theme_option('telephone')) : ?>
+                    <?php $phones = array_filter(array_map('trim', explode(',', $telephone))); ?>
+                    <?php $call_number = $phones ? reset($phones) : ''; ?>
+                <?php endif; ?>
+
+                <?php if (!empty($appointment['url']) || $call_number) : ?>
+                    <div class="buttons">
+                        <?php if (!empty($appointment['url'])) : ?>
+                            <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
+                                <?php echo esc_html($appointment['title']); ?>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if ($call_number) : ?>
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
+                                Call <?php echo esc_html($call_number); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
 <?php endif; ?>
 
 <?php get_footer(); ?>
+
+

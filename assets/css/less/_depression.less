@@ -289,6 +289,12 @@
         border: 1px solid @border;
         border-radius: @radius;
         transition: border-color 0.2s, transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        .learn-link {
+          margin-top: auto;
+          align-self: flex-start;
+        }
         .content-wrapper {
             h3 {
             font-family: @font-display;
@@ -315,7 +321,7 @@
             font-size: 14px;
             line-height: 1.75;
             color: @text-muted;
-            margin: 0;
+            margin-bottom: 10px;
             }
         }
     }
@@ -414,7 +420,7 @@
     font-size: 16px;
     line-height: 1.75;
   }
-  // Stats (centered like desktop)
+  // Stats
   .stats-section {
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -448,13 +454,21 @@
     }
   }
   // Signs (left)
-  .dp-signs-section .signs {
-    max-width: 100%;
-    li {
-      font-size: 15px;
+  .dp-signs-section {
+    .heading.content-wrapper {
+      text-align: center;
+      :is(h2, h3, h4, h5, h6, p) {
+        text-align: center;
+      }
+    }
+    .signs {
+      max-width: 100%;
+      li {
+        font-size: 15px;
+      }
     }
   }
-  // Approach (2 columns, left)
+  // Approach cards — center only the inner card content
   .dp-approach-section {
     .inner {
       gap: var(--responsive-card-gap);
@@ -462,6 +476,12 @@
     .item {
       min-width: 0;
       text-align: left;
+      .content-wrapper {
+        text-align: center;
+        :is(h2, h3, h4, h5, h6, p) {
+          text-align: center;
+        }
+      }
       :is(h2, h3) {
         font-size: 1.25rem;
         line-height: 1.4;
@@ -556,7 +576,7 @@
   .dp-signs-section .signs {
     margin-top: 1.5rem;
   }
-  // Approach (1 column, left)
+  // Approach cards (1 column) — center only the inner card content
   .dp-approach-section {
     .heading p {
       margin-bottom: 2rem;
@@ -566,6 +586,12 @@
     }
     .item {
       padding: 1.75rem 1.5rem;
+      .content-wrapper {
+        text-align: center;
+        :is(h2, h3, h4, h5, h6, p) {
+          text-align: center;
+        }
+      }
       :is(h2, h3) {
         font-size: 1.2rem;
       }

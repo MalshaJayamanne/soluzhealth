@@ -289,6 +289,12 @@
       border: 1px solid @border;
       border-radius: @radius;
       transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      .learn-link {
+        margin-top: auto;
+        align-self: flex-start;
+      }
       .content-wrapper {
         h3 {
           font-family: @font-display;
@@ -315,7 +321,7 @@
           font-size: 14px;
           line-height: 1.75;
           color: @text-muted;
-          margin: 0;
+          margin-bottom: 10px;
         }
       }
     }

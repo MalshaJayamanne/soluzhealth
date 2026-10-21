@@ -322,8 +322,20 @@
 .values-section {
   background: @brand-navy;
   padding: 6rem 0;
-  .heading :is(h4, h2, h3) {
-    color: #fff;
+  .heading {
+    h3 {
+      font-family: @font-display;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    :is(h4, h2,) {
+      color: #fff;
+    }
   }
   .inner {
     display: grid;
@@ -402,10 +414,10 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
-  // Page hero (left on tablet)
+
+  // Page hero — left aligned on tablet
   .page-hero-section {
-    padding-top: 4.5rem;
-    padding-bottom: 3.5rem;
+    padding: 4.5rem 0 3.5rem;
     text-align: left;
     .content-wrapper {
       :is(h1, h2) {
@@ -419,31 +431,33 @@
       }
     }
   }
-  // Eyebrows
+
+  // Shared headings
   :is(.mission-section .content, .team-section .heading, .values-section .heading) h4 {
     font-size: 1.4rem;
     line-height: 1.25;
     margin-bottom: 0.6rem;
   }
-  // Main titles
   :is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) {
     font-size: clamp(2rem, 4.5vw, 2.6rem);
     line-height: 1.15;
     margin-bottom: 1rem;
     overflow-wrap: break-word;
   }
-  // Body paragraphs
   :is(.mission-section .content, .team-section .heading) p {
     font-size: 16px;
     line-height: 1.75;
   }
-  // Stats (centered)
+
+  // Stats — two columns, centered
   .stats-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
     .inner {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem var(--responsive-card-gap);
+    }
+    .item {
+      text-align: center;
     }
     .number {
       font-size: 2.6rem;
@@ -452,11 +466,13 @@
       font-size: 14px;
     }
   }
-  // Mission (left)
+
+  // Mission — stacked, left aligned on tablet
   .mission-section {
     .inner {
       display: flex;
       flex-direction: column;
+      align-items: stretch;
       gap: 30px;
       > .image,
       > .content {
@@ -476,10 +492,15 @@
       justify-content: flex-start;
     }
   }
-  // Team (left)
+
+  // Team — heading left, photo and text side by side
   .team-section {
     .heading {
-      text-align: left;
+      text-align: center;
+      p {
+      margin-left: auto;
+      margin-right: auto;
+      }
     }
     .inner {
       max-width: 100%;
@@ -487,40 +508,56 @@
       margin-top: 2.5rem;
     }
     .item {
+      flex-direction: row;
+      align-items: flex-start;
       gap: 1.5rem;
       padding: 1.75rem;
       text-align: left;
     }
-    .info h3 {
-      font-size: 1.3rem;
-      line-height: 1.4;
+    .photo {
+      flex-shrink: 0;
+      width: 140px;
+      height: 180px;
     }
-    .info p {
-      font-size: 15px;
-      line-height: 1.75;
+    .info {
+      min-width: 0;
+      flex: 1;
+      text-align: left;
+      h3 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.75;
+      }
     }
   }
-  // Awards (centered)
+
+  // Awards
   .awards-section {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    .inner {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem var(--responsive-card-gap);
-    }
-    .divider {
-      display: none;
+    padding: 2.5rem 0;
+      .inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem var(--responsive-card-gap);
+      .item {
+        text-align: center;
+      }
+      .divider {
+        display: none;
+      }
     }
   }
-  // Values (left)
+
+  // Values — one card per row, left aligned
   .values-section {
     .heading {
       text-align: left;
     }
     .inner {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: var(--responsive-card-gap);
       margin-top: 2.5rem;
     }
@@ -529,11 +566,9 @@
     }
     .item {
       width: 100%;
-      max-width: 100%;
       min-width: 0;
-      flex: 0 0 auto;
-      text-align: left;
       padding: 1.75rem;
+      text-align: left;
       h3 {
         font-size: 1.25rem;
         line-height: 1.4;
@@ -544,24 +579,30 @@
       }
     }
   }
-  // CTA (centered)
+
+  // CTA — centered
   .cta-section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding: 4rem 0;
+    text-align: center;
     .content h2 {
       font-size: 2rem;
       line-height: 1.3;
     }
     .content p {
       font-size: 16px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .buttons {
+      justify-content: center;
     }
   }
 }
+
 @media (max-width: 767px) {
-  // Page hero (centered on mobile only)
+  // Page hero — centered on mobile
   .page-hero-section {
-    padding-top: 4rem;
-    padding-bottom: 3rem;
+    padding: 4rem 0 3rem;
     text-align: center;
     .breadcrumb {
       font-size: 11px;
@@ -579,26 +620,41 @@
       }
     }
   }
-  // Eyebrows
-  :is(.mission-section .content, .team-section .heading, .values-section .heading) h4 {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
+
+  // Shared headings — centered on mobile
+  :is(.mission-section .content, .team-section .heading, .values-section .heading) {
+    h4 {
+      font-size: 1.15rem;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    :is(h2, h3) {
+      font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+      line-height: 1.18;
+    }
   }
-  // Main titles
-  :is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) {
-    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
-    line-height: 1.18;
+
+  .mission-section .content,
+  .team-section .heading,
+  .values-section .heading {
+    text-align: center;
   }
-  // Body paragraphs
-  :is(.mission-section .content, .team-section .heading) p {
+
+  .mission-section .content p,
+  .team-section .heading p {
     font-size: 15.5px;
     line-height: 1.75;
   }
+
+  // Stats — two columns, centered
   .stats-section {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding: 2.5rem 0;
     .inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.75rem var(--responsive-card-gap);
+    }
+    .item {
+      text-align: center;
     }
     .number {
       font-size: 2.2rem;
@@ -607,16 +663,45 @@
       font-size: 13px;
     }
   }
+
+  // Mission / Welcome — center all content on mobile
   .mission-section {
     .inner {
+      align-items: center;
       gap: 24px;
     }
     .image {
       aspect-ratio: 4 / 3.4;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .content {
+      width: 100%;
+      text-align: center;
+      h4,
+      :is(h2, h3),
+      h5,
+      p {
+        text-align: center;
+      }
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
     }
   }
-  // Team (photo centered, text left)
+
+  // Team / Doctor cards — center all card contents
   .team-section {
+    .heading {
+      text-align: center;
+    }
     .inner {
       gap: var(--responsive-card-gap);
       margin-top: 2rem;
@@ -625,30 +710,48 @@
       flex-direction: column;
       align-items: center;
       padding: 1.5rem 1.25rem;
-    }
-    .item .info {
-      width: 100%;
-      text-align: left;
+      text-align: center;
     }
     .photo {
       width: 200px;
       height: 250px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .info h3 {
-      font-size: 1.2rem;
-    }
-    .info p {
-      font-size: 15px;
-      line-height: 1.7;
+    .info {
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+      h3,
+      h4,
+      p {
+        text-align: center;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
     }
   }
+
+  // Awards — stacked and centered
   .awards-section .inner {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
   }
+  .awards-section .item {
+    text-align: center;
+  }
+
+  // Values — centered heading, left-aligned cards
   .values-section {
     .inner {
+      grid-template-columns: 1fr;
       margin-top: 2rem;
     }
     .number {
@@ -656,6 +759,7 @@
     }
     .item {
       padding: 1.5rem 1.25rem;
+      text-align: left;
       h3 {
         font-size: 1.15rem;
       }
@@ -665,9 +769,10 @@
       }
     }
   }
+
+  // CTA — centered
   .cta-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding: 3.5rem 0;
     .content h2 {
       font-size: clamp(1.6rem, 6.5vw, 1.9rem);
       line-height: 1.3;
@@ -676,12 +781,12 @@
       font-size: 15.5px;
     }
   }
-  // Buttons (stacked, full width)
-  .mission-section .buttons,
+
+  // Buttons — stacked and full width
   .cta-section .buttons {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 14px;
     a {
       width: 100%;
@@ -689,6 +794,7 @@
     }
   }
 }
+
 @media (max-width: 480px) {
   .team-section .photo {
     width: 180px;
@@ -699,6 +805,7 @@
     padding: 1.4rem 1.1rem;
   }
 }
+
 @media (max-width: 374px) {
   .page-hero-section .content-wrapper :is(h1, h2) {
     font-size: 1.9rem;
