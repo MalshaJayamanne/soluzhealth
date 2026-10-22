@@ -48,7 +48,7 @@
   background: @brand-navy;
   padding: 5rem 0 4rem;
   overflow: hidden;
-  > img {
+  >img {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -66,7 +66,7 @@
     pointer-events: none;
     z-index: 1;
   }
-  > .container {
+  >.container {
     position: relative;
     z-index: 2;
   }
@@ -98,6 +98,7 @@
       letter-spacing: -0.01em;
       color: #fff;
       margin: 0 0 1.25rem;
+
       :is(span, em) {
         font-style: normal;
         color: @brand-blue;
@@ -268,7 +269,7 @@
       line-height: 1.75;
       color: @text-muted;
       margin: 0;
-      + p {
+      +p {
         margin-top: 0.75rem;
       }
     }
@@ -333,7 +334,7 @@
       margin-bottom: 0.75rem;
       line-height: 1.2;
     }
-    :is(h4, h2,) {
+    :is(h4, h2, ) {
       color: #fff;
     }
   }
@@ -414,50 +415,58 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
-
-  // Page hero — left aligned on tablet
+  // Page hero
   .page-hero-section {
     padding: 4.5rem 0 3.5rem;
     text-align: left;
-    .content-wrapper {
+    .breadcrumb {
+      font-size: 12px;
+      text-align: center;
+    }
+    .container .inner .content-wrapper {
       :is(h1, h2) {
-        font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+        font-size: clamp(2.8rem, 5.5vw, 3.5rem);
         line-height: 1.1;
         overflow-wrap: break-word;
       }
       p {
         font-size: 16px;
         line-height: 1.7;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
     }
   }
-
-  // Shared headings
+  // Eyebrows
   :is(.mission-section .content, .team-section .heading, .values-section .heading) h4 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.25;
     margin-bottom: 0.6rem;
   }
+  // Main titles 
   :is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) {
-    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    font-size: clamp(2.2rem, 4vw, 2.6rem);
     line-height: 1.15;
-    margin-bottom: 1rem;
     overflow-wrap: break-word;
   }
+  // Values h3 is an eyebrow 
+  .values-section .heading h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  // Body paragraphs
   :is(.mission-section .content, .team-section .heading) p {
     font-size: 16px;
     line-height: 1.75;
   }
-
-  // Stats — two columns, centered
+  // Stats (centered, 2 columns)
   .stats-section {
     padding: 3rem 0;
     .inner {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem var(--responsive-card-gap);
-    }
-    .item {
-      text-align: center;
     }
     .number {
       font-size: 2.6rem;
@@ -466,8 +475,7 @@
       font-size: 14px;
     }
   }
-
-  // Mission — stacked, left aligned on tablet
+  // Mission 
   .mission-section {
     .inner {
       display: flex;
@@ -476,30 +484,27 @@
       gap: 30px;
       > .image,
       > .content {
+        text-align: center;
         width: 100%;
         max-width: 100%;
         min-width: 0;
         flex: 0 0 auto;
       }
-      > .content {
-        text-align: left;
+      .image {
+        aspect-ratio: 16 / 10;
+        max-width: 570px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
-    .image {
-      aspect-ratio: 16 / 10;
-    }
-    .buttons {
-      justify-content: flex-start;
-    }
   }
-
-  // Team — heading left, photo and text side by side
+  // Team 
   .team-section {
     .heading {
       text-align: center;
       p {
-      margin-left: auto;
-      margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     .inner {
@@ -524,6 +529,57 @@
       flex: 1;
       text-align: left;
       h3 {
+        font-size: 1.4rem;
+        line-height: 1.4;
+      }
+      h4 {
+        font-size: 12px;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+    }
+  }
+  // Awards (centered, 2 columns)
+  .awards-section {
+    padding: 2.5rem 0;
+    .inner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem var(--responsive-card-gap);
+    }
+    .divider {
+      display: none;
+    }
+    .item:last-child:nth-child(4n + 1) {
+      grid-column: 1 / -1;
+    }
+    .item h4 {
+      font-size: 1.05rem;
+    }
+    .item p {
+      font-size: 13px;
+    }
+  }
+  // Values (heading left, cards left)
+  .values-section {
+    .heading {
+      text-align: left;
+    }
+    .inner {
+      grid-template-columns: 1fr;
+      gap: var(--responsive-card-gap);
+      margin-top: 2.5rem;
+    }
+    .number {
+      font-size: 2.6rem;
+    }
+    .item {
+      min-width: 0;
+      padding: 1.75rem;
+      text-align: left;
+      h3 {
         font-size: 1.3rem;
         line-height: 1.4;
       }
@@ -533,74 +589,20 @@
       }
     }
   }
-
-  // Awards
-  .awards-section {
-    padding: 2.5rem 0;
-      .inner {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem var(--responsive-card-gap);
-      .item {
-        text-align: center;
-      }
-      .divider {
-        display: none;
-      }
-    }
-  }
-
-  // Values — one card per row, left aligned
-  .values-section {
-    .heading {
-      text-align: left;
-    }
-    .inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--responsive-card-gap);
-      margin-top: 2.5rem;
-    }
-    .number {
-      font-size: 2.6rem;
-    }
-    .item {
-      width: 100%;
-      min-width: 0;
-      padding: 1.75rem;
-      text-align: left;
-      h3 {
-        font-size: 1.25rem;
-        line-height: 1.4;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.75;
-      }
-    }
-  }
-
-  // CTA — centered
+  // CTA (centered)
   .cta-section {
     padding: 4rem 0;
-    text-align: center;
     .content h2 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       line-height: 1.3;
     }
     .content p {
       font-size: 16px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .buttons {
-      justify-content: center;
     }
   }
 }
-
 @media (max-width: 767px) {
-  // Page hero — centered on mobile
+  // Page hero (centered, 38px title)
   .page-hero-section {
     padding: 4rem 0 3rem;
     text-align: center;
@@ -608,82 +610,70 @@
       font-size: 11px;
       letter-spacing: 0.12em;
     }
-    .content-wrapper {
+    .container .inner .content-wrapper {
       :is(h1, h2) {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        font-size: 38px;
         line-height: 1.12;
       }
       p {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.7;
         margin-left: auto;
         margin-right: auto;
       }
     }
   }
-
-  // Shared headings — centered on mobile
-  :is(.mission-section .content, .team-section .heading, .values-section .heading) {
-    h4 {
-      font-size: 1.15rem;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
-    }
-    :is(h2, h3) {
-      font-size: clamp(1.75rem, 7.2vw, 2.2rem);
-      line-height: 1.18;
-    }
+  // Eyebrows
+  :is(.mission-section .content, .team-section .heading, .values-section .heading) h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
   }
-
+  // Main titles
+  :is(.mission-section .content, .team-section .heading, .values-section .heading) :is(h2, h3) {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .values-section .heading h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  // Body paragraphs
+  :is(.mission-section .content, .team-section .heading) p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  // Headings centered on mobile
   .mission-section .content,
   .team-section .heading,
   .values-section .heading {
     text-align: center;
   }
-
-  .mission-section .content p,
-  .team-section .heading p {
-    font-size: 15.5px;
-    line-height: 1.75;
-  }
-
-  // Stats — two columns, centered
+  // Stats
   .stats-section {
     padding: 2.5rem 0;
     .inner {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.75rem var(--responsive-card-gap);
-    }
-    .item {
-      text-align: center;
     }
     .number {
       font-size: 2.2rem;
     }
     .label {
-      font-size: 13px;
+      font-size: 14px;
     }
   }
-
-  // Mission / Welcome — center all content on mobile
+  // Mission (centered)
   .mission-section {
     .inner {
       align-items: center;
       gap: 24px;
     }
     .image {
-      aspect-ratio: 4 / 3.4;
-      margin-left: auto;
-      margin-right: auto;
+      aspect-ratio: 4 / 3;
     }
     .content {
       width: 100%;
-      text-align: center;
-      h4,
-      :is(h2, h3),
-      h5,
-      p {
-        text-align: center;
-      }
     }
     .buttons {
       display: flex;
@@ -696,12 +686,8 @@
       }
     }
   }
-
-  // Team / Doctor cards — center all card contents
+  // Team (photo and text centered)
   .team-section {
-    .heading {
-      text-align: center;
-    }
     .inner {
       gap: var(--responsive-card-gap);
       margin-top: 2rem;
@@ -715,18 +701,36 @@
     .photo {
       width: 200px;
       height: 250px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .info {
       width: 100%;
-      min-width: 0;
       text-align: center;
-      h3,
-      h4,
-      p {
-        text-align: center;
+      h3 {
+        font-size: 1.3rem;
       }
+      p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+  }
+  // Awards (stacked, centered)
+  .awards-section .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  // Values (heading centered, cards left)
+  .values-section {
+    .inner {
+      margin-top: 2rem;
+    }
+    .number {
+      font-size: 2.2rem;
+    }
+    .item {
+      padding: 1.5rem 1.25rem;
       h3 {
         font-size: 1.2rem;
       }
@@ -736,85 +740,24 @@
       }
     }
   }
-
-  // Awards — stacked and centered
-  .awards-section .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  .awards-section .item {
-    text-align: center;
-  }
-
-  // Values — centered heading, left-aligned cards
-  .values-section {
-    .inner {
-      grid-template-columns: 1fr;
-      margin-top: 2rem;
-    }
-    .number {
-      font-size: 2.2rem;
-    }
-    .item {
-      padding: 1.5rem 1.25rem;
-      text-align: left;
-      h3 {
-        font-size: 1.15rem;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.7;
-      }
-    }
-  }
-
-  // CTA — centered
+  // CTA (centered, stacked buttons)
   .cta-section {
     padding: 3.5rem 0;
     .content h2 {
-      font-size: clamp(1.6rem, 6.5vw, 1.9rem);
-      line-height: 1.3;
+      font-size: 1.8rem;
+      line-height: 1.25;
     }
     .content p {
-      font-size: 15.5px;
+      font-size: 15px;
     }
-  }
-
-  // Buttons — stacked and full width
-  .cta-section .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    a {
-      width: 100%;
-      max-width: 100%;
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      a {
+        width: 100%;
+        max-width: 100%;
+      }
     }
-  }
-}
-
-@media (max-width: 480px) {
-  .team-section .photo {
-    width: 180px;
-    height: 225px;
-  }
-  .team-section .item,
-  .values-section .item {
-    padding: 1.4rem 1.1rem;
-  }
-}
-
-@media (max-width: 374px) {
-  .page-hero-section .content-wrapper :is(h1, h2) {
-    font-size: 1.9rem;
-  }
-  .stats-section .inner {
-    grid-template-columns: 1fr;
-  }
-  .team-section .photo {
-    width: 160px;
-    height: 200px;
   }
 }

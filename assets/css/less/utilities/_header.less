@@ -150,7 +150,6 @@
       color: #fff;
     }
   }
-  
   .menu-icon {
     display: none;
     align-items: center;
@@ -231,12 +230,8 @@
   }
 }
 // Admin bar adjustments
-@media (max-width: 782px) {
-  .admin-bar .main-header { top: 46px; }
-}
-@media (max-width: 600px) {
-  .admin-bar .main-header { top: 0; }
-}
+@media (max-width: 782px) { .admin-bar .main-header { top: 46px; } }
+@media (max-width: 600px) { .admin-bar .main-header { top: 0; } }
 // Laptop
 @media (min-width: 1025px) and (max-width: 1199px) {
   .main-header {
@@ -362,6 +357,7 @@
   .main-header > .container { min-height: 80px; }
 }
 @media (max-width: 767px) {
+  .header-message { font-size: 14px; }
   .main-header {
     > .container {
       position: relative;

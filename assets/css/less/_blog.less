@@ -68,64 +68,64 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-  }
-  .item {
-    position: relative;
-    background: #fff;
-    border: 1px solid @border;
-    border-radius: @radius;
-    padding: 1.75rem;
-    transition: transform 0.15s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-      .more-link {
-        margin-top: auto;
-        align-self: flex-start;
+    .item {
+      position: relative;
+      background: #fff;
+      border: 1px solid @border;
+      border-radius: @radius;
+      padding: 1.75rem;
+      transition: transform 0.15s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+        .more-link {
+          margin-top: auto;
+          align-self: flex-start;
+        }
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
       }
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
-    }
-    .content-wrapper {
-      h5 {
+      .content-wrapper {
+        h5 {
+          font-family: @font-body;
+          font-size: 12px;
+          font-weight: 400;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: @text-muted;
+        }
+        :is(h2, h3) {
+          font-family: @font-display;
+          font-size: 1.3rem;
+          font-weight: 600;
+          line-height: 1.2;
+          color: @brand-navy;
+          margin: 0.5rem 0 0.6rem;
+        }
+        p {
+          font-family: @font-body;
+          font-size: 14px;
+          line-height: 1.7;
+          color: @text-muted;
+        }
+      }
+      .more-link {
+        display: inline-block;
+        margin-top: 0.9rem;
         font-family: @font-body;
         font-size: 12px;
-        font-weight: 400;
+        font-weight: 600;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: @text-muted;
-      }
-      :is(h2, h3) {
-        font-family: @font-display;
-        font-size: 1.3rem;
-        font-weight: 600;
-        line-height: 1.2;
-        color: @brand-navy;
-        margin: 0.5rem 0 0.6rem;
-      }
-      p {
-        font-family: @font-body;
-        font-size: 14px;
-        line-height: 1.7;
-        color: @text-muted;
-      }
-    }
-    .more-link {
-      display: inline-block;
-      margin-top: 0.9rem;
-      font-family: @font-body;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: @brand-blue;
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-      }
-      &::after {
-        content: ' →';
+        color: @brand-blue;
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+        }
+        &::after {
+          content: ' →';
+        }
       }
     }
   }
@@ -168,7 +168,7 @@
   .blog-hero-section {
     padding-top: 4.5rem;
     padding-bottom: 3.5rem;
-    text-align: left;
+    text-align: center;
     .content-wrapper {
       :is(h1, h2) {
         font-size: clamp(2.4rem, 6vw, 3.4rem);
@@ -177,6 +177,12 @@
       p {
         font-size: 16px;
         line-height: 1.75;
+        display: block;
+        width: 100%;
+        max-width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
     }
   }
@@ -185,16 +191,17 @@
     padding-bottom: var(--responsive-section-space);
     .inner {
       gap: var(--responsive-card-gap);
-    }
-    .item {
-      min-width: 0;
-      text-align: left;
-      .content-wrapper {
-        :is(h2, h3) {
-          font-size: 1.3rem;
-        }
-        p {
-          font-size: 14.5px;
+      .item {
+        min-width: 0;
+        text-align: left;
+        .content-wrapper {
+          text-align: left;
+          :is(h2, h3) {
+            font-size: 1.3rem;
+          }
+          p {
+            font-size: 14.5px;
+          }
         }
       }
     }
@@ -238,6 +245,7 @@
     .item {
       padding: 1.5rem 1.25rem;
       .content-wrapper {
+        padding: 0;
         :is(h2, h3) {
           font-size: 1.25rem;
         }

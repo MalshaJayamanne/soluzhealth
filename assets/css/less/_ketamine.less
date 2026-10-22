@@ -612,8 +612,6 @@
     }
   }
 }
-
- 
 // =========================================================
 // RESPONSIVE
 // =========================================================
@@ -628,17 +626,16 @@
     padding-top: var(--responsive-section-space);
     padding-bottom: var(--responsive-section-space);
   }
-
-  // Page hero — left aligned on tablet
+  // Page hero (left on tablet)
   .page-hero-section {
     padding: 4.5rem 0 3.5rem;
     text-align: left;
     .content-wrapper {
       h5 {
-        font-size: 12px;
+        font-size: 13px;
       }
       :is(h1, h2) {
-        font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+        font-size: clamp(2.8rem, 5.5vw, 3.5rem);
         line-height: 1.1;
         overflow-wrap: break-word;
       }
@@ -648,23 +645,32 @@
       }
     }
   }
-
-  // Shared headings
-  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) h4 {
-    font-size: 1.4rem;
+  // Eyebrows (same specificity as desktop)
+  .what-section .inner .content-wrapper h4,
+  .local-section .inner .content-wrapper h4,
+  .cond-section .heading.content-wrapper h4,
+  .howit-section .inner .content-wrapper h4,
+  .steps-section .heading.content-wrapper h4,
+  .faq-section .heading.content-wrapper h4 {
+    font-size: 1.5rem;
     line-height: 1.25;
   }
+  // Main titles
   :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
-    font-size: clamp(2rem, 4.5vw, 2.6rem);
+    font-size: clamp(2.2rem, 4vw, 2.6rem);
     line-height: 1.15;
     overflow-wrap: break-word;
   }
-  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .faq-section .heading) p {
+  // Body paragraphs
+  .what-section .inner .content-wrapper p,
+  .local-section .inner .content-wrapper p,
+  .cond-section .heading.content-wrapper p,
+  .howit-section .inner .content-wrapper p,
+  .faq-section .heading p {
     font-size: 16px;
     line-height: 1.75;
   }
-
-  // What Ketamine Does — stacked, left aligned
+  // What 
   .what-section {
     .inner {
       display: flex;
@@ -677,137 +683,130 @@
         max-width: 100%;
         min-width: 0;
         flex: 0 0 auto;
-      }
-      > .content-wrapper {
-        text-align: left;
+        text-align: center;
       }
     }
     .image {
       aspect-ratio: 16 / 10;
     }
   }
-
-  // Local section — left aligned
+  // Local 
   .local-section {
     .inner {
       max-width: 100%;
     }
     .content-wrapper {
-      text-align: left;
+      text-align: center;
     }
   }
-
-  // Conditions — two columns, card inner content left aligned
+  // Conditions 
   .cond-section {
-    .heading {
-      text-align: left;
+    .container .heading.content-wrapper {
       p {
-        margin-left: 0;
-        margin-right: 0;
+        display: block;
+        width: 100%;
+        max-width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
     }
     .inner {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--responsive-card-gap);
       margin-top: 2.5rem;
-    }
-    .item {
-      min-width: 0;
-      padding: 1.75rem 1.5rem;
-      text-align: left;
-      .content-wrapper {
+      .item {
+        min-width: 0;
+        padding: 1.75rem 1.5rem;
         text-align: left;
-        :is(h3, h4, h5, h6, p, a) {
+        .content-wrapper {
           text-align: left;
-        }
-        h3 {
-          font-size: 1.25rem;
-          line-height: 1.4;
-        }
-        p {
-          font-size: 14.5px;
-          line-height: 1.7;
+          h3 {
+            font-size: 1.3rem;
+            line-height: 1.4;
+          }
+          p {
+            font-size: 15px;
+            line-height: 1.7;
+          }
         }
       }
-      p {
-        font-size: 14.5px;
-        line-height: 1.7;
-        text-align: left;
-      }
-      a,
       .card-link {
-        text-align: left;
+        font-size: 13px;
       }
-      &:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-      }
-    }
-    .card-link {
-      font-size: 12.5px;
-      text-align: left;
     }
   }
-
-  // How it works — stacked layout
+  // How it works 
   .howit-section {
     .inner {
       display: block;
     }
-    .content-wrapper {
+    .container .inner .content-wrapper {
       display: block;
-      text-align: left;
+      text-align: center;
     }
-    .safety {
+    .inner .safety {
       margin-top: 2rem;
     }
-    .safety .item p {
+    .inner .safety .item p {
       font-size: 15px;
       line-height: 1.65;
     }
   }
-
-  // Steps — left aligned
-  .steps-section {
-    .heading {
+    // Steps 
+  .steps-section .heading {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .steps-section .inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+  .steps-section .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-width: 0;
+    text-align: left;
+  }
+  .steps-section .inner .item::after {
+    display: none;
+  }  
+  .steps-section .info {
+    text-align: left;
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1.4;
       text-align: left;
     }
-    .inner {
-      max-width: 100%;
-      margin-top: 2.5rem;
-    }
-    .item {
-      align-items: flex-start;
-    }
-    .info {
+    p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
       text-align: left;
-      h3 {
-        font-size: 1.25rem;
-        line-height: 1.4;
-        text-align: left;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.7;
-        text-align: left;
-      }
     }
   }
-
-  // FAQ — left aligned on tablet
+  // FAQ
   .faq-section {
-    .heading {
-      text-align: left;
+    .heading.content-wrapper {
+      text-align: center;
       p {
         margin-left: 0;
         margin-right: 0;
       }
     }
     .inner {
+      text-align: center;
       max-width: 100%;
     }
     .item {
       h3 {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         line-height: 1.4;
       }
       p {
@@ -816,52 +815,47 @@
       }
     }
   }
-
-  // CTA — centered
+  // CTA 
   .cta-section {
     padding: 4rem 0;
-    text-align: center;
     .content-wrapper {
       h2 {
-        font-size: 2rem;
+        font-size: 2.1rem;
         line-height: 1.3;
       }
       p {
         font-size: 16px;
-        margin-left: auto;
-        margin-right: auto;
       }
     }
-    .buttons {
-      justify-content: center;
-    }
   }
-
-  // Credentials — content left aligned on tablet
+  // Credentials 
   .credentials-section {
     .inner {
       grid-template-columns: 180px minmax(0, 1fr);
       gap: 2.5rem;
     }
-    .content-wrapper {
+    .inner .content-wrapper {
       text-align: left;
+      h4 {
+        font-size: 15px;
+      }
       :is(h2, h3) {
-        font-size: 1.7rem;
+        font-size: 1.75rem;
         line-height: 1.2;
         overflow-wrap: break-word;
-        text-align: left;
       }
       p {
         font-size: 15px;
         line-height: 1.75;
-        text-align: left;
       }
+    }
+    .inner .credentials-link {
+      font-size: 13px;
     }
   }
 }
-
 @media (max-width: 767px) {
-  // Page hero — centered on mobile
+  // Page hero (centered on mobile, 38px title)
   .page-hero-section {
     padding: 4rem 0 3rem;
     text-align: center;
@@ -875,33 +869,45 @@
         letter-spacing: 0.14em;
       }
       :is(h1, h2) {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        font-size: 38px;
         line-height: 1.12;
       }
       p {
-        font-size: 16px;
+        font-size: 15px;
         margin-left: auto;
         margin-right: auto;
       }
     }
   }
-
-  // Shared section headings
-  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) h4 {
-    font-size: 1.15rem;
-    line-height: 1.25;
+  // Eyebrows
+  .what-section .inner .content-wrapper h4,
+  .local-section .inner .content-wrapper h4,
+  .cond-section .heading.content-wrapper h4,
+  .howit-section .inner .content-wrapper h4,
+  .steps-section .heading.content-wrapper h4,
+  .faq-section .heading.content-wrapper h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
     margin-bottom: 0.5rem;
   }
+  // Main titles
   :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
-    font-size: clamp(1.75rem, 7.2vw, 2.2rem);
-    line-height: 1.18;
+    font-size: 2rem;
+    line-height: 1.2;
   }
-  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .faq-section .heading) p {
-    font-size: 15.5px;
-    line-height: 1.75;
+  .howit-section .inner .content-wrapper :is(h2, h3) {
+    margin-bottom: 1.5rem;
   }
-
-  // What Ketamine Does — centered content on mobile
+  // Body paragraphs
+  .what-section .inner .content-wrapper p,
+  .local-section .inner .content-wrapper p,
+  .cond-section .heading.content-wrapper p,
+  .howit-section .inner .content-wrapper p,
+  .faq-section .heading p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  // What (centered)
   .what-section {
     .inner {
       align-items: center;
@@ -909,130 +915,73 @@
     }
     .image {
       aspect-ratio: 4 / 3.4;
+    }
+    .inner > .content-wrapper {
+      text-align: center;
+    }
+  }
+  // Local (centered)
+  .local-section .inner .content-wrapper {
+    text-align: center;
+    p {
       margin-left: auto;
       margin-right: auto;
     }
-    .content-wrapper {
-      width: 100%;
-      text-align: center;
-      h4,
-      :is(h2, h3),
-      p {
-        text-align: center;
-      }
-    }
   }
-
-  // Local — centered on mobile
-  .local-section {
-    .inner {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .content-wrapper {
-      text-align: center;
-      h4,
-      :is(h2, h3),
-      p {
-        text-align: center;
-      }
-      p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-
-  // Conditions — one column, card inner content left aligned
+  // Conditions 
   .cond-section {
     .heading {
       text-align: center;
-      p {
-        margin-left: auto;
-        margin-right: auto;
-      }
+    }
+    .heading.content-wrapper p {
+      margin-left: auto;
+      margin-right: auto;
     }
     .inner {
       grid-template-columns: 1fr;
       margin-top: 2rem;
     }
-    .item {
+    .inner .item {
       padding: 1.5rem 1.25rem;
-      text-align: left;
       .content-wrapper {
-        text-align: left;
         padding: 0;
-        :is(h3, h4, h5, h6, p, a) {
-          text-align: left;
-        }
         h3 {
           font-size: 1.2rem;
           line-height: 1.4;
         }
-        p {
-          font-size: 15px;
-        }
       }
       p {
         font-size: 15px;
-        text-align: left;
       }
-      a,
-      .card-link {
-        text-align: left;
-      }
-      &:last-child:nth-child(odd) {
-        grid-column: auto;
-      }
-    }
-    .card-link {
-      text-align: left;
     }
   }
-
-  // How it works — inner content left aligned on mobile
+  // How it works (left)
   .howit-section {
-    .content-wrapper {
-      text-align: left;
+    .inner .content-wrapper {
       padding: 0;
-      :is(h4, h2, h3) {
-        text-align: left;
-      }
-      :is(h2, h3) {
-        margin-bottom: 1.5rem;
-      }
-      p {
-        text-align: left;
-      }
     }
-    .safety {
+    .inner .safety {
       margin-top: 1.75rem;
     }
-    .safety .item {
+    .inner .safety .item p {
+      font-size: 15px;
+      line-height: 1.65;
       text-align: left;
-      p {
-        font-size: 14px;
-        line-height: 1.65;
-        text-align: left;
-      }
     }
   }
-
-  // Steps — number, title and paragraph stacked; left aligned, no timeline line
+  // Steps 
   .steps-section {
     .heading {
       text-align: center;
     }
     .inner {
       margin-top: 2rem;
-      .info .content-wrapper {
-        padding: 0;
-      }
+    }
+    .inner .info .content-wrapper {
+      padding: 0;
     }
     .item {
-      display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 0.75rem;
       padding: 1rem;
       &::after {
@@ -1047,25 +996,19 @@
     }
     .info {
       width: 100%;
-      text-align: left;
       h3 {
-        font-size: 1.15rem;
-        text-align: left;
-      }
-      p {
-        text-align: left;
+        font-size: 1.2rem;
       }
     }
   }
-
-  // FAQ — centered questions
+  // FAQ 
   .faq-section {
     .heading {
       text-align: center;
-      p {
-        margin-left: auto;
-        margin-right: auto;
-      }
+    }
+    .heading p {
+      margin-left: auto;
+      margin-right: auto;
     }
     .list {
       margin-top: 2rem;
@@ -1073,24 +1016,25 @@
     .item {
       padding: 1rem 0;
       h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         text-align: center;
       }
       p {
+        font-size: 15px;
         text-align: left;
       }
     }
   }
-
-  // CTA — centered, full-width stacked buttons
+  // CTA 
   .cta-section {
     padding: 3.5rem 0;
     .content-wrapper {
       h2 {
-        font-size: clamp(1.6rem, 6.5vw, 1.9rem);
+        font-size: 1.8rem;
+        line-height: 1.25;
       }
       p {
-        font-size: 15.5px;
+        font-size: 15px;
       }
     }
     .buttons {
@@ -1103,8 +1047,7 @@
       }
     }
   }
-
-  // Credentials — all content centered on mobile
+  // Credentials 
   .credentials-section {
     .inner {
       grid-template-columns: 1fr;
@@ -1115,26 +1058,16 @@
       max-width: 220px;
       margin: 0 auto;
     }
-    .content-wrapper {
+    .inner .content-wrapper {
       text-align: center;
-      :is(h2, h3, h4) {
-        text-align: center;
+      :is(h2, h3) {
+        font-size: 1.6rem;
       }
-      p {
-        font-size: 15px;
-        text-align: center;
-      }
-    }
-    .credentials-link {
-      display: inline-block;
-      margin-left: auto;
-      margin-right: auto;
     }
   }
 }
-
 @media (max-width: 480px) {
-  .cond-section .item {
+  .cond-section .inner .item {
     padding: 1.4rem 1.1rem;
   }
   .steps-section .item {
@@ -1144,17 +1077,26 @@
     gap: 1.5rem;
   }
 }
-
 @media (max-width: 374px) {
   .page-hero-section .content-wrapper :is(h1, h2) {
-    font-size: 1.9rem;
+    font-size: 34px;
   }
-  .cond-section .item {
+  :is(.what-section .content-wrapper, .local-section .content-wrapper, .cond-section .heading, .howit-section .content-wrapper, .steps-section .heading, .faq-section .heading) :is(h2, h3) {
+    font-size: 1.8rem;
+  }
+  .cond-section .inner .item {
     padding: 1.25rem 1rem;
   }
   .steps-section .number {
     width: 36px;
     height: 36px;
     font-size: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cond-section .inner > .item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--responsive-card-gap)) / 2);
   }
 }
