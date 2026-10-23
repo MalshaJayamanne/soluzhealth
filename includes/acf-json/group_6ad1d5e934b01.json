@@ -42,8 +42,8 @@
             "delay": 0
         },
         {
-            "key": "field_6ad1d73ef61e8",
-            "label": "Blog Section",
+            "key": "field_6adae387fdbea",
+            "label": "Blog Cards Section",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -60,9 +60,9 @@
             "selected": 0
         },
         {
-            "key": "field_6ad1d75af61e9",
-            "label": "Blogs",
-            "name": "blogs",
+            "key": "field_6adae3a3fdbeb",
+            "label": "Blog Cards",
+            "name": "blogcards",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -82,12 +82,12 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_6ad1d783f61ea",
+                    "key": "field_6adae3d1fdbed",
                     "label": "Content",
                     "name": "content",
                     "aria-label": "",
                     "type": "wysiwyg",
-                    "instructions": "Use <code>h5<\/code> for the date. <br>\r\nUse <code>h3<\/code> for the title.",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -101,25 +101,35 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0,
-                    "parent_repeater": "field_6ad1d75af61e9"
+                    "parent_repeater": "field_6adae3a3fdbeb"
                 },
                 {
-                    "key": "field_6ad1d79ff61eb",
-                    "label": "Link",
-                    "name": "link",
+                    "key": "field_6adaeaf239e53",
+                    "label": "Article",
+                    "name": "article",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "post_object",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "post_type": [
+                        "post"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "object",
+                    "multiple": 0,
+                    "allow_null": 0,
                     "allow_in_bindings": 0,
-                    "parent_repeater": "field_6ad1d75af61e9"
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_6adae3a3fdbeb"
                 }
             ]
         },
@@ -184,5 +194,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792555411
+    "modified": 1792734561
 }

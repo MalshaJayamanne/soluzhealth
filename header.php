@@ -68,6 +68,8 @@
             <!-- Mobile Navigation -->
             <?php if ($menu = get_theme_option('menu')) : ?>
                 <div class="mobile-menu" id="navbarCollapse" aria-label="Mobile navigation" aria-hidden="true">
+                    <button class="menu-close" type="button" aria-label="Close navigation menu"></button>
+
                     <nav class="mobile-menu-links" aria-label="Mobile navigation links">
                         <?php echo merge_menus(array($menu)); ?>
                     </nav>
@@ -80,7 +82,7 @@
                         <!-- Mobile Get Started -->
                         <?php if ($header_link = get_theme_option('header_link')) : ?>
                             <?php if (!empty($header_link['url']) && !empty($header_link['title'])) : ?>
-                                <a href="<?php echo esc_url($header_link['url']); ?>" class="theme-blue get-started" target="<?php echo esc_attr(!empty($header_link['target']) ? $header_link['target'] : '_self'); ?>" <?php if (!empty($header_link['target']) && $header_link['target'] === '_blank') : ?>rel="noopener noreferrer"<?php endif; ?>><?php echo esc_html($header_link['title']); ?></a>
+                                <a href="<?php echo esc_url($header_link['url']); ?>" class="theme-blue" target="<?php echo esc_attr(!empty($header_link['target']) ? $header_link['target'] : '_self'); ?>" <?php if (!empty($header_link['target']) && $header_link['target'] === '_blank') : ?>rel="noopener noreferrer"<?php endif; ?>><?php echo esc_html($header_link['title']); ?></a>
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>

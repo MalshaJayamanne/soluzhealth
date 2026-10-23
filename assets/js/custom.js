@@ -8,33 +8,45 @@ const IS_DESKTOP_DEVICE = !IS_MOBILE_DEVICE && !IS_TAB_DEVICE;
 const IS_HANDHELD_DEVICE = IS_MOBILE_DEVICE || IS_TAB_DEVICE;
 
 document.addEventListener("DOMContentLoaded", function () {
-	if (IS_HANDHELD_DEVICE) {
-		new Mmenu(
-			"#navbarCollapse",
-			{
-				offCanvas: {
-					position: "right-front",
-				},
-				navbars: [
-					{
-						position: "top",
-						content: ["<img src='" + SITE_LOGO + "' />"],
-					},
-					{
-						position: "bottom",
-						content: THEME_PARAMS.SOCIAL_MEDIA,
-					},
-				],
-			},
-			{
-				offCanvas: {
-					page: {
-						selector: "#page",
-					},
-				},
-			},
-		);
+// Mobile / tablet menu (custom full-screen menu)
+const menuToggle = document.querySelector(".main-header .menu-icon");
+const mobileMenu = document.getElementById("navbarCollapse");
+
+if (menuToggle && mobileMenu) {
+	const closeBtn = mobileMenu.querySelector(".menu-close");
+
+	const setMenu = function (open) {
+		mobileMenu.classList.toggle("open", open);
+		mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
+		menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+		document.body.style.overflow = open ? "hidden" : "";
+	};
+
+	menuToggle.addEventListener("click", function (event) {
+		event.preventDefault();
+		setMenu(true);
+	});
+
+	if (closeBtn) {
+		closeBtn.addEventListener("click", function () {
+			setMenu(false);
+		});
 	}
+
+	mobileMenu.querySelectorAll("a").forEach(function (link) {
+		link.addEventListener("click", function () {
+			setMenu(false);
+		});
+	});
+
+	document.addEventListener("keydown", function (event) {
+		if (event.key === "Escape") setMenu(false);
+	});
+
+	window.addEventListener("resize", function () {
+		if (window.innerWidth > 1024) setMenu(false);
+	});
+}
 
 	// Sticky Menu
 	if (IS_DESKTOP_DEVICE && THEME_PARAMS.STICKY_HEADER) {
