@@ -1,99 +1,141 @@
-<?php /* Template Name: Contact */ ?>
-<?php get_header(); ?>
-
-<?php get_template_part('templates/sub-page', 'banner'); ?>
-
 <?php
-$googleMap = get_theme_option('google_map');
-$content = get_page_data('top_content');
-if ($googleMap || $content): ?>
-    <section class="contact-top">
+/**
+ * Template Name: Contact
+ */
+
+get_header();
+
+$contact_page_id = get_queried_object_id();
+
+$top_content  = get_field('top_content', $contact_page_id);
+$contact_form = get_field('contact_form', $contact_page_id);
+$form_title   = get_field('contact_form_title', $contact_page_id);
+$form_note    = get_field('contact_form_note', $contact_page_id);
+?>
+
+<?php if ($top_content || $contact_form) : ?>
+    <section class="contact-form-section">
         <div class="container">
-            <div class="row">
-                <?php if ($googleMap): ?>
-                    <div class="col-sm-12 col-lg-<?php echo ($content) ? '7' : '12'; ?>">
-                        <div class="map">
-                            <?php echo $googleMap; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <?php if ($content): ?>
-                    <div class="col-sm-12 col-lg-<?php echo ($googleMap) ? '5' : '12'; ?>">
+            <div class="inner">
+
+                <!-- LEFT SIDE: CONTACT INFORMATION -->
+                <div class="info">
+
+                    <?php if ($top_content) : ?>
                         <div class="content-wrapper">
-                            <?php echo $content; ?>
+                            <?php echo $top_content; ?>
                         </div>
+                    <?php endif; ?>
+
+                    <?php
+                    $telephone = get_theme_option('telephone');
+                    $call_number = '';
+
+                    if ($telephone) {
+                        $phones = array_filter(array_map('trim', explode(',', $telephone)));
+                        $call_number = $phones ? reset($phones) : '';
+                    }
+
+                    $email         = get_theme_option('email');
+                    $address       = get_theme_option('address');
+                    $address_link  = get_theme_option('address_link');
+                    $location_note = get_theme_option('contact_location_note');
+                    ?>
+
+                    <?php if ($call_number || $email || $address || $location_note) : ?>
+                        <ul class="details">
+
+                            <?php if ($call_number) : ?>
+                                <li class="item">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                    </span>
+
+                                    <div class="text">
+                                        <span class="label">Phone</span>
+                                        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>">
+                                            <?php echo esc_html($call_number); ?>
+                                        </a>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php if ($email) : ?>
+                                <li class="item">
+                                    <span class="icon">
+                                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                                    </span>
+
+                                    <div class="text">
+                                        <span class="label">Email</span>
+                                        <a href="mailto:<?php echo esc_attr(antispambot($email)); ?>">
+                                            <?php echo esc_html(antispambot($email)); ?>
+                                        </a>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php if ($address || $location_note) : ?>
+                                <li class="item">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                    </span>
+
+                                    <div class="text">
+                                        <span class="item-label">Location</span>
+
+                                        <?php if ($address) : ?>
+                                            <?php if (is_array($address_link) && !empty($address_link['url'])) : ?>
+                                                <a <?php echo get_link_attrs($address_link); ?>>
+                                                    <?php echo nl2br(esc_html($address)); ?>
+                                                </a>
+                                            <?php else : ?>
+                                                <address>
+                                                    <?php echo nl2br(esc_html($address)); ?>
+                                                </address>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+
+                                        <?php if ($location_note) : ?>
+                                            <p class="note">
+                                                <?php echo esc_html($location_note); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+
+                        </ul>
+                    <?php endif; ?>
+
+                </div>
+
+                <!-- RIGHT SIDE: CONTACT FORM -->
+                <?php if ($contact_form) : ?>
+                    <div class="form-card">
+
+                        <?php if ($form_title) : ?>
+                            <div class="content-wrapper">
+                                <?php echo $form_title; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="form-wrapper">
+                            <?php echo do_shortcode($contact_form); ?>
+                        </div>
+
+                        <?php if ($form_note !== false && $form_note !== null && $form_note !== '') : ?>
+                            <p class="form-note">
+                                <?php echo esc_html($form_note); ?>
+                            </p>
+                        <?php endif; ?>
+
                     </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </section>
 <?php endif; ?>
-
-<section class="contact-us">
-    <div class="container">
-        <div class="left">
-            <?php if ($content = get_page_data('contact_left_content')): ?>
-                <div class="content-wrapper"><?php echo $content; ?></div>
-            <?php endif; ?>
-            <div class="contact-details">
-                <?php if ($telephone = get_theme_option('telephone')) : ?>
-                    <div class="contact-row">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>
-                                <?php
-                                $telephone = explode(',', $telephone);
-                                if (is_array($telephone)) : ?>
-                                    <?php foreach ($telephone as $item) : ?>
-                                        <a href="tel:<?php echo trim($item); ?>"><?php echo trim($item); ?></a><br>
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    <a href="tel:<?php echo trim($telephone); ?>"><?php echo trim($telephone); ?></a>
-                                <?php endif; ?>
-                            </p>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <?php if ($email = get_theme_option('email')) : ?>
-                    <div class="contact-row">
-                        <i class="fa-solid fa-at"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>
-                                <?php
-                                $email = explode(',', $email);
-                                if (is_array($email)) : ?>
-                                    <?php foreach ($email as $item) : ?>
-                                        <a href="mailto:<?php echo trim($item); ?>"><?php echo trim($item); ?></a><br>
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    <a href="mailto:<?php echo trim($email); ?>"><?php echo trim($email); ?></a>
-                                <?php endif; ?>
-                            </p>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <?php if ($address = get_theme_option('address')) : ?>
-                    <div class="contact-row">
-                        <i class="fa-solid fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p><?php echo nl2br($address); ?></p>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <?php if ($formShortcode = get_page_data('contact_form')) : ?>
-            <div class="contact-form">
-                <?php if ($title = get_page_data('contact_form_title')): ?>
-                    <div class="content-wrapper default"><?php echo $title; ?></div>
-                <?php endif; ?>
-                <?php echo do_shortcode($formShortcode); ?>
-            </div>
-        <?php endif; ?>
-    </div>
-</section>
 
 <?php get_footer(); ?>

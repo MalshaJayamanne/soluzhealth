@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_67ecb048b0b0e",
-            "label": "Top Section",
+            "label": "Left Section",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -26,7 +26,7 @@
             "name": "top_content",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "",
+            "instructions": "Use <code>h3<\/code> for the title. <br>\r\nUse <code>h2<\/code> for the subheading below the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -42,8 +42,8 @@
             "delay": 0
         },
         {
-            "key": "field_67ecb065b0b10",
-            "label": "Contact Details",
+            "key": "field_6adeca370faaf",
+            "label": "Form Section",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -60,33 +60,12 @@
             "selected": 0
         },
         {
-            "key": "field_671f5b9a84d06",
-            "label": "Left Content",
-            "name": "contact_left_content",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
             "key": "field_671f5be484d07",
             "label": "Contact Form Title",
             "name": "contact_form_title",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "",
+            "instructions": "Use <code>h3<\/code> for the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -121,14 +100,35 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6adef51146c81",
+            "label": "Note",
+            "name": "contact_form_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "page",
                 "operator": "==",
-                "value": "page-contact.php"
+                "value": "713"
             }
         ]
     ],
@@ -143,5 +143,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743564917
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792999551
 }

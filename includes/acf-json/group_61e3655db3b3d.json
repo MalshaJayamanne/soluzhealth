@@ -293,6 +293,26 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_6adef23173a40",
+            "label": "Location Note",
+            "name": "contact_location_note",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
+        },
+        {
             "key": "field_61ec3acc6b0ac",
             "label": "Footer",
             "name": "",
@@ -680,5 +700,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792404047
+    "modified": 1792996813
 }
