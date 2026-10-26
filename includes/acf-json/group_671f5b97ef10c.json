@@ -86,7 +86,7 @@
             "name": "contact_form",
             "aria-label": "",
             "type": "text",
-            "instructions": "Gravity form shortcode",
+            "instructions": "Forminator shortcode",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -146,5 +146,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792999551
+    "modified": 1793010299
 }
