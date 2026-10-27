@@ -1,78 +1,64 @@
 <?php
-/** Template Name: Home */
+/** Template Name: Home **/
 get_header();
 ?>
 
-<?php if ($hero_content = get_field('hero_content')) : ?>
+<?php if (get_field('hero_content')) : ?>
     <section class="hero-section" id="home">
-        <?php if ($hero_image = get_field('hero_image')) : ?>
-            <?php get_image($hero_image, 'full', get_bloginfo('name'), false); ?>
-        <?php endif; ?>
+        <?php get_image(get_field('hero_image'), 'full', get_bloginfo('name'), false); ?>
 
         <div class="container">
             <div class="inner">
-                <?php if ($hero_logo = get_field('hero_logo_wordmark')) : ?>
-                    <?php get_image($hero_logo, 'full', get_bloginfo('name'), false); ?>
-                <?php endif; ?>
+                <?php get_image(get_field('hero_logo_wordmark'), 'full', get_bloginfo('name'), false); ?>
 
                 <div class="content-wrapper">
-                    <?php echo $hero_content; ?>
+                    <?php echo get_field('hero_content'); ?>
                 </div>
 
-                <?php if (($appointment = get_theme_option('appointment_link')) && !empty($appointment['url'])) : ?>
-                    <div class="buttons">
-                        <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
-                            <?php echo esc_html($appointment['title']); ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
+                <div class="buttons">
+                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                </div>
             </div>
         </div>
     </section>
 <?php endif; ?>
 
-<?php if ($welcome_content = get_field('welcome_content')) : ?>
+<?php if (get_field('welcome_content')) : ?>
     <section class="welcome-section" id="about">
         <div class="container">
             <div class="inner">
-                <?php if ($welcome_image = get_field('welcome_image')) : ?>
-                    <div class="image">
-                        <?php get_image($welcome_image, 'large'); ?>
-                    </div>
-                <?php endif; ?>
+                <div class="image">
+                    <?php get_image(get_field('welcome_image'), 'large'); ?>
+                </div>
 
                 <div class="content-wrapper">
-                    <?php echo $welcome_content; ?>
+                    <?php echo get_field('welcome_content'); ?>
 
                     <?php if (have_rows('features')) : ?>
                         <ul class="features">
                             <?php while (have_rows('features')) : the_row(); ?>
-                                <?php if ($feature = get_sub_field('item')) : ?>
-                                    <li><?php echo esc_html($feature); ?></li>
+                                <?php if (get_sub_field('item')) : ?>
+                                    <li><?php echo esc_html(get_sub_field('item')); ?></li>
                                 <?php endif; ?>
                             <?php endwhile; ?>
                         </ul>
                     <?php endif; ?>
 
-                    <?php if (($welcome_link = get_field('welcome_link')) && !empty($welcome_link['url'])) : ?>
-                        <div class="buttons">
-                            <a <?php echo get_link_attrs($welcome_link); ?> class="theme-outline">
-                                <?php echo esc_html($welcome_link['title']); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
+                    <div class="buttons">
+                        <?php get_theme_link(get_field('welcome_link'), 'theme-outline'); ?>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 <?php endif; ?>
 
-<?php if (($work_title = get_field('work_title')) || have_rows('work_cards')) : ?>
+<?php if (get_field('work_title') || have_rows('work_cards')) : ?>
     <section class="work-section">
         <div class="container">
-            <?php if ($work_title) : ?>
+            <?php if (get_field('work_title')) : ?>
                 <div class="heading content-wrapper">
-                    <?php echo $work_title; ?>
+                    <?php echo get_field('work_title'); ?>
                 </div>
             <?php endif; ?>
 
@@ -80,12 +66,12 @@ get_header();
                 <div class="inner">
                     <?php while (have_rows('work_cards')) : the_row(); ?>
                         <div class="item">
-                            <?php if ($title = get_sub_field('title')) : ?>
-                                <h3><?php echo esc_html($title); ?></h3>
+                            <?php if (get_sub_field('title')) : ?>
+                                <h3><?php echo esc_html(get_sub_field('title')); ?></h3>
                             <?php endif; ?>
 
-                            <?php if ($content = get_sub_field('content')) : ?>
-                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                            <?php if (get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop(get_sub_field('content'))); ?></div>
                             <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
@@ -95,12 +81,12 @@ get_header();
     </section>
 <?php endif; ?>
 
-<?php if (($treatment_content = get_field('treatment_content')) || have_rows('treatments')) : ?>
+<?php if (get_field('treatment_content') || have_rows('treatments')) : ?>
     <section class="treatment-section">
         <div class="container">
-            <?php if ($treatment_content) : ?>
+            <?php if (get_field('treatment_content')) : ?>
                 <div class="heading content-wrapper">
-                    <?php echo $treatment_content; ?>
+                    <?php echo get_field('treatment_content'); ?>
                 </div>
             <?php endif; ?>
 
@@ -108,19 +94,15 @@ get_header();
                 <div class="inner">
                     <?php while (have_rows('treatments')) : the_row(); ?>
                         <div class="item">
-                            <?php if ($title = get_sub_field('title')) : ?>
-                                <h3><?php echo esc_html($title); ?></h3>
+                            <?php if (get_sub_field('title')) : ?>
+                                <h3><?php echo esc_html(get_sub_field('title')); ?></h3>
                             <?php endif; ?>
 
-                            <?php if ($content = get_sub_field('content')) : ?>
-                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                            <?php if (get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop(get_sub_field('content'))); ?></div>
                             <?php endif; ?>
 
-                            <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
-                                <a <?php echo get_link_attrs($link); ?> class="more-link">
-                                    <?php echo esc_html($link['title']); ?>
-                                </a>
-                            <?php endif; ?>
+                            <?php get_theme_link(get_sub_field('link'), 'more-link'); ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
@@ -129,12 +111,12 @@ get_header();
     </section>
 <?php endif; ?>
 
-<?php if (($conditions_content = get_field('conditions_content')) || have_rows('conditions')) : ?>
+<?php if (get_field('conditions_content') || have_rows('conditions')) : ?>
     <section class="conditions-section" id="conditions">
         <div class="container">
-            <?php if ($conditions_content) : ?>
+            <?php if (get_field('conditions_content')) : ?>
                 <div class="heading content-wrapper">
-                    <?php echo $conditions_content; ?>
+                    <?php echo get_field('conditions_content'); ?>
                 </div>
             <?php endif; ?>
 
@@ -142,19 +124,15 @@ get_header();
                 <div class="inner">
                     <?php while (have_rows('conditions')) : the_row(); ?>
                         <div class="item">
-                            <?php if ($title = get_sub_field('title')) : ?>
-                                <h3><?php echo esc_html($title); ?></h3>
+                            <?php if (get_sub_field('title')) : ?>
+                                <h3><?php echo esc_html(get_sub_field('title')); ?></h3>
                             <?php endif; ?>
 
-                            <?php if ($content = get_sub_field('content')) : ?>
-                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                            <?php if (get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop(get_sub_field('content'))); ?></div>
                             <?php endif; ?>
 
-                            <?php if (($link = get_sub_field('link')) && !empty($link['url'])) : ?>
-                                <a <?php echo get_link_attrs($link); ?> class="more-link">
-                                    <?php echo esc_html($link['title']); ?>
-                                </a>
-                            <?php endif; ?>
+                            <?php get_theme_link(get_sub_field('link'), 'more-link'); ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
@@ -163,12 +141,12 @@ get_header();
     </section>
 <?php endif; ?>
 
-<?php if (($process_title = get_field('process_title')) || have_rows('processes')) : ?>
+<?php if (get_field('process_title') || have_rows('processes')) : ?>
     <section class="process-section" id="process">
         <div class="container">
-            <?php if ($process_title) : ?>
+            <?php if (get_field('process_title')) : ?>
                 <div class="heading content-wrapper">
-                    <?php echo $process_title; ?>
+                    <?php echo get_field('process_title'); ?>
                 </div>
             <?php endif; ?>
 
@@ -179,12 +157,12 @@ get_header();
                         <div class="step">
                             <div class="number"><?php echo sprintf('%02d', $step); ?></div>
 
-                            <?php if ($title = get_sub_field('title')) : ?>
-                                <h3><?php echo esc_html($title); ?></h3>
+                            <?php if (get_sub_field('title')) : ?>
+                                <h3><?php echo esc_html(get_sub_field('title')); ?></h3>
                             <?php endif; ?>
 
-                            <?php if ($content = get_sub_field('content')) : ?>
-                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                            <?php if (get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop(get_sub_field('content'))); ?></div>
                             <?php endif; ?>
                         </div>
                         <?php $step++; ?>
@@ -195,79 +173,73 @@ get_header();
     </section>
 <?php endif; ?>
 
-<?php if ($doctor_content = get_field('doctor_content')) : ?>
+<?php if (get_field('doctor_content')) : ?>
     <section class="doctor-section" id="team">
         <div class="container">
             <div class="inner">
-                <?php if ($doctor_image = get_field('doctor_image')) : ?>
-                    <div class="image">
-                        <?php get_image($doctor_image, 'large'); ?>
-                    </div>
-                <?php endif; ?>
+                <div class="image">
+                    <?php get_image(get_field('doctor_image'), 'large'); ?>
+                </div>
 
                 <div class="content-wrapper">
-                    <?php echo $doctor_content; ?>
+                    <?php echo get_field('doctor_content'); ?>
 
-                    <?php if (($team_review = get_field('team_review')) && !empty($team_review['content'])) : ?>
+                    <?php if (get_field('team_review') && !empty(get_field('team_review')['content'])) : ?>
                         <div class="review">
                             <div class="score">
-                                <?php if (isset($team_review['rating']) && $team_review['rating'] !== '') : ?>
-                                    <strong><?php echo esc_html(number_format((float) $team_review['rating'], 1)); ?></strong>
+                                <?php if (isset(get_field('team_review')['rating']) && get_field('team_review')['rating'] !== '') : ?>
+                                    <strong><?php echo esc_html(number_format((float) get_field('team_review')['rating'], 1)); ?></strong>
                                     <div class="stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i></div>
                                 <?php endif; ?>
 
-                                <?php if (!empty($team_review['text'])) : ?>
-                                    <h5 class="label"><?php echo esc_html($team_review['text']); ?></h5>
+                                <?php if (!empty(get_field('team_review')['text'])) : ?>
+                                    <h5 class="label"><?php echo esc_html(get_field('team_review')['text']); ?></h5>
                                 <?php endif; ?>
                             </div>
 
                             <div class="quote">
-                                <?php echo wp_kses_post(wpautop($team_review['content'])); ?>
+                                <?php echo wp_kses_post(wpautop(get_field('team_review')['content'])); ?>
 
-                                <?php if (!empty($team_review['reviewer'])) : ?>
-                                    <h6 class="reviewer"><?php echo esc_html($team_review['reviewer']); ?></h6>
+                                <?php if (!empty(get_field('team_review')['reviewer'])) : ?>
+                                    <h6 class="reviewer"><?php echo esc_html(get_field('team_review')['reviewer']); ?></h6>
                                 <?php endif; ?>
                             </div>
                         </div>
                     <?php endif; ?>
 
-                    <?php if (($team_link = get_field('team_link')) && !empty($team_link['url'])) : ?>
-                        <div class="buttons">
-                            <a <?php echo get_link_attrs($team_link); ?> class="theme-blue">
-                                <?php echo esc_html($team_link['title']); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
+                    <div class="buttons">
+                        <?php get_theme_link(get_field('team_link'), 'theme-blue'); ?>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 <?php endif; ?>
 
-<?php if (($patient_title = get_field('patient_title')) || have_rows('reviews')) : ?>
+<?php if (get_field('patient_title') || have_rows('reviews')) : ?>
     <section class="patient-section">
         <div class="container">
             <div class="heading content-wrapper">
-                <?php if ($patient_title) : ?>
+                <?php if (get_field('patient_title')) : ?>
                     <div class="title">
-                        <?php echo $patient_title; ?>
+                        <?php echo get_field('patient_title'); ?>
                     </div>
                 <?php endif; ?>
 
-                <?php if (($review_stat = get_field('review_stat')) && !empty($review_stat['current'])) : ?>
+                <?php if (get_field('review_stat') && !empty(get_field('review_stat')['current'])) : ?>
                     <div class="stat">
                         <div class="rating">
-                            <?php echo esc_html(number_format((float) $review_stat['current'], 1)); ?>
+                            <?php echo esc_html(number_format((float) get_field('review_stat')['current'], 1)); ?>
 
-                            <?php if (!empty($review_stat['overall'])) : ?>
-                                <span>/ <?php echo esc_html((float) $review_stat['overall']); ?></span>
+                            <?php if (!empty(get_field('review_stat')['overall'])) : ?>
+                                <span>/ <?php echo esc_html((float) get_field('review_stat')['overall']); ?></span>
                             <?php endif; ?>
                         </div>
 
                         <div class="stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i></div>
 
-                        <?php if (!empty($review_stat['text'])) : ?>
-                            <h5 class="label"><?php echo esc_html($review_stat['text']); ?></h5>
+                        <?php if (!empty(get_field('review_stat')['text'])) : ?>
+                            <h5 class="label"><?php echo esc_html(get_field('review_stat')['text']); ?></h5>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
@@ -277,16 +249,16 @@ get_header();
                 <div class="inner">
                     <?php while (have_rows('reviews')) : the_row(); ?>
                         <div class="item">
-                            <?php if ($rating = get_sub_field('rating')) : ?>
+                            <?php if (get_sub_field('rating')) : ?>
                                 <div class="stars" aria-label="5 stars"><i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i> <i class="fa-solid fa-star" aria-hidden="true"></i></div>
                             <?php endif; ?>
 
-                            <?php if ($content = get_sub_field('content')) : ?>
-                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop($content)); ?></div>
+                            <?php if (get_sub_field('content')) : ?>
+                                <div class="content-wrapper"><?php echo wp_kses_post(wpautop(get_sub_field('content'))); ?></div>
                             <?php endif; ?>
 
-                            <?php if ($patient = get_sub_field('patient')) : ?>
-                                <h6 class="patient"><?php echo esc_html($patient); ?></h6>
+                            <?php if (get_sub_field('patient')) : ?>
+                                <h6 class="patient"><?php echo esc_html(get_sub_field('patient')); ?></h6>
                             <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
@@ -296,21 +268,17 @@ get_header();
     </section>
 <?php endif; ?>
 
-<?php if ($contact_content = get_field('contact_content')) : ?>
+<?php if (get_field('contact_content')) : ?>
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="inner">
                 <div class="content-wrapper">
-                    <?php echo $contact_content; ?>
+                    <?php echo get_field('contact_content'); ?>
                 </div>
 
-                <?php if (($appointment = get_theme_option('appointment_link')) && !empty($appointment['url'])) : ?>
-                    <div class="buttons">
-                        <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
-                            <?php echo esc_html($appointment['title']); ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
+                <div class="buttons">
+                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                </div>
             </div>
         </div>
     </section>
