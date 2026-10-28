@@ -1,24 +1,37 @@
 <?php
-/** Template Name: Blog */
+/** Template Name: Blog **/
 get_header();
 ?>
 
-<?php if ($blog_hero_content = get_field('blog_hero_content')) : ?>
+<?php if (get_field('blog_hero_content')) : ?>
     <section class="blog-hero-section">
         <div class="container">
             <div class="inner">
                 <div class="breadcrumb">
-                    <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <?php echo esc_html(get_the_title()); ?>
+                    <?php get_theme_link(array('url' => home_url('/'), 'title' => 'Home')); ?> /
+                    <?php echo esc_html(get_the_title()); ?>
                 </div>
+
                 <div class="content-wrapper">
-                    <?php echo wp_kses_post($blog_hero_content); ?>
+                    <?php echo wp_kses_post(get_field('blog_hero_content')); ?>
                 </div>
             </div>
         </div>
     </section>
 <?php endif; ?>
 
-<?php $blog_cards = get_field('blogcards'); ?>
+<?php
+$paged = max(1, get_query_var('paged'), get_query_var('page'));
+
+$blog = new WP_Query(array(
+    'post_type'      => 'post',
+    'post_status'    => 'publish',
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+    'posts_per_page' => get_option('posts_per_page') ?: 12,
+    'paged'          => $paged,
+));
+?>
 
 <section class="blog-section">
     <div class="container">
@@ -29,63 +42,56 @@ get_header();
 
             <div class="col-sm-12 col-lg-9">
                 <div class="row">
-                    <?php if ($blog_cards) : ?>
-                        <?php foreach ($blog_cards as $blog_card) : ?>
-                            <?php
-                            $article = $blog_card['article'] ?? null;
-
-                            if (is_numeric($article)) {
-                                $article = get_post($article);
-                            }
-
-                            if (!$article instanceof WP_Post || $article->post_status !== 'publish') {
-                                continue;
-                            }
-                            ?>
+                    <?php if ($blog->have_posts()) : ?>
+                        <?php while ($blog->have_posts()) : $blog->the_post(); ?>
                             <div class="col-sm-12 col-md-6 col-lg-6">
-                                <?php
-                                get_template_part('templates/blog', 'item', array(
-                                    'article'   => $article,
-                                    'content'   => $blog_card['content'] ?? '',
-                                ));
-                                ?>
+                                <?php get_template_part('templates/blog', 'item'); ?>
                             </div>
-                        <?php endforeach; ?>
+                        <?php endwhile; ?>
                     <?php else : ?>
                         <div class="col-12">
-                            <p>No blog posts have been added yet.</p>
+                            <p>No blog posts have been published yet.</p>
                         </div>
                     <?php endif; ?>
                 </div>
+
+                <?php if ($blog->max_num_pages > 1) : ?>
+                    <div class="pagination-wrapper">
+                        <?php
+                        echo paginate_links(array(
+                            'base'      => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                            'format'    => '?paged=%#%',
+                            'current'   => $paged,
+                            'total'     => $blog->max_num_pages,
+                            'prev_text' => '&laquo; Previous',
+                            'next_text' => 'Next &raquo;',
+                        ));
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
 </section>
 
-<?php if ($blog_cta_content = get_field('blog_cta_content')) : ?>
+<?php if (get_field('blog_cta_content')) : ?>
     <section class="cta-section">
         <div class="container">
             <div class="inner">
                 <div class="content-wrapper">
-                    <?php echo wp_kses_post($blog_cta_content); ?>
+                    <?php echo wp_kses_post(get_field('blog_cta_content')); ?>
                 </div>
 
-                <?php $appointment = get_theme_option('appointment_link'); ?>
+                <?php
+                $phones = array_filter(array_map('trim', explode(',', get_theme_option('telephone') ?: '')));
+                $call_number = $phones ? reset($phones) : '';
+                ?>
 
-                <?php if ($telephone = get_theme_option('telephone')) : ?>
-                    <?php $phones = array_filter(array_map('trim', explode(',', $telephone))); ?>
-                    <?php $call_number = $phones ? reset($phones) : ''; ?>
-                <?php else : ?>
-                    <?php $call_number = ''; ?>
-                <?php endif; ?>
-
-                <?php if (!empty($appointment['url']) || $call_number) : ?>
+                <?php if ((get_theme_option('appointment_link') && !empty(get_theme_option('appointment_link')['url'])) || $call_number) : ?>
                     <div class="buttons">
-                        <?php if (!empty($appointment['url'])) : ?>
-                            <a <?php echo get_link_attrs($appointment); ?> class="theme-blue">
-                                <?php echo esc_html($appointment['title'] ?: 'Book an Appointment'); ?>
-                            </a>
-                        <?php endif; ?>
+                        <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
 
                         <?php if ($call_number) : ?>
                             <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
