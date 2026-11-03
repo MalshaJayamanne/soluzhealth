@@ -1,96 +1,36 @@
 // =========================================================
 // FAQ PAGE
 // =========================================================
-.faq-hero-section,
 .faq-section {
-  position: relative;
-  font-family: @font-body;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: @text;
-}
-// =========================================================
-// HERO
-// =========================================================
-.faq-hero-section {
-  background: @brand-navy;
-  padding: 5rem 0 4rem;
-  .breadcrumb {
-    display: block;
-    padding: 0;
-    margin: 0 0 1.25rem;
-    background: none;
-    font-family: @font-body;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.7;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    a {
-      color: rgba(255, 255, 255, 0.6);
-      &:hover {
-        color: @brand-blue;
-      }
-    }
-  }
-  .content-wrapper {
-    :is(h1, h2) {
-      font-family: @font-display;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: #fff;
-      margin: 0 0 0.75rem;
-      :is(span, em) {
-        font-style: normal;
-        color: @brand-blue;
-      }
-    }
-    p {
-      font-family: @font-body;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.78);
-      max-width: 580px;
-      margin: 0;
-      a {
-        color: @brand-blue;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-}
-// =========================================================
-// FAQ GROUPS + ACCORDION
-// =========================================================
-.faq-section {
+  .section-font();
   background: @off-white;
   padding: 6rem 0;
+  .section-responsive();
   .inner {
+    display: block;
     max-width: 780px;
     margin: 0 auto;
     .group {
       margin-bottom: 3.5rem;
       .heading.content-wrapper {
+        margin-bottom: 1rem;
+        text-align: left;
         h4 {
           display: flex;
           align-items: center;
           gap: 0.75rem;
           font-family: @font-display;
           font-size: 1.5rem;
-          color: #0A1F3D;
+          font-weight: 600;
+          line-height: 1.3;
+          color: @brand-navy;
           margin: 0 0 0.25rem;
         }
         p {
+          text-align: left;
           font-family: @font-body;
           font-size: 13px;
+          line-height: 1.6;
           letter-spacing: 0.01em;
           color: @text-muted;
           margin: 0 0 1.5rem;
@@ -99,11 +39,12 @@
       .list {
         margin-top: 0;
         .item {
-          padding: 0;
+          .item-plain();
           .question {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 1rem;
             width: 100%;
             background: none;
             border: 0;
@@ -134,7 +75,6 @@
               left: 0;
               width: 100%;
               height: 2px;
-              margin-top: 0px;
               background: @brand-blue;
             }
             &::after {
@@ -170,8 +110,8 @@
               color: @brand-blue;
             }
           }
-        } 
-      } 
+        }
+      }
     }
     .still {
       margin-top: 4rem;
@@ -179,69 +119,40 @@
       background: @sage-light;
       border-radius: @radius;
       text-align: center;
-       .content-wrapper {
-          h3 {
-            font-family: @font-display;
-            font-size: 1.6rem;
-            color: @brand-navy;
-            margin: 0 0 0.5rem;
-            text-transform: none;
-          }
-          p {
-            font-family: @font-body;
-            font-size: 15px;
-            color: @text-muted;
-            margin-bottom: 1.5rem;
-          }
+      .content-wrapper {
+        h3 {
+          font-family: @font-display;
+          font-size: 1.6rem;
+          color: @brand-navy;
+          margin: 0 0 0.5rem;
+          text-transform: none;
         }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }  
-    }  
+        p {
+          font-family: @font-body;
+          font-size: 15px;
+          color: @text-muted;
+          margin-bottom: 1.5rem;
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+    }
   }
 }
 // =========================================================
 // RESPONSIVE
 // =========================================================
-@media (max-width: 1024px) {
-  // Hero (left on tablet)
-  .faq-hero-section {
-    padding-top: 4.5rem;
-    padding-bottom: 3.5rem;
-    text-align: left;
-    .breadcrumb {
-      font-size: 12px;
-      text-align: center;
-    }
-    .inner .content-wrapper {
-      :is(h1, h2) {
-        font-size: clamp(2.8rem, 5.5vw, 3.5rem);
-        line-height: 1.1;
-        overflow-wrap: break-word;
-      }
-      p {
-        display: block;
-        width: 100%;
-        max-width: 580px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.7;
-      }
-    }
-  }
+@media @mobileTab {
   .faq-section {
-    padding-top: var(--responsive-section-space);
-    padding-bottom: var(--responsive-section-space);
     .inner {
       max-width: 100%;
     }
-    .inner .group {
+    .group {
       margin-bottom: 3rem;
       .heading.content-wrapper {
         text-align: left;
@@ -251,14 +162,12 @@
         }
         p {
           font-size: 14px;
-          line-height: 1.6;
         }
       }
       .list .item {
         .question .text {
           padding: 1.5rem 0;
           font-size: 1.1rem;
-          line-height: 1.4;
         }
         .answer .content-wrapper {
           p {
@@ -271,7 +180,7 @@
         }
       }
     }
-    .inner .still {
+    .still {
       margin-top: 3.5rem;
       padding: 2.25rem 2rem;
       .content-wrapper {
@@ -287,31 +196,9 @@
     }
   }
 }
-@media (max-width: 767px) {
-  // Hero (centered on mobile, 38px title)
-  .faq-hero-section {
-    padding-top: 4rem;
-    padding-bottom: 3rem;
-    text-align: center;
-    .breadcrumb {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-    }
-    .content-wrapper {
-      :is(h1, h2) {
-        font-size: 38px;
-        line-height: 1.12;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.7;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
+@media @mobile {
   .faq-section {
-    .inner .group {
+    .group {
       margin-bottom: 2.5rem;
       .heading.content-wrapper {
         h4 {
@@ -323,13 +210,10 @@
         }
       }
       .list .item {
-        .question {
-          gap: 1rem;
-          .text {
-            padding: 1.25rem 0;
-            font-size: 1.1rem;
-            line-height: 1.45;
-          }
+        .question .text {
+          padding: 1.25rem 0;
+          font-size: 1.1rem;
+          line-height: 1.45;
         }
         .answer .content-wrapper {
           padding-bottom: 1.25rem;
@@ -341,7 +225,7 @@
         }
       }
     }
-    .inner .still {
+    .still {
       margin-top: 3rem;
       padding: 2rem 1.25rem;
       .content-wrapper {
@@ -353,13 +237,7 @@
         }
       }
       .buttons {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-        a {
-          width: 100%;
-          max-width: 100%;
-        }
+        .buttons-stack(14px, 100%);
       }
     }
   }

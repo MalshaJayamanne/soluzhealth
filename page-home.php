@@ -5,10 +5,10 @@ get_header();
 
 <?php if (get_field('hero_content')) : ?>
     <section class="hero-section" id="home">
-        <?php get_image(get_field('hero_image'), 'full', get_bloginfo('name'), false); ?>
+        <?php get_image(get_field('hero_image'), 'full-image'); ?>
 
         <div class="container">
-            <div class="inner">
+            <div class="hero-inner">
                 <?php get_image(get_field('hero_logo_wordmark'), 'full', get_bloginfo('name'), false); ?>
 
                 <div class="content-wrapper">
@@ -16,7 +16,7 @@ get_header();
                 </div>
 
                 <div class="buttons">
-                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-btn'); ?>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ get_header();
                     <?php endif; ?>
 
                     <div class="buttons">
-                        <?php get_theme_link(get_field('welcome_link'), 'theme-outline'); ?>
+                        <?php get_theme_link(get_field('welcome_link'), 'theme-btn outline'); ?>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@ get_header();
                     <?php endif; ?>
 
                     <div class="buttons">
-                        <?php get_theme_link(get_field('team_link'), 'theme-blue'); ?>
+                        <?php get_theme_link(get_field('team_link'), 'theme-btn'); ?>
                     </div>
                 </div>
             </div>
@@ -227,7 +227,7 @@ get_header();
                 <?php endif; ?>
 
                 <?php if (get_field('review_stat') && !empty(get_field('review_stat')['current'])) : ?>
-                    <div class="stat">
+                    <div class="score">
                         <div class="rating">
                             <?php echo esc_html(number_format((float) get_field('review_stat')['current'], 1)); ?>
 
@@ -277,7 +277,7 @@ get_header();
                 </div>
 
                 <div class="buttons">
-                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-btn'); ?>
                 </div>
             </div>
         </div>

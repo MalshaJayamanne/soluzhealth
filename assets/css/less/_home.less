@@ -10,54 +10,21 @@
 .doctor-section,
 .patient-section,
 .contact-section {
-	position: relative;
-	padding: 6rem 0;
-	font-family: @font-body;
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 1.7;
-	color: @text;
-}
-.hero-section {
-	padding: 0;
+	.section-base();
 }
 // Shared eyebrow / title / paragraph
 :is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .contact-section .content-wrapper) {
 	h5 {
-		font-family: @font-display;
-		font-size: clamp(1.5rem, 2.4vw, 2rem);
-		font-weight: 600;
-		line-height: 1.2;
-		letter-spacing: 0.01em;
-		text-transform: none;
-		color: @brand-blue;
+		.eyebrow-text();
 		margin: 0 0 0.75rem;
 	}
 }
-:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
+:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
 	h2 {
-		font-family: @font-display;
-		font-size: clamp(2rem, 4.5vw, 3.2rem);
-		font-weight: 700;
-		line-height: 1.1;
-		letter-spacing: -0.01em;
-		color: @brand-navy;
-		margin: 0 0 1rem;
-		span {
-			font-style: normal;
-			color: @brand-blue;
-		}
+		.section-title();
 	}
-}
-:is(.welcome-section .content-wrapper, .work-section .heading, .treatment-section .heading, .conditions-section .heading, .process-section .heading, .patient-section .heading, .doctor-section .content-wrapper, .contact-section .content-wrapper) {
 	p {
-		font-family: @font-body;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 1.75;
-		color: @text-muted;
-		max-width: 580px;
-		margin: 0;
+		.section-text();
 	}
 }
 :is(.welcome-section .content-wrapper, .doctor-section .content-wrapper) p+p {
@@ -65,91 +32,35 @@
 }
 // Dark sections
 :is(.conditions-section .heading, .contact-section .content-wrapper) {
-	:is(h5, h2) {
-		color: #fff;
-	}
-	h2 span {
-		color: @brand-blue;
-	}
-	p {
-		color: rgba(255, 255, 255, 0.7);
-	}
+	.heading-on-dark();
 }
 // Card link arrow
-:is(.treatment-section, .conditions-section) {
-	.item {
-		position: relative;
-	}
+.treatment-section {
+	.card-more-link();
 	.more-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 6px;
-		font-family: @font-display;
-		font-size: 13px;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: @brand-blue;
-		&::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-		}
-		&::after {
-			content: '→';
-			transition: transform 0.2s;
-		}
+		letter-spacing: 0.06em;
 	}
 }
-.treatment-section .more-link {
-	letter-spacing: 0.06em;
-}
-:is(.treatment-section, .conditions-section) .item:hover .more-link::after {
-	transform: translateX(4px);
+.conditions-section {
+	.card-more-link();
 }
 // =========================================================
 // HERO
 // =========================================================
 .hero-section {
+	background: @brand-navy;
+	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 92vh;
-	background: @brand-navy;
-	overflow: hidden;
-	position: relative;
 	padding: 0;
 	text-align: left;
-	>img {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-		opacity: 0.3;
-	}
-	&::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(135deg, rgba(10, 31, 61, 0.7) 0%, rgba(10, 31, 61, 0.4) 50%, rgba(10, 31, 61, 0.7) 100%);
-		pointer-events: none;
-		z-index: 1;
-	}
-	>.container {
-		position: relative;
-		z-index: 2;
-		flex: 0 1 auto;
-		width: auto;
+	.hero-bg();
+	.hero-inner {
 		max-width: 760px;
-		min-width: 0;
 		margin: 0 auto;
 		padding: 9rem 2rem;
-	}
-	.inner {
-		padding: 0;
 		>img {
 			display: block;
 			height: 140px;
@@ -157,53 +68,123 @@
 			max-width: 100%;
 			margin-bottom: 1.75rem;
 		}
-	}
-	.content-wrapper {
-		:is(h1, h2) {
-			font-family: @font-display;
-			font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-			font-weight: 700;
-			line-height: 1.02;
-			letter-spacing: -0.02em;
-			color: #fff;
-			max-width: 760px;
-			margin: 0 0 1.5rem;
-			span {
-				font-style: normal;
-				color: @brand-blue;
+		.content-wrapper {
+			:is(h1, h2) {
+				font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+				letter-spacing: -0.02em;
+				max-width: 760px;
+				margin: 0 0 1rem;
+				font-family: @font-display;
+				font-weight: 700;
+				color: #fff;
+			}
+			h4 {
+				font-family: @font-display;
+				font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+				font-weight: 600;
+				line-height: 1.7;
+				letter-spacing: 0;
+				color: rgba(255, 255, 255, 0.9);
+				max-width: 760px;
+				margin: -0.25rem 0 1.75rem;
+			}
+			p {
+				font-family: @font-body;
+				font-size: 17px;
+				font-weight: 400;
+				line-height: 1.75;
+				color: rgba(255, 255, 255, 0.78);
+				max-width: 540px;
+				margin: 0 0 1.75rem;
 			}
 		}
-		h4 {
-			font-family: @font-display;
-			font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-			font-weight: 600;
-			line-height: 1.7;
-			letter-spacing: 0;
-			color: rgba(255, 255, 255, 0.9);
-			max-width: 760px;
-			margin: -0.25rem 0 1.75rem;
-		}
-		p {
-			font-family: @font-body;
-			font-size: 17px;
-			font-weight: 400;
-			line-height: 1.75;
-			color: rgba(255, 255, 255, 0.78);
-			max-width: 540px;
-			margin: 0 0 2.5rem;
+		.buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
 		}
 	}
-	.buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
+	@media @mobileTab {
+		min-height: 70vh;
+		text-align: center;
+		.hero-inner {
+			max-width: 820px;
+			padding: 5rem 2rem;
+			>img {
+				height: 110px;
+				margin: 0 auto 1.25rem;
+			}
+			.content-wrapper {
+				text-align: center;
+				:is(h1, h2) {
+					font-size: clamp(3.1rem, 5.5vw, 3.5rem);
+					line-height: 1.1;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				h4 {
+					font-size: 1.3rem;
+					line-height: 1.6;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				p {
+					font-size: 16px;
+					line-height: 1.7;
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+			.buttons {
+				justify-content: center;
+			}
+		}
 	}
-}
-@media (min-width: 1025px) {
-	.hero-section>.container {
-		max-width: 820px;
-		padding-top: 6rem;
-		padding-bottom: 6rem;
+	@media @mobile {
+		min-height: 0;
+		text-align: center;
+		.hero-inner {
+			padding: 4rem 1.25rem;
+			>img {
+				height: 90px;
+				margin: 0 auto 1.25rem;
+			}
+			.content-wrapper {
+				:is(h1, h2) {
+					font-size: 38px;
+					line-height: 1.12;
+					margin: 0 auto 1rem;
+				}
+				h4 {
+					font-size: 1.1rem;
+					line-height: 1.55;
+					margin: 0 auto 1.25rem;
+				}
+				p {
+					font-size: 15px;
+					line-height: 1.7;
+					margin: 0 auto 1.5rem;
+				}
+			}
+			.buttons {
+				.buttons-stack();
+			}
+		}
+	}
+	@media (max-width: 374px) {
+		.hero-inner {
+			>img {
+				height: 80px;
+			}
+			.content-wrapper {
+				:is(h1, h2) {
+					font-size: 34px;
+				}
+				p {
+					font-size: 14.5px;
+				}
+			}
+		}
 	}
 }
 // =========================================================
@@ -211,38 +192,24 @@
 // =========================================================
 .welcome-section {
 	background: @off-white;
-
 	.inner {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 5rem;
-		align-items: center;
+		.split-2col();
 	}
-
 	.image {
 		aspect-ratio: 4 / 5;
 		border-radius: @radius;
 		overflow: hidden;
-
 		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 		}
 	}
-
 	.content-wrapper {
 		h4>span {
-			font-family: @font-display;
-			font-size: clamp(1.5rem, 2.4vw, 2rem);
-			letter-spacing: 0.01em;
-			text-transform: none;
-			color: var(--brand-blue);
-			font-weight: 600;
+			.eyebrow-text();
 			margin-bottom: 0.75rem;
-			line-height: 1.2;
 		}
-
 		h5 {
 			display: inline-block;
 			font-family: @font-display;
@@ -257,7 +224,6 @@
 			padding: 6px 14px;
 			margin: 0 0 1rem;
 		}
-
 		h3 {
 			font-family: @font-display;
 			font-size: 3.2rem;
@@ -268,13 +234,11 @@
 			margin: 0 0 1rem;
 		}
 	}
-
 	.features {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.6rem;
 		margin: 1.75rem 0 0;
-
 		li {
 			font-family: @font-display;
 			font-size: 12px;
@@ -288,9 +252,70 @@
 			list-style: none;
 		}
 	}
-
 	.buttons {
 		margin-top: 2rem;
+	}
+	.section-responsive();
+	.split-stack(570px);
+	@media @mobileTab {
+		.image {
+			aspect-ratio: 16 / 10;
+		}
+		.content-wrapper {
+			h3 {
+				font-size: clamp(2.2rem, 4vw, 2.6rem);
+				line-height: 1.15;
+			}
+			h4>span {
+				font-size: 1.5rem;
+				line-height: 1.25;
+			}
+			p {
+				font-size: 16px;
+				line-height: 1.75;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.features,
+		.buttons {
+			justify-content: center;
+		}
+		.features li {
+			font-size: 12px;
+		}
+	}
+	@media @mobile {
+		.image img {
+			aspect-ratio: 4 / 3;
+			border-radius: 8px;
+		}
+		.content-wrapper {
+			h3 {
+				font-size: 2rem;
+				line-height: 1.2;
+			}
+			h4>span {
+				font-size: 1.25rem;
+				line-height: 1.3;
+			}
+			p {
+				font-size: 15px;
+				line-height: 1.7;
+			}
+		}
+		.features li {
+			font-size: 11.5px;
+			padding: 5px 12px;
+		}
+		.buttons {
+			.buttons-stack();
+		}
+	}
+	@media (max-width: 374px) {
+		.content-wrapper h3 {
+			font-size: 1.8rem;
+		}
 	}
 }
 // =========================================================
@@ -299,27 +324,9 @@
 .work-section {
 	background: #fff;
 	.heading.content-wrapper {
-		max-width: 640px;
-		margin: 0 auto 1rem;
-		text-align: center;
 		h3 {
-			font-family: @font-display;
-			font-size: clamp(1.5rem, 2.4vw, 2rem);
-			letter-spacing: 0.01em;
-			text-transform: none;
-			font-weight: 600;
-			color: @brand-blue;
+			.eyebrow-text();
 			margin-bottom: 0.75rem;
-			line-height: 1.2;
-		}
-		h2 {
-			font-family: @font-display;
-			font-size: 3.2rem;
-			font-weight: 700;
-			line-height: 1.2;
-			letter-spacing: -0.01em;
-			color: @brand-navy-soft;
-			margin-bottom: 1rem;
 		}
 	}
 	.inner {
@@ -350,6 +357,61 @@
 			margin: 0;
 		}
 	}
+	.section-responsive();
+	.cards-responsive();
+	.heading {
+		.heading-responsive(h3);
+	}
+	@media @mobileTab {
+		.heading {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			p {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.item {
+			padding: 2rem 1.75rem;
+			:is(h3, p) {
+				text-align: left;
+			}
+			h3 {
+				font-size: 1.5rem;
+				line-height: 1.4;
+			}
+			p {
+				font-size: 15px;
+				line-height: 1.7;
+			}
+		}
+	}
+	@media @mobile {
+		.heading {
+			margin-bottom: 1.75rem;
+		}
+		.inner {
+			margin-top: 1.5rem;
+			.item {
+				padding: 1.75rem 1.25rem;
+				h3 {
+					font-size: 1.3rem;
+				}
+				.content-wrapper {
+					padding: 0;
+					p {
+						font-size: 15px;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.item {
+			padding: 1.5rem 1.1rem;
+		}
+	}
 }
 // =========================================================
 // TREATMENTS
@@ -357,66 +419,62 @@
 .treatment-section {
 	background: @off-white;
 	.heading.content-wrapper {
-		max-width: 680px;
-		margin: 0 auto 3rem;
-		text-align: center;
-		h4 {
-			font-family: @font-display;
-			font-size: clamp(1.5rem, 2.4vw, 2rem);
-			letter-spacing: 0.01em;
-			text-transform: none;
-			color: @brand-blue;
-			font-weight: 600;
-			margin-bottom: 0.75rem;
-			line-height: 1.2;
-		}
 		p {
-			margin: 0 auto;
+			margin: 0 auto 3rem;
+			max-width: 640px;
+			text-align: center;
 		}
 	}
-	.inner {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1.5rem;
-		.item {
-			display: flex;
-			flex-direction: column;
-			background: #fff;
-			border: 1px solid @border;
-			border-radius: @radius;
-			padding: 2.5rem;
-			transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-			.more-link {
-				margin-top: auto;
-    			align-self: flex-start;
+	.section-responsive();
+	.cards-responsive();
+	.heading {
+		.heading-responsive(h4);
+	}
+	@media @mobileTab {
+		.heading {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			p {
+				margin-left: auto;
+				margin-right: auto;
 			}
-			&:hover {
-				border-color: @brand-blue;
-				transform: translateY(-3px);
-				box-shadow: 0 8px 24px rgba(10, 31, 61, 0.08);
+		}
+		.inner .item {
+			padding: 2rem 1.75rem;
+			:is(h3, p, em, a) {
+				text-align: left;
 			}
 			h3 {
-				font-family: @font-display;
-				font-size: 1.8rem;
-				font-weight: 700;
-				line-height: 1.7;
-				letter-spacing: -0.01em;
-				color: @brand-navy;
-				margin: 0 0 0.75rem;
+				font-size: 1.5rem;
+				line-height: 1.4;
 			}
 			p {
-				font-family: @font-body;
 				font-size: 15px;
-				line-height: 1.75;
-				color: @text-muted;
-				margin: 0 0 1.25rem;
-				em {
-					display: block;
-					font-size: 13px;
-					line-height: 1.6;
-					font-style: italic;
-				}
+				line-height: 1.7;
 			}
+		}
+	}
+	@media @mobile {
+		.heading {
+			margin-bottom: 1.75rem;
+		}
+		.inner .item {
+			padding: 1.5rem 1.25rem;
+			h3 {
+				font-size: 1.3rem;
+			}
+			p {
+				font-size: 15px;
+			}
+			.content-wrapper {
+				padding: 0;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.inner .item {
+			padding: 1.35rem 1.1rem;
 		}
 	}
 }
@@ -429,49 +487,37 @@
 		margin: 0 0 3.5rem;
 		h3 {
 			font-family: @font-display;
-			font-size: 2rem;
-			font-weight: 600;
-			line-height: 1.2;
+			font-size: clamp(1.5rem, 2.4vw, 2rem);
 			letter-spacing: 0.01em;
 			text-transform: none;
+			font-weight: 600;
 			color: white;
-			margin-bottom: 0.75rem;
+		}
+		p {
+			margin: 0 auto;
+			max-width: 640px;
+			text-align: center;
 		}
 	}
 	.inner {
-		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 1.5rem;
 		.item {
-			display: flex;
- 			flex-direction: column;
 			background: rgba(255, 255, 255, 0.06);
 			border: 1px solid rgba(255, 255, 255, 0.12);
-			border-radius: @radius;
 			padding: 2rem;
-			transition: background 0.2s, border-color 0.2s;
-			.more-link {
-				margin-top: auto;
-    			align-self: flex-start;
-			}
+			transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 			&:hover {
-				background: rgba(54, 169, 255, 0.1);
 				border-color: @brand-blue;
+				background: rgba(54, 169, 255, 0.1);
 			}
 			h3 {
-				font-family: @font-display;
 				font-size: 1.4rem;
 				font-weight: 600;
-				line-height: 1.7;
 				color: #fff;
-				margin: 0 0 0.75rem;
 			}
 			p {
-				font-family: @font-body;
 				font-size: 14px;
-				line-height: 1.75;
 				color: rgba(255, 255, 255, 0.65);
-				margin: 0 0 1.5rem;
 			}
 			&:last-child {
 				background: rgba(54, 169, 255, 0.12);
@@ -482,6 +528,63 @@
 			}
 		}
 	}
+	.section-responsive();
+	.cards-responsive();
+	.heading {
+		.heading-responsive(h3);
+	}
+	@media @mobileTab {
+		.heading {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 2.5rem;
+		}
+		.inner {
+			.item {
+				padding: 1.75rem;
+				:is(h3, p, a, .content-wrapper) {
+					text-align: left;
+				}
+				h3 {
+					font-size: 1.3rem;
+					line-height: 1.4;
+				}
+				p {
+					font-size: 15px;
+					line-height: 1.7;
+				}
+			}
+			.content-wrapper {
+				text-align: left;
+				:is(h3, h4, h5, h6, p, a) {
+					text-align: left;
+				}
+			}
+		}
+	}
+	@media @mobile {
+		.heading {
+			margin-bottom: 1.75rem;
+		}
+		.inner .item {
+			padding: 1.5rem 1.25rem;
+			h3 {
+				font-size: 1.2rem;
+			}
+			p {
+				font-size: 15px;
+			}
+			.content-wrapper {
+				padding: 0;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.inner .item {
+			padding: 1.35rem 1.1rem;
+		}
+	}
 }
 // =========================================================
 // PROCESS
@@ -489,22 +592,15 @@
 .process-section {
 	background: @brand-light-blue;
 	.heading.content-wrapper {
-		h3 {
-			font-family: @font-display;
-			font-size: 2rem;
-			font-weight: 600;
-			line-height: 1.2;
-			letter-spacing: 0.01em;
-			text-transform: none;
-			margin-bottom: 0.75rem;
-		}
 		p {
 			color: @brand-navy-soft;
+			margin: 0 auto;
+			max-width: 640px;
+			text-align: center;
 		}
 	}
 	.inner {
 		position: relative;
-		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 3rem;
 		margin-top: 3.5rem;
@@ -553,6 +649,90 @@
 		font-weight: 700;
 		margin-bottom: 1.5rem;
 	}
+	.section-responsive();
+	.heading {
+		.heading-responsive(h3);
+	}
+	@media @mobileTab {
+		.heading.content-wrapper {
+			text-align: left;
+			margin-bottom: 2rem;
+			p {
+			margin: 0;
+			text-align: left;
+			}
+		}
+		.inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-top: 2rem;
+			&::before {
+				display: none;
+			}
+		}
+		.step {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
+			min-width: 0;
+			text-align: left;
+			h3 {
+				margin: 0;
+				font-size: 1.25rem;
+				line-height: 1.4;
+				text-align: left;
+			}
+			p {
+				margin: 0;
+				font-size: 15px;
+				text-align: left;
+			}
+		}
+		.number {
+			width: 56px;
+			height: 56px;
+			font-size: 20px;
+			margin: 0;
+		}
+	}
+	@media @mobile {
+		.heading {
+			text-align: center;
+			margin-bottom: 1.75rem;
+			:is(h2, h3, p) {
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.inner {
+			gap: 1.75rem;
+			margin-top: 1.75rem;
+		}
+		.step {
+			align-items: center;
+			text-align: center;
+			h3 {
+				font-size: 1.2rem;
+			}
+			.content-wrapper {
+				padding: 0;
+			}
+			:is(h3, p) {
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.number {
+			width: 48px;
+			height: 48px;
+			font-size: 18px;
+			margin: 0 auto 0.25rem;
+		}
+	}
 }
 // =========================================================
 // DOCTOR
@@ -560,7 +740,6 @@
 .doctor-section {
 	background: #fff;
 	.inner {
-		display: grid;
 		grid-template-columns: 420px 1fr;
 		gap: 5rem;
 		align-items: center;
@@ -578,25 +757,6 @@
 		}
 	}
 	.content-wrapper {
-		h5 {
-			font-family: @font-display;
-			font-size: 12px;
-			font-weight: 600;
-			line-height: 1.7;
-			letter-spacing: 0.16em;
-			text-transform: uppercase;
-			margin: 0 0 0.5rem;
-		}
-		h2 {
-			font-family: @font-display;
-			font-size: clamp(2rem, 3.5vw, 2.8rem);
-			font-weight: 700;
-			color: @brand-navy;
-			margin-bottom: 0.4rem;
-			margin-top: 0;
-			line-height: 1.1;
-			letter-spacing: -0.01em;
-		}
 		h3 {
 			font-family: @font-body;
 			font-size: 14px;
@@ -623,41 +783,14 @@
 		background: @sage-light;
 		border-left: 4px solid @brand-blue;
 		border-radius: @radius;
-		.score {
-			strong {
-				display: block;
-				font-family: @font-display;
-				font-size: 2.4rem;
-				font-weight: 700;
-				line-height: 1;
-				color: @brand-navy;
-			}
-			.stars {
-				display: block;
-				margin-top: 4px;
-				font-size: 12px;
-				color: @brand-blue;
-			}
-
-			h5 {
-				font-size: 12px;
-				font-family: @font-sub-body;
-				color: @text-muted;
-				margin-top: 2px;
-				font-weight: 500;
-				letter-spacing: 0.03em;
-			}
-		}
 		.quote {
 			flex: 1;
 			min-width: 220px;
-
 			p {
 				font-size: 14px;
 				line-height: 1.7;
 				color: @text;
 			}
-
 			h6 {
 				font-family: @font-display;
 				font-weight: 600;
@@ -669,6 +802,95 @@
 	}
 	.buttons {
 		margin-top: 2rem;
+	}
+	.section-responsive();
+	.split-stack(400px);
+	@media @mobileTab {
+		.inner > .content-wrapper {
+			h2 {
+				font-size: clamp(2rem, 3.6vw, 2.4rem);
+				line-height: 1.15;
+			}
+			p {
+				font-size: 16px;
+				line-height: 1.75;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.review {
+			justify-content: flex-start;
+			align-items: flex-start;
+			gap: 1.25rem;
+			padding: 1.5rem;
+			text-align: left;
+			.score,
+			.quote {
+				text-align: left;
+				:is(strong, .stars, h5, h6, p) {
+					text-align: left;
+				}
+			}
+			.score .stars {
+				font-size: 9px;
+			}
+			.quote {
+				flex: 1 1 220px;
+				min-width: 0;
+				p {
+					font-size: 14px;
+					margin-left: 0;
+					margin-right: 0;
+				}
+			}
+			.score strong {
+				font-size: 2.2rem;
+			}
+		}
+		.buttons {
+			justify-content: center;
+		}
+	}
+	@media @mobile {
+		.inner {
+			> .image {
+				max-width: 320px;
+				border-width: 5px;
+			}
+			> .content-wrapper h2 {
+				font-size: 2rem;
+				line-height: 1.2;
+			}
+			> .content-wrapper p {
+				font-size: 15px;
+				line-height: 1.7;
+			}
+		}
+		.review {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
+			padding: 1.25rem;
+			.score,
+			.quote {
+				width: 100%;
+				min-width: 0;
+			}
+			.score strong {
+				font-size: 2rem;
+			}
+			.quote p {
+				font-size: 14px;
+			}
+		}
+		.buttons {
+			.buttons-stack();
+		}
+	}
+	@media (max-width: 374px) {
+		.inner > .content-wrapper h2 {
+			font-size: 1.8rem;
+		}
 	}
 }
 // =========================================================
@@ -685,27 +907,14 @@
 		margin-bottom: 3rem;
 		.title {
 			h3 {
-				font-family: @font-display;
-				font-size: clamp(1.5rem, 2.4vw, 2rem);
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: @brand-blue;
-				font-weight: 600;
-				margin-bottom: 0.75rem;
-				line-height: 1.2;
+				text-align: left;
 			}
 			h2 {
-				font-family: @font-display;
-				font-size: clamp(2rem, 4.5vw, 3.2rem);
-				font-weight: 700;
 				line-height: 1.1;
-				color: @brand-navy;
-				margin-bottom: 1rem;
-				letter-spacing: -0.01em;
 			}
 		}
 	}
-	.stat {
+	.score {
 		text-align: right;
 		.rating {
 			font-family: @font-display;
@@ -737,16 +946,9 @@
 		}
 	}
 	.inner {
-		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 1.5rem;
 		.item {
-			background: #fff;
-			border: 1px solid @border;
-			border-radius: @radius;
 			padding: 2rem;
-			display: flex; //pushes the content
-			flex-direction: column;
 			.stars {
 				margin-bottom: 1rem;
 				font-size: 12px;
@@ -754,22 +956,103 @@
 				color: @brand-blue;
 			}
 			p {
-				font-family: @font-body;
-				font-size: 15px;
-				line-height: 1.8;
 				color: @text;
-				margin: 0 0 1.2rem;
+			}
+		}
+	}
+	.section-responsive();
+	.cards-responsive();
+	@media @mobileTab {
+		.heading {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			gap: 1.25rem;
+			margin-bottom: 2rem;
+			.title,
+			.score {
+				width: 100%;
+				text-align: center;
+				.stars {
+					font-size: 9px;
+				}
+			}
+			.title {
+				:is(h2, h3, p) {
+					text-align: center;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				h2 {
+					font-size: clamp(2.2rem, 4vw, 2.6rem);
+					line-height: 1.15;
+				}
+				h3 {
+					font-size: 1.5rem;
+					line-height: 1.25;
+				}
+			}
+			.score {
+				:is(.rating, .stars, h5) {
+					text-align: center;
+				}
+				.rating {
+					font-size: 2.5rem;
+				}
+			}
+		}
+		.inner .item {
+			padding: 1.75rem;
+			:is(h6, p, .stars) {
+				text-align: left;
+			}
+			p {
+				font-size: 15px;
+				line-height: 1.75;
 			}
 			h6 {
-				display: block;
-				font-family: @font-display;
 				font-size: 14px;
-				font-weight: 600;
-				text-transform: uppercase;
-				color: @brand-navy;
-				margin-top: auto; // Push to bottom of card
-    			align-self: flex-start;
 			}
+			.stars {
+				font-size: 9px;
+			}
+		}
+	}
+	@media @mobile {
+		.heading {
+			gap: 1rem;
+			margin-bottom: 1.75rem;
+			.title h2 {
+				font-size: 2rem;
+				line-height: 1.2;
+			}
+			.title h3 {
+				font-size: 1.25rem;
+				line-height: 1.3;
+			}
+		}
+		.inner .item {
+			padding: 1.5rem 1.25rem;
+			p {
+				font-size: 15px;
+			}
+			.content-wrapper {
+				padding: 0;
+			}
+		}
+		.score .rating {
+			font-size: 2.4rem;
+		}
+	}
+	@media (max-width: 480px) {
+		.inner .item {
+			padding: 1.35rem 1.1rem;
+		}
+	}
+	@media (max-width: 374px) {
+		.heading .title h2 {
+			font-size: 1.8rem;
 		}
 	}
 }
@@ -779,679 +1062,51 @@
 .contact-section {
 	background: @brand-navy;
 	.inner {
+		display: block;
 		max-width: 760px;
 		margin: 0 auto;
 		text-align: center;
+		.content-wrapper {
+			h3 {
+				font-family: @font-display;
+				font-size: clamp(1.5rem, 2.4vw, 2rem);
+				letter-spacing: 0.01em;
+				color: #fff;
+				text-transform: none;
+				font-weight: 600;
+				margin-bottom: 0.75rem;
+				line-height: 1.2;
+			}
+			h2 {
+				font-family: @font-display;
+				font-size: clamp(2rem, 4.5vw, 3.2rem);
+				font-weight: 700;
+				line-height: 1.1;
+				margin-bottom: 1rem;
+				letter-spacing: -0.01em;
+				color: #fff;
+			}
+			p {
+				margin: 0 auto 1rem;
+				color: rgba(255, 255, 255, 0.7);
+			}
+		}
+		.buttons {
+			margin-top: 2rem;
+		}
 	}
+	.section-responsive();
 	.inner .content-wrapper {
-		h3 {
-			font-family: @font-display;
-			font-size: clamp(1.5rem, 2.4vw, 2rem);
-			letter-spacing: 0.01em;
-			color: #fff;
-			text-transform: none;
-			font-weight: 600;
-			margin-bottom: 0.75rem;
-			line-height: 1.2;
-		}
-		h2 {
-			font-family: @font-display;
-			font-size: clamp(2rem, 4.5vw, 3.2rem);
-			font-weight: 700;
-			line-height: 1.1;
-			margin-bottom: 1rem;
-			letter-spacing: -0.01em;
-			color: #fff;
-		}
-		p {
-			margin: 0 auto 1rem;
-			color: rgba(255, 255, 255, 0.7);
+		.heading-responsive(h3);
+	}
+	@media @mobileTab {
+		.inner .content-wrapper {
+			text-align: center;
 		}
 	}
-	.buttons {
-		margin-top: 2rem;
-	}
-}
-
-// =========================================================
-// RESPONSIVE
-// =========================================================
-@media (max-width: 1024px) {
-  .welcome-section,
-  .work-section,
-  .treatment-section,
-  .conditions-section,
-  .process-section,
-  .doctor-section,
-  .patient-section,
-  .contact-section {
-    padding-top: var(--responsive-section-space);
-    padding-bottom: var(--responsive-section-space);
-  }
-  // Hero
-  .hero-section {
-    min-height: 70vh;
-    text-align: center;
-    > .container {
-      width: 100%;
-      max-width: 820px;
-      padding: 5rem 2rem;
-    }
-    .inner > img {
-      height: 110px;
-      margin: 0 auto 1.25rem;
-    }
-    .content-wrapper {
-      text-align: center;
-      :is(h1, h2) {
-        font-size: clamp(3.1rem, 5.5vw, 3.5rem);
-        line-height: 1.1;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      h4 {
-        font-size: 1.3rem;
-        line-height: 1.6;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      p {
-        font-size: 16px;
-        line-height: 1.7;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-    .buttons {
-      justify-content: center;
-    }
-  }
-  // Main titles
-  .welcome-section .content-wrapper h3,
-  .work-section .heading.content-wrapper h2,
-  .treatment-section .heading h2,
-  .conditions-section .heading h2,
-  .process-section .heading h2,
-  .doctor-section .content-wrapper h2,
-  .patient-section .heading .title h2,
-  .contact-section .inner .content-wrapper h2 {
-    font-size: clamp(2.2rem, 4vw, 2.6rem);
-    line-height: 1.15;
-  }
-  .doctor-section .content-wrapper h2 {
-    font-size: clamp(2rem, 3.6vw, 2.4rem);
-  }
-  // Eyebrows
-  .welcome-section .content-wrapper h4,
-  .work-section .heading.content-wrapper h3,
-  .treatment-section .heading.content-wrapper h4,
-  .conditions-section .heading.content-wrapper h3,
-  .process-section .heading.content-wrapper h3,
-  .patient-section .heading .title h3,
-  .contact-section .inner .content-wrapper h3 {
-    font-size: 1.5rem;
-    line-height: 1.25;
-  }
-  // Body paragraphs
-  .welcome-section .content-wrapper p,
-  .work-section .heading p,
-  .treatment-section .heading p,
-  .conditions-section .heading p,
-  .process-section .heading p,
-  .doctor-section .content-wrapper p,
-  .contact-section .content-wrapper p {
-    font-size: 16px;
-    line-height: 1.75;
-  }
-  // Welcome and doctor paragraphs centered to the screen
-  .welcome-section .content-wrapper p,
-  .doctor-section .content-wrapper p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  // Welcome
-  .welcome-section .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    > .image,
-    > .content-wrapper {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-    }
-    > .image {
-      max-width: 570px;
-    }
-    > .content-wrapper {
-      text-align: center;
-    }
-  }
-  .welcome-section .image {
-    aspect-ratio: 16 / 10;
-  }
-  .welcome-section .features,
-  .welcome-section .buttons {
-    justify-content: center;
-  }
-  .welcome-section .features li {
-    font-size: 12px;
-  }
-  // Work and Treatment headings centered
-  .work-section .heading,
-  .treatment-section .heading {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .work-section .heading p,
-  .treatment-section .heading p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  // Conditions heading centered
-  .conditions-section .heading.content-wrapper {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2.5rem;
-    h3,
-    h2,
-    p {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  .conditions-section .inner .content-wrapper {
-    text-align: left;
-    :is(h3, h4, h5, h6, p, a) {
-      text-align: left;
-    }
-  }
-  // Process heading
-  .process-section .heading {
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-  .process-section .inner::before {
-    display: none;
-  }
-  // Card grids
-  .work-section .inner,
-  .patient-section .inner,
-  .treatment-section .inner,
-  .conditions-section .inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-  // Process steps
-  .process-section .inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .process-section .step {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    min-width: 0;
-    text-align: left;
-    h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.4;
-      text-align: left;
-    }
-    p {
-      margin: 0;
-      font-size: 15px;
-      text-align: left;
-    }
-  }
-  .process-section .number {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
-    margin: 0;
-  }
-  // Cards (same selectors as desktop)
-  .work-section .item {
-    min-width: 0;
-    padding: 2rem 1.75rem;
-    text-align: left;
-    :is(h3, p) {
-      text-align: left;
-    }
-    h3 {
-      font-size: 1.5rem;
-      line-height: 1.4;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-  }
-  .treatment-section .inner .item {
-    min-width: 0;
-    padding: 2rem 1.75rem;
-    text-align: left;
-    :is(h3, p, em, a) {
-      text-align: left;
-    }
-    h3 {
-      font-size: 1.5rem;
-      line-height: 1.4;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-  }
-  .conditions-section .inner .item {
-    min-width: 0;
-    padding: 1.75rem;
-    text-align: left;
-    :is(h3, p, a, .content-wrapper) {
-      text-align: left;
-    }
-    h3 {
-      font-size: 1.3rem;
-      line-height: 1.4;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-  }
-  .patient-section .inner .item {
-    min-width: 0;
-    padding: 1.75rem;
-    text-align: left;
-    :is(h6, p, .stars) {
-      text-align: left;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.75;
-    }
-    h6 {
-      font-size: 14px;
-    }
-  }
-  // Doctor
-  .doctor-section .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    > .image,
-    > .content-wrapper {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-    }
-    > .image {
-      max-width: 400px;
-    }
-    > .content-wrapper {
-      text-align: center;
-    }
-  }
-  .doctor-section .content-wrapper p.doctor-bio {
-    display: block;
-    width: 100%;
-    max-width: 580px;
-    margin: 0 auto;
-    text-align: center !important;
-  }
-  .doctor-section .content-wrapper p.doctor-bio + p.doctor-bio {
-    margin-top: 1rem;
-  }
-  .doctor-section .review {
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.5rem;
-    text-align: left;
-    .score,
-    .quote {
-      text-align: left;
-      :is(strong, .stars, h5, h6, p) {
-        text-align: left;
-      }
-    }
-	.score .stars {
-		font-size: 9px;
-	}
-    .quote {
-      flex: 1 1 220px;
-      min-width: 0;
-    }
-    .score strong {
-      font-size: 2.2rem;
-    }
-    .quote p {
-      font-size: 14px;
-    }
-  }
-  .doctor-section .buttons {
-    justify-content: center;
-  }
-  // Patient heading and rating centered
-  .patient-section {
-	.heading.content-wrapper {
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		gap: 1.25rem;
-		margin-bottom: 2rem;
-		.title,
-		.stat {
-		width: 100%;
-		text-align: center;
-		.stars {
-			font-size: 9px;
-		}
-		}
-		.title :is(h2, h3, p) {
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-		}
-		.stat :is(.rating, .stars, h5) {
-		text-align: center;
-		}
-		.stat .rating {
-			font-size: 2.5rem;
+	@media @mobile {
+		.buttons {
+			.buttons-stack();
 		}
 	}
-	.inner {
-		.item .stars {
-			font-size: 9px;
-		}
-	}
-  }
-  // Contact
-  .contact-section .inner .content-wrapper {
-    text-align: center;
-  }
-}
-// Tablet only: a last card alone in its row stays the same width and is centered
-@media (min-width: 768px) and (max-width: 1024px) {
-  :is(.work-section, .treatment-section, .conditions-section, .patient-section) .inner .item:last-child:nth-child(odd),
-  .work-section .inner > .item:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc((100% - 1.25rem) / 2);
-  }
-}
-@media (max-width: 767px) {
-  .welcome-section,
-  .work-section,
-  .treatment-section,
-  .conditions-section,
-  .process-section,
-  .doctor-section,
-  .patient-section,
-  .contact-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-  // Hero (38px title)
-  .hero-section {
-    min-height: 0;
-    text-align: center;
-    > .container {
-      padding: 4rem 1.25rem;
-    }
-    .inner > img {
-      height: 90px;
-      margin: 0 auto 1.25rem;
-    }
-    .content-wrapper {
-      :is(h1, h2) {
-        font-size: 38px;
-        line-height: 1.12;
-        margin: 0 auto 1rem;
-      }
-      h4 {
-        font-size: 1.1rem;
-        line-height: 1.55;
-        margin: 0 auto 1.25rem;
-      }
-      p {
-        font-size: 15px;
-        line-height: 1.7;
-        margin: 0 auto 1.5rem;
-      }
-    }
-  }
-  // Main titles
-  .welcome-section .content-wrapper h3,
-  .work-section .heading.content-wrapper h2,
-  .treatment-section .heading h2,
-  .conditions-section .heading h2,
-  .process-section .heading h2,
-  .doctor-section .content-wrapper h2,
-  .patient-section .heading .title h2,
-  .contact-section .inner .content-wrapper h2 {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  // Eyebrows
-  .welcome-section .content-wrapper h4 > span,
-  .work-section .heading.content-wrapper h3,
-  .treatment-section .heading.content-wrapper h4,
-  .conditions-section .heading.content-wrapper h3,
-  .process-section .heading.content-wrapper h3,
-  .patient-section .heading .title h3,
-  .contact-section .inner .content-wrapper h3 {
-    font-size: 1.25rem;
-    line-height: 1.3;
-  }
-  // Body paragraphs
-  .welcome-section .content-wrapper p,
-  .work-section .heading p,
-  .treatment-section .heading p,
-  .conditions-section .heading p,
-  .process-section .heading p,
-  .doctor-section .content-wrapper p,
-  .contact-section .content-wrapper p {
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  // Welcome
-  .welcome-section .inner {
-    gap: 1.5rem;
-
-	.image img {
-		aspect-ratio: 4 / 3;
-		border-radius: 8px;
-	}
-  }
-  .welcome-section .features li {
-    font-size: 11.5px;
-    padding: 5px 12px;
-  }
-  // Single column cards
-  .work-section .inner,
-  .treatment-section .inner,
-  .conditions-section .inner,
-  .process-section .inner,
-  .patient-section .inner {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .work-section .heading,
-  .treatment-section .heading,
-  .process-section .heading {
-    margin-bottom: 1.75rem;
-  }
-  .conditions-section .heading.content-wrapper {
-    margin-bottom: 1.75rem;
-  }
-  .work-section .inner {
-    margin-top: 1.5rem;
-  }
-  // Cards
-  .work-section .inner .item {
-    padding: 1.75rem 1.25rem;
-    h3 {
-      font-size: 1.3rem;
-    }
-	.content-wrapper {
-	padding: 0;
-		p {
-		font-size: 15px;
-		}
-	}
-  }
-  .treatment-section .inner .item {
-    padding: 1.5rem 1.25rem;
-	h3 {
-	font-size: 1.3rem;
-	}
-	p {
-	font-size: 15px;
-	}
-	.content-wrapper {
-	padding: 0;
-	}
-  }
-  .conditions-section .inner .item {
-    padding: 1.5rem 1.25rem;
-    h3 {
-      font-size: 1.2rem;
-    }
-    p {
-      font-size: 15px;
-    }
-	.content-wrapper {
-	padding: 0;
-	}
-  }
-  .patient-section .inner .item {
-    padding: 1.5rem 1.25rem;
-    p {
-      font-size: 15px;
-    }
-  }
-  // Process centered on mobile
-  .process-section .heading {
-    text-align: center;
-    :is(h2, h3, p) {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  .process-section .inner {
-    gap: 1.75rem;
-    margin-top: 1.75rem;
-  }
-  .process-section .step {
-    align-items: center;
-    text-align: center;
-    h3 {
-      font-size: 1.2rem;
-    }
-    :is(h3, p) {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  .process-section .number {
-    width: 48px;
-    height: 48px;
-    font-size: 18px;
-    margin: 0 auto 0.25rem;
-  }
-  // Doctor
-  .doctor-section .inner {
-    gap: 1.5rem;
-  }
-  .doctor-section .inner > .image {
-    max-width: 320px;
-    border-width: 5px;
-  }
-  .doctor-section .review {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1.25rem;
-    .score,
-    .quote {
-      width: 100%;
-      min-width: 0;
-    }
-    .score strong {
-      font-size: 2rem;
-    }
-    .quote p {
-      font-size: 14px;
-    }
-  }
-  // Patient
-  .patient-section .heading {
-    gap: 1rem;
-    margin-bottom: 1.75rem;
-  }
-  .patient-section .stat .rating {
-    font-size: 2.4rem;
-  }
-  .patient-section .container .inner .item .content-wrapper {
-	padding: 0;
-  }
-  // Buttons
-  .hero-section .buttons,
-  .welcome-section .buttons,
-  .doctor-section .buttons,
-  .contact-section .buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    a {
-      width: 100%;
-      max-width: 320px;
-    }
-  }
-}
-@media (max-width: 480px) {
-  .work-section .item {
-    padding: 1.5rem 1.1rem;
-  }
-  .treatment-section .inner .item,
-  .conditions-section .inner .item,
-  .patient-section .inner .item {
-    padding: 1.35rem 1.1rem;
-  }
-}
-@media (max-width: 374px) {
-  .hero-section .inner > img {
-    height: 80px;
-  }
-  .hero-section .content-wrapper {
-    :is(h1, h2) {
-      font-size: 34px;
-    }
-    p {
-      font-size: 14.5px;
-    }
-  }
-  .welcome-section .content-wrapper h3,
-  .work-section .heading.content-wrapper h2,
-  .treatment-section .heading h2,
-  .conditions-section .heading h2,
-  .process-section .heading h2,
-  .doctor-section .content-wrapper h2,
-  .patient-section .heading .title h2,
-  .contact-section .inner .content-wrapper h2 {
-    font-size: 1.8rem;
-  }
 }

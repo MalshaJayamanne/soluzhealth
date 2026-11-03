@@ -5,7 +5,7 @@ get_header();
 
 <?php if (get_field('tms_hero_content')) : ?>
     <section class="page-hero-section tms-hero">
-        <?php get_image(get_field('tms_hero_image'), 'full', get_bloginfo('name'), false); ?>
+        <?php get_image(get_field('tms_hero_image'), 'full'); ?>
 
         <div class="container">
             <div class="inner">
@@ -228,9 +228,11 @@ get_header();
 
                 <?php if (get_field('appointment_link') ?: get_theme_option('appointment_link')) : ?>
                     <div class="buttons">
-                        <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-blue'); ?>
+                        <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-btn'); ?>
 
-                        <?php get_theme_link(get_field('phone') ?: get_theme_option('phone'), 'theme-outline'); ?>
+                        <?php if ($telephone = get_theme_option('telephone')) : ?>
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $telephone)); ?>" class="theme-btn outline">Call <?php echo esc_html($telephone); ?></a>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
             </div>

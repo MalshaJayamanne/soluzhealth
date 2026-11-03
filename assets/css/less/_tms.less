@@ -1,23 +1,6 @@
 // =========================================================
-// TMS PAGE
+// TMS PAGE  (page hero base + CTA live in common.less)
 // =========================================================
-.page-hero-section,
-.tms-what-section,
-.tms-day-section,
-.tms-system-section,
-.tms-results-section,
-.tms-expect-section,
-.tms-combo-section,
-.tms-fit-section,
-.tms-cert-section,
-.cta-section {
-  position: relative;
-  font-family: @font-body;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: @text;
-}
 .tms-what-section,
 .tms-day-section,
 .tms-system-section,
@@ -25,965 +8,653 @@
 .tms-expect-section,
 .tms-combo-section,
 .tms-fit-section {
-  padding: 6rem 0;
+	.section-font();
+	.section-pad();
 }
-// Shared eyebrow / title
+// Shared title
 :is(.tms-what-section .content-wrapper, .tms-day-section .heading, .tms-system-section .heading, .tms-results-section .heading, .tms-expect-section .content-wrapper, .tms-combo-section .heading, .tms-fit-section .content-wrapper) {
-  h4 {
-    font-family: @font-display;
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: @brand-blue;
-    margin: 0 0 0.75rem;
-  }
-  :is(h2, h3) {
-    font-family: @font-display;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: @brand-navy;
-    margin: 0 0 1rem;
-    span {
-      font-style: normal;
-      color: @brand-blue;
-    }
-  }
-}
-// Subtitle inside headings
-:is(.tms-day-section .heading, .tms-system-section .heading, .tms-results-section .heading, .tms-combo-section .heading, .tms-fit-section .content-wrapper) p {
-  font-family: @font-body;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.75;
-  color: @text-muted;
-  max-width: 580px;
-  margin: 0;
-}
-// Centered headings
-:is(.tms-day-section, .tms-system-section) .heading {
-  max-width: 720px;
-  margin: 0 auto 1rem;
-  text-align: center;
-  p {
-    margin: 0 auto;
-  }
+	:is(h2, h3) {
+		.section-title();
+	}
 }
 // =========================================================
-// PAGE HERO
+// PAGE HERO (TMS badge)
 // =========================================================
-.page-hero-section {
-  background: @brand-navy;
-  padding: 5rem 0 4rem;
-  overflow: hidden;
-  > img {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.2;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(10, 31, 61, 0.4) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-  > .container {
-    position: relative;
-    z-index: 2;
-  }
-  .breadcrumb {
-    display: block;
-    padding: 0;
-    margin: 0 0 1.25rem;
-    background: none;
-    font-family: @font-body;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.7;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    a {
-      color: rgba(255, 255, 255, 0.6);
-      &:hover {
-        color: @brand-blue;
-      }
-    }
-  }
-  .content-wrapper {
-    :is(h1, h2) {
-      font-family: @font-display;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: #fff;
-      margin: 0 0 1.25rem;
-      :is(span, em) {
-        font-style: normal;
-        color: @brand-blue;
-      }
-    }
-    p {
-      font-family: @font-body;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.78);
-      max-width: 580px;
-      margin: 0;
-    }
-    p + p {
-      margin-top: 1rem;
-    }
-  }
-}
 .tms-hero .content-wrapper h5 {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 1.5rem;
-  padding: 8px 18px;
-  background: @brand-blue;
-  border-radius: 24px;
-  font-family: @font-display;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.7;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-  &::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
-  }
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 1.5rem;
+	padding: 8px 18px;
+	background: @brand-blue;
+	border-radius: 24px;
+	font-family: @font-display;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.7;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #fff;
+	&::before {
+		content: '';
+		width: 8px;
+		height: 8px;
+		background: #fff;
+		border-radius: 50%;
+		box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+	}
 }
 // =========================================================
-// TMS IS + WHAT 
+// WHAT TMS IS + WHAT TO EXPECT
 // =========================================================
 .tms-what-section {
-  background: @off-white;
+	background: @off-white;
 }
 .tms-expect-section {
-  background: #fff;
+	background: #fff;
 }
 :is(.tms-what-section, .tms-expect-section) {
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-    .content-wrapper {
-      h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-      p {
-        font-family: @font-body;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.8;
-        color: @text-muted;
-        margin: 0 0 1rem;
-      }
-    }
-    .image {
-      aspect-ratio: 4 / 3;
-      border-radius: @radius;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
+	.inner {
+		.split-2col();
+		.content-wrapper {
+			h4 {
+				.eyebrow-text();
+				margin-bottom: 0.75rem;
+			}
+			p {
+				.content-text();
+			}
+			.eyebrow-responsive();
+			.title-responsive();
+			.body-responsive();
+		}
+		.image {
+			.media-image();
+		}
+	}
 }
 // =========================================================
 // ONE-DAY TIMELINE
 // =========================================================
 .tms-day-section {
-  background: #fff;
-  .heading.content-wrapper {
-    h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-  }
-  .timeline {
-    max-width: 720px;
-    margin: 3rem auto 0;
-    padding: 2.5rem;
-    background: @brand-light-blue;
-    border-radius: 12px;
-    h3 {
-      font-family: @font-display;
-      font-size: 1.4rem;
-      font-weight: 700;
-      line-height: 1.7;
-      color: @brand-navy;
-      margin: 0 0 1.5rem;
-    }
-    .item {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 1rem;
-      align-items: baseline;
-      padding: 1rem 0;
-      border-top: 1px solid rgba(10, 31, 61, 0.15);
-    }
-    .time {
-      font-family: @font-display;
-      font-size: 1.2rem;
-      font-weight: 700;
-      line-height: 1;
-      color: @brand-blue;
-    }
-    .abbr {
-      display: block;
-      margin-top: 4px;
-      font-size: 0.7em;
-      font-weight: 500;
-      color: @text-muted;
-    }
-    .note {
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 1.7;
-      color: @brand-navy;
-    }
-  }
+	background: #fff;
+	.heading.content-wrapper {
+		h4 {
+			.eyebrow-text();
+			margin-bottom: 0.75rem;
+		}
+		.eyebrow-responsive();
+		.title-responsive();
+	}
+	.heading {
+		max-width: 720px;
+		margin: 0 auto 1rem;
+		text-align: center;
+		p {
+			.section-text();
+			margin: 0 auto;
+		}
+		.body-responsive();
+	}
+	.timeline {
+		max-width: 720px;
+		margin: 3rem auto 0;
+		padding: 2.5rem;
+		background: @brand-light-blue;
+		border-radius: 12px;
+		h3 {
+			font-family: @font-display;
+			font-size: 1.4rem;
+			font-weight: 700;
+			line-height: 1.7;
+			color: @brand-navy;
+			margin: 0 0 1.5rem;
+		}
+		.item {
+			display: grid;
+			grid-template-columns: 70px 1fr;
+			gap: 1rem;
+			align-items: baseline;
+			padding: 1rem 0;
+			border-top: 1px solid rgba(10, 31, 61, 0.15);
+		}
+		.time {
+			font-family: @font-display;
+			font-size: 1.2rem;
+			font-weight: 700;
+			line-height: 1;
+			color: @brand-blue;
+		}
+		.abbr {
+			display: block;
+			margin-top: 4px;
+			font-size: 0.7em;
+			font-weight: 500;
+			color: @text-muted;
+		}
+		.note {
+			font-size: 15px;
+			font-weight: 500;
+			line-height: 1.7;
+			color: @brand-navy;
+		}
+	}
+	@media @mobileTab {
+		.timeline {
+			margin-top: 2.5rem;
+			padding: 2rem;
+			h3 {
+				line-height: 1.4;
+			}
+			.time {
+				font-size: 1.25rem;
+			}
+		}
+	}
+	@media @mobile {
+		.timeline {
+			margin-top: 2rem;
+			padding: 1.5rem;
+			h3 {
+				font-size: 1.3rem;
+				line-height: 1.3;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.timeline {
+			padding: 1.25rem;
+			.item {
+				grid-template-columns: 60px 1fr;
+			}
+		}
+	}
 }
 // =========================================================
 // SYSTEM SHOWCASE
 // =========================================================
 .tms-system-section {
-  background: #fff;
-  .heading.content-wrapper {
-    h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-  }
-  .showcase {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 2rem;
-    padding: 3rem;
-    background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
-    border-radius: 16px;
-    .image {
-      aspect-ratio: 4 / 3;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 1rem;
-      }
-    }
-    .content-wrapper {
-      h5 {
-        font-family: @font-display;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 1.7;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: @brand-blue;
-        margin: 0 0 0.5rem;
-      }
-      :is(h3, h2) {
-        font-family: @font-display;
-        font-size: 1.9rem;
-        font-weight: 700;
-        line-height: 1.15;
-        color: @brand-navy;
-        margin: 0 0 1rem;
-      }
-      p {
-        font-family: @font-body;
-        font-size: 15px;
-        line-height: 1.75;
-        color: @brand-navy-soft;
-        margin: 0 0 0.75rem;
-      }
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-      margin-left: 0;
-      li {
-        padding: 6px 14px;
-        background: #fff;
-        border: 1px solid rgba(10, 31, 61, 0.1);
-        border-radius: 20px;
-        font-family: @font-display;
-        font-size: 11px;
-        font-weight: 600;
-        line-height: 1.7;
-        letter-spacing: 0.06em;
-        color: @brand-navy;
-        list-style: none;
-      }
-    }
-  }
+	background: #fff;
+	.heading.content-wrapper {
+		h4 {
+			.eyebrow-text();
+			margin-bottom: 0.75rem;
+		}
+		.eyebrow-responsive();
+		.title-responsive();
+	}
+	.heading {
+		max-width: 720px;
+		margin: 0 auto 1rem;
+		text-align: center;
+		p {
+			.section-text();
+			margin: 0 auto;
+		}
+		.body-responsive();
+	}
+	.showcase {
+		display: grid;
+		grid-template-columns: 1.1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+		margin-top: 2rem;
+		padding: 3rem;
+		background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
+		border-radius: 16px;
+		.image {
+			aspect-ratio: 4 / 3;
+			background: #fff;
+			border-radius: 12px;
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				padding: 1rem;
+			}
+		}
+		.content-wrapper {
+			h5 {
+				font-family: @font-display;
+				font-size: 12px;
+				font-weight: 600;
+				line-height: 1.7;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: @brand-blue;
+				margin: 0 0 0.5rem;
+			}
+			:is(h3, h2) {
+				font-family: @font-display;
+				font-size: 1.9rem;
+				font-weight: 700;
+				line-height: 1.15;
+				color: @brand-navy;
+				margin: 0 0 1rem;
+			}
+			p {
+				font-family: @font-body;
+				font-size: 15px;
+				line-height: 1.75;
+				color: @brand-navy-soft;
+				margin: 0 0 0.75rem;
+			}
+		}
+		.features {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-top: 1.25rem;
+			margin-left: 0;
+			li {
+				padding: 6px 14px;
+				background: #fff;
+				border: 1px solid rgba(10, 31, 61, 0.1);
+				border-radius: 20px;
+				font-family: @font-display;
+				font-size: 11px;
+				font-weight: 600;
+				line-height: 1.7;
+				letter-spacing: 0.06em;
+				color: @brand-navy;
+				list-style: none;
+			}
+		}
+	}
+	@media @mobileTab {
+		.showcase {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			padding: 2rem;
+			.content-wrapper :is(h3, h2) {
+				font-size: 1.7rem;
+				line-height: 1.2;
+			}
+			.features li {
+				font-size: 12px;
+			}
+		}
+	}
+	@media @mobile {
+		.showcase {
+			padding: 1.5rem;
+			.content-wrapper :is(h3, h2) {
+				font-size: 1.5rem;
+			}
+			.features {
+				justify-content: center;
+				text-align: center;
+				li {
+					font-size: 11.5px;
+				}
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.showcase {
+			padding: 1.25rem;
+		}
+	}
 }
 // =========================================================
 // EFFICACY RESULTS
 // =========================================================
 .tms-results-section {
-  background: @off-white;
-  .heading.content-wrapper {
-    h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-  }
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-  .item {
-    padding: 2rem;
-    background: #fff;
-    border: 1px solid @border;
-    border-left: 4px solid @brand-blue;
-    border-radius: @radius;
-    .number {
-      font-family: @font-display;
-      font-size: 2.6rem;
-      font-weight: 700;
-      line-height: 1;
-      color: @brand-navy;
-      margin-bottom: 0.5rem;
-    }
-    .text {
-      font-size: 14px;
-      line-height: 1.6;
-      color: @text-muted;
-      margin: 0;
-    }
-  }
+	background: @off-white;
+	.heading.content-wrapper {
+		h4 {
+			.eyebrow-text();
+			margin-bottom: 0.75rem;
+		}
+		.eyebrow-responsive();
+		.title-responsive();
+	}
+	.heading {
+		p {
+			.section-text();
+		}
+		.body-responsive();
+	}
+	.inner {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+	}
+	.item {
+		padding: 2rem;
+		border-left: 4px solid @brand-blue;
+		.number {
+			font-family: @font-display;
+			font-size: 2.6rem;
+			font-weight: 700;
+			line-height: 1;
+			color: @brand-navy;
+			margin-bottom: 0.5rem;
+		}
+		.text {
+			font-size: 14px;
+			line-height: 1.6;
+			color: @text-muted;
+			margin: 0;
+		}
+	}
+	@media @mobileTab {
+		.heading {
+			text-align: left;
+		}
+		.item {
+			min-width: 0;
+			padding: 1.75rem 1.5rem;
+			text-align: left;
+			.number {
+				font-size: 2.4rem;
+			}
+			.text {
+				font-size: 15px;
+			}
+		}
+	}
+	@media @mobile {
+		.inner {
+			margin-top: 2rem;
+			gap: var(--responsive-card-gap);
+		}
+		.item {
+			padding: 1.4rem 1.25rem;
+			.number {
+				font-size: 1.9rem;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.item {
+			padding: 1.25rem;
+		}
+	}
 }
 // =========================================================
 // TMS + KETAMINE COMBO
 // =========================================================
 .tms-combo-section {
-  background: @off-white;
-  .heading.content-wrapper {
-    h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-  }
-  .callout {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: @brand-navy;
-    border-radius: 12px;
-    color: #fff;
-    h5 {
-      font-family: @font-display;
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.7;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: @brand-blue;
-      margin: 0 0 0.5rem;
-    }
-    :is(h3, h2) {
-      font-family: @font-display;
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #fff;
-      margin: 0 0 1rem;
-    }
-    p {
-      font-size: 14.5px;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.75);
-      margin: 0;
-      + p {
-        margin-top: 0.75rem;
-      }
-    }
-  }
+	background: @off-white;
+	.heading.content-wrapper {
+		h4 {
+			.eyebrow-text();
+			margin-bottom: 0.75rem;
+		}
+		.eyebrow-responsive();
+		.title-responsive();
+	}
+	.heading {
+		p {
+			.section-text();
+		}
+		.body-responsive();
+	}
+	.callout {
+		margin-top: 2rem;
+		padding: 2rem;
+		background: @brand-navy;
+		border-radius: 12px;
+		color: #fff;
+		h5 {
+			font-family: @font-display;
+			font-size: 12px;
+			font-weight: 600;
+			line-height: 1.7;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			color: @brand-blue;
+			margin: 0 0 0.5rem;
+		}
+		:is(h3, h2) {
+			font-family: @font-display;
+			font-size: 1.8rem;
+			font-weight: 700;
+			line-height: 1.2;
+			color: #fff;
+			margin: 0 0 1rem;
+		}
+		p {
+			font-size: 14.5px;
+			line-height: 1.75;
+			color: rgba(255, 255, 255, 0.75);
+			margin: 0;
+			+ p {
+				margin-top: 0.75rem;
+			}
+		}
+	}
+	@media @mobileTab {
+		.heading.content-wrapper {
+			text-align: center;
+			p {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		.callout {
+			padding: 1.75rem;
+			text-align: left;
+			:is(h3, h2) {
+				font-size: 1.65rem;
+			}
+			p {
+				font-size: 15px;
+			}
+		}
+	}
+	@media @mobile {
+		.callout {
+			padding: 1.5rem;
+			:is(h3, h2) {
+				font-size: 1.5rem;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.callout {
+			padding: 1.25rem;
+		}
+	}
 }
 // =========================================================
 // WHO TMS WORKS BEST FOR
 // =========================================================
 .tms-fit-section {
-  background: #fff;
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-    .content-wrapper {
-      h4 {
-        font-family: @font-display;
-        font-size: clamp(1.5rem, 2.4vw, 2rem);
-        letter-spacing: 0.01em;
-        text-transform: none;
-        color: @brand-blue;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        line-height: 1.2;
-      } 
-      p {
-        margin-bottom: 1.5rem;
-      }
-    }
-    .box {
-      margin-top: 2rem;
-      padding: 2.5rem;
-      background: @off-white;
-      border-radius: 12px;
-      h3 {
-        font-family: @font-display;
-        font-size: 1.3rem;
-        font-weight: 700;
-        line-height: 1.7;
-        color: @brand-navy;
-        margin: 0 0 1rem;
-      }
-      li {
-        position: relative;
-        padding: 0.6rem 0 0.6rem 2rem;
-        font-size: 15px;
-        line-height: 1.6;
-        color: @text;
-        list-style: none;
-        &::before {
-          content: '✓';
-          position: absolute;
-          left: 0;
-          top: 0.6rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 22px;
-          height: 22px;
-          background: @brand-blue;
-          border-radius: 50%;
-          font-size: 12px;
-          font-weight: 700;
-          color: #fff;
-        }
-      }
-    }
-  }
+	background: #fff;
+	.inner {
+		.split-2col();
+		.content-wrapper {
+			h4 {
+				.eyebrow-text();
+				margin-bottom: 0.75rem;
+			}
+			p {
+				.section-text();
+				margin-bottom: 1.5rem;
+			}
+			.eyebrow-responsive();
+			.title-responsive();
+			.body-responsive();
+		}
+		.box {
+			margin-top: 2rem;
+			padding: 2.5rem;
+			background: @off-white;
+			border-radius: 12px;
+			h3 {
+				font-family: @font-display;
+				font-size: 1.3rem;
+				font-weight: 700;
+				line-height: 1.7;
+				color: @brand-navy;
+				margin: 0 0 1rem;
+			}
+			li {
+				position: relative;
+				padding: 0.6rem 0 0.6rem 2rem;
+				font-size: 15px;
+				line-height: 1.6;
+				color: @text;
+				list-style: none;
+				&::before {
+					content: '✓';
+					position: absolute;
+					left: 0;
+					top: 0.6rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 22px;
+					height: 22px;
+					background: @brand-blue;
+					border-radius: 50%;
+					font-size: 12px;
+					font-weight: 700;
+					color: #fff;
+				}
+			}
+		}
+	}
+	@media @mobileTab {
+		.inner {
+			.content-wrapper {
+				text-align: center;
+				p {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+			.box {
+				margin-top: 0;
+				text-align: left;
+				h3 {
+					line-height: 1.4;
+				}
+			}
+		}
+	}
+	@media @mobile {
+		.inner .box {
+			padding: 1.5rem;
+			h3 {
+				font-size: 1.25rem;
+				line-height: 1.3;
+			}
+		}
+	}
+	@media (max-width: 480px) {
+		.inner .box {
+			padding: 1.25rem;
+		}
+	}
+}
+// Stack what / expect / fit columns on tablet
+:is(.tms-what-section, .tms-expect-section, .tms-fit-section) .inner {
+	@media @mobileTab {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		> * {
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
+			flex: 0 0 auto;
+		}
+	}
+}
+:is(.tms-what-section, .tms-expect-section) .inner {
+	@media @mobileTab {
+		.image {
+			aspect-ratio: 16 / 10;
+		}
+	}
+	@media @mobile {
+		gap: 24px;
+		.image {
+			aspect-ratio: 4 / 3;
+		}
+	}
 }
 // =========================================================
 // CERTIFICATIONS
 // =========================================================
 .tms-cert-section {
-  background: @off-white;
-  padding: 0;
-  .item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3rem 0;
-  }
-  .badge {
-    flex-shrink: 0;
-    width: 110px;
-    height: 110px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-  .content-wrapper {
-    max-width: 480px;
-    text-align: left;
-    h5 {
-      font-family: @font-display;
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.7;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: @brand-blue;
-      margin: 0 0 0.5rem;
-    }
-    :is(h3, h2) {
-      font-family: @font-display;
-      font-size: 1.4rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: @brand-navy;
-      margin: 0 0 0.5rem;
-    }
-    p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: @text-muted;
-      margin: 0;
-    }
-  }
-}
-// =========================================================
-// CTA
-// =========================================================
-.cta-section {
-  background: linear-gradient(135deg, @brand-light-blue 0%, #DEEEFF 100%);
-  padding: 4.5rem 0;
-  text-align: center;
-  .content-wrapper {
-    h2 {
-      font-family: @font-display;
-      font-size: 2.3rem;
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-      color: @brand-navy;
-      margin: 0 0 0.75rem;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: @brand-navy-soft;
-      max-width: 540px;
-      margin: 0 auto 2rem;
-    }
-  }
-  .buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-}
-// =========================================================
-// RESPONSIVE
-// =========================================================
-@media (max-width: 1024px) {
-  .tms-what-section,
-  .tms-day-section,
-  .tms-system-section,
-  .tms-results-section,
-  .tms-expect-section,
-  .tms-combo-section,
-  .tms-fit-section {
-    padding-top: var(--responsive-section-space);
-    padding-bottom: var(--responsive-section-space);
-  }
-  // Page hero (left on tablet)
-  .page-hero-section {
-    padding-top: 4.5rem;
-    padding-bottom: 3.5rem;
-    text-align: left;
-    .content-wrapper {
-      :is(h1, h2) {
-        font-size: clamp(2.8rem, 5.5vw, 3.5rem);
-        line-height: 1.1;
-        overflow-wrap: break-word;
-      }
-      p {
-        font-size: 16px;
-        line-height: 1.7;
-      }
-    }
-  }
-  // Eyebrows (same specificity as desktop)
-  .tms-what-section .inner .content-wrapper h4,
-  .tms-expect-section .inner .content-wrapper h4,
-  .tms-fit-section .inner .content-wrapper h4,
-  .tms-day-section .heading.content-wrapper h4,
-  .tms-system-section .heading.content-wrapper h4,
-  .tms-results-section .heading.content-wrapper h4,
-  .tms-combo-section .heading.content-wrapper h4 {
-    font-size: 1.5rem;
-    line-height: 1.25;
-  }
-  // Main titles
-  :is(.tms-what-section .content-wrapper, .tms-day-section .heading, .tms-system-section .heading, .tms-results-section .heading, .tms-expect-section .content-wrapper, .tms-combo-section .heading, .tms-fit-section .content-wrapper) :is(h2, h3) {
-    font-size: clamp(2.2rem, 4vw, 2.6rem);
-    line-height: 1.15;
-    overflow-wrap: break-word;
-  }
-  // Body paragraphs
-  .tms-what-section .inner .content-wrapper p,
-  .tms-expect-section .inner .content-wrapper p,
-  .tms-fit-section .inner .content-wrapper p,
-  .tms-day-section .heading p,
-  .tms-system-section .heading p,
-  .tms-results-section .heading p,
-  .tms-combo-section .heading p {
-    font-size: 16px;
-    line-height: 1.75;
-  }
-  // Stack What, Expect and Fit
-  :is(.tms-what-section, .tms-expect-section, .tms-fit-section) .inner {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    > * {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      flex: 0 0 auto;
-    }
-  }
-  :is(.tms-what-section, .tms-expect-section) .inner .image {
-    aspect-ratio: 16 / 10;
-  }
-  // Timeline
-  .tms-day-section .timeline {
-    margin-top: 2.5rem;
-    padding: 2rem;
-    h3 {
-      font-size: 1.4rem;
-      line-height: 1.4;
-    }
-    .time {
-      font-size: 1.25rem;
-    }
-    .note {
-      font-size: 15px;
-    }
-  }
-  // System showcase
-  .tms-system-section .showcase {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem;
-    .content-wrapper {
-      :is(h3, h2) {
-        font-size: 1.7rem;
-        line-height: 1.2;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
-    .features li {
-      font-size: 12px;
-    }
-  }
-  // Results (left)
-  .tms-results-section {
-    .heading {
-      text-align: left;
-    }
-    .item {
-      min-width: 0;
-      padding: 1.75rem 1.5rem;
-      text-align: left;
-      .number {
-        font-size: 2.4rem;
-      }
-      .text {
-        font-size: 15px;
-      }
-    }
-  }
-  // Combo (heading centered, callout left)
-  .tms-combo-section {
-    .heading.content-wrapper {
-      text-align: center;
-      p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-    .callout {
-      padding: 1.75rem;
-      text-align: left;
-      :is(h3, h2) {
-        font-size: 1.65rem;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
-  }
-  // Fit (content centered, box left)
-  .tms-fit-section .inner {
-    .content-wrapper {
-      text-align: center;
-      p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-    .box {
-      margin-top: 0;
-      text-align: left;
-      h3 {
-        font-size: 1.3rem;
-        line-height: 1.4;
-      }
-      li {
-        font-size: 15px;
-      }
-    }
-  }
-  // Certifications
-  .tms-cert-section {
-    .item {
-      padding: 2.5rem 0;
-    }
-    .content-wrapper {
-      :is(h3, h2) {
-        font-size: 1.4rem;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
-  }
-  // CTA (centered)
-  .cta-section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    .content-wrapper {
-      h2 {
-        font-size: 2.1rem;
-      }
-      p {
-        font-size: 16px;
-      }
-    }
-  }
-}
-@media (max-width: 767px) {
-  // Page hero (centered on mobile, 38px title)
-  .page-hero-section {
-    padding-top: 4rem;
-    padding-bottom: 3rem;
-    text-align: center;
-    .breadcrumb {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-    }
-    .content-wrapper {
-      :is(h1, h2) {
-        font-size: 38px;
-        line-height: 1.12;
-      }
-      p {
-        font-size: 15px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-  // Eyebrows
-  .tms-what-section .inner .content-wrapper h4,
-  .tms-expect-section .inner .content-wrapper h4,
-  .tms-fit-section .inner .content-wrapper h4,
-  .tms-day-section .heading.content-wrapper h4,
-  .tms-system-section .heading.content-wrapper h4,
-  .tms-results-section .heading.content-wrapper h4,
-  .tms-combo-section .heading.content-wrapper h4 {
-    font-size: 1.25rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
-  }
-  // Main titles
-  :is(.tms-what-section .content-wrapper, .tms-day-section .heading, .tms-system-section .heading, .tms-results-section .heading, .tms-expect-section .content-wrapper, .tms-combo-section .heading, .tms-fit-section .content-wrapper) :is(h2, h3) {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  // Body paragraphs
-  .tms-what-section .inner .content-wrapper p,
-  .tms-expect-section .inner .content-wrapper p,
-  .tms-fit-section .inner .content-wrapper p,
-  .tms-day-section .heading p,
-  .tms-system-section .heading p,
-  .tms-results-section .heading p,
-  .tms-combo-section .heading p {
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  :is(.tms-what-section, .tms-expect-section) .inner {
-    gap: 24px;
-  }
-  :is(.tms-what-section, .tms-expect-section) .inner .image {
-    aspect-ratio: 4 / 3;
-  }
-  // Timeline
-  .tms-day-section .timeline {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    h3 {
-      font-size: 1.3rem;
-      line-height: 1.3;
-    }
-  }
-  // System showcase (features centered)
-  .tms-system-section .showcase {
-    padding: 1.5rem;
-    .content-wrapper {
-      :is(h3, h2) {
-        font-size: 1.5rem;
-      }
-    }
-    .features {
-      justify-content: center;
-      text-align: center;
-      li {
-        font-size: 11.5px;
-      }
-    }
-  }
-  // Results
-  .tms-results-section {
-    .inner {
-      margin-top: 2rem;
-      gap: var(--responsive-card-gap);
-    }
-    .item {
-      padding: 1.4rem 1.25rem;
-      .number {
-        font-size: 1.9rem;
-      }
-      .text {
-        font-size: 15px;
-      }
-    }
-  }
-  // Combo
-  .tms-combo-section .callout {
-    padding: 1.5rem;
-    :is(h3, h2) {
-      font-size: 1.5rem;
-    }
-  }
-  // Fit
-  .tms-fit-section .inner .box {
-    padding: 1.5rem;
-    h3 {
-      font-size: 1.25rem;
-      line-height: 1.3;
-    }
-    li {
-      font-size: 15px;
-    }
-  }
-  // Certifications (all centered)
-  .tms-cert-section {
-    .item {
-      flex-direction: column;
-      gap: 1.25rem;
-      padding: 2rem 0;
-    }
-    .content-wrapper {
-      width: 100%;
-      text-align: center;
-      :is(h3, h2) {
-        font-size: 1.3rem;
-        line-height: 1.3;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
-  }
-  // CTA 
-  .cta-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    .content-wrapper {
-      h2 {
-        font-size: 1.8rem;
-        line-height: 1.25;
-      }
-      p {
-        font-size: 15px;
-      }
-    }
-    .buttons {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 14px;
-      a {
-        width: 100%;
-        max-width: 100%;
-      }
-    }
-  }
-}
-@media (max-width: 480px) {
-  .tms-day-section .timeline .item {
-    grid-template-columns: 60px 1fr;
-  }
-  .tms-day-section .timeline,
-  .tms-system-section .showcase,
-  .tms-results-section .item,
-  .tms-combo-section .callout,
-  .tms-fit-section .inner .box {
-    padding: 1.25rem;
-  }
-}
-@media (max-width: 374px) {
-  .page-hero-section .content-wrapper :is(h1, h2) {
-    font-size: 34px;
-  }
-  :is(.tms-what-section .content-wrapper, .tms-day-section .heading, .tms-system-section .heading, .tms-results-section .heading, .tms-expect-section .content-wrapper, .tms-combo-section .heading, .tms-fit-section .content-wrapper) :is(h2, h3) {
-    font-size: 1.8rem;
-  }
+	.section-font();
+	background: @off-white;
+	padding: 0;
+	.item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 2.5rem;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 3rem 0;
+	}
+	.badge {
+		flex-shrink: 0;
+		width: 110px;
+		height: 110px;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	.content-wrapper {
+		max-width: 480px;
+		text-align: left;
+		h5 {
+			font-family: @font-display;
+			font-size: 11px;
+			font-weight: 600;
+			line-height: 1.7;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: @brand-blue;
+			margin: 0 0 0.5rem;
+		}
+		:is(h3, h2) {
+			font-family: @font-display;
+			font-size: 1.4rem;
+			font-weight: 700;
+			line-height: 1.2;
+			color: @brand-navy;
+			margin: 0 0 0.5rem;
+		}
+		p {
+			font-size: 14px;
+			line-height: 1.7;
+			color: @text-muted;
+			margin: 0;
+		}
+	}
+	@media @mobileTab {
+		.item {
+			padding: 2.5rem 0;
+		}
+		.content-wrapper p {
+			font-size: 15px;
+		}
+	}
+	@media @mobile {
+		.item {
+			flex-direction: column;
+			gap: 1.25rem;
+			padding: 2rem 0;
+		}
+		.content-wrapper {
+			width: 100%;
+			text-align: center;
+			:is(h3, h2) {
+				font-size: 1.3rem;
+				line-height: 1.3;
+			}
+		}
+	}
 }

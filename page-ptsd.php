@@ -5,7 +5,7 @@ get_header();
 
 <?php if (get_field('ptsd_hero_content')) : ?>
     <section class="page-hero-section ptsd-hero">
-        <?php get_image(get_field('ptsd_hero_image'), 'full', get_bloginfo('name'), false); ?>
+        <?php get_image(get_field('ptsd_hero_image'), 'full'); ?>
 
         <div class="container">
             <div class="inner">
@@ -52,7 +52,7 @@ get_header();
 
                     <?php if (get_field('appointment_link') ?: get_theme_option('appointment_link')) : ?>
                         <div class="buttons">
-                            <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-blue'); ?>
+                            <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-btn'); ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -132,10 +132,10 @@ get_header();
 
                 <?php if ((get_field('appointment_link') ?: get_theme_option('appointment_link')) || $call_number) : ?>
                     <div class="buttons">
-                        <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-blue'); ?>
+                        <?php get_theme_link(get_field('appointment_link') ?: get_theme_option('appointment_link'), 'theme-btn'); ?>
 
                         <?php if ($call_number) : ?>
-                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-btn outline">
                                 Call <?php echo esc_html($call_number); ?>
                             </a>
                         <?php endif; ?>

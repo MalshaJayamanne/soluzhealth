@@ -5,8 +5,7 @@ get_header();
 
 <?php if (get_field('about_content')) : ?>
     <section class="page-hero-section">
-        <?php get_image(get_field('about_image') ?: get_field('hero_image', get_option('page_on_front')), 'full', get_bloginfo('name'), false); ?>
-
+        <?php get_image(get_field('about_image') ?: get_field('hero_image', get_option('page_on_front'))); ?>
         <div class="container">
             <div class="inner">
                 <div class="breadcrumb">
@@ -54,7 +53,7 @@ get_header();
                     <?php echo get_field('mission_content'); ?>
 
                     <div class="buttons">
-                        <?php get_theme_link(get_field('mission_link'), 'theme-blue'); ?>
+                        <?php get_theme_link(get_field('mission_link'), 'theme-btn'); ?>
                     </div>
                 </div>
             </div>
@@ -147,7 +146,7 @@ get_header();
     <section class="cta-section">
         <div class="container">
             <div class="inner">
-                <div class="content">
+                <div class="content-wrapper">
                     <?php echo get_field('cta_content'); ?>
                 </div>
 
@@ -156,15 +155,17 @@ get_header();
                 $call_number = $phones ? reset($phones) : '';
                 ?>
 
-                <div class="buttons">
-                    <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                <?php if (!empty(get_theme_option('appointment_link')['url']) || $call_number) : ?>
+                    <div class="buttons">
+                        <?php get_theme_link(get_theme_option('appointment_link'), 'theme-btn'); ?>
 
-                    <?php if ($call_number) : ?>
-                        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
-                            Call <?php echo esc_html($call_number); ?>
-                        </a>
-                    <?php endif; ?>
-                </div>
+                        <?php if ($call_number) : ?>
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-btn outline">
+                                Call <?php echo esc_html($call_number); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

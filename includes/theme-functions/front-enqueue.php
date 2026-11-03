@@ -6,7 +6,21 @@ function theme_front_scripts()
 
     $version = get_theme_cache_version();
 
-    wp_enqueue_script('custom-js', THEME_JS . 'custom.min.js', array('jquery'), $version, true);
+    wp_enqueue_script(
+        'mmenu',
+        get_template_directory_uri() . '/assets/mmenu/mmenu.js',
+        array(),
+        $version,
+        true
+    );
+
+    wp_enqueue_script(
+        'custom-js',
+        THEME_JS . 'custom.min.js',
+        array('jquery', 'mmenu'),
+        $version,
+        true
+    );
 
     if (!is_page_template('page-home.php') && !is_page_template('page-contact.php')) {
         wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array(), '5.0', true);
@@ -15,8 +29,9 @@ function theme_front_scripts()
     $customParams = array(
         'ADMIN_AJAX_URL' => admin_url('admin-ajax.php'),
         'SOCIAL_MEDIA'   => get_social_links(),
-        'STICKY_HEADER'  => get_theme_option('enable_sticky_header', 'option')
+        'STICKY_HEADER'  => get_theme_option('enable_sticky_header', 'option'),
     );
+
     wp_localize_script('custom-js', 'THEME_PARAMS', $customParams);
 
     wp_dequeue_script('comment-reply');
@@ -33,6 +48,14 @@ function theme_front_styles()
         'https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600&display=swap',
         array(),
         null
+    );
+
+    wp_enqueue_style(
+        'mmenu',
+        get_template_directory_uri() . '/assets/mmenu/mmenu.css',
+        array(),
+        $version,
+        'screen'
     );
 
     wp_enqueue_style(

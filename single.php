@@ -65,10 +65,10 @@ get_header();
                     ?>
                     <?php if ((get_theme_option('appointment_link') && !empty(get_theme_option('appointment_link')['url'])) || $call_number) : ?>
                         <div class="buttons">
-                            <?php get_theme_link(get_theme_option('appointment_link'), 'theme-blue'); ?>
+                            <?php get_theme_link(get_theme_option('appointment_link'), 'theme-btn'); ?>
 
                             <?php if ($call_number) : ?>
-                                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-outline">
+                                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $call_number)); ?>" class="theme-btn outline">
                                     Call <?php echo esc_html($call_number); ?>
                                 </a>
                             <?php endif; ?>

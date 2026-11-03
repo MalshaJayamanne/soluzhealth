@@ -6,7 +6,7 @@ $faq_groups = array('qgeneral', 'qketamine', 'qtms', 'qcost');
 ?>
 
 <?php if (get_field('faq_hero_content')) : ?>
-    <section class="faq-hero-section">
+    <section class="page-hero-section">
         <div class="container">
             <div class="inner">
                 <div class="breadcrumb">
@@ -76,10 +76,10 @@ $faq_groups = array('qgeneral', 'qketamine', 'qtms', 'qcost');
 
                     <?php if (get_field('faq_still_link') || get_theme_option('telephone')) : ?>
                         <div class="buttons">
-                            <?php get_theme_link(get_field('faq_still_link'), 'theme-blue'); ?>
+                            <?php get_theme_link(get_field('faq_still_link'), 'theme-btn'); ?>
 
                             <?php if (get_theme_option('telephone')) : ?>
-                                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', get_theme_option('telephone'))); ?>" class="theme-outline">
+                                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', get_theme_option('telephone'))); ?>" class="theme-btn outline">
                                     Call <?php echo esc_html(get_theme_option('telephone')); ?>
                                 </a>
                             <?php endif; ?>
