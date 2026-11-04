@@ -211,9 +211,8 @@ get_header();
 
                 <div class="content-wrapper">
                     <?php echo get_field('ketamine_credentials_content'); ?>
-                    <a href="<?php echo esc_url('https://askp.org/'); ?>" class="credentials-link">
-                        <?php echo esc_html(get_field('ketamine_credentials_link')); ?>
-                    </a>
+                    
+                    <?php get_theme_link(get_field('ketamine_credentials_link'), 'credentials-link'); ?>
                 </div>
             </div>
         </div>
