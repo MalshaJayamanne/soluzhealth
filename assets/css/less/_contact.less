@@ -431,157 +431,156 @@
       color: #718096 !important;
     }
   }
-}
+  // =========================================================
+  // TABLET
+  // =========================================================
+  @media (max-width: 1024px) {
+    .contact-form-section {
+      .inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3rem;
+      }
 
-// =========================================================
-// TABLET
-// =========================================================
-@media (max-width: 1024px) {
-  .contact-form-section {
-    .inner {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 3rem;
-    }
+      .info {
+        .content-wrapper {
+          text-align: left;
 
-    .info {
-      .content-wrapper {
-        text-align: left;
+          h4 {
+            font-size: 1.5rem;
+          }
 
-        h4 {
-          font-size: 1.5rem;
+          :is(h1, h2) {
+            font-size: clamp(2.2rem, 4vw, 2.6rem);
+            line-height: 1.15;
+          }
+
+          p {
+            font-size: 16px;
+          }
         }
 
-        :is(h1, h2) {
-          font-size: clamp(2.2rem, 4vw, 2.6rem);
-          line-height: 1.15;
-        }
-
-        p {
-          font-size: 16px;
+        .details {
+          margin-top: 2rem;
         }
       }
 
-      .details {
-        margin-top: 2rem;
-      }
-    }
+      .form-card {
+        padding: 2rem;
 
-    .form-card {
-      padding: 2rem;
-
-      .content-wrapper :is(h2, h3) {
-        font-size: 1.7rem;
+        .content-wrapper :is(h2, h3) {
+          font-size: 1.7rem;
+        }
       }
     }
   }
-}
 
-// =========================================================
-// MOBILE
-// =========================================================
-@media (max-width: 767px) {
-  .contact-form-section {
-    font-size: 15px;
+  // =========================================================
+  // MOBILE
+  // =========================================================
+  @media (max-width: 767px) {
+    .contact-form-section {
+      font-size: 15px;
 
-    .inner {
-      gap: 2.5rem;
-    }
+      .inner {
+        gap: 2.5rem;
+      }
 
-    .info {
-      .content-wrapper {
-        text-align: center;
+      .info {
+        .content-wrapper {
+          text-align: center;
 
-        h4 {
-          font-size: 1.25rem;
+          h4 {
+            font-size: 1.25rem;
+          }
+
+          :is(h1, h2) {
+            font-size: 2rem;
+            line-height: 1.2;
+          }
+
+          p {
+            font-size: 15px;
+            line-height: 1.7;
+          }
         }
 
-        :is(h1, h2) {
-          font-size: 2rem;
-          line-height: 1.2;
+        .details {
+          margin-top: 1.75rem;
+          gap: 1rem;
         }
 
-        p {
-          font-size: 15px;
-          line-height: 1.7;
+        .details .item {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 0.65rem;
+          margin-bottom: 0;
+        }
+
+        .icon {
+          flex: 0 0 34px;
+          width: 34px;
+          height: 34px;
+        }
+
+        .text {
+          flex: 1;
+          min-width: 0;
+
+          .label,
+          .item-label {
+            font-size: 10px;
+          }
+
+          a,
+          address {
+            font-size: 14px;
+          }
+
+          .note {
+            font-size: 12px;
+          }
         }
       }
 
-      .details {
-        margin-top: 1.75rem;
-        gap: 1rem;
-      }
+      .form-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 8px;
 
-      .details .item {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 0.65rem;
-        margin-bottom: 0;
-      }
+        .content-wrapper {
+          margin-bottom: 1.25rem;
 
-      .icon {
-        flex: 0 0 34px;
-        width: 34px;
-        height: 34px;
-      }
+          :is(h2, h3) {
+            font-size: 1.5rem;
+          }
 
-      .text {
-        flex: 1;
-        min-width: 0;
-
-        .label,
-        .item-label {
-          font-size: 10px;
+          p {
+            font-size: 13px;
+          }
         }
 
-        a,
-        address {
-          font-size: 14px;
+        .form-wrapper {
+          .forminator-row,
+          .hs-form .hs-form-field {
+            margin-bottom: 0.9rem !important;
+          }
+
+          .forminator-label,
+          .hs-form .hs-form-field > label {
+            font-size: 14px !important;
+          }
+
+          .forminator-button-submit,
+          .hs-form .hs-button,
+          .hs-form input[type="submit"] {
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
         }
 
-        .note {
-          font-size: 12px;
+        .form-note {
+          margin-top: 1.5rem;
+          font-size: 11px;
         }
-      }
-    }
-
-    .form-card {
-      padding: 1.5rem 1.25rem;
-      border-radius: 8px;
-
-      .content-wrapper {
-        margin-bottom: 1.25rem;
-
-        :is(h2, h3) {
-          font-size: 1.5rem;
-        }
-
-        p {
-          font-size: 13px;
-        }
-      }
-
-      .form-wrapper {
-        .forminator-row,
-        .hs-form .hs-form-field {
-          margin-bottom: 0.9rem !important;
-        }
-
-        .forminator-label,
-        .hs-form .hs-form-field > label {
-          font-size: 14px !important;
-        }
-
-        .forminator-button-submit,
-        .hs-form .hs-button,
-        .hs-form input[type="submit"] {
-          width: 100% !important;
-          box-sizing: border-box !important;
-        }
-      }
-
-      .form-note {
-        margin-top: 1.5rem;
-        font-size: 11px;
       }
     }
   }
